@@ -1,0 +1,119 @@
+.s-social-share-list 
+{
+	a
+	{
+		cursor: pointer;
+	}
+	.twitter-share-button, .IN-widget, [id*='plusone']
+	{
+		vertical-align: middle !important;
+	}
+}
+.ss-icon
+{
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 5px;
+	width: 16px;
+	height: 16px;
+	background: transparent url('../images/social-share-icons.png') no-repeat -1000px -1000px;
+}
+.ss-facebook
+{
+	background-position: -260px 0;
+}
+.ss-twitter
+{
+	background-position: -20px 0;
+}
+.ss-linkedin
+{
+	background-position: -140px 0;
+}
+.ss-googleplus
+{
+	background-position: -120px 0; 
+}
+.ss-blogger
+{
+	background-position: 0 0; 
+}
+.ss-delicious
+{
+	background-position: -60px 0; 
+}
+.ss-tumblr
+{
+	background-position: -200px 0; 
+}
+.ss-googlebookmarks
+{
+	background-position: -120px 0; 
+}
+.ss-digg
+{
+	background-position: -80px 0; 
+}
+.ss-myspace
+{
+	background-position: -40px 0; 
+}
+.ss-stumbleupon
+{
+	background-position: -180px 0; 
+}
+.ss-reddit
+{
+	background-position: -160px 0; 
+}
+
+a:hover {
+	.ss-facebook
+	{
+		background-position: -260px -20px;
+	}
+	.ss-twitter
+	{
+		background-position: -20px -20px;
+	}
+	.ss-linkedin
+	{
+		background-position: -140px -20px;
+	}
+	.ss-googleplus
+	{
+		background-position: -120px -20px; 
+	}
+	.ss-blogger
+	{
+		background-position: 0 -20px; 
+	}
+	.ss-delicious
+	{
+		background-position: -60px -20px; 
+	}
+	.ss-tumblr
+	{
+		background-position: -200px -20px; 
+	}
+	.ss-googlebookmarks
+	{
+		background-position: -120px -20px; 
+	}
+	.ss-digg
+	{
+		background-position: -80px -20px; 
+	}
+	.ss-myspace
+	{
+		background-position: -40px -20px; 
+	}
+	.ss-stumbleupon
+	{
+		background-position: -180px -20px; 
+	}
+	.ss-reddit
+	{
+		background-position: -160px -20px; 
+	}
+}
