@@ -13,61 +13,60 @@
 
 .ss-facebook {
   background-position: -260px 0; }
+  .ss-facebook:hover {
+    background-position: -260px -20px; }
 
 .ss-twitter {
   background-position: -20px 0; }
+  .ss-twitter:hover {
+    background-position: -20px -20px; }
 
 .ss-linkedin {
   background-position: -140px 0; }
+  .ss-linkedin:hover {
+    background-position: -140px -20px; }
 
 .ss-googleplus {
   background-position: -120px 0; }
+  .ss-googleplus:hover {
+    background-position: -120px -20px; }
 
 .ss-blogger {
   background-position: 0 0; }
+  .ss-blogger:hover {
+    background-position: 0 -20px; }
 
 .ss-delicious {
   background-position: -60px 0; }
+  .ss-delicious:hover {
+    background-position: -60px -20px; }
 
 .ss-tumblr {
   background-position: -200px 0; }
+  .ss-tumblr:hover {
+    background-position: -200px -20px; }
 
 .ss-googlebookmarks {
   background-position: -120px 0; }
+  .ss-googlebookmarks:hover {
+    background-position: -120px -20px; }
 
 .ss-digg {
   background-position: -80px 0; }
+  .ss-digg:hover {
+    background-position: -80px -20px; }
 
 .ss-myspace {
   background-position: -40px 0; }
+  .ss-myspace:hover {
+    background-position: -40px -20px; }
 
 .ss-stumbleupon {
   background-position: -180px 0; }
+  .ss-stumbleupon:hover {
+    background-position: -180px -20px; }
 
 .ss-reddit {
   background-position: -160px 0; }
-
-a:hover .ss-facebook {
-  background-position: -260px -20px; }
-a:hover .ss-twitter {
-  background-position: -20px -20px; }
-a:hover .ss-linkedin {
-  background-position: -140px -20px; }
-a:hover .ss-googleplus {
-  background-position: -120px -20px; }
-a:hover .ss-blogger {
-  background-position: 0 -20px; }
-a:hover .ss-delicious {
-  background-position: -60px -20px; }
-a:hover .ss-tumblr {
-  background-position: -200px -20px; }
-a:hover .ss-googlebookmarks {
-  background-position: -120px -20px; }
-a:hover .ss-digg {
-  background-position: -80px -20px; }
-a:hover .ss-myspace {
-  background-position: -40px -20px; }
-a:hover .ss-stumbleupon {
-  background-position: -180px -20px; }
-a:hover .ss-reddit {
-  background-position: -160px -20px; }
+  .ss-reddit:hover {
+    background-position: -160px -20px; }
