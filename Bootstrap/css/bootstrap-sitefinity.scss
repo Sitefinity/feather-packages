@@ -1,8 +1,10 @@
 //Variables
 //== Colors
-//							 
+//	
+$white:                     #fff;						 
 $blue:						#428bca;
-$blue-darker:               #2a6496;      
+$blue-darker:               #2a6496;    
+$grey:                      #333;  
 //== Media queries breakpoints
 //
 //## Define the breakpoints at which your layout will change, adapting to different screen sizes.
@@ -186,11 +188,11 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
 
 //Toggle
 .nav-toggle {
-    color:#fff;
-    background-color:#333;
+    color:$white;
+    background-color:$grey;
     padding:8px;
     background-image: none;
-    border-color: #333;
+    border-color: $grey;
     border-radius: 4px;
 	border-style: solid;
 	&:focus
@@ -198,8 +200,8 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
 }
 
 .active.nav-toggle {
-    background-color:#428bca;
-    border-color: #428bca;
+    background-color:$blue;
+    border-color: $blue;
 }
 
 @media (max-width: $screen-xs-max) {
