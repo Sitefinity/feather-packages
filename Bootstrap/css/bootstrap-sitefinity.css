@@ -169,9 +169,9 @@
     display: block; } }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .nav-md-dropdown .nav, .nav-md-hidden .nav, .nav-dm-toggle .nav {
+  .nav-md-dropdown .nav, .nav-md-hidden .nav, .nav-md-toggle .nav {
     display: none; }
-  .nav-md-dropdown .nav-select, .nav-dm-toggle .nav-toggle {
+  .nav-md-dropdown .nav-select, .nav-md-toggle .nav-toggle {
     display: block; } }
 
 @media (min-width: 1200px) {

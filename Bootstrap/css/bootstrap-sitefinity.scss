@@ -318,11 +318,11 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
 }
 
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-    .nav-md-dropdown .nav, .nav-md-hidden .nav, .nav-dm-toggle .nav  {
+    .nav-md-dropdown .nav, .nav-md-hidden .nav, .nav-md-toggle .nav  {
         display: none;
     }
 
-    .nav-md-dropdown .nav-select, .nav-dm-toggle .nav-toggle {
+    .nav-md-dropdown .nav-select, .nav-md-toggle .nav-toggle {
         display: block;
     }
 }
