@@ -1,0 +1,21 @@
+{
+  "name": "SemanticUI",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-concurrent": "~0.4.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-csslint": "~0.2.0",
+    "grunt-contrib-imagemin": "0.1.4",
+    "grunt-contrib-stylus": "~0.13.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-newer": "~0.6.0",
+    "grunt-spritesmith": "~1.22.0",
+    "load-grunt-tasks": "~0.2.1",
+    "pngsmith": "~0.1.0",
+    "time-grunt": "~0.2.7"
+  },
+  "author": {
+    "name": "SitefinityUX Team",
+    "email": "SitefinityUX@telerik.com"
+  }
+}
