@@ -1,7 +1,7 @@
 Bootstrap package
 ================
 
-This package is based on the Bootstrap framework. In order to use it you need to add the package to the ResourcePackages folder of your project. If the ResourcePackages folder doesn't contain any packages, widget templates will be loaded from Feather or from the MVC folder of SitefinityWebApp (if this folder contains files with names, matching the naming convention). Templates from the source of Feather have lowest loading priority. Templates in the MVC folder of SitefinityWebApp are with higher priority, and templates from a package have highest loading priority.
+This package is based on the [Bootstrap framework](http://getbootstrap.com/) . In order to use it you need to add the package to the ResourcePackages folder of your project. If the ResourcePackages folder doesn't contain any packages, widget templates will be loaded from Feather or from the MVC folder of SitefinityWebApp (if this folder contains files with names, matching the naming convention). Templates from the source of Feather have lowest loading priority. Templates in the MVC folder of SitefinityWebApp are with higher priority, and templates from a package have highest loading priority.
 
 The MVC folder of the Bootstrap package contains a Views folder. In it are the:
 
@@ -14,7 +14,7 @@ To create a custom template for a widget, you need to add to the Views folder of
 Responsive design
 -----------------
 
-The Navigation widget is responsive by default. In addition, we can hide the navigation or change it wiht a `<select>` dropdown with transformation classes. These classes are based on the number of breakpoints that Bootstrap offers by default. They can be set either directly in the .cshtml files or in the options of every dragged navigation widget (`Edit > More options > CSS Classes`).
+The Navigation widget is responsive by default. In addition, we can hide the navigation or change it with a `<select>` dropdown with transformation classes. These classes are based on the number of breakpoints that Bootstrap offers by default. They can be set either directly in the .cshtml files or in the options of every dragged navigation widget (`Edit > More options > CSS Classes`).
 
 The CSS classes have the following structure:
 
