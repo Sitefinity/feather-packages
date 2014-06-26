@@ -13,7 +13,8 @@
   @media only screen and (min-width: $min) and (max-width: $max) {
     .nav-#{$size}-dropdown .nav,
     .nav-#{$size}-dropdown .navbar,
-    .nav-#{$size}-hidden .nav {
+    .nav-#{$size}-hidden .nav,
+    .nav-#{$size}-hidden .navbar {
         display: none;
     }
 
