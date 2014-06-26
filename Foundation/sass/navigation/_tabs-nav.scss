@@ -39,26 +39,6 @@
   $min: nth($media-min, $number) !global;
   $max: nth($media-max, $number) !global;
 
-  .tabs-nav-#{$size}-one-col {
-    @media only screen and (min-width: $min) and (max-width: $max) {
-
-      .tabs-nav {
-        border: 1px solid #ddd;
-        border-radius: 3px;
-
-        li {
-          float: none;
-        }
-        .active a {
-          margin: 0;
-          border: none;
-          background: #008cba;
-          color: #fff;
-        }
-      }
-    }
-  }
-
   // Hide the top bar and show a <select> dropdown menu instead
   @media only screen and (min-width: $min) and (max-width: $max) {
     .tabs-nav-#{$size}-dropdown .tabs-nav,
