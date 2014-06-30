@@ -6,8 +6,8 @@
 @mixin nav($size, $number) {
 
   // Assign the proper min-width and max-width values
-  $min: nth($media-min, $number) !global;
-  $max: nth($media-max, $number) !global;
+  $min: nth($media-min, $number);
+  $max: nth($media-max, $number);
 
   // Hide the top bar and show a <select> dropdown nav instead
   @media only screen and (min-width: $min) and (max-width: $max) {

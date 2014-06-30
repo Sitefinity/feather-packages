@@ -34,6 +34,14 @@ module.exports = function (grunt) {
             '<%= src.sitefinity %>'
           ]
         }]
+      },
+      sprites: {
+        files: [{
+          src: [
+            '<%= pkg.name %>/images/src/sprites/*.png',
+            '<%= pkg.name %>/images/dist/sprites/*.png'
+          ]
+        }]
       }
     },
 
@@ -55,8 +63,13 @@ module.exports = function (grunt) {
         options: {              // Target options
           sassDir: 'sass/',
           cssDir: 'css/',
+          // imagesDir: '<%= pkg.name %>/image/dist/',
+          // generatedImagesDir: '<%= pkg.name %>/image/dist/',
           relativeAssets: true,
-          assetCacheBuster: false
+          quiet: false,
+          assetCacheBuster: false,
+          force: false,
+          raw: 'Sass::Script::Number.precision = 10\n'
         }
       }
     },
@@ -65,29 +78,29 @@ module.exports = function (grunt) {
       minify: {
         expand: true,
         cwd: 'css/',
-        src: ['*.css', '!*.min.css', '!semantic.css'],
+        src: ['*.css', '!*.min.css', '!bootstrap.css'],
         dest: 'css/',
         ext: '.min.css'
       }
     },
 
-    // // Image Optimization
-    // imagemin: {
-    //   dist: {
-    //     options: {
-    //       optimizationLevel: 4,
-    //       progressive: true
-    //     },
-    //     files: [
-    //       {
-    //         expand: true,
-    //         cwd: '<%= pkg.name %>/images/src/',
-    //         src: ['**/*.{png,jpg,gif,jpeg}'],
-    //         dest: '<%= pkg.name %>/images/dist/'
-    //       }
-    //     ]
-    //   }
-    // },
+    // Image Optimization
+    imagemin: {
+      dist: {
+        options: {
+          optimizationLevel: 4,
+          progressive: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%= pkg.name %>/images/src/',
+            src: ['**/*.{png,jpg,gif,jpeg}'],
+            dest: '<%= pkg.name %>/images/dist/'
+          }
+        ]
+      }
+    },
 
     watch: {
       options: {
@@ -95,8 +108,8 @@ module.exports = function (grunt) {
       },
       styles: {
         // files: ['<%= src.sass %>'], doesn't work for some reason
-        files: ['<%= src.sass %>'],
-        tasks: ['compass:dev', 'cssmin:minify', 'newer:csslint:dev']
+        files: ['**/*.{scss,sass}'],
+        tasks: ['compass:dev', 'cssmin:minify', 'newer:csslint:dev', 'newer:imagemin']
       }
     },
 
@@ -117,7 +130,7 @@ module.exports = function (grunt) {
     'compass:dev',
     'cssmin:minify',
     'newer:csslint:dev',
-    // 'newer:imagemin',
+    'newer:imagemin',
     'concurrent:dev'
   ]);
 };
