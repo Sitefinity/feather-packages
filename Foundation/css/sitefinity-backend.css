@@ -1,0 +1,23 @@
+/* line 1, ../sass/sitefinity-backend.scss */
+.input-group .form-control {
+  height: 34px;
+}
+
+/* line 5, ../sass/sitefinity-backend.scss */
+.row {
+  max-width: 100%;
+}
+
+/* line 11, ../sass/sitefinity-backend.scss */
+.modal-dialog label,
+.modal-dialog input {
+  font-size: 14px;
+}
+/* line 15, ../sass/sitefinity-backend.scss */
+.modal-dialog select {
+  -webkit-appearance: menulist-button !important;
+}
+/* line 19, ../sass/sitefinity-backend.scss */
+.modal-dialog p {
+  font-size: 12px;
+}
