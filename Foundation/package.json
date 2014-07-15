@@ -1,5 +1,5 @@
 {
-  "name": "SemanticUI",
+  "name": "Foundation",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-concurrent": "~0.4.2",

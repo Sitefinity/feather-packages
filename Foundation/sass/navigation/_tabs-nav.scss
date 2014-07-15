@@ -36,8 +36,8 @@
 // for the tabs navigation view
 @mixin tabs-navigation($size, $number) {
 
-  $min: nth($media-min, $number) !global;
-  $max: nth($media-max, $number) !global;
+  $min: nth($media-min, $number);
+  $max: nth($media-max, $number);
 
   // Hide the top bar and show a <select> dropdown menu instead
   @media only screen and (min-width: $min) and (max-width: $max) {

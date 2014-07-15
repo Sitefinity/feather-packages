@@ -1,17 +1,5 @@
-/* Global styles */
-html {
-  font: 15px/1 Helvetica, Arial, sans-serif;
-}
-
-.menu a {
-  text-decoration: none
-}
-
-.dropdown {
-  outline: none
-}
-
 @import "settings";
+@import "global";
 @import "navigation/dropdown";
 @import "navigation/vertical-menu";
 @import "navigation/sitemap-menu";

@@ -48,8 +48,8 @@
 // for the tabs navigation view
 @mixin sitemap-navigation($size, $number) {
 
-  $min: nth($media-min, $number) !global;
-  $max: nth($media-max, $number) !global;
+  $min: nth($media-min, $number);
+  $max: nth($media-max, $number);
 
   // Generate classes for a one column fluid sitemap
   .sitemap-#{$size}-one-col {
