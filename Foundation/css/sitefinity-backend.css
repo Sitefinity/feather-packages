@@ -21,3 +21,25 @@
 .modal-dialog p {
   font-size: 12px;
 }
+
+/* line 26, ../sass/sitefinity-backend.scss */
+body .modal {
+  width: auto;
+  position: fixed;
+  margin-left: 0;
+  z-index: 10500 !important;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: inherit;
+}
+/* line 38, ../sass/sitefinity-backend.scss */
+body .modal-backdrop {
+  position: fixed;
+  background-color: #666;
+  filter: alpha(opacity=60);
+  -khtml-opacity: 0.6;
+  -moz-opacity: 0.6;
+  opacity: 0.6;
+  z-index: 3000 !important;
+}
