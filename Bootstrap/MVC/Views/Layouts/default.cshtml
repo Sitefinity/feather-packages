@@ -6,12 +6,6 @@
     <title></title>
     <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/Bootstrap/css/bootstrap.min.css")' type="text/css" />
     <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/Bootstrap/css/bootstrap-sitefinity.min.css")' type="text/css" />
-
-    @if (SitefinityContext.IsBackend)
-    {
-        <link href='@Url.WidgetContent("~/ResourcePackages/Bootstrap/css/sitefinity-backend.css")' rel="stylesheet">
-    }
-
 </head>
 <body>
     @Html.SfPlaceHolder("Contentplaceholder1")
