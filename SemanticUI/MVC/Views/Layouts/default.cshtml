@@ -5,11 +5,6 @@
     <title></title>
     <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/SemanticUI/css/semantic.min.css")' type="text/css" />
     <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/SemanticUI/css/semantic-sitefinity.min.css")' type="text/css" />
-
-    @if (SitefinityContext.IsBackend)
-    {
-        <link href='@Url.WidgetContent("~/ResourcePackages/SemanticUI/css/sitefinity-backend.css")' rel="stylesheet">
-    }
 </head>
 <body>
     @Html.SfPlaceHolder("Contentplaceholder1")
