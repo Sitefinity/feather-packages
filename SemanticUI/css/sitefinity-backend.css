@@ -3,7 +3,7 @@ body .modal {
   width: auto;
   position: fixed;
   margin-left: 0;
-  z-index: 10500 !important;
+  z-index: 3001 !important;
   padding: 0;
   border: none;
   background: none;
