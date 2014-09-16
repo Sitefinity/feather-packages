@@ -3,12 +3,6 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 
 @*Add scripts and stylesheets*@
-@if (!SitefinityContext.IsBackend)
-{
-    @Html.Script("//code.jquery.com/jquery-1.8.3.min.js")
-}
-
-@Html.Script("//cdn.jsdelivr.net/foundation/5.2.3/js/foundation.min.js")
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"))
 
 <div class="@Model.CssClass">
