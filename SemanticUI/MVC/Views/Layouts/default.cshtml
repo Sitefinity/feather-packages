@@ -1,5 +1,4 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers
-@using Telerik.Sitefinity.Modules.Pages;
 
 <!DOCTYPE html>
 <html>
@@ -9,9 +8,6 @@
     <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/SemanticUI/css/semantic-sitefinity.min.css")' type="text/css" />
 </head>
 <body>
-	@Html.Script(ScriptRef.JQuery)
-	@Html.Script(Url.WidgetContent("~/ResourcePackages/SemanticUI/javascript/semantic.min.js"))
-	
     @Html.SfPlaceHolder("Contentplaceholder1")
 </body>
 </html>
