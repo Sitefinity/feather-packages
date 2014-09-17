@@ -1,0 +1,13 @@
+﻿{
+  "priority": 1,
+  "scripts": [
+	"Mvc/Scripts/data-providers.js",
+    "Mvc/Scripts/expander.js",
+	"Mvc/Scripts/style-dropdown.js",
+	"Mvc/Scripts/Angular/angular-resource.min.js",
+	"Services/services.js",
+	"Services/generic-data-service.js",
+	"Selectors/selectors.js",
+	"Selectors/content-selector.js"
+  ]
+}

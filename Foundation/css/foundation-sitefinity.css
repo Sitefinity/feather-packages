@@ -533,3 +533,13 @@
     display: block;
   }
 }
+/* line 2, ../sass/news/_News.scss */
+.News > li {
+  margin-bottom: 30px;
+}
+
+/* line 7, ../sass/news/_News.scss */
+.News-author {
+  color: #999;
+  margin: 10px 0;
+}
