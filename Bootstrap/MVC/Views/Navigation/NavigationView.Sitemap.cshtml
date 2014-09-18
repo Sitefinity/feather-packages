@@ -1,10 +1,8 @@
 @model Navigation.Mvc.Models.INavigationModel
 @using Navigation.Mvc.Models;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
-@using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery)
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"))
 
 <div class="@Model.CssClass">

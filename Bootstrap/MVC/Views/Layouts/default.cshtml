@@ -1,4 +1,5 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers
+@using Telerik.Sitefinity.Modules.Pages;
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,6 +10,11 @@
     <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/Bootstrap/css/bootstrap-sitefinity.min.css")' type="text/css" />
 </head>
 <body>
+	@if (!SitefinityContext.IsBackend)
+	{
+		@Html.Script(ScriptRef.JQuery)
+	}
+	@Html.Script("http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js")
     @Html.SfPlaceHolder("Contentplaceholder1")
 </body>
 </html>
