@@ -7,7 +7,7 @@
 
 <div class="@Model.ListCssClass">
     <div class="ui very relaxed list">
-        @foreach (var item in Model.News)
+        @foreach (var item in Model.Items)
         {
             <div class="item">
               @using (Html.InlineEditingRegion(Model.ProviderName, "Telerik.Sitefinity.News.Model.NewsItem", item.Id))
