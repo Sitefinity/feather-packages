@@ -4,6 +4,10 @@
 @using Telerik.Sitefinity;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Web.DataResolving;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@Html.Script(ScriptRef.JQuery)
+@Html.Script(Url.WidgetContent("~/ResourcePackages/SemanticUI/javascript/semantic.min.js"))
 
 <div class="@Model.ListCssClass">
     <div class="ui very relaxed list">
