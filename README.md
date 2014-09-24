@@ -1,7 +1,7 @@
 The Feather Project
 =======
 
-This repository contains front-end packages for the [Feather project](http://projectfeather.sitefinity.com).
+This repository contains front-end packages for [Project Feather](http://projectfeather.sitefinity.com).
 
 # Related Repositories
 
