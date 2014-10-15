@@ -12,12 +12,13 @@
 .modal-dialog label,
 .modal-dialog input {
   font-size: 14px;
+  display: inline-block;
 }
-/* line 15, ../sass/sitefinity-backend.scss */
+/* line 16, ../sass/sitefinity-backend.scss */
 .modal-dialog select {
   -webkit-appearance: menulist-button !important;
 }
-/* line 19, ../sass/sitefinity-backend.scss */
+/* line 20, ../sass/sitefinity-backend.scss */
 .modal-dialog p {
   font-size: 12px;
 }
