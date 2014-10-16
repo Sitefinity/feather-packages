@@ -14,13 +14,13 @@
 
         <ul class="form-group">
             <li class="radio">
-                <label for="allNews">
+                <label for="allNews" class="full-width">
                     <input id="allNews" type="radio" ng-model="properties.SelectionMode.PropertyValue" value="AllItems" />
                     @Html.Resource("AllPublishedNews")
                 </label>
             </li>
             <li class="radio">
-                <label for="selectedNews">
+                <label for="selectedNews" class="full-width">
                     <input id="selectedNews" type="radio" ng-model="properties.SelectionMode.PropertyValue" value="SelectedItems" />
 
                     @Html.Resource("SelectedNews")
@@ -31,7 +31,7 @@
                                   selected-item-id ="properties.SelectedItemId.PropertyValue"></list-selector>
             </li>
             <li class="radio">
-                <label for="filterNews">
+                <label for="filterNews" class="full-width">
                     <input id="filterNews" type="radio" ng-model="properties.SelectionMode.PropertyValue" value="FilteredItems" />
 
                     @Html.Resource("NarrowSelection")
