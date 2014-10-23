@@ -25,7 +25,6 @@
                       @Html.Resource("By")
                       @DataResolver.Resolve(item, "Author", null)
                   </div>
-                  <br />
                     @Html.Raw(Html.TextField("Summary", item.Summary, "ShortText"))
                     <a href="@(ViewBag.DetailsPageUrl + item.ItemDefaultUrl)">Full story</a>
                 }

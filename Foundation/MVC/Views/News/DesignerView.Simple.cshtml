@@ -121,9 +121,7 @@
                 <li class="radio">
                     <label for="samePage">
                         <input id="samePage" type="radio" ng-model="properties.OpenInSamePage.PropertyValue" value="True" />
-                        <span>
-                            @Html.Resource("ShowInSamePage")
-                        </span>
+                        @Html.Resource("ShowInSamePage") <span class="text-muted">@Html.Resource("ShowInSamePageNote")</span>
                     </label>
                 </li>
                 <li class="radio">
