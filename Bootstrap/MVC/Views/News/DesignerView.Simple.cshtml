@@ -30,14 +30,12 @@
                     <input id="selectedNews" type="radio" ng-model="properties.SelectionMode.PropertyValue" value="SelectedItems" />
 
                     @Html.Resource("SelectedNews")
-                </label>
-                <div class="label-content">
+
                     <sf-list-selector sf-news-selector ng-show="properties.SelectionMode.PropertyValue=='SelectedItems'"
                                   multiselect="true" sortable="true"
                                   provider="properties.ProviderName.PropertyValue"
                                   selected-ids ="newsSelector.selectedItemsIds"></sf-list-selector>
-
-                </div>
+                </label>
             </div>
             <div class="radio">
                 <label for="filterNews" class="full-width">
@@ -137,7 +135,9 @@
             <div class="radio">
                 <label for="samePage">
                     <input id="samePage" type="radio" ng-model="properties.OpenInSamePage.PropertyValue" value="True" />
-                    @Html.Resource("ShowInSamePage") <span class="text-muted">@Html.Resource("ShowInSamePageNote")</span>
+                    <span>
+                        @Html.Resource("ShowInSamePage")
+                    </span>
                 </label>
             </div>
             <div class="radio">
@@ -145,7 +145,10 @@
                     <input id="existingPage" type="radio" ng-model="properties.OpenInSamePage.PropertyValue" value="False" />
                     <span>
                         @Html.Resource("ShowInExistingPage")<br />
-                        <input type="text" ng-model="properties.DetailsPageUrl.PropertyValue" class="form-control" />
+                        <sf-list-selector
+                            sf-page-selector
+                            selected-item-id="properties.DetailsPageId.PropertyValue"
+                            ng-hide="properties.OpenInSamePage.PropertyValue"></sf-list-selector>
                     </span>
                 </label>
             </div>
