@@ -45,7 +45,7 @@
         <label for="navTemplateName">@Html.Resource("Template")</label>
 
         <select id="navTemplateName" ng-model="properties.TemplateName.PropertyValue" class="form-control">
-           @foreach (var viewName in Html.GetViewNames("Navigation", @"NavigationView\.(?<viewName>\w*)$"))
+           @foreach (var viewName in Html.GetViewNames("Navigation", @"NavigationView\.(?<viewName>[\w\s]*)$"))
            {
                <option value="@viewName"> @viewName</option>
            }
