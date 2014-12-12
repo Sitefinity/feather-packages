@@ -28,4 +28,12 @@ body {
     opacity: 0.6;
     z-index: 3000 !important;
   }
+
+  .k-overlay {
+    z-index: 10505 !important;
+  }
+
+  .k-window {
+    z-index: 10510 !important;
+  }
 }
