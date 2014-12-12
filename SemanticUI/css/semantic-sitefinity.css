@@ -37,7 +37,7 @@ html {
 }
 
 @media only screen and (min-width: 0) and (max-width: 767px) {
-  /* line 30, ../sass/navigation/_dropdown.scss */
+  /* line 29, ../sass/navigation/_dropdown.scss */
   .menu-mobile-dropdown .menu,
   .menu-mobile-hidden .menu {
     display: none;
@@ -49,7 +49,7 @@ html {
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  /* line 30, ../sass/navigation/_dropdown.scss */
+  /* line 29, ../sass/navigation/_dropdown.scss */
   .menu-tablet-dropdown .menu,
   .menu-tablet-hidden .menu {
     display: none;
@@ -61,7 +61,7 @@ html {
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 9999px) {
-  /* line 30, ../sass/navigation/_dropdown.scss */
+  /* line 29, ../sass/navigation/_dropdown.scss */
   .menu-computer-dropdown .menu,
   .menu-computer-hidden .menu {
     display: none;
@@ -264,4 +264,12 @@ body .modal-backdrop {
   -moz-opacity: 0.6;
   opacity: 0.6;
   z-index: 3000 !important;
+}
+/* line 32, ../sass/semantic-sitefinity.scss */
+body .k-overlay {
+  z-index: 10505 !important;
+}
+/* line 36, ../sass/semantic-sitefinity.scss */
+body .k-window {
+  z-index: 10510 !important;
 }
