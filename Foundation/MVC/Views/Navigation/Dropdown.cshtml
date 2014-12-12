@@ -8,7 +8,7 @@
 @Html.Script(ScriptRef.JQuery)
 @Html.Script("//cdn.jsdelivr.net/foundation/5.2.3/js/foundation.min.js")
 
-<select class="nav-select test">
+<select class="nav-select">
     @foreach (var node in Model.Nodes)
     {
         @RenderSubLevelsRecursive(node, "");
