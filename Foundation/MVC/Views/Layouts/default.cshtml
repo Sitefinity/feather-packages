@@ -18,7 +18,7 @@
 
 </head>
 <body>
-	if (!SitefinityContext.IsBackend)
+	@if (!SitefinityContext.IsBackend)
 	{
 		@Html.Script(ScriptRef.MicrosoftAjax)
 		@Html.Script(ScriptRef.MicrosoftAjaxCore)
