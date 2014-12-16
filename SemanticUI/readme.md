@@ -18,7 +18,7 @@ The Navigation widget is responsive by default. In addition, we can hide the nav
 
 The CSS classes have the following structure:
 
-`.nav-xs-hidden` - where:
+`.menu-mobile-hidden` - where:
 
  - `menu` is the **element** that is transformed
  - `mobile` is the resolution **breakpoint** for which the transformation will be applied and
