@@ -132,12 +132,10 @@ module.exports = function (grunt) {
 			styles: {
 				files: ['<%= src.path %>/**/*.{scss,sass}'],
 				tasks: ['sass:dist', 'cssmin']
-				// tasks: ['sass:dist', 'uncss', 'cssmin']
 			},
 			images: {
 				files: ['<%= src.path %>/**/*.{png,jpg,gif,jpeg}'],
-				tasks: ['clean:images', 'sprite', 'imagemin']
-				// tasks: ['sass:dist', 'uncss', 'cssmin']
+				tasks: ['clean:images', 'imagemin']
 			},
 			js: {
 				files: ['<%= src.path %>/**/*.js'],
@@ -160,11 +158,8 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', [
 		'clean:all',
 		'sass:dist',
-		// 'uncss',
 		'cssmin',
 		'uglify:dist',
-		// 'newer:csslint:dev',
-		'newer:sprite',
 		'newer:imagemin',
 		'concurrent:dev'
 	]);
