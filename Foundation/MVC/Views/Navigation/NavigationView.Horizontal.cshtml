@@ -5,11 +5,11 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script("//cdn.jsdelivr.net/foundation/5.2.3/js/foundation.min.js")
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"))
+@Html.Script("/ResourcePackages/Foundation/assets/dist/js/foundation.min.js")
 
 <div class="@Model.CssClass">
-    @Html.Action("GetView", new { viewName = "Dropdown", model= Model})
+
+@* <div class="show-for-small-only">@Html.Action("GetView", new { viewName = "Dropdown", model= Model})</div> *@
 
     <nav class="top-bar" data-topbar data-options="is_hover: false">
         <ul class="title-area">
@@ -18,7 +18,7 @@
                     <a href="#">Sitefinity</a>
                 </h1>
             </li>
-            <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+            <li class="toggle-topbar menu-icon"><a href><span>Menu</span></a></li>
         </ul>
         <section class="top-bar-section">
             <ul>
@@ -59,7 +59,7 @@
         if(childNode.ChildNodes.Count > 0)
         {
              <li class="has-dropdown @GetClass(childNode)">
-                <a href="@childNode.Url" target="@childNode.LinkTarget">@childNode.Title
+                <a target="@childNode.LinkTarget">@childNode.Title
                     <!-- <span class="right-caret"></span> -->
                 </a>
                 <ul class="dropdown">
@@ -90,5 +90,6 @@
     }
 }
 
-@Html.Script(Url.WidgetContent("~/ResourcePackages/Foundation/js/foundation.init.js"))
-@Html.Script(Url.WidgetContent("~/ResourcePackages/Foundation/js/foundation/foundation.topbar.js"))
+@Html.Script("/ResourcePackages/Foundation/assets/dist/js/foundation.topbar.min.js")
+@Html.Script("/ResourcePackages/Foundation/assets/dist/js/foundation.init.js")
+

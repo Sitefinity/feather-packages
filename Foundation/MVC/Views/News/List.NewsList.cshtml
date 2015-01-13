@@ -6,8 +6,6 @@
 @using Telerik.Sitefinity.Web.DataResolving;
 @using Telerik.Sitefinity.Modules.Pages;
 
-@Html.Script("//cdn.jsdelivr.net/foundation/5.2.3/js/foundation.min.js")
-
 <div class="@Model.ListCssClass">
     <ul class="no-bullet News">
         @foreach (var item in Model.Items)
@@ -19,7 +17,7 @@
 						<a @Html.InlineEditingFieldAttributes("Title", "ShortText") href="@(ViewBag.CurrentPageUrl + item.ItemDefaultUrl)">@item.Title</a>
 					}
 					else
-					{                        
+					{
 						<a @Html.InlineEditingFieldAttributes("Title", "ShortText") href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId)">@item.Title</a>
 					}
 				</h5>
