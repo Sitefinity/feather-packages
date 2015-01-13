@@ -5,11 +5,9 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script("//cdn.jsdelivr.net/foundation/5.2.3/js/foundation.min.js")
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"))
 
 <div class="@Model.CssClass">
-    @Html.Action("GetView", new { viewName = "Dropdown", model= Model})
+@* <div class="show-for-small-only">@Html.Action("GetView", new { viewName = "Dropdown", model= Model})</div> *@
 
     <ul class="side-nav">
         @foreach (var node in Model.Nodes)
@@ -28,7 +26,7 @@
 
         @if (node.ChildNodes.Count > 0)
         {
-            <ul class="group nav nav-pills nav-stacked">
+            <ul>
                 @foreach (var childNode in node.ChildNodes)
                 {
                     @RenderSubLevelsRecursive(childNode)
@@ -50,5 +48,3 @@
         @Html.Raw("active");
     }
 }
-
-@Html.Script(Url.WidgetContent("~/ResourcePackages/Foundation/js/foundation.init.js"))
