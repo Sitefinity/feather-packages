@@ -18,12 +18,15 @@ module.exports = function (grunt) {
   grunt.initConfig({
     timestamp: '<%= new Date().getTime() %>',
     pkg: grunt.file.readJSON('package.json'),
+    jsFiles: grunt.file.readJSON('assets/src/js/imported-js.json'),
 
     src: {
-      sass       : 'sass/**/*.{scss,sass}',
-      css        : 'css/**/*.min.css',
-      cssdev     : 'css/**/*.css',
-      sitefinity : 'css/**/*-sitefinity*.css'
+      path       : 'assets/src',
+      sass       : '**/*.{scss,sass}'
+    },
+
+    dist: {
+      path       : 'assets/dist'
     },
 
     // clean all generated files
@@ -31,9 +34,26 @@ module.exports = function (grunt) {
       all: {
         files: [{
           src: [
-            '<%= src.sitefinity %>'
+            '<%= dist.path %>/**/*.css',
+            '<%= dist.path %>/**/*.js',
+            '<%= dist.path %>/**/*.{png,jpg,gif,jpeg}'
           ]
         }]
+      },
+      images: {
+        files: [{
+          src: [
+            '<%= dist.path %>/**/*.{png,jpg,gif,jpeg}'
+          ]
+        }]
+      }
+    },
+
+    sass: {
+      dist: {
+        files: {
+          '<%= dist.path %>/css/styles.css': '<%= src.path %>/sass/styles.sass'
+        }
       }
     },
 
@@ -50,59 +70,81 @@ module.exports = function (grunt) {
       }
     },
 
-    compass: {                  // Task
-      dev: {                   // Target
-        options: {              // Target options
-          sassDir: 'sass/',
-          cssDir: 'css/',
-          relativeAssets: true,
-          assetCacheBuster: false
-        }
-      }
-    },
-
     cssmin: {
       minify: {
         expand: true,
-        cwd: 'css/',
+        cwd: '<%= dist.path %>/css/',
         src: ['*.css', '!*.min.css'],
-        dest: 'css/',
+        dest: '<%= dist.path %>/css/',
         ext: '.min.css'
       }
     },
 
-    // // Image Optimization
-    // imagemin: {
-    //   dist: {
-    //     options: {
-    //       optimizationLevel: 4,
-    //       progressive: true
-    //     },
-    //     files: [
-    //       {
-    //         expand: true,
-    //         cwd: '<%= pkg.name %>/images/src/',
-    //         src: ['**/*.{png,jpg,gif,jpeg}'],
-    //         dest: '<%= pkg.name %>/images/dist/'
-    //       }
-    //     ]
-    //   }
-    // },
+    // Concat & minify
+    // this processes only the files described in 'jsfiles.json'
+    uglify: {
+      options: {
+        report: 'gzip',
+        warnings: true
+      },
+      dist: {
+        options: {
+          mangle: true,
+          compress: true
+        },
+        files: ['<%= jsFiles  %>']
+      }
+    },
+
+    // Image Optimization
+    imagemin: {
+      dist: {
+        options: {
+          optimizationLevel: 4,
+          progressive: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'assets/src/images',
+            src: ['**/*.{png,jpg,gif,jpeg}'],
+            dest: 'assets/dist/images'
+          }
+        ]
+      }
+    },
+
+    // Sprite generation
+    sprite:{
+      all: {
+        src: 'assets/src/images/social-share/*.png',
+        dest: 'assets/src/images/social-share-sprite.png',
+        destCss: 'assets/src/sass/_social-share-sprite.sass',
+        cssTemplate: 'assets/src/sass/sitefinity/social-share-sprite.mustache'
+      }
+    },
 
     watch: {
       options: {
         spawn: false
       },
       styles: {
-        // files: ['<%= src.sass %>'], doesn't work for some reason
-        files: ['<%= src.sass %>'],
-        tasks: ['compass:dev', 'cssmin:minify', 'newer:csslint:dev']
-      }
+        files: ['<%= src.path %>/**/*.{scss,sass}'],
+        tasks: ['sass:dist', 'cssmin']
+      },
+      images: {
+        files: ['<%= src.path %>/**/*.{png,jpg,gif,jpeg}'],
+        tasks: ['clean:images', 'imagemin']
+      },
+      js: {
+        files: ['<%= src.path %>/**/*.js'],
+        tasks: ['uglify:dist']
+      },
     },
 
     concurrent: {
       dev: {
-        tasks: ['watch:styles', 'compass'],
+        tasks: ['watch:styles', 'watch:js', 'watch:images'],
         options: {
           logConcurrentOutput: true
         }
@@ -114,10 +156,10 @@ module.exports = function (grunt) {
   // default task runs csslint once on startup on documentation's css
   grunt.registerTask('default', [
     'clean:all',
-    'compass:dev',
-    'cssmin:minify',
-    'newer:csslint:dev',
-    // 'newer:imagemin',
+    'sass:dist',
+    'cssmin',
+    'uglify:dist',
+    'newer:imagemin',
     'concurrent:dev'
   ]);
 };

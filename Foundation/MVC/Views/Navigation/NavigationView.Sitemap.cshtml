@@ -5,13 +5,11 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script("//cdn.jsdelivr.net/foundation/5.2.3/js/foundation.min.js")
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"))
 
 <div class="@Model.CssClass">
-    @Html.Action("GetView", new { viewName = "Dropdown", model= Model})
+    <div class="show-for-small-only">@Html.Action("GetView", new { viewName = "Dropdown", model= Model})</div>
 
-    <ul class="sitemap">
+    <ul class="sitemap hide-for-small-only">
         @foreach (var node in Model.Nodes)
         {
             @RenderRootLevelNode(node);
@@ -51,5 +49,3 @@
         }
     </li>
 }
-
-@Html.Script(Url.WidgetContent("~/ResourcePackages/Foundation/js/foundation.init.js"))
