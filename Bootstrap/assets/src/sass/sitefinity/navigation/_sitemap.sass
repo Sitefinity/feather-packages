@@ -10,10 +10,8 @@
 		margin: 0
 		padding: 0
 
-
 	li
 		list-style-type: none
-
 
 	> li
 		display: table-cell
@@ -22,46 +20,24 @@
 		&:first-child
 			border-left-width: 0
 
-// Mixin for generating responsive classes and styles
-// for the tabs navigation view
-@mixin sitemap($size, $number)
+	@media only screen and (max-width: $screen-xs)
+		display: block
 
-	$min: nth($media-min, $number)
-	$max: nth($media-max, $number)
+		> li
+			display: block
+			border-left-width: 0
 
-	// Generate classes for a one column fluid sitemap
-	.sitemap-#{$size}-one-col
-		@media only screen and (min-width: $min) and (max-width: $max)
-			.nav-sitemap
-				display: block
+			&:first-child
+				border-top-width: 0
 
-				> li
-					display: block
-					border-left-width: 0
-					border-top: 1px solid #ccc
+	@media only screen and (min-width: $screen-xs) and (max-width: $screen-sm)
+		display: block
 
-					&:first-child
-						border-top-width: 0
+		> li
+			float: left
+			width: 48%
+			margin: 0 1%
+			border-left-width: 0
 
-	// Generate classes for a two columns sitemap
-	.sitemap-#{$size}-two-cols
-		@media only screen and (min-width: $min) and (max-width: $max)
-			.nav-sitemap
-				display: block
-
-				> li
-					float: left
-					width: 48%
-					margin: 0 1%
-					border-left-width: 0
-					border-top: 1px solid #ccc
-
-					&:first-child
-						border-top-width: 0
-
-					&:nth-child(even)
-						clear: both
-
-// Loop through all of the sizes
-@for $i from 1 through length($sizes)
-	@include sitemap(nth($sizes, $i), $i)
+			&:nth-child(odd)
+				clear: both
