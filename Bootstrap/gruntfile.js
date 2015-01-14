@@ -92,7 +92,7 @@ module.exports = function (grunt) {
 					compress: true
 				},
 				files: {
-					'<%= dist.path %>/js/all.min.js': ['<%= src.path %>/js/{,*/}*.js']
+					'<%= dist.path %>/js/bootstrap.min.js': 'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js'
 				}
 			}
 		},
@@ -145,7 +145,7 @@ module.exports = function (grunt) {
 
 		concurrent: {
 			dev: {
-				tasks: ['watch:styles', 'watch:js', 'watch:images'],
+				tasks: ['watch:styles', 'watch:images'],
 				options: {
 					logConcurrentOutput: true
 				}
