@@ -1,23 +1,22 @@
-@model Telerik.Sitefinity.Frontend.News.Mvc.Models.INewsModel
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
 
 @using Telerik.Sitefinity;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
-@using Telerik.Sitefinity.Frontend.News.Mvc.Models;
 @using Telerik.Sitefinity.Web.DataResolving;
 
-<div class="@Model.DetailCssClass" @Html.InlineEditingAttributes(Model.ProviderName, "Telerik.Sitefinity.News.Model.NewsItem", Model.DetailItem.Id)>
+<div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
     <h1>
-        <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.DetailItem.Title</span>
+        <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</span>
     </h1>
     <div>
-        <span>@Model.DetailItem.PublicationDate.ToLocal().ToString("MMM d, yyyy, hh:mm tt")</span>
-        <span>@Html.Resource("By")</span>
-        <span>@DataResolver.Resolve(@Model.DetailItem, "Author", null)</span>
+        @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
+        @Html.Resource("By")
+        @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
     </div>
 	
-    <div @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.Raw(Model.DetailItem.Summary)</div>
+    <div @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.Raw(Model.Item.Fields.Summary)</div>
 
-    <div @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.Raw(Model.DetailItem.Content)</div>
+    <div @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.Raw(Model.Item.Fields.Content)</div>
     
     @if (Model.EnableSocialSharing)
     {
