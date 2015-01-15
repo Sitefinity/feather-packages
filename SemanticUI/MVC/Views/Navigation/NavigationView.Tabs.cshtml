@@ -5,11 +5,9 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script(Url.WidgetContent("~/ResourcePackages/SemanticUI/javascript/semantic.min.js"))
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"))
 
 <div class="@Model.CssClass">
-    @Html.Action("GetView", new { viewName = "Dropdown", model= Model})
+@* @Html.Action("GetView", new { viewName = "Dropdown",  model= Model}) *@
 
     <nav class="ui tabular menu">
         @RenderRootLevelNode(@Model.Nodes)
