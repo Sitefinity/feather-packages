@@ -5,29 +5,42 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script(Url.WidgetContent("~/ResourcePackages/SemanticUI/javascript/semantic.min.js"))
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"))
+@Html.Script(Url.WidgetContent("~/ResourcePackages/SemanticUI/assets/dist/js/semantic.min.js"))
 
 <div class="@Model.CssClass">
-    @Html.Action("GetView", new { viewName = "Dropdown", model= Model})
+@* @Html.Action("GetView", new { viewName = "Dropdown",  model= Model}) *@
 
-    <nav class="ui menu purple inverted">
+    <nav class="ui menu inverted">
         @foreach (var node in Model.Nodes)
         {
             @RenderRootLevelNode(node);
         }
     </nav>
 </div>
+<!--
+<i class="dropdown icon" tabindex="0"></i>
+<span class="text">Shopping</span>
+<div class="menu" tabindex="-1">
+  <div class="header">Categories</div>
+  <div class="item">
+    <i class="dropdown icon" tabindex="0"></i>
+    <span class="text">Clothing</span>
+    <div class="menu">
+      <div class="item">Shirts</div>
+    </div>
+  </div>
+  <div class="item">Home Goods</div>
+</div> -->
 
 @*Here is specified the rendering for the root level*@
 @helper RenderRootLevelNode(NodeViewModel node)
 {
     if (node.ChildNodes.Count > 0)
     {
-        <div class="ui dropdown item" tabindex="0">
-            <a href="@node.Url" target="@node.LinkTarget">@node.Title</a>
-            <i class="dropdown icon"></i>
-            <div class="menu">
+        <div class="ui dropdown link item" tabindex="-1">
+            <i class="dropdown icon" tabindex="0"></i>
+            <span class="text">@node.Title</span>
+            <div class="menu" tabindex="-1">
                 @RenderSubLevelsRecursive(node)
             </div>
         </div>
@@ -45,9 +58,10 @@
     {
         if(childNode.ChildNodes.Count > 0)
         {
-            <div class="ui dropdown item" tabindex="0">
-                <a href="@childNode.Url" target="@childNode.LinkTarget">@childNode.Title</a>
-                <i class="dropdown icon"></i>
+            <div class="ui dropdown link item" tabindex="0">
+                <i class="dropdown icon" tabindex="0"></i>
+                <span class="text">@childNode.Title</span>
+
                 <div class="menu">
                     @RenderSubLevelsRecursive(childNode)
                 </div>
