@@ -6030,3 +6030,16 @@ th.hide-for-touch {
 .News-author {
   color: #999;
   margin: 10px 0; }
+
+ul.sf-autocomplete {
+  position: absolute;
+  padding: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  list-style: none; }
+  ul.sf-autocomplete a {
+    padding: 3px;
+    display: block;
+    color: #000; }
+    ul.sf-autocomplete a.ui-state-focus {
+      background-color: #eee; }
