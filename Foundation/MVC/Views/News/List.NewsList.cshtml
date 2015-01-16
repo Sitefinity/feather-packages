@@ -2,8 +2,8 @@
 
 @using Telerik.Sitefinity;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
-@using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Web.DataResolving;
+@using Telerik.Sitefinity.Modules.Pages;
 
 <div class="@Model.CssClass">
     <ul class="no-bullet News">
@@ -16,8 +16,8 @@
 
 				<div class="News-author">
 					@item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
-                    @Html.Resource("By")
-                    @DataResolver.Resolve(item.DataItem, "Author", null)
+					@Html.Resource("By")
+					@DataResolver.Resolve(item.DataItem, "Author", null)
 				</div>
 
 				<div @Html.InlineEditingFieldAttributes("Summary", "ShortText")>@Html.Raw(item.Fields.Summary)</div>
@@ -33,4 +33,5 @@
                         totalPagesCount = Model.TotalPagesCount.Value,
                         redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate })
     }
+
 </div>
