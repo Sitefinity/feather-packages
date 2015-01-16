@@ -120,8 +120,8 @@ module.exports = function (grunt) {
 			all: {
 				src: 'assets/src/images/social-share/*.png',
 				dest: 'assets/src/images/social-share-sprite.png',
-				destCss: 'assets/src/sass/_social-share-sprite.sass',
-				cssTemplate: 'assets/src/sass/sitefinity/social-share-sprite.mustache'
+				destCss: 'assets/src/sass/_sf-social-share-sprite.sass',
+				cssTemplate: 'assets/src/sass/social-share-sprite.mustache'
 			}
 		},
 
@@ -135,7 +135,7 @@ module.exports = function (grunt) {
 			},
 			images: {
 				files: ['<%= src.path %>/**/*.{png,jpg,gif,jpeg}'],
-				tasks: ['clean:images', 'imagemin']
+				tasks: ['clean:images', 'sprite', 'imagemin']
 			},
 			js: {
 				files: ['<%= src.path %>/**/*.js'],
@@ -157,6 +157,7 @@ module.exports = function (grunt) {
 	// default task runs csslint once on startup on documentation's css
 	grunt.registerTask('default', [
 		'clean:all',
+		'newer:sprite',
 		'sass:dist',
 		'cssmin',
 		'uglify:dist',
