@@ -24,7 +24,7 @@
 @* Avoid conflicts because the designer is loading kendo too. *@
 @if (!SystemManager.IsDesignMode)
 {
-    @Html.Script(ScriptRef.JQueryUI)   
+    @Html.Script(ScriptRef.JQueryUI, useScriptManager:false)
 }
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/SearchBox/Search-box.js"))
