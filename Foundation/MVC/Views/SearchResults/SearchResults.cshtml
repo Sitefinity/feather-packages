@@ -7,11 +7,17 @@
 <div class="row collapse @Model.CssClass">
 
             <div class="clearfix">
-                <h1 class="left">@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
+                 @if (@Model.Results.TotalCount > 0)
+                 {
+                    <h1 class="left">@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
+                 }else {
+                    <h1 class="left">@Html.Resource("No") @Html.Raw(Model.ResultText)</h1>
+                 }
 
                 <div class="right">
-                @if (Model.AllowSorting)
+                @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
                 {
+                    <span>@Html.Resource("SortBy")</span>
                     <select class="userSortDropdown">
                         <option value="@OrderByOptions.Relevance" @(Model.OrderBy == OrderByOptions.Relevance ? "selected=selected" : "")>@Html.Resource("Relevance")</option>
                         <option value="@OrderByOptions.Newest" @(Model.OrderBy == OrderByOptions.Newest ? "selected=selected" : "")>@Html.Resource("NewestFirst")</option>
@@ -41,7 +47,7 @@
                 </div>
             }            
 
-            <ul class="no-bullet News" id="search-results">
+            <ul class="no-bullet News">
                 @foreach (var item in Model.Results.Data)
                 {
                     var hasLink = item.GetValue("Link") != null && !String.IsNullOrEmpty(item.GetValue("Link").ToString());
@@ -64,7 +70,7 @@
                     </li>
                 }
 
-                @if (Model.DisplayMode == ListDisplayMode.Paging && Model.Results.TotalCount != null && Model.Results.TotalCount > 1)
+                @if (Model.DisplayMode == ListDisplayMode.Paging && Model.TotalPagesCount != null && Model.TotalPagesCount > 1)
                 {
                     @Html.Action("Index", "ContentPager", new
                {
