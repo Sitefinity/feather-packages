@@ -115,6 +115,16 @@ module.exports = function (grunt) {
 			}
 		},
 
+		// Sprite generation
+		sprite:{
+			all: {
+				src: 'assets/src/images/social-share/*.png',
+				dest: 'assets/src/images/social-share-sprite.png',
+				destCss: 'assets/src/less/_sf-social-share-sprite.less',
+				cssTemplate: 'assets/src/less/social-share-sprite.mustache'
+			}
+		},
+
 		watch: {
 			options: {
 				spawn: false
