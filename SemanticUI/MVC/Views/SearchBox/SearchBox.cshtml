@@ -17,7 +17,13 @@
     <a href="#" class="ui teal button" id="@Html.Raw(searchButtonId)">@Html.Resource("SearchLabel")</a>
 </div>
 
-@* Avoid conflicts because the designer is loading kendo too. *@
+@* The inline editing functionality is loading jQuery too. *@
+@if (!SystemManager.IsDesignMode && !ControlExtensions.InlineEditingIsEnabled())
+{
+    @Html.Script(ScriptRef.JQuery, useScriptManager:false)
+}
+
+@* Avoid conflicts because the designer is loading jQuery too. *@
 @if (!SystemManager.IsDesignMode)
 {
     @Html.Script(ScriptRef.JQueryUI, useScriptManager:false)
