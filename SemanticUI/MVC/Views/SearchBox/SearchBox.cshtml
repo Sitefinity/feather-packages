@@ -4,6 +4,7 @@
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 
+
 @{
     var searchTextBoxId = Guid.NewGuid();
     var searchButtonId = Guid.NewGuid();
@@ -17,16 +18,10 @@
     <a href="#" class="ui teal button" id="@Html.Raw(searchButtonId)">@Html.Resource("SearchLabel")</a>
 </div>
 
-@* The inline editing functionality is loading jQuery too. *@
-@if (!SystemManager.IsDesignMode && !ControlExtensions.InlineEditingIsEnabled())
-{
-    @Html.Script(ScriptRef.JQuery, useScriptManager:false)
-}
-
-@* Avoid conflicts because the designer is loading jQuery too. *@
+@* Avoid conflicts because the designer is loading kendo too. *@
 @if (!SystemManager.IsDesignMode)
 {
-    @Html.Script(ScriptRef.JQueryUI, useScriptManager:false)
+    @Html.Script(ScriptRef.JQueryUI)   
 }
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/SearchBox/Search-box.js"))
