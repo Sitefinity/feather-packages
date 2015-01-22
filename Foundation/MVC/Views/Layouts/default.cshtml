@@ -10,7 +10,7 @@
     <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/Foundation/assets/dist/css/styles.min.css")' type="text/css" />
 </head>
 <body>
-    @* Inline editing scripts and helpers. Yhey should be available only when inline editing is possible. *@
+    @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
 	@if (!SitefinityContext.IsBackend && ControlExtensions.InlineEditingIsEnabled())
 	{
 		@Html.Script(ScriptRef.MicrosoftAjax)
