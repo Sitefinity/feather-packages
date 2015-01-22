@@ -18,17 +18,11 @@
     <button type="button" class="btn btn-primary" id="@Html.Raw(searchButtonId)">@Html.Resource("SearchLabel")</button>
 </div>
 
-@* The inline editing functionality is loading jQuery too. *@
-@if (!SystemManager.IsDesignMode && !ControlExtensions.InlineEditingIsEnabled())
-{
-    @Html.Script(ScriptRef.JQuery, useScriptManager:false)
-}
-
-@* Avoid conflicts because the designer is loading jQuery too. *@
+@* Avoid conflicts because the designer is loading kendo too. *@
 @if (!SystemManager.IsDesignMode)
 {
 
-    @Html.Script(ScriptRef.JQueryUI, useScriptManager:false)
+    @Html.Script(ScriptRef.JQueryUI)   
 }
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/SearchBox/Search-box.js"))

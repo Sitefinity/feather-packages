@@ -23,7 +23,7 @@
                             results: function () { }
                         },
                     select: function (event, ui) {
-                        searchTextBox.val(ui.item.value);
+                        searchTextBox.val(this.value);
                         navigateToResults(event);
                     },
                 }).autocomplete("widget").addClass("sf-autocomplete");
