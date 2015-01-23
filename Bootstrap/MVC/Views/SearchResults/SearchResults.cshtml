@@ -50,7 +50,7 @@
                 </div>
             }   
              
-            <div class="sf-search-results">
+            <div class="sf-search-results media-list">
                 @foreach (var item in Model.Results.Data)
                 {
                     var hasLink = item.GetValue("Link") != null && !String.IsNullOrEmpty(item.GetValue("Link").ToString());
