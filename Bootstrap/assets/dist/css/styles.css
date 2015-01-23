@@ -4728,6 +4728,9 @@ ul.sf-autocomplete {
       cursor: pointer;
       text-decoration: none; }
 
+.sf-search-results {
+  margin-bottom: 20px; }
+
 .sf-media .sf-img-thmb a {
   display: block;
   width: 120px;

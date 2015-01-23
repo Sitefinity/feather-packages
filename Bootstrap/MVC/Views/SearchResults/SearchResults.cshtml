@@ -48,93 +48,100 @@
                         }
                     }
                 </div>
-            }            
-
+            }   
+             
+            <div class="sf-search-results">
                 @foreach (var item in Model.Results.Data)
                 {
                     var hasLink = item.GetValue("Link") != null && !String.IsNullOrEmpty(item.GetValue("Link").ToString());
                     <div class="media sf-media">
 
-                @if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Image).ToString())
-                {
-            
-                <div class="media-left sf-img-thmb">
-                    <a href="@item.GetValue("Link")">
-                        <img src="@item.GetValue("Link")" alt="@item.GetValue("Title")" width="120"/>
-                    </a>
-                </div>
-                }
-
-                else if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Video).ToString())
-                {
-                    LibrariesManager librariesManager = LibrariesManager.GetManager();
-                    var videoTmbId = new Guid((string)item.GetValue("Id"));
-                    Video video = librariesManager.GetVideo(videoTmbId);
-                    if (video != null)
+                    @if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Image).ToString())
                     {
-                        var thumbUrl = video.ThumbnailUrl;
-                        
-                    <div class="media-left">
-                        <div class="sf-video-thmb">
-
-                            <a href="@item.GetValue("Link")">
-                                <img src="@thumbUrl" alt="@item.GetValue("Title")" width="120"/>
-                               
-                                <div class="sf-icon-play"></div>
-                                
-                            </a>
-                        </div>
+            
+                    <div class="media-left sf-img-thmb">
+                        <a href="@item.GetValue("Link")">
+                            <img src="@item.GetValue("Link")" alt="@item.GetValue("Title")" width="120"/>
+                        </a>
                     </div>
                     }
 
-                }
+                    else if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Video).ToString())
+                    {
+                        LibrariesManager librariesManager = LibrariesManager.GetManager();
+                        var videoTmbId = new Guid((string)item.GetValue("Id"));
+                        Video video = librariesManager.GetVideo(videoTmbId);
+                        if (video != null)
+                        {
+                            var thumbUrl = video.ThumbnailUrl;
+                        
+                        <div class="media-left">
+                            <div class="sf-video-thmb">
 
-                else
-                {
+                                <a href="@item.GetValue("Link")">
+                                    <img src="@thumbUrl" alt="@item.GetValue("Title")" width="120"/>
+                               
+                                    <div class="sf-icon-play"></div>
+                                
+                                </a>
+                            </div>
+                        </div>
+                        }
 
-                }
+                    }
+
+                    else
+                    {
+
+                    }
                     
                     
-                <div class="media-body sf-media-body">
+                    <div class="media-body sf-media-body">
 
-                    <h3>
+                        <h3>
+                            @if (hasLink)
+                            {
+                                <a href="@item.GetValue("Link")">@item.GetValue("Title")</a>
+                            }
+                            else
+                            {
+                                @item.GetValue("Title")
+                            }
+                        </h3>
+
+                        <p>@Html.Raw(item.GetValue("HighLighterResult"))</p>
                         @if (hasLink)
                         {
-                            <a href="@item.GetValue("Link")">@item.GetValue("Title")</a>
+                            <a href="@item.GetValue("Link")">@item.GetValue("Link")</a>
                         }
-                        else
-                        {
-                            @item.GetValue("Title")
-                        }
-                    </h3>
-
-                    <p>@Html.Raw(item.GetValue("HighLighterResult"))</p>
-                    @if (hasLink)
-                    {
-                        <a href="@item.GetValue("Link")">@item.GetValue("Link")</a>
-                    }
-                </div>
-            </div>
+                    </div>
+                 </div>
                 }
+
+                </div>
 
                 @if (Model.DisplayMode == ListDisplayMode.Paging && Model.TotalPagesCount != null && Model.TotalPagesCount > 1)
                 {
                     if (Model.CurrentPage == Model.TotalPagesCount)
                     {
-                        <em>@((Model.ItemsPerPage * Model.TotalPagesCount) - Model.Results.TotalCount) of @Model.Results.TotalCount results</em>
+                        <em class="text-muted">@((Model.ItemsPerPage * Model.TotalPagesCount) - Model.Results.TotalCount) of @Model.Results.TotalCount results</em>
                     }
                     else
                     {
-                        <em>@Model.ItemsPerPage of @Model.Results.TotalCount results</em>
+                        <em class="text-muted">@Model.ItemsPerPage of @Model.Results.TotalCount results</em>
                     }
                     
-                    @Html.Action("Index", "ContentPager", new
-               {
-                   currentPage = Model.CurrentPage,
-                   totalPagesCount = Model.TotalPagesCount,
-                   redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
-               })
+                    <div>
+                            @Html.Action("Index", "ContentPager", new
+                       {
+                           currentPage = Model.CurrentPage,
+                           totalPagesCount = Model.TotalPagesCount,
+                           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+                       })
+                    </div>
+
                 }
+        
         
 </div>
 
