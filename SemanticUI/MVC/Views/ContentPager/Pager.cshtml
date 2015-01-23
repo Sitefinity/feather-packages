@@ -7,7 +7,7 @@
         if(Model.CurrentPage == i)
         {
             
-           <a class="item active" href="@String.Format(Model.RedirectUrlTemplate, i)">@i.ToString() <span class="sr-only">(current)</span></a>
+           <a class="item active" href="@String.Format(Model.RedirectUrlTemplate, i)">@i.ToString()</a>
             
         }
         else
