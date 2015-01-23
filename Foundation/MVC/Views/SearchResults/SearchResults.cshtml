@@ -3,6 +3,8 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Frontend.Search.Mvc.Models;
 @using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Modules.Libraries;
+@using Telerik.Sitefinity.Libraries.Model;
 
 <div class="row collapse @Model.CssClass">
 
@@ -10,7 +12,9 @@
                  @if (@Model.Results.TotalCount > 0)
                  {
                     <h1 class="left">@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
-                 }else {
+                 }
+                 else
+                 {
                     <h1 class="left">@Html.Resource("No") @Html.Raw(Model.ResultText)</h1>
                  }
 
@@ -47,32 +51,74 @@
                 </div>
             }            
 
-            <ul class="no-bullet News">
+            <ul class="media-list">
                 @foreach (var item in Model.Results.Data)
                 {
                     var hasLink = item.GetValue("Link") != null && !String.IsNullOrEmpty(item.GetValue("Link").ToString());
-                    <li>
-                        <h3>
-                            @if (hasLink)
-                            {
-                                <a href="@item.GetValue("Link")">@item.GetValue("Title")</a>
-                            }
-                            else
-                            {
-                                @item.GetValue("Title")
-                            }
-                        </h3>
-                        <p>@Html.Raw(item.GetValue("HighLighterResult"))</p>
-                        @if (hasLink)
+                   
+                    <li class="media sf-media">  
+                        @if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Image).ToString())
                         {
-                            <a href="@item.GetValue("Link")">@item.GetValue("Link")</a>
+                            <div class="left sf-img-thmb">
+                                <a  href="@item.GetValue("Link")">
+                                    <img src="@item.GetValue("Link")" alt="@item.GetValue("Title")" width="120"/>
+                                </a>
+                            </div>
+                
                         }
-                    </li>
+
+                        else if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Video).ToString())
+                        {
+                            LibrariesManager librariesManager = LibrariesManager.GetManager();
+                            var videoTmbId = new Guid((string)item.GetValue("Id"));
+                            Video video = librariesManager.GetVideo(videoTmbId);
+                            if (video != null)
+                            {
+                                var thumbUrl = video.ThumbnailUrl;
+                  
+                                <div class="left sf-video-thmb">
+
+                                    <a href="@item.GetValue("Link")">
+                                        <img src="@thumbUrl" alt="@item.GetValue("Title")" width="120"/>
+                               
+                                        <div class="sf-icon-play"></div>
+                                
+                                    </a>
+
+                                </div>
+                    
+                            }
+
+                        }
+
+                        else
+                        {
+
+                        }
+
+              <div class="sf-media-body media-body">
+                 <h3>
+                    @if (hasLink)
+                    {
+                        <a href="@item.GetValue("Link")">@item.GetValue("Title")</a>
+                    }
+                    else
+                    {
+                        @item.GetValue("Title")
+                    }
+                 </h3>
+                    <p>@Html.Raw(item.GetValue("HighLighterResult"))</p>
+                    @if (hasLink)
+                    {
+                    <a href="@item.GetValue("Link")">@item.GetValue("Link")</a>
+                    }
+              </div>
+            </li>   
                 }
 
                 @if (Model.DisplayMode == ListDisplayMode.Paging && Model.TotalPagesCount != null && Model.TotalPagesCount > 1)
                 {
-                     if (Model.CurrentPage == Model.TotalPagesCount)
+                    if (Model.CurrentPage == Model.TotalPagesCount)
                     {
                         <em>@((Model.ItemsPerPage * Model.TotalPagesCount) - Model.Results.TotalCount) of @Model.Results.TotalCount results</em>
                     }
