@@ -6,9 +6,11 @@
 @using Telerik.Sitefinity.Modules.Libraries;
 @using Telerik.Sitefinity.Libraries.Model;
 
-<div class="row collapse @Model.CssClass">
+<div class="row @Model.CssClass">
 
-            <div class="clearfix">
+            <div class="row">
+
+              <div class="large-6 columns">
                  @if (@Model.Results.TotalCount > 0)
                  {
                     <h1 class="left">@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
@@ -17,21 +19,29 @@
                  {
                     <h1 class="left">@Html.Resource("No") @Html.Raw(Model.ResultText)</h1>
                  }
+              </div>
 
-                <div class="right">
-                @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
-                {
-                    <span>@Html.Resource("SortBy")</span>
-                    <select class="userSortDropdown">
-                        <option value="@OrderByOptions.Relevance" @(Model.OrderBy == OrderByOptions.Relevance ? "selected=selected" : "")>@Html.Resource("Relevance")</option>
-                        <option value="@OrderByOptions.Newest" @(Model.OrderBy == OrderByOptions.Newest ? "selected=selected" : "")>@Html.Resource("NewestFirst")</option>
-                        <option value="@OrderByOptions.Oldest" @(Model.OrderBy == OrderByOptions.Oldest ? "selected=selected" : "")>@Html.Resource("OldestFirst")</option>
-                    </select>
-                }
-               </div>
+              <div class="large-6 columns">
+               @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
+               {
+                  <div class="row">
+                    <div class="small-4 columns text-right">
+                        <span>@Html.Resource("SortBy")</span>
+                    </div>
+                    <div class="small-8 columns">
+                        <select class="userSortDropdown">
+                            <option value="@OrderByOptions.Relevance" @(Model.OrderBy == OrderByOptions.Relevance ? "selected=selected" : "")>@Html.Resource("Relevance")</option>
+                            <option value="@OrderByOptions.Newest" @(Model.OrderBy == OrderByOptions.Newest ? "selected=selected" : "")>@Html.Resource("NewestFirst")</option>
+                            <option value="@OrderByOptions.Oldest" @(Model.OrderBy == OrderByOptions.Oldest ? "selected=selected" : "")>@Html.Resource("OldestFirst")</option>
+                        </select>
+                    </div>
+                  </div>
+               }
+
+              </div>
+
             </div>
 
-            
             @if (Model.Languages.Length > 1)
             {
                 <div>
