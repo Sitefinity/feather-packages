@@ -8,18 +8,18 @@
 
 <div class="@Model.CssClass">
 
-            <div class="ui divided list">
-                <div class="item">
-                     @if (@Model.Results.TotalCount > 0)
-                     {
-                        <h1 class="left floated ui">@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
-                     }
-                     else
-                     {
-                        <h1 class="left floated ui">@Html.Resource("No") @Html.Raw(Model.ResultText)</h1>
-                     }
-
-                    <div class="right floated ui">
+            <div class="ui grid">
+                    <div class="eight wide column">
+                         @if (@Model.Results.TotalCount > 0)
+                         {
+                            <h1>@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
+                         }
+                         else
+                         {
+                            <h1>@Html.Resource("No") @Html.Raw(Model.ResultText)</h1>
+                         }
+                    </div>
+                    <div class="four wide column">
 
                     @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
                     {
@@ -31,7 +31,6 @@
                         </select>
                     }
                     </div>
-                </div>
             </div>
             
             @if (Model.Languages.Length > 1)

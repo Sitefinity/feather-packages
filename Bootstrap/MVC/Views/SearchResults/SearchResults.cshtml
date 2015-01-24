@@ -8,26 +8,27 @@
 
 <div class=" @Model.CssClass">
 
-            <div class="clearfix">
-                 @if (@Model.Results.TotalCount > 0)
-                 {
-                    <h1 class="pull-left">@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
-                 }
-                 else
-                 {
-                    <h1 class="pull-left">@Html.Resource("No") @Html.Raw(Model.ResultText)</h1>
-                 }
-
-                <div class="pull-right">
-                @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
-                {
-                    <span>@Html.Resource("SortBy")</span>
-                    <select class="userSortDropdown">
-                        <option value="@OrderByOptions.Relevance" @(Model.OrderBy == OrderByOptions.Relevance ? "selected=selected" : "")>@Html.Resource("Relevance")</option>
-                        <option value="@OrderByOptions.Newest" @(Model.OrderBy == OrderByOptions.Newest ? "selected=selected" : "")>@Html.Resource("NewestFirst")</option>
-                        <option value="@OrderByOptions.Oldest" @(Model.OrderBy == OrderByOptions.Oldest ? "selected=selected" : "")>@Html.Resource("OldestFirst")</option>
-                    </select>
-                }
+            <div class="row">
+                <div class="col-md-8">
+                     @if (@Model.Results.TotalCount > 0)
+                     {
+                        <h1>@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
+                     }
+                     else
+                     {
+                        <h1>@Html.Resource("No") @Html.Raw(Model.ResultText)</h1>
+                     }
+                </div>
+                <div class="col-md-4">
+                    @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
+                    {
+                        <span>@Html.Resource("SortBy")</span>
+                        <select class="userSortDropdown">
+                            <option value="@OrderByOptions.Relevance" @(Model.OrderBy == OrderByOptions.Relevance ? "selected=selected" : "")>@Html.Resource("Relevance")</option>
+                            <option value="@OrderByOptions.Newest" @(Model.OrderBy == OrderByOptions.Newest ? "selected=selected" : "")>@Html.Resource("NewestFirst")</option>
+                            <option value="@OrderByOptions.Oldest" @(Model.OrderBy == OrderByOptions.Oldest ? "selected=selected" : "")>@Html.Resource("OldestFirst")</option>
+                        </select>
+                    }
                 </div>
             </div>
 
@@ -50,7 +51,7 @@
                 </div>
             }   
              
-            <div class="sf-search-results">
+            <div class="sf-search-results media-list">
                 @foreach (var item in Model.Results.Data)
                 {
                     var hasLink = item.GetValue("Link") != null && !String.IsNullOrEmpty(item.GetValue("Link").ToString());
