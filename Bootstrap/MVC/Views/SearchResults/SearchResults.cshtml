@@ -9,7 +9,7 @@
 <div class=" @Model.CssClass">
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-8">
                      @if (@Model.Results.TotalCount > 0)
                      {
                         <h1>@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
@@ -19,7 +19,7 @@
                         <h1>@Html.Resource("No") @Html.Raw(Model.ResultText)</h1>
                      }
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
                     {
                         <span>@Html.Resource("SortBy")</span>

@@ -9,14 +9,14 @@
 <div class="@Model.CssClass">
 
             <div class="ui grid">
-                    <div class="six wide column">
+                    <div class="eight wide column">
                          @if (@Model.Results.TotalCount > 0)
                          {
-                            <h1 class="left floated ui">@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
+                            <h1>@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
                          }
                          else
                          {
-                            <h1 class="left floated ui">@Html.Resource("No") @Html.Raw(Model.ResultText)</h1>
+                            <h1>@Html.Resource("No") @Html.Raw(Model.ResultText)</h1>
                          }
                     </div>
                     <div class="four wide column">
