@@ -6201,3 +6201,6 @@ ul.sf-autocomplete {
   .sf-share-button > strong {
     vertical-align: top;
     font-weight: 400; }
+
+body[contenteditable="true"] {
+  padding-top: 1px; }
