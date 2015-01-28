@@ -12,7 +12,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-newer": "^1.0.0",
     "grunt-contrib-less": "^1.0.0",
-    "grunt-sass": "^0.17.0",
     "grunt-spritesmith": "^3.5.0",
     "grunt-uncss": "^0.3.6",
     "load-grunt-tasks": "^2.0.0",
