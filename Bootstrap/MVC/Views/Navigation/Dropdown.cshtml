@@ -20,7 +20,7 @@
     var selectedAttribute = "";
     prefix += "-";
 
-    if (Model.CurrentSiteMapNode != null && Model.CurrentSiteMapNode.Key == node.OriginalSiteMapNode.Key)
+    if (Model.CurrentSiteMapNode != null && node.OriginalSiteMapNode !=null && Model.CurrentSiteMapNode.Key == node.OriginalSiteMapNode.Key)
     {
         selectedAttribute = "selected";
     }
