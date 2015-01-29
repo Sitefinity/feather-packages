@@ -5967,6 +5967,16 @@ th.hide-for-touch {
     display: table-cell !important; }
  }
 
+body[contenteditable="true"] {
+  padding: 20px; }
+
+.News > li {
+  margin-bottom: 30px; }
+
+.News-author {
+  color: #999;
+  margin: 10px 0; }
+
 .side-nav li {
   list-style: none; }
 
@@ -6023,13 +6033,6 @@ th.hide-for-touch {
     margin-left: 0; }
     .tabs-nav ~ .sub-nav > li {
       margin-left: 0; }
-
-.News > li {
-  margin-bottom: 30px; }
-
-.News-author {
-  color: #999;
-  margin: 10px 0; }
 
 ul.sf-autocomplete {
   position: absolute;
@@ -6201,6 +6204,3 @@ ul.sf-autocomplete {
   .sf-share-button > strong {
     vertical-align: top;
     font-weight: 400; }
-
-body[contenteditable="true"] {
-  padding-top: 1px; }
