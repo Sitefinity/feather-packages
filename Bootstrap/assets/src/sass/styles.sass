@@ -1,3 +1,24 @@
-@import "variables";
+// Import variables to pre-define (and actually overwrite) Bootstrap variables
+@import "sitefinity/variables";
+
+// Import Bootstrap from npm
 @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
-@import "sitefinity";
+
+// Content block
+@import "sitefinity/sf-content-block";
+
+// Navigation
+@import "sitefinity/navigation/navbar";
+@import "sitefinity/navigation/sitemap";
+@import "sitefinity/navigation/stacked";
+
+// Search
+@import "sitefinity/searchBox/sf-search-box";
+@import "sitefinity/searchResults/sf-search-results";
+
+// Social share
+// Due to some unfortunate circumstances, these files must be
+// directly in the `sass` folder :/
+@import "sf-social-share-sprite";
+@import "sf-social-share";
+

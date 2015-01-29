@@ -30483,6 +30483,9 @@ html.ios {
 /*******************************
          Site Overrides
 *******************************/
+body[contenteditable="true"] {
+  padding: 20px;
+}
 .sitemap {
   display: table;
   width: 100%;
@@ -30720,7 +30723,4 @@ ul.sf-autocomplete a:hover {
   background-position: -48px -32px;
   width: 16px;
   height: 16px;
-}
-body[contenteditable="true"] {
-  padding-top: 1px;
 }

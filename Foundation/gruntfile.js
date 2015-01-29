@@ -119,7 +119,7 @@ module.exports = function (grunt) {
       all: {
         src: 'assets/src/images/social-share/*.png',
         dest: 'assets/src/images/social-share-sprite.png',
-        destCss: 'assets/src/sass/_sf-social-share-sprite.scss',
+        destCss: 'assets/src/sass/_sf-social-share-sprite.sass',
         cssTemplate: 'assets/src/sass/social-share-sprite.mustache'
       }
     },
