@@ -1,8 +1,8 @@
 {
   "name": "Bootstrap",
   "devDependencies": {
-    "bootstrap-sass": "^3.3.3",
     "grunt": "^0.4.5",
+    "bootstrap-sass": "3.3.1",
     "grunt-concurrent": "^1.0.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-csslint": "^0.3.1",
