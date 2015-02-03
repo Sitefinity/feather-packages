@@ -30568,6 +30568,9 @@ ul.sf-autocomplete a:hover {
   cursor: pointer;
   text-decoration: none;
 }
+.sf-search-box {
+  box-sizing: border-box;
+}
 .sf-search-results {
   margin-bottom: 20px;
 }
