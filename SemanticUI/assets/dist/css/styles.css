@@ -30518,6 +30518,7 @@ html.ios {
 }
 .sf-loading-wrapper {
   position: absolute;
+  z-index: 902;
   background: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
