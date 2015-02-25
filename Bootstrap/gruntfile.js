@@ -92,13 +92,7 @@ module.exports = function (grunt) {
 					compress: true
 				},
 				files: {
-
-					'<%= dist.path %>/js/bootstrap.min.js':'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
-					'<%= dist.path %>/js/magnific.min.js': [
-						'node_modules/magnific-popup/dist/jquery.magnific-popup.js',
-						'assets/src/js/magnific-init.js'
-					]
-
+					'<%= dist.path %>/js/bootstrap.min.js':'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js'
 				}
 			}
 		},
@@ -162,7 +156,7 @@ module.exports = function (grunt) {
 	// Tasks
 	// default task runs csslint once on startup on documentation's css
 	grunt.registerTask('default', [
-		'clean:all',
+		// 'clean:all',
 		'newer:sprite',
 		'sass:dist',
 		'cssmin',

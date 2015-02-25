@@ -5393,6 +5393,9 @@ body[contenteditable="true"] {
   right: 0;
   text-align: right; }
 
+.sf-Gallery-navigation {
+  margin: 5px 0 30px; }
+
 .right-caret {
   display: inline-block;
   width: 0;
