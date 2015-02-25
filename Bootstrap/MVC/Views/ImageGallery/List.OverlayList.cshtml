@@ -1,0 +1,55 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@Html.Script(ScriptRef.JQuery)
+
+<link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/Bootstrap/assets/dist/css/magnific-popup.css")'>
+<script type="text/javascript" src='@Url.WidgetContent("~/ResourcePackages/Bootstrap/assets/dist/js/jquery.magnific-popup.min.js")'></script>
+
+<div class="sf-Gallery-thumbs-container">
+  <div class="sf-Gallery-thumbs clearfix @Model.CssClass">
+
+    @foreach (var item in Model.Items)
+    {
+        <a class="pull-left text-center image-link"
+           href="@item.Fields.MediaUrl"
+           title="@item.Fields.AlternativeText">
+            <img src="@item.Fields.ThumbnailUrl" />
+        </a>
+    }
+  </div>
+</div>
+
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('.image-link').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled: true
+            },
+            type:'image',
+            zoom: {
+              enabled: true,
+
+              duration: 300,
+              easing: 'ease-in-out',
+              opener: function(openerElement) {
+                return openerElement.is('img') ? openerElement : openerElement.find('img');
+              }
+            }
+        });
+    });
+</script>
