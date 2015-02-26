@@ -155,7 +155,7 @@ module.exports = function (grunt) {
   // Tasks
   // default task runs csslint once on startup on documentation's css
   grunt.registerTask('default', [
-    'clean:all',
+    // 'clean:all',
     'newer:sprite',
     'sass:dist',
     'cssmin',

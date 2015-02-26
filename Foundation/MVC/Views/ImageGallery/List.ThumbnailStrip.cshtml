@@ -1,0 +1,37 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using System.Web.Script.Serialization;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/thumbnail-strip.js"))
+
+<div class="sf-Gallery sf-Gallery--strip">
+
+	<h2 class="js-Gallery-title"></h2>
+
+	<p class="js-Gallery-description"></p>
+
+	<div><span class="js-Gallery-index"></span> of @Model.Items.Count()</div>
+
+	<p class="sf-Gallery-image js-Gallery-image">
+		<a class='js-Gallery-prev sf-Gallery-prev'></a>
+		<a class='js-Gallery-next sf-Gallery-next'></a>
+		<img />
+	</p>
+
+	<div class="sf-Gallery-thumbs-container">
+		<div class="sf-Gallery-thumbs js-Gallery-thumbs clearfix">
+			@foreach(var item in Model.Items)
+			{
+			<a class="pull-left text-center" title="@item.Fields.Title" data-item="@Html.GetSerializedImage(item)">
+				<img src="@(((ThumbnailViewModel)item).ThumbnailUrl)"  alt="@item.Fields.AlternativeText"/>
+			</a>
+			}
+		</div>
+	</div>
+</div>

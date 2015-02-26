@@ -5334,17 +5334,18 @@ body[contenteditable="true"] {
 .sf-Gallery-thumbs {
   margin: 0 -5px; }
   .sf-Gallery-thumbs a {
+    display: inline-block;
     margin: 0 5px 10px;
-    width: 154px;
-    height: 154px;
+    border: 5px solid transparent;
+    width: 130px;
+    height: 130px;
+    line-height: 120px;
     overflow: hidden;
     cursor: pointer; }
     .sf-Gallery-thumbs a.is-selected {
-      border: 5px solid #428BCA; }
-
-.sf-Gallery--strip .sf-Gallery-thumbs {
-  border: 5px solid transparent;
-  border-radius: 3px; }
+      border-color: #428BCA; }
+    .sf-Gallery-thumbs a > img {
+      vertical-align: middle; }
 
 .sf-Gallery-image {
   position: relative;
