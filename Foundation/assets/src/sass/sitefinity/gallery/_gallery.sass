@@ -23,6 +23,7 @@
 		> img
 			vertical-align: middle
 
+
 .sf-Gallery-image
 	position: relative
 	height: 600px
@@ -64,6 +65,15 @@
 		opacity: 1
 		color: #000
 
+	&:before
+		content: ""
+		position: relative
+		display: inline-block
+		width: 0
+		height: 0
+		border: 30px solid transparent
+		border-right-color: #000
+
 .sf-Gallery-prev
 	background: linear-gradient(to right, rgba(0,0,0,.1) 0%,rgba(0,0,0,0) 100%)
 
@@ -72,6 +82,11 @@
 	left: auto
 	right: 0
 	text-align: right
+
+	&:before
+		border-right-color: transparent
+		border-left-color: #000
+
 
 
 .sf-Gallery-navigation
