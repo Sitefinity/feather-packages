@@ -9,11 +9,11 @@
         <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</span>
     </h2>
 
-    <h6 class="subheader">
+    <p>
         @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
         @Html.Resource("By")
         @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
-    </h6>
+    </p>
 
     <p @Html.InlineEditingFieldAttributes("Description", "LongText")>@Html.Raw(Model.Item.Fields.Description)</p>
 
@@ -21,19 +21,19 @@
 
     @if (ViewBag.ItemIndex != null)
     {
-        <div class="sf-Gallery-navigation text-center">
+        <div class="sf-Gallery-navigation">
             @{
                 var previousItemIndex = ViewBag.ItemIndex == 1 ? Model.TotalItemsCount : ViewBag.ItemIndex - 1;
                 var nextItemIndex = ViewBag.ItemIndex == Model.TotalItemsCount ? 1 : ViewBag.ItemIndex + 1;
             }
 
-	        <a class="left" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, previousItemIndex)">
+	        <a class="sf-Gallery-prev-link" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, previousItemIndex)">
                 @Html.Resource("PreviousImage")
 	        </a>
 
             @string.Format(@Html.Resource("IndexOfTotal"), @ViewBag.ItemIndex, @Model.TotalItemsCount)
 
-	        <a class="right" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, nextItemIndex)">
+	        <a class="sf-Gallery-next-link" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, nextItemIndex)">
                 @Html.Resource("NextImage")
 	        </a>
         </div>
