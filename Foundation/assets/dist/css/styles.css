@@ -6248,6 +6248,9 @@ ul.sf-autocomplete {
       overflow: hidden;
       word-break: break-word; }
 
+.sf-FlatTaxonField .suggestion-list {
+  margin-left: 0; }
+
 .sf-icon-blogger {
   background-image: url(../images/social-share-sprite.png);
   background-position: -16px 0px;
