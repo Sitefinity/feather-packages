@@ -4,12 +4,12 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 
 <div class="@Model.CssClass">
-    <div class="media">
-        <div class="media-left">
-            <img class="media-object" src="@Model.AvatarImageUrl" alt="@Model.UserName"/>
+    <div class="row sf-profile sf-profile">
+        <div class="col-md-3">
+            <img src="@Model.AvatarImageUrl" alt="@Model.UserName"/>
         </div>
 
-        <div class="media-body">
+        <div class="col-md-9">
            <h3>@Model.DisplayName</h3>
            <p>@Model.Email</p>
             @*User does not have 'About' property*@
