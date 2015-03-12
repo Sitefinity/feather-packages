@@ -5521,6 +5521,17 @@ ul.sf-autocomplete {
 .sf-media .sf-media-body h3 {
   margin-top: 0; }
 
+.sf-profile .sf-profile-avatar {
+  position: relative; }
+  .sf-profile .sf-profile-avatar .glyphicon-remove-sign {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    text-decoration: none;
+    color: #999;
+    background: #fff;
+    border-radius: 50%; }
+
 .sf-icon-blogger {
   background-image: url(../images/social-share-sprite.png);
   background-position: -16px 0px;

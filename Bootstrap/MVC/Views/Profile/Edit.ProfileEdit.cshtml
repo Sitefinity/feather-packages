@@ -9,7 +9,7 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js"></script>
 
-<div class="media @Model.CssClass">
+<div class=" @Model.CssClass">
     @if (Model.ShowProfileChangedMsg)
     {
         <div>@Html.Resource("ChangesAreSaved")</div>
@@ -17,16 +17,18 @@
 
     @using (Html.BeginFormSitefinity("Index", "EditProfileForm", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
+        
+    <div class="media sf-profile">
         <div class="media-left">
             @Html.HiddenFor(u => u.DeletePicture, new Dictionary<string, object>() { { "data-sf-role", "edit-profile-delete-picture" } })
             @Html.HiddenFor(u => u.DefaultAvatarUrl, new Dictionary<string, object>() { { "data-sf-role", "edit-profile-default-avatar-url" } })
 
-            <div>
+            <div class="sf-profile-avatar">
                 <img class="media-object" data-sf-role="edit-profile-user-image" src="@Model.AvatarImageUrl" alt="@Model.UserName" width="100" height="100"/>
-                <a href="#" data-sf-role="edit-profile-delete-picture-button">x</a>
+                <a class="glyphicon glyphicon-remove-sign" href="#" data-sf-role="edit-profile-delete-picture-button"></a>
             </div>
 
-            <div>
+            <div class="text-center">
                 <input type="file" data-sf-role="edit-profile-upload-picture-input" name="UploadedImage" style="display: none;" />
 
                 <a href="#" data-sf-role="edit-profile-upload-picture-button">@Html.Resource("EditProfileUploadImage")</a>
@@ -112,6 +114,7 @@
             @Html.ActionLink(Html.Resource("EditProfileCancel"), "Index")
 
         </div>
+     </div>
     }
 </div>
 
