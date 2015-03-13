@@ -27,15 +27,21 @@
                 var nextItemIndex = ViewBag.ItemIndex == Model.TotalItemsCount ? 1 : ViewBag.ItemIndex + 1;
             }
 
-	        <a class="sf-Gallery-prev-link" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, previousItemIndex)">
-                @Html.Resource("PreviousImage")
-	        </a>
-
+			@if (Model.PreviousItem != null) 
+            {
+				<a class="sf-Gallery-prev-link" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, previousItemIndex)">
+					@Html.Resource("PreviousImage")
+				</a>
+			}
+			
             @string.Format(@Html.Resource("IndexOfTotal"), @ViewBag.ItemIndex, @Model.TotalItemsCount)
 
-	        <a class="sf-Gallery-next-link" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, nextItemIndex)">
-                @Html.Resource("NextImage")
-	        </a>
+			@if (Model.NextItem != null) 
+            {
+				<a class="sf-Gallery-next-link" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, nextItemIndex)">
+					@Html.Resource("NextImage")
+				</a>
+			}
         </div>
 
         @Html.ActionLink(Html.Resource("BackToAllImages"), "Index")
