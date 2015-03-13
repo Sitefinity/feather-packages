@@ -5522,7 +5522,8 @@ ul.sf-autocomplete {
   margin-top: 0; }
 
 .sf-profile .sf-profile-avatar {
-  position: relative; }
+  position: relative;
+  display: inline-block; }
   .sf-profile .sf-profile-avatar .glyphicon-remove-sign {
     position: absolute;
     top: 5px;
