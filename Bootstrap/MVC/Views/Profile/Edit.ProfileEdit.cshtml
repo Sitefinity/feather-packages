@@ -12,7 +12,7 @@
 <div class=" @Model.CssClass">
     @if (Model.ShowProfileChangedMsg)
     {
-        <div>@Html.Resource("ChangesAreSaved")</div>
+        <div class="alert alert-success">@Html.Resource("ChangesAreSaved")</div>
     }
 
     @using (Html.BeginFormSitefinity("Index", "EditProfileForm", FormMethod.Post, new { enctype = "multipart/form-data" }))
