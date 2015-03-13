@@ -38,8 +38,19 @@
         using (Html.BeginFormSitefinity())
         {
             @Html.ValidationSummary(true);
-            @ViewBag.Error
 
+          if (!string.IsNullOrEmpty(ViewBag.Error))
+            {
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="alert alert-danger">
+                            @ViewBag.Error
+                        </div>
+                    </div>
+                </div>
+
+            }
+            
            <div class="form-group">
                 <label>
                     @Html.Resource("FirstName")
@@ -69,7 +80,13 @@
                 <div class="row">
                     <div class="col-xs-6">
                       @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                      @Html.ValidationMessageFor(m => m.Email)
+                      
+                        @if (Html.ValidationMessageFor(m => m.Email) != null)
+                        {
+                            <div class="has-error">
+                                <span class="help-block">@Html.ValidationMessageFor(m => m.Email)</span>
+                            </div>
+                        } 
                     </div>
                 </div>
             </div>
@@ -81,7 +98,13 @@
                 <div class="row">
                     <div class="col-xs-6">
                         @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.UserName)
+                        
+                        @if (Html.ValidationMessageFor(m => m.UserName) != null)
+                        {
+                            <div class="has-error">
+                                <span class="help-block">@Html.ValidationMessageFor(m => m.UserName)</span>
+                            </div>
+                        } 
                     </div>
                 </div>
             </div>
@@ -93,7 +116,13 @@
                 <div class="row">
                     <div class="col-xs-6">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password)
+
+                        @if (Html.ValidationMessageFor(m => m.Password) != null)
+                        {
+                            <div class="has-error">
+                                <span class="help-block"> @Html.ValidationMessageFor(m => m.Password)</span>
+                            </div>
+                        } 
                     </div>
                 </div>
             </div>
@@ -105,16 +134,23 @@
                 <div class="row">
                     <div class="col-xs-6">
                         @Html.PasswordFor(m => m.ReTypePassword, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.ReTypePassword)
+                        
+                        @if (Html.ValidationMessageFor(m => m.ReTypePassword) != null)
+                        {
+                            <div class="has-error">
+                                <span class="help-block">@Html.ValidationMessageFor(m => m.ReTypePassword)</span>
+                            </div>
+                        } 
                     </div>
                 </div>
             </div>
 
 
             <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
+            <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
          }
 
-        <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
+        
     }
 </div>
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"))
