@@ -112,9 +112,10 @@
 
 
             <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
+            <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
          }
 
-        <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
+        
     }
 </div>
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"))
