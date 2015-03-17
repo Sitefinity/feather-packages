@@ -95,10 +95,19 @@
     }
 </div>
 
+@{
+ bool hasPasswordErrors = ViewBag.HasPasswordErrors is bool && ViewBag.HasPasswordErrors == true;
+ }
+
 <script>
     (function ($) {
         $(function () {
-            var changePasswordHolder = $('[data-sf-role=edit-profile-change-password-holder]').hide();
+            var hasPasswordErrors = @hasPasswordErrors.ToString().ToLower();
+            var changePasswordHolder = $('[data-sf-role=edit-profile-change-password-holder]');
+            if(!hasPasswordErrors){
+                changePasswordHolder.hide();
+            }
+
             var editProfileUserImage = $('[data-sf-role=edit-profile-user-image]');
             var fileInput = $('[data-sf-role=edit-profile-upload-picture-input]');
 
