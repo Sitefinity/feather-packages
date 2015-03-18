@@ -76,7 +76,9 @@
             if (Model.IncorrectCredentials)
             {
             
-            <p>@Html.Resource("IncorrectCredentialsMessage")</p>
+            <div class="has-error">
+                <span class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
+            </div>
                 
             }
 
