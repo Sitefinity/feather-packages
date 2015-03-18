@@ -20,6 +20,13 @@
             <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
             
             <div class="ui form">
+
+                @if (Model.IncorrectCredentials)
+                {
+            
+                <p class="ui red label">@Html.Resource("IncorrectCredentialsMessage")</p>
+                
+                }
                 <div class="two fields">
 
                     <div class="field">
@@ -68,24 +75,19 @@
                 }
 
                <input type="submit" class="ui submit button" value='@Html.Resource("LoginFormLogInButton")' />
-           </div>
+           
 
-            if (Model.ShowForgotPasswordLink)
+            @if (Model.ShowForgotPasswordLink)
             {
                 @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
             }
- 
-            if (Model.IncorrectCredentials)
-            {
-            
-            <p class="ui red pointing prompt label transition visible">@Html.Resource("IncorrectCredentialsMessage")</p>
-                
-            }
 
-            if (Model.ShowRegistrationLink)
+
+            @if (Model.ShowRegistrationLink)
             {
                 <strong><a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a></strong>
             }
+            </div>
         }
     </div>
     }

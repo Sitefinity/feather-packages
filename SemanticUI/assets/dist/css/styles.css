@@ -32755,6 +32755,9 @@ html.ios {
     background-color: #105ab5;
   }
 }
+.sfPageEditor .RadDockZone {
+  box-sizing: border-box;
+}
 body[contenteditable="true"] {
   padding: 20px;
 }
@@ -32920,6 +32923,17 @@ body[contenteditable="true"] {
   .sitemap > li:nth-child(odd) {
     clear: both;
   }
+}
+.sf-profile .sf-profile-avatar {
+  position: relative;
+  display: inline-block;
+}
+.sf-profile .sf-profile-avatar .sf-remove {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  text-decoration: none;
+  color: #999;
 }
 ul.sf-autocomplete {
   position: absolute;

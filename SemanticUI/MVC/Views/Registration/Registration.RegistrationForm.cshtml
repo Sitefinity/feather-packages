@@ -35,58 +35,105 @@
     }
     else
     {
-        using (Html.BeginFormSitefinity())
+    <div class="ui form">
+
+        @using (Html.BeginFormSitefinity())
         {
             @Html.ValidationSummary(true);
-            @ViewBag.Error
 
-            <div>
-                <label>
-                    @Html.Resource("FirstName")
+            if (!string.IsNullOrEmpty(ViewBag.Error))
+            {
+                <p class="ui red label">
+                   @ViewBag.Error
+                </p>
+            }
+
+            <div class="two fields">
+
+                <div class="field">
+                    <label>
+                        @Html.Resource("FirstName")
+                    </label>
                     @Html.TextBox("Profile[FirstName]")
-                </label>
-            </div>
-            <div>
-                <label>
-                    @Html.Resource("LastName")
-                    @Html.TextBox("Profile[LastName]")
-                </label>
-            </div>
-            <div>
-                <label>
-                    @Html.Resource("Email")
-                    @Html.TextBoxFor(m => m.Email)
-                </label>
-                @Html.ValidationMessageFor(m => m.Email)
-            </div>
-            <div>
-                <label>
-                    @Html.Resource("UserName")
-                    @Html.TextBoxFor(m => m.UserName)
-                </label>
-                @Html.ValidationMessageFor(m => m.UserName)
-            </div>
-            <div>
-                <label>
-                    @Html.Resource("Password")
-                    @Html.PasswordFor(m => m.Password)
-                </label>
-                @Html.ValidationMessageFor(m => m.Password)
-            </div>
-            <div>
-                <label>
-                    @Html.Resource("ReTypePassword")
-                    @Html.PasswordFor(m => m.ReTypePassword)
-                </label>
-                @Html.ValidationMessageFor(m => m.ReTypePassword)
+                </div>
+
+                <div class="field"></div>
             </div>
 
-            <div>
-                <input type="submit" value="@Html.Resource("Register")" />
+            <div class="two fields">
+
+                <div class="field">
+                    <label>
+                        @Html.Resource("LastName")
+                        @Html.TextBox("Profile[LastName]")
+                    </label>
+                </div>
+
+                <div class="field"></div>
             </div>
+
+            <div class="two fields">
+
+                <div class="field">
+                    <label>
+                        @Html.Resource("Email")
+                        @Html.TextBoxFor(m => m.Email)
+                    </label>
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+
+                <div class="field"></div>
+
+            </div>
+
+           <div class="two fields">
+
+               <div class="field">
+                    <label>
+                        @Html.Resource("UserName")
+                    </label>
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)
+               </div>
+
+               <div class="field"></div>
+            </div>
+
+           <div class="two fields">
+
+               <div class="field">
+                    <label>
+                        @Html.Resource("Password")
+                    </label>
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+               </div>
+
+               <div class="field"></div>
+
+            </div>
+
+            <div class="two fields">
+
+                <div class="field">
+                    <label>
+                        @Html.Resource("ReTypePassword")
+                    </label>
+                    @Html.PasswordFor(m => m.ReTypePassword)
+                    @Html.ValidationMessageFor(m => m.ReTypePassword)
+                </div>
+
+                <div class="field"></div>
+            </div>
+
+            
+            <input type="submit" class="ui submit button" value="@Html.Resource("Register")" />
+           
          }
 
         <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
+
+    </div>
     }
 </div>
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"))
