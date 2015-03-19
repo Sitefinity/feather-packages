@@ -79,7 +79,12 @@
                         @Html.Resource("Email")
                         @Html.TextBoxFor(m => m.Email)
                     </label>
-                    @Html.ValidationMessageFor(m => m.Email)
+                    @if (Html.ValidationMessageFor(m => m.Email) != null)
+                    {
+                        <div class="ui red pointing prompt label transition visible">
+                            @Html.ValidationMessageFor(m => m.Email)
+                        </div>
+                    }
                 </div>
 
                 <div class="field"></div>
@@ -93,7 +98,12 @@
                         @Html.Resource("UserName")
                     </label>
                     @Html.TextBoxFor(m => m.UserName)
-                    @Html.ValidationMessageFor(m => m.UserName)
+                    @if (Html.ValidationMessageFor(m => m.UserName) != null)
+                    {
+                        <div class="ui red pointing prompt label transition visible">
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </div>
+                    }
                </div>
 
                <div class="field"></div>
@@ -106,7 +116,12 @@
                         @Html.Resource("Password")
                     </label>
                     @Html.PasswordFor(m => m.Password)
-                    @Html.ValidationMessageFor(m => m.Password)
+                    @if (Html.ValidationMessageFor(m => m.Password) != null)
+                    {
+                        <div class="ui red pointing prompt label transition visible">
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    }
                </div>
 
                <div class="field"></div>
@@ -120,7 +135,12 @@
                         @Html.Resource("ReTypePassword")
                     </label>
                     @Html.PasswordFor(m => m.ReTypePassword)
-                    @Html.ValidationMessageFor(m => m.ReTypePassword)
+                    @if (Html.ValidationMessageFor(m => m.ReTypePassword) != null)
+                    {
+                        <div class="ui red pointing prompt label transition visible">
+                            @Html.ValidationMessageFor(m => m.ReTypePassword)
+                        </div>
+                    }
                 </div>
 
                 <div class="field"></div>
