@@ -8,11 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/Bootstrap/assets/dist/css/styles.min.css")' type="text/css" />
+    @Html.StyleSheet(Url.WidgetContent("~/ResourcePackages/Bootstrap/assets/dist/css/styles.min.css"))
+	@Html.SfStyleSheetRenderer()
 </head>
 
 <body>
-
+  <div class="sfPublicWrapper" id="PublicWrapper">
+	@Html.SfPlaceHolder("Contentplaceholder1")
+  </div>
+  
   @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
   @if (!SitefinityContext.IsBackend && ControlExtensions.InlineEditingIsEnabled())
   {
@@ -25,10 +29,6 @@
     @Html.Script("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.RequireJS.require.min.js")
     @Html.InlineEditingManager(false)
   }
-  
-  <div class="sfPublicWrapper" id="PublicWrapper">
-	@Html.SfPlaceHolder("Contentplaceholder1")
-  </div>
   
   @Html.SfScriptRenderer() 
 </body>
