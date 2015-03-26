@@ -1,13 +1,13 @@
 ﻿(function () {
     var searchBoxIdFields = jQuery('[data-sf-role="searchTextBoxId"]');
-    for(var i in searchBoxIdFields)
+    for(var i = 0; i < searchBoxIdFields.length; i++)
     {
         var searchBoxIdField = jQuery(searchBoxIdFields[i]);
-        var cotnrolServerData = {
-            resultsUrl: searchBoxIdField.siblings('[data-sf-role="resultsUrl"]').first().val(),
+		var controlServerData = {
+			resultsUrl: searchBoxIdField.siblings('[data-sf-role="resultsUrl"]').first().val(),
             indexCatalogue: searchBoxIdField.siblings('[data-sf-role="indexCatalogue"]').first().val(),
             wordsMode: searchBoxIdField.siblings('[data-sf-role="wordsMode"]').first().val(),
-            disableSuggestions: JSON.parse(searchBoxIdField.siblings('[data-sf-role="disableSuggestions"]').first().val()),
+            disableSuggestions: jQuery.parseJSON(searchBoxIdField.siblings('[data-sf-role="disableSuggestions"]').first().val()),
             minSuggestionLength: searchBoxIdField.siblings('[data-sf-role="minSuggestionLength"]').first().val(),
             suggestionFields: searchBoxIdField.siblings('[data-sf-role="suggestionFields"]').first().val(),
             language: searchBoxIdField.siblings('[data-sf-role="language"]').first().val(),
@@ -15,7 +15,7 @@
             searchTextBoxSelector: searchBoxIdField.val(),
             searchButtonSelector: searchBoxIdField.siblings('[data-sf-role="searchButtonId"]').first().val()
         };
-        featherSearchBoxWidget(cotnrolServerData);
+        featherSearchBoxWidget(controlServerData);
     }
 
     function featherSearchBoxWidget(serverData) {
