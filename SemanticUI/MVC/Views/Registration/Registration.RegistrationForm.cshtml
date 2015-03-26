@@ -77,7 +77,7 @@
                 <div class="field">
                     <label>
                         @Html.Resource("Email")
-                        @Html.TextBoxFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { type = "email" })
                     </label>
                     @if (Html.ValidationMessageFor(m => m.Email) != null)
                     {

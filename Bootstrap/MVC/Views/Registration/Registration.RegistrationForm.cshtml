@@ -79,7 +79,7 @@
                 </label>
                 <div class="row">
                     <div class="col-xs-6">
-                      @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                      @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
                       
                         @if (Html.ValidationMessageFor(m => m.Email) != null)
                         {
