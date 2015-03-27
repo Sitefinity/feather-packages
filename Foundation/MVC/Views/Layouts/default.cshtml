@@ -15,6 +15,8 @@
 	@Html.SfPlaceHolder("Contentplaceholder1")
   </div>
   
+  @Html.SfScriptRenderer()
+  
   @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
   @if (!SitefinityContext.IsBackend && ControlExtensions.InlineEditingIsEnabled())
   {
