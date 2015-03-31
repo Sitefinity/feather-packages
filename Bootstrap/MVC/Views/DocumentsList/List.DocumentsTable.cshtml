@@ -8,9 +8,9 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <td>@Html.Resource("Title")</td>
-                <td>@Html.Resource("Type")</td>
-                <td>@Html.Resource("Size")</td>
+                <td><strong>@Html.Resource("Title")</strong></td>
+                <td><strong>@Html.Resource("Type")</strong></td>
+                <td><strong>@Html.Resource("Size")</strong></td>
                 <td></td>
             </tr>
         </thead>
@@ -26,10 +26,10 @@
                     </a>
                 </td>
                 <td>
-                    (@item.Fields.Extension)
+                    @item.Fields.Extension
                 </td>
                 <td>
-                    (@(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB"))
+                    @(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB")
                 </td>
                 <td>
                     <a href="@item.Fields.MediaUrl" target="_blank">Download</a>

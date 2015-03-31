@@ -29,7 +29,7 @@
 		<div class="media-body">
 			<div>
 				<a href="@Model.Item.Fields.MediaUrl" target="_blank">Download</a>
-				<span class="text-muted">@(Math.Ceiling((double)Model.Item.Fields.TotalSize / 1024) + " KB")</span>
+				<span class="text-muted">(@(Math.Ceiling((double)Model.Item.Fields.TotalSize / 1024) + " KB"))</span>
 		  	</div>
 		  <span class="text-muted">@Model.Item.Fields.Extension</span>
 		</div>
