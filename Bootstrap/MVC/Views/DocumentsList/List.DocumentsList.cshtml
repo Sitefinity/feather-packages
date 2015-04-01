@@ -18,7 +18,7 @@
 					<a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">
 							<strong>@item.Fields.Title</strong>
 					</a>
-					<span class="text-muted">@(((DocumentItemViewModel)item).Extension)</span>
+					<span class="text-muted">(@(((DocumentItemViewModel)item).Extension))</span>
 
 					<div>
 						<a href="@item.Fields.MediaUrl" target="_blank">Download</a>
