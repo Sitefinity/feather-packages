@@ -23,7 +23,7 @@
 	  <div class="media">
 		<div class="media-left">
 			<i class="icon-file icon-txt icon-md">
-				<span class="icon-txt-@Model.Item.Fields.Extension">@Model.Item.Fields.Extension</span>
+				<span class="icon-txt-@Model.Extension">@Model.Extension</span>
 			</i>
 		</div>
 		<div class="media-body">
@@ -31,7 +31,7 @@
 				<a href="@Model.Item.Fields.MediaUrl" target="_blank">Download</a>
 				<span class="text-muted">(@(Math.Ceiling((double)Model.Item.Fields.TotalSize / 1024) + " KB"))</span>
 		  	</div>
-		  <span class="text-muted">@Model.Item.Fields.Extension</span>
+		  <span class="text-muted">@Model.Extension</span>
 		</div>
 	  </div>
 
