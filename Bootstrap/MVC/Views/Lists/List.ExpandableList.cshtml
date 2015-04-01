@@ -12,16 +12,14 @@
     {
         <div class="row">
             <div class="col-md-6">
-                <h3 @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id)>
-                    <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>
-                        @item.Fields.Title
-                    </span>
+                <h3 @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id) @Html.InlineEditingFieldAttributes("Title", "ShortText")>
+                    @item.Fields.Title
                 </h3>
             </div>
 
             <div class="col-md-6">
-                <strong data-sf-role="expandAll">@Html.Resource("ExpandAll")</strong>
-                <strong  data-sf-role="collapseAll" style="display:none;">@Html.Resource("CollapseAll")</strong>
+                <a href="#" data-sf-role="expandAll">@Html.Resource("ExpandAll")</a>
+                <a href="#" data-sf-role="collapseAll" style="display:none;">@Html.Resource("CollapseAll")</a>
             </div>
 
         </div>
@@ -29,7 +27,7 @@
         foreach (var listItem in ((ListViewModel)item).ListItemViewModel.Items)
         {
             <div @Html.InlineEditingAttributes(Model.ProviderName, ((ListViewModel)item).ListItemViewModel.ContentType.FullName, (Guid)listItem.Fields.Id)>
-                <span @Html.InlineEditingFieldAttributes("Title", "ShortText") data-sf-role="toggleLink"><i class="sf-icon glyphicon glyphicon-chevron-right"></i>@listItem.Fields.Title</span>
+                <a href="#" @Html.InlineEditingFieldAttributes("Title", "ShortText") data-sf-role="toggleLink"><i class="sf-icon glyphicon glyphicon-chevron-right"></i>@listItem.Fields.Title</a>
                 <div @Html.InlineEditingFieldAttributes("Content", "LongText") style="display:none;">
                     @Html.Raw(@listItem.Fields.Content)
                 </div>

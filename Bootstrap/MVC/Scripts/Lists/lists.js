@@ -16,6 +16,8 @@
             else {
                 hideCollapseAllLink(wrapper);
             }
+
+            return false;
         });
 
         $('[data-sf-role=expandAll]').on('click', function () {
@@ -25,6 +27,7 @@
             var links = wrapper.find('[data-sf-role=toggleLink]');
             links.addClass('expanded');
             links.next('div').css('display', 'block');
+            return false;
         });
 
         $('[data-sf-role=collapseAll]').on('click', function () {
@@ -34,6 +37,7 @@
             var links = wrapper.find('[data-sf-role=toggleLink]');
             links.removeClass('expanded');
             links.next('div').css('display', 'none');
+            return false;
         });
 
         function expandElement(link) {
