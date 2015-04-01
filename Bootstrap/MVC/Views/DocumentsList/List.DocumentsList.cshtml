@@ -17,10 +17,10 @@
 					<a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">
 							<strong>@item.Fields.Title</strong>
 					</a>
-					<span class="text-muted">@item.Fields.Extension</span>
+					<span class="text-muted">(@item.Fields.Extension)</span>
 					<div>
 						<a href="@item.Fields.MediaUrl" target="_blank">Download</a>
-						<span class="text-muted">@(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB")</span>
+						<span class="text-muted">(@(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB"))</span>
 					</div>
 				</div>
 			</div>
