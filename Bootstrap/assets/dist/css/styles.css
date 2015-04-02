@@ -5951,6 +5951,15 @@ ul.sf-autocomplete {
 .sf-document-list--table .sf-title {
   margin-left: 10px; }
 
+.sf-list--expandable i {
+  margin-right: 5px; }
+.sf-list--expandable .sf-list-content {
+  margin-left: 20px; }
+.sf-list--expandable .sf-list-item > div {
+  margin-bottom: 5px; }
+.sf-list--expandable .sf-list-item h3:first-child {
+  margin-top: 0; }
+
 .sf-icon-blogger {
   background-image: url(../images/social-share-sprite.png);
   background-position: -16px 0px;
