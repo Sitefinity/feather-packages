@@ -8,21 +8,18 @@
 
 <div class="@Model.CssClass" data-sf-role="lists">
 
+    <div>
+        <a href="#" data-sf-role="expandAll">@Html.Resource("ExpandAll")</a>
+        <a href="#" data-sf-role="collapseAll" style="display:none;">@Html.Resource("CollapseAll")</a>
+    </div>
+
     @foreach (var item in Model.Items)
     {
-        <div class="row">
-            <div class="col-md-6">
-                <h3 @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id) @Html.InlineEditingFieldAttributes("Title", "ShortText")>
-                    @item.Fields.Title
-                </h3>
-            </div>
 
-            <div class="col-md-6">
-                <a href="#" data-sf-role="expandAll">@Html.Resource("ExpandAll")</a>
-                <a href="#" data-sf-role="collapseAll" style="display:none;">@Html.Resource("CollapseAll")</a>
-            </div>
+        <h3 @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id) @Html.InlineEditingFieldAttributes("Title", "ShortText")>
+            @item.Fields.Title
+        </h3>
 
-        </div>
         
         foreach (var listItem in ((ListViewModel)item).ListItemViewModel.Items)
         {
