@@ -8,6 +8,11 @@
 
 <div class="@Model.CssClass" data-sf-role="lists">
 
+    <div>
+        <strong data-sf-role="expandAll">@Html.Resource("ExpandAll")</strong>
+        <strong  data-sf-role="collapseAll" style="display:none;">@Html.Resource("CollapseAll")</strong>
+    </div>
+
     @foreach (var item in Model.Items)
     {
         <div class="row">
@@ -18,12 +23,6 @@
                     </span>
                 </h3>
             </div>
-
-            <div class="col-md-6">
-                <strong data-sf-role="expandAll">@Html.Resource("ExpandAll")</strong>
-                <strong  data-sf-role="collapseAll" style="display:none;">@Html.Resource("CollapseAll")</strong>
-            </div>
-
         </div>
         
         foreach (var listItem in ((ListViewModel)item).ListItemViewModel.Items)
