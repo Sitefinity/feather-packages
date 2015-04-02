@@ -11,17 +11,18 @@
 			<div class="media">
 				<div class="media-left">
 					<i class="icon-file icon-txt icon-md">
-							<span class="icon-txt-@(((DocumentItemViewModel)item).Extension)">@(((DocumentItemViewModel)item).Extension)</span>
+						<span class="icon-txt-@(((DocumentItemViewModel)item).Extension)">@(((DocumentItemViewModel)item).Extension)</span>
 					</i>
 				</div>
 				<div class="media-body">
 					<a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">
 							<strong>@item.Fields.Title</strong>
 					</a>
-					<span class="text-muted">@(((DocumentItemViewModel)item).Extension)</span>
+					<span class="text-muted">(@(((DocumentItemViewModel)item).Extension))</span>
+
 					<div>
 						<a href="@item.Fields.MediaUrl" target="_blank">Download</a>
-						<span class="text-muted">@(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB")</span>
+						<span class="text-muted">(@(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB"))</span>
 					</div>
 				</div>
 			</div>

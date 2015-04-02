@@ -5948,6 +5948,9 @@ ul.sf-autocomplete {
     background: #fff;
     border-radius: 50%; }
 
+.sf-document-list--table .sf-title {
+  margin-left: 10px; }
+
 .sf-icon-blogger {
   background-image: url(../images/social-share-sprite.png);
   background-position: -16px 0px;
