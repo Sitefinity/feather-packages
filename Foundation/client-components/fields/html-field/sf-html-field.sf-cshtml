@@ -22,7 +22,7 @@
     },
 	{
         name: "insertVideo",
-        template: "<a href=\"\" class=\"k-button custom-tool\" title=\"@(Res.Get<ClientComponentsResources>().InsertVideo)\" ng-click=\"openVideoSelector()\"><span class=\"glyphicon glyphicon-facetime-video\">@(Res.Get<ClientComponentsResources>().InsertVideo)</span></a>"
+        template: "<a href=\"\" class=\"k-button custom-tool\" title=\"@(Res.Get<ClientComponentsResources>().InsertVideo)\" ng-click=\"openVideoSelector()\"><span class=\"glyphicon glyphicon-facetime-video\"></span></a>"
     },
     "createTable", "addColumnLeft", "addColumnRight", "addRowAbove", "addRowBelow", "deleteRow", "deleteColumn",
     "cleanFormatting",
