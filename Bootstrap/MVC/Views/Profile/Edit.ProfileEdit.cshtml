@@ -34,6 +34,13 @@
             </div>
 
         </div> 
+		
+		@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+			<div>
+				@ViewBag.ErrorMessage
+			</div>
+        }
          
         <div class="col-md-9">
             <div class="form-group">

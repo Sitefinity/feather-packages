@@ -35,6 +35,11 @@
                 </div>
 
             </div>
+			
+			@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <div>@ViewBag.ErrorMessage</div>
+            }
 
             <div class="twelve wide column ui form">
 
