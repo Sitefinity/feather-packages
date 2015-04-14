@@ -23,34 +23,30 @@
                 <label>
                     @Html.Resource("Username")
                 </label>
-                <div class="row">
-                    <div class="col-xs-6">
-                        @Html.TextBoxFor(u => u.UserName, new { @class = "form-control" })
-                        @if(Html.ValidationMessage("UserName")!=null)
-                        {
-                            <div class="has-error">
-                                <span class="help-block">@Html.ValidationMessage("UserName")</span>
-                            </div>
-                        }  
+
+                @Html.TextBoxFor(u => u.UserName, new { @class = "form-control" })
+                @if(Html.ValidationMessage("UserName")!=null)
+                {
+                    <div class="has-error">
+                        <span class="help-block">@Html.ValidationMessage("UserName")</span>
                     </div>
-                </div>
+                }  
+
             </div>
 
             <div class="form-group">
                 <label>
                     @Html.Resource("Password")
                 </label>
-                <div class="row">
-                    <div class="col-xs-6">
-                        @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
-                        @if(Html.ValidationMessage("Password") != null)
-                        {
-                            <div class="has-error">
-                                <span class="help-block">@Html.ValidationMessage("Password")</span>
-                            </div>
-                        }  
-                   </div>
-                </div>
+
+                @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
+                @if(Html.ValidationMessage("Password") != null)
+                {
+                    <div class="has-error">
+                        <span class="help-block">@Html.ValidationMessage("Password")</span>
+                    </div>
+                }  
+
             </div>
 
             if (Model.ShowRememberMe)
