@@ -37,9 +37,14 @@
 		
 		@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
         {
-			<div>
-				@ViewBag.ErrorMessage
-			</div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="alert alert-danger">
+                        @ViewBag.ErrorMessage
+                    </div>
+                </div>
+            </div>
         }
          
         <div class="col-md-9">
