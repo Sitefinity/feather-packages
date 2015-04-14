@@ -5,12 +5,12 @@
 @using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
 @using Telerik.Sitefinity.Modules.Pages;
 
-@Html.Script(ScriptRef.JQuery)
+@Html.Script(ScriptRef.JQuery, sectionName: "top")
 
-@Html.StyleSheet(Url.WidgetContent("assets/magnific/magnific-popup.css"))
+@Html.StyleSheet(Url.WidgetContent("assets/magnific/magnific-popup.css"), sectionName: "head")
 
-@Html.Script(Url.WidgetContent("assets/magnific/jquery.magnific-popup.min.js"))
-@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/overlay-gallery.js"))
+@Html.Script(Url.WidgetContent("assets/magnific/jquery.magnific-popup.min.js"), sectionName: "bottom")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/overlay-gallery.js"), sectionName: "bottom")
 
 <div class="sf-Gallery-thumbs-container">
   <div class="sf-Gallery-thumbs clearfix @Model.CssClass">

@@ -32,14 +32,14 @@
 @* The inline editing functionality is loading jQuery too. *@
 @if (!SystemManager.IsDesignMode && !ControlExtensions.InlineEditingIsEnabled())
 {
-    @Html.Script(ResourceHelper.GetWebResourceUrl(ScriptRef.JQuery))
+    @Html.Script(ResourceHelper.GetWebResourceUrl(ScriptRef.JQuery), sectionName: "top")
 }
 
 @* Avoid conflicts because the designer is loading jQuery too. *@
 @if (!SystemManager.IsDesignMode)
 {
 
-    @Html.Script(ResourceHelper.GetWebResourceUrl(ScriptRef.JQueryUI))
+    @Html.Script(ResourceHelper.GetWebResourceUrl(ScriptRef.JQueryUI), sectionName: "top")
 }
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/SearchBox/Search-box.js"))
+@Html.Script(Url.WidgetContent("Mvc/Scripts/SearchBox/Search-box.js"), sectionName: "bottom")

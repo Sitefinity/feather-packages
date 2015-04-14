@@ -150,5 +150,5 @@
         
 </div>
 
-@Html.Script(ScriptRef.JQuery)
-@Html.Script(Url.WidgetContent("Mvc/Scripts/SearchResults/Search-results.js"))
+@Html.Script(ScriptRef.JQuery, sectionName: "top")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/SearchResults/Search-results.js"), sectionName: "bottom")
