@@ -5,8 +5,9 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery)
-@Html.Script(Url.WidgetContent("assets/dist/js/semantic.min.js"))
+@Html.Script(ScriptRef.JQuery, sectionName: "top")
+@Html.Script(Url.WidgetContent("assets/dist/js/semantic.min.js"), sectionName: "top")
+@Html.Script(Url.WidgetContent("MVC/Scripts/Navigation/Navigation-semantic.js"), sectionName: "bottom")
 
 <div class="@Model.CssClass">
 @* @Html.Action("GetView", new { viewName = "Dropdown",  model= Model}) *@
@@ -89,7 +90,3 @@
         @Html.Raw("active");
     }
 }
-
-<script>
-$(".menu .dropdown").dropdown();
-</script>
