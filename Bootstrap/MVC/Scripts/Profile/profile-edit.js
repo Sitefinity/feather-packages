@@ -15,6 +15,7 @@
             e.preventDefault();
 
             changePasswordHolder.toggle();
+            $(this).hide();
         });
 
         //$('[data-sf-role=edit-profile-delete-picture-button]').on('click', function (e) {
