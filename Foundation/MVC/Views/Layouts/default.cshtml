@@ -1,6 +1,8 @@
-@using Telerik.Sitefinity.Frontend.Mvc.Helpers
+@using System.Web.Mvc;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Services;
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +23,9 @@
   </div>
   
   @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
-  @if (!SitefinityContext.IsBackend && ControlExtensions.InlineEditingIsEnabled())
+  @if (!SitefinityContext.IsBackend 
+		&& ControlExtensions.InlineEditingIsEnabled() 
+		&& !SystemManager.CurrentHttpContext.Request.IsAjaxRequest())
   {
     @Html.Script(ScriptRef.MicrosoftAjax, sectionName: "top")
     @Html.Script(ScriptRef.MicrosoftAjaxCore, sectionName: "top")
