@@ -48,102 +48,70 @@
                 </p>
             }
 
-            <div class="two fields">
-
-                <div class="field">
-                    <label>
-                        @Html.Resource("FirstName")
-                    </label>
-                    @Html.TextBox("Profile[FirstName]")
-                </div>
-
-                <div class="field"></div>
+            <div class="field">
+                <label>
+                    @Html.Resource("FirstName")
+                </label>
+                @Html.TextBox("Profile[FirstName]")
             </div>
 
-            <div class="two fields">
-
-                <div class="field">
-                    <label>
-                        @Html.Resource("LastName")
-                        @Html.TextBox("Profile[LastName]")
-                    </label>
-                </div>
-
-                <div class="field"></div>
+            <div class="field">
+                <label>
+                    @Html.Resource("LastName")
+                    @Html.TextBox("Profile[LastName]")
+                </label>
             </div>
 
-            <div class="two fields">
-
-                <div class="field">
-                    <label>
-                        @Html.Resource("Email")
-                        @Html.TextBoxFor(m => m.Email, new { type = "email" })
-                    </label>
-                    @if (Html.ValidationMessageFor(m => m.Email) != null)
-                    {
-                        <div class="ui red pointing prompt label transition visible">
-                            @Html.ValidationMessageFor(m => m.Email)
-                        </div>
-                    }
-                </div>
-
-                <div class="field"></div>
-
+            <div class="field">
+                <label>
+                    @Html.Resource("Email")
+                    @Html.TextBoxFor(m => m.Email, new { type = "email" })
+                </label>
+                @if (Html.ValidationMessageFor(m => m.Email) != null)
+                {
+                    <div class="ui red pointing prompt label transition visible">
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                }
             </div>
 
-           <div class="two fields">
-
-               <div class="field">
-                    <label>
-                        @Html.Resource("UserName")
-                    </label>
-                    @Html.TextBoxFor(m => m.UserName)
-                    @if (Html.ValidationMessageFor(m => m.UserName) != null)
-                    {
-                        <div class="ui red pointing prompt label transition visible">
-                            @Html.ValidationMessageFor(m => m.UserName)
-                        </div>
-                    }
-               </div>
-
-               <div class="field"></div>
+            <div class="field">
+                <label>
+                    @Html.Resource("UserName")
+                </label>
+                @Html.TextBoxFor(m => m.UserName)
+                @if (Html.ValidationMessageFor(m => m.UserName) != null)
+                {
+                    <div class="ui red pointing prompt label transition visible">
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                }
             </div>
 
-           <div class="two fields">
-
-               <div class="field">
-                    <label>
-                        @Html.Resource("Password")
-                    </label>
-                    @Html.PasswordFor(m => m.Password)
-                    @if (Html.ValidationMessageFor(m => m.Password) != null)
-                    {
-                        <div class="ui red pointing prompt label transition visible">
-                            @Html.ValidationMessageFor(m => m.Password)
-                        </div>
-                    }
-               </div>
-
-               <div class="field"></div>
-
+            <div class="field">
+                <label>
+                    @Html.Resource("Password")
+                </label>
+                @Html.PasswordFor(m => m.Password)
+                @if (Html.ValidationMessageFor(m => m.Password) != null)
+                {
+                    <div class="ui red pointing prompt label transition visible">
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                }
             </div>
 
-            <div class="two fields">
-
-                <div class="field">
-                    <label>
-                        @Html.Resource("ReTypePassword")
-                    </label>
-                    @Html.PasswordFor(m => m.ReTypePassword)
-                    @if (Html.ValidationMessageFor(m => m.ReTypePassword) != null)
-                    {
-                        <div class="ui red pointing prompt label transition visible">
-                            @Html.ValidationMessageFor(m => m.ReTypePassword)
-                        </div>
-                    }
-                </div>
-
-                <div class="field"></div>
+            <div class="field">
+                <label>
+                    @Html.Resource("ReTypePassword")
+                </label>
+                @Html.PasswordFor(m => m.ReTypePassword)
+                @if (Html.ValidationMessageFor(m => m.ReTypePassword) != null)
+                {
+                    <div class="ui red pointing prompt label transition visible">
+                        @Html.ValidationMessageFor(m => m.ReTypePassword)
+                    </div>
+                }
             </div>
 
             
