@@ -82,6 +82,7 @@
 
             </div>
         
+			if(!Model.EmailAddressShouldBeTheUsername){
             <div class="form-group">
                 <label>
                     @Html.Resource("UserName")
@@ -97,7 +98,8 @@
                 } 
 
             </div>
-        
+			}
+			
             <div class="form-group">
                 <label>
                     @Html.Resource("Password")
