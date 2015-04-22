@@ -27,41 +27,31 @@
                 <p class="ui red label">@Html.Resource("IncorrectCredentialsMessage")</p>
                 
                 }
-                <div class="two fields">
 
-                    <div class="field">
-                        <label>
-                            @Html.Resource("Username")
-                        </label>
-                        @Html.TextBoxFor(u => u.UserName)
-                        @if(Html.ValidationMessage("UserName")!=null)
-                        {
-                            <div class="ui red pointing prompt label transition visible">@Html.ValidationMessage("UserName")</div>
-                        }
-                    </div>
-
-                    <div class="field"></div>
+                <div class="field">
+                    <label>
+                        @Html.Resource("Username")
+                    </label>
+                    @Html.TextBoxFor(u => u.UserName)
+                    @if(Html.ValidationMessage("UserName")!=null)
+                    {
+                        <div class="ui red pointing prompt label transition visible">@Html.ValidationMessage("UserName")</div>
+                    }
                 </div>
 
-                <div class="two fields">
-
-                    <div class="field">
-                        <label>
-                            @Html.Resource("Password")
-                        </label>
-                         @Html.PasswordFor(u => u.Password)
-                         @if (Html.ValidationMessage("Password") != null)
-                         {
-                            <div class="ui red pointing prompt label transition visible">@Html.ValidationMessage("Password")</div>
-                         }
-                    </div>
-                   
-                    <div class="field"></div>
+                <div class="field">
+                    <label>
+                        @Html.Resource("Password")
+                    </label>
+                        @Html.PasswordFor(u => u.Password)
+                        @if (Html.ValidationMessage("Password") != null)
+                        {
+                        <div class="ui red pointing prompt label transition visible">@Html.ValidationMessage("Password")</div>
+                        }
                 </div>
 
                 @if (Model.ShowRememberMe)
                 {
-                <div class="two fields">
 
                     <div class="field">
                         <label>
@@ -69,9 +59,6 @@
                         </label>
                         @Html.Resource("RememberMe")
                     </div>
-
-                    <div class="field"></div>
-                </div>
                 }
 
                <input type="submit" class="ui submit button" value='@Html.Resource("LoginFormLogInButton")' />
