@@ -5812,6 +5812,29 @@ body[contenteditable="true"] {
 .sf-Gallery-navigation {
   margin: 5px 0 30px; }
 
+.sf-Gallery-thumbs.sf-Gallery-thumbs--video > div {
+  display: inline-block;
+  margin: 0 5px 10px;
+  border: 5px solid transparent;
+  width: 160px;
+  height: 170px;
+  cursor: pointer; }
+.sf-Gallery-thumbs.sf-Gallery-thumbs--video a {
+  display: block;
+  margin: 0;
+  border: 0;
+  width: 160px;
+  height: 130px;
+  overflow: hidden;
+  cursor: pointer; }
+.sf-Gallery-thumbs.sf-Gallery-thumbs--video h3 {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 .right-caret {
   display: inline-block;
   width: 0;
