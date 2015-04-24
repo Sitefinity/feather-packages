@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
+@model Telerik.Sitefinity.Frontend.Blogs.Mvc.Models.Blog.BlogDetailsViewModel
 
 @using Telerik.Sitefinity;
 @using Telerik.Sitefinity.Frontend.Blogs.Mvc.Helpers;
@@ -9,9 +9,8 @@
     <h3>
         <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</span>
     </h3>
-
-
-            <p class="text-muted">@string.Format(Html.Resource("PostsCount"), ((Telerik.Sitefinity.Frontend.Blogs.Mvc.Models.Blog.BlogDetailsViewModel)Model).PostsCount)</p>
+	
+		<p class="text-muted">@string.Format(Html.Resource("PostsCount"), Model.PostsCount)</p>
         @{
             var lastPostDate = Model.Item.GetLastPostDate();
             if (lastPostDate!=null && lastPostDate.HasValue)
