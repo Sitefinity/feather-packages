@@ -11,7 +11,7 @@
     </h3>
 
 
-            <p class="text-muted">@string.Format(Html.Resource("PostsCount"), ((Telerik.Sitefinity.Frontend.Blogs.Mvc.Models.Blog.BlogDetailsViewModel)Model).BlogsCount)</p>
+            <p class="text-muted">@string.Format(Html.Resource("PostsCount"), ((Telerik.Sitefinity.Frontend.Blogs.Mvc.Models.Blog.BlogDetailsViewModel)Model).PostsCount)</p>
         @{
             var lastPostDate = Model.Item.GetLastPostDate();
             if (lastPostDate!=null && lastPostDate.HasValue)
