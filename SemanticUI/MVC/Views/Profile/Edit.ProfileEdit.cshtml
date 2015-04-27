@@ -5,14 +5,14 @@
 @using Telerik.Sitefinity.UI.MVC;
 @using Telerik.Sitefinity.Utilities;
 
-@Html.Script(ScriptRef.JQuery, sectionName: "top")
-@Html.Script("http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", sectionName: "top")
-@Html.Script("http://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", sectionName: "top")
+@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script("http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top")
+@Html.Script("http://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
 
 <div class="@Model.CssClass">
     @if (Model.ShowProfileChangedMsg)
     {
-        <div>@Html.Resource("ChangesAreSaved")</div>
+        <div class="ui success message">@Html.Resource("ChangesAreSaved")</div>
     }
 
     @using (Html.BeginFormSitefinity("Index", "EditProfileForm", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -43,52 +43,39 @@
                     <p class="ui red label">@ViewBag.ErrorMessage</p>
                 }
 
-                <div class="two fields">
-                    <div class="field">
-                        <label>
-                            @Html.Resource("EditProfileFirstName")
-                        </label>
+   
+                <div class="field">
+                    <label>
+                        @Html.Resource("EditProfileFirstName")
+                    </label>
 
-                        @Html.TextBoxFor(u => u.Profile["FirstName"])
-                        @if(Html.ValidationMessageFor(u => u.Profile["FirstName"])!=null){
-                            <div class="ui red pointing prompt label transition visible">
-                                @Html.ValidationMessageFor(u => u.Profile["FirstName"])
-                            </div>
-                        }
-                    </div>
+                    @Html.TextBoxFor(u => u.Profile["FirstName"])
+                    @if(Html.ValidationMessageFor(u => u.Profile["FirstName"])!=null){
+                        <div class="ui red pointing prompt label transition visible">
+                            @Html.ValidationMessageFor(u => u.Profile["FirstName"])
+                        </div>
+                    }
+                </div>
+   
+                <div class="field">
+                    <label>
+                        @Html.Resource("EditProfileLastName")
+                    </label>
 
-                    <div class="field"></div>
+                    @Html.TextBoxFor(u => u.Profile["LastName"])
+                    @if(Html.ValidationMessageFor(u => u.Profile["LastName"])!=null){
+                        <div class="ui red pointing prompt label transition visible">
+                                @Html.ValidationMessageFor(u => u.Profile["LastName"])
+                        </div>
+                    }
                 </div>
 
-                <div class="two fields">
+                <div class="field">
+                    <label>
+                        @Html.Resource("EditProfileAbout")
 
-                    <div class="field">
-                        <label>
-                            @Html.Resource("EditProfileLastName")
-                        </label>
-
-                        @Html.TextBoxFor(u => u.Profile["LastName"])
-                        @if(Html.ValidationMessageFor(u => u.Profile["LastName"])!=null){
-                            <div class="ui red pointing prompt label transition visible">
-                                 @Html.ValidationMessageFor(u => u.Profile["LastName"])
-                            </div>
-                        }
-                    </div>
-
-                    <div class="field"></div>
-                </div>
-
-                <div class="two fields">
-
-                    <div class="field">
-                        <label>
-                            @Html.Resource("EditProfileAbout")
-
-                            @Html.TextBoxFor(u => u.Profile["About"])
-                        </label>
-                    </div>
-
-                    <div class="field"></div>
+                        @Html.TextBoxFor(u => u.Profile["About"])
+                    </label>
                 </div>
 
                 <div><a href="#" data-sf-role="edit-profile-change-password-button">@Html.Resource("EditProfileChangePasswordButton")</a></div>
@@ -97,56 +84,44 @@
 
                     <h4>@Html.Resource("EditProfileEditChangePasswordHeader")</h4>
 
-                    <div class="two fields">
-
-                        <div class="field">
-                            <label>
-                                @Html.Resource("EditProfileOldPassword")
-                                @Html.PasswordFor(u => u.OldPassword, new { autocomplete = "off" })
-                            </label>
-                        </div>
-
-                        @if(Html.ValidationMessageFor(u => u.OldPassword)!=null){
-                            <div class="ui red pointing prompt label transition visible">
-                                 @Html.ValidationMessageFor(u => u.OldPassword)
-                            </div>
-                        }
-                        <div class="field"></div>
+                    <div class="field">
+                        <label>
+                            @Html.Resource("EditProfileOldPassword")
+                            @Html.PasswordFor(u => u.OldPassword, new { autocomplete = "off" })
+                        </label>
                     </div>
 
-                    <div class="two fields">
-
-                        <div class="field">
-                            <label>
-                                @Html.Resource("EditProfileNewPassword")
-                                @Html.PasswordFor(u => u.NewPassword)
-                            </label>
+                    @if(Html.ValidationMessageFor(u => u.OldPassword)!=null){
+                        <div class="ui red pointing prompt label transition visible">
+                                @Html.ValidationMessageFor(u => u.OldPassword)
                         </div>
+                    }
 
-                        @if(Html.ValidationMessageFor(u => u.NewPassword)!=null){
-                            <div class="ui red pointing prompt label transition visible">
-                                 @Html.ValidationMessageFor(u => u.NewPassword)
-                            </div>
-                        }
-                        <div class="field"></div>
+                    <div class="field">
+                        <label>
+                            @Html.Resource("EditProfileNewPassword")
+                            @Html.PasswordFor(u => u.NewPassword)
+                        </label>
                     </div>
 
-                    <div class="two fields">
-
-                        <div class="field">
-                            <label>
-                                @Html.Resource("EditProfileRepeatPassword")
-                                @Html.PasswordFor(u => u.RepeatPassword)
-                            </label>
+                    @if(Html.ValidationMessageFor(u => u.NewPassword)!=null){
+                        <div class="ui red pointing prompt label transition visible">
+                                @Html.ValidationMessageFor(u => u.NewPassword)
                         </div>
+                    }
 
-                        @if(Html.ValidationMessageFor(u => u.RepeatPassword)!=null){
-                            <div class="ui red pointing prompt label transition visible">
-                                 @Html.ValidationMessageFor(u => u.RepeatPassword)
-                            </div>
-                        }
-                        <div class="field"></div>
+                    <div class="field">
+                        <label>
+                            @Html.Resource("EditProfileRepeatPassword")
+                            @Html.PasswordFor(u => u.RepeatPassword)
+                        </label>
                     </div>
+
+                    @if(Html.ValidationMessageFor(u => u.RepeatPassword)!=null){
+                        <div class="ui red pointing prompt label transition visible">
+                                @Html.ValidationMessageFor(u => u.RepeatPassword)
+                        </div>
+                    }
 
                 </div>
 
@@ -166,4 +141,4 @@
 
 <input type="hidden" data-sf-role="has-password-errors" value="@hasPasswordErrors.ToString().ToLowerInvariant()" />
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Profile/profile-edit.js"), sectionName: "bottom")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Profile/profile-edit.js"), "bottom")

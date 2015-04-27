@@ -6,9 +6,9 @@
 @using Telerik.Sitefinity.Services;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery, sectionName: "top")
-@Html.Script("http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", sectionName: "top")
-@Html.Script("http://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", sectionName: "top")
+@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script("http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top")
+@Html.Script("http://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
 
 <div class="@Model.CssClass">
     @if (Telerik.Sitefinity.Security.SecurityManager.GetCurrentUserId() == Guid.Empty || SystemManager.IsInlineEditingMode || SystemManager.IsDesignMode)
@@ -27,41 +27,31 @@
                 <p class="ui red label">@Html.Resource("IncorrectCredentialsMessage")</p>
                 
                 }
-                <div class="two fields">
 
-                    <div class="field">
-                        <label>
-                            @Html.Resource("Username")
-                        </label>
-                        @Html.TextBoxFor(u => u.UserName)
-                        @if(Html.ValidationMessage("UserName")!=null)
-                        {
-                            <div class="ui red pointing prompt label transition visible">@Html.ValidationMessage("UserName")</div>
-                        }
-                    </div>
-
-                    <div class="field"></div>
+                <div class="field">
+                    <label>
+                        @Html.Resource("Username")
+                    </label>
+                    @Html.TextBoxFor(u => u.UserName)
+                    @if(Html.ValidationMessage("UserName")!=null)
+                    {
+                        <div class="ui red pointing prompt label transition visible">@Html.ValidationMessage("UserName")</div>
+                    }
                 </div>
 
-                <div class="two fields">
-
-                    <div class="field">
-                        <label>
-                            @Html.Resource("Password")
-                        </label>
-                         @Html.PasswordFor(u => u.Password)
-                         @if (Html.ValidationMessage("Password") != null)
-                         {
-                            <div class="ui red pointing prompt label transition visible">@Html.ValidationMessage("Password")</div>
-                         }
-                    </div>
-                   
-                    <div class="field"></div>
+                <div class="field">
+                    <label>
+                        @Html.Resource("Password")
+                    </label>
+                        @Html.PasswordFor(u => u.Password)
+                        @if (Html.ValidationMessage("Password") != null)
+                        {
+                        <div class="ui red pointing prompt label transition visible">@Html.ValidationMessage("Password")</div>
+                        }
                 </div>
 
                 @if (Model.ShowRememberMe)
                 {
-                <div class="two fields">
 
                     <div class="field">
                         <label>
@@ -69,9 +59,6 @@
                         </label>
                         @Html.Resource("RememberMe")
                     </div>
-
-                    <div class="field"></div>
-                </div>
                 }
 
                <input type="submit" class="ui submit button" value='@Html.Resource("LoginFormLogInButton")' />
@@ -98,4 +85,4 @@
     }
 </div>
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginForm/login-form.js"), sectionName: "bottom")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginForm/login-form.js"), "bottom")

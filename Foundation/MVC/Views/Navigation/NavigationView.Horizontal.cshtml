@@ -5,8 +5,8 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery, sectionName: "top")
-@Html.Script(Url.WidgetContent("assets/dist/js/foundation.min.js"), sectionName: "top")
+@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script(Url.WidgetContent("assets/dist/js/foundation.min.js"), "top")
 
 <div class="@Model.CssClass">
 
@@ -91,6 +91,6 @@
     }
 }
 
-@Html.Script(Url.WidgetContent("assets/dist/js/foundation.topbar.min.js"), sectionName: "bottom")
-@Html.Script(Url.WidgetContent("assets/dist/js/foundation.init.js"), sectionName: "bottom")
+@Html.Script(Url.WidgetContent("assets/dist/js/foundation.topbar.min.js"), "bottom")
+@Html.Script(Url.WidgetContent("assets/dist/js/foundation.init.js"), "bottom")
 

@@ -14,16 +14,14 @@
 
 				<div>
 					@item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
-          @Html.Resource("By")
-          @DataResolver.Resolve(item.DataItem, "Author", null)
+                    @Html.Resource("By")
+                    @DataResolver.Resolve(item.DataItem, "Author", null)
 				</div>
 
-				<br />
-
 				<div @Html.InlineEditingFieldAttributes("Summary", "ShortText")>@Html.Raw(item.Fields.Summary)</div>
-
 				<a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">@Html.Resource("FullStory")</a>
-			</div>
+			
+            </div>
         }
     </div>
 
