@@ -59,14 +59,14 @@
                         }
                     }
                 </div>
-            }            
+            }
 
-            <ul class="no-bullet sf-search-results">
+            <ul class="no-bullet media-list sf-search-results">
                 @foreach (var item in Model.Results.Data)
                 {
                     var hasLink = item.GetValue("Link") != null && !String.IsNullOrEmpty(item.GetValue("Link").ToString());
-                   
-                    <li class="media sf-media">  
+
+                    <li class="media sf-media">
                         @if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Image).ToString())
                         {
                             <div class="left sf-img-thmb">
@@ -74,7 +74,7 @@
                                     <img src="@item.GetValue("Link")" alt="@item.GetValue("Title")" width="120"/>
                                 </a>
                             </div>
-                
+
                         }
 
                         else if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Video).ToString())
@@ -85,18 +85,18 @@
                             if (video != null)
                             {
                                 var thumbUrl = video.ThumbnailUrl;
-                  
+
                                 <div class="left sf-video-thmb">
 
                                     <a href="@item.GetValue("Link")">
                                         <img src="@thumbUrl" alt="@item.GetValue("Title")" width="120"/>
-                               
+
                                         <div class="sf-icon-play"></div>
-                                
+
                                     </a>
 
                                 </div>
-                    
+
                             }
 
                         }
@@ -123,7 +123,7 @@
                     <a href="@item.GetValue("Link")">@item.GetValue("Link")</a>
                     }
               </div>
-            </li>   
+            </li>
                 }
 
              </ul>
@@ -137,7 +137,7 @@
                     {
                         <em>@Model.ItemsPerPage of @Model.Results.TotalCount results</em>
                     }
-                    
+
                     @Html.Action("Index", "ContentPager", new
                {
                    currentPage = Model.CurrentPage,
@@ -150,7 +150,7 @@
         <input type="hidden" data-sf-role="searchResIndexCatalogue" value="@Request.QueryString["indexCatalogue"]" />
         <input type="hidden" data-sf-role="searchResQuery" value='@Request.QueryString["searchQuery"]' />
         <input type="hidden" data-sf-role="searchResWordsMode" value='@Request.QueryString["wordsMode"]' />
-        
+
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/SearchResults/Search-results.js"), "bottom")
