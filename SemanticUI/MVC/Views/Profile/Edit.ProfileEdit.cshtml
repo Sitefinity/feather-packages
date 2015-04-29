@@ -36,7 +36,7 @@
 
             </div>
 			
-            <p class="twelve wide column ui form">
+            <div class="twelve wide column ui form">
 
                 @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
                 {
@@ -129,7 +129,7 @@
                 <input class="ui submit button" data-sf-role="profile-submit" type="submit" value='@Html.Resource("EditProfileSave")' />
                 @Html.ActionLink(Html.Resource("EditProfileCancel"), "Index")
 
-            </p>
+            </div>
 
        </div>
     }
