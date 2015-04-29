@@ -15,15 +15,14 @@
     {
         foreach (var item in Model.Items)
         {
-            <div class="media sf-media" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id)>
+            <div class="media sf-media">
                 <div class="media-left sf-img-thmb">
                     <img class="media-object" src="@((item as SitefinityProfileItemViewModel).AvatarImageUrl)" alt="@item.Fields.FirstName" width="100" height="100" />
                 </div>
 
                 <div class="media-body sf-media-body">
                     <h3>
-                        <a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)"
-                           @Html.InlineEditingFieldAttributes("FirstName", "ShortText")>
+                        <a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">
                             @(((SitefinityProfile)item.DataItem).GetUserDisplayName())
                         </a>
                     </h3>
@@ -46,8 +45,7 @@
             foreach (var item in Model.Items)
             {
                 <h3>
-                    <a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)"
-                       @Html.InlineEditingFieldAttributes("FirstName", "ShortText")>@item.Fields.FirstName</a>
+                    <a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">@item.Fields.FirstName</a>
                 </h3>
             }
         }
