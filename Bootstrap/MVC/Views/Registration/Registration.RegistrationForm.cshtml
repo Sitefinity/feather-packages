@@ -7,8 +7,8 @@
 
 @*Add scripts and stylesheets*@
 @Html.Script(ScriptRef.JQuery, "top")
-@Html.Script("http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top")
-@Html.Script("http://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top")
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
 
 <div class="@Model.CssClass">
     @if (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg)
@@ -18,11 +18,11 @@
         </h3>
 
         <p>@string.Format(Html.Resource("ActivationLinkHasBeenSent"), Model.Email)</p>
-        <a data-sf-role="sendAgainLink">@Html.Resource("SendAgain")</a>
+        <a data-sf-role="sendAgainLink" class="btn btn-primary">@Html.Resource("SendAgain")</a>
 
         <div data-sf-role="confirmationResendInfo" style="display:none;">
             @string.Format(Html.Resource("ActivationLinkHasBeenSentAgain"), Model.Email)
-            <a data-sf-role="sendAgainLink">@Html.Resource("SendAgain")</a>
+            <a data-sf-role="sendAgainLink" class="btn btn-primary">@Html.Resource("SendAgain")</a>
         </div>
 
         <input type="hidden" data-sf-role="sf-resend-confirmation-endpoint-url" value="@Url.Action("ResendConfirmationEmail", new { email = Model.Email})" />
@@ -82,6 +82,7 @@
 
             </div>
         
+			if(!Model.EmailAddressShouldBeTheUsername){
             <div class="form-group">
                 <label>
                     @Html.Resource("UserName")
@@ -97,7 +98,8 @@
                 } 
 
             </div>
-        
+			}
+			
             <div class="form-group">
                 <label>
                     @Html.Resource("Password")
