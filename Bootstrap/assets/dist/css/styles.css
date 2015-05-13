@@ -5742,11 +5742,6 @@ img.mfp-img {
   width: 120px;
   height: 90px;
   overflow: hidden; }
-.sf-media .sf-img-thmb.sf-img-thmb--NoLink {
-  display: block;
-  width: 120px;
-  height: 90px;
-  overflow: hidden; }
 .sf-media .sf-video-thmb {
   position: relative;
   width: 120px;
@@ -5987,6 +5982,20 @@ ul.sf-autocomplete {
   margin-bottom: 5px; }
 .sf-list--expandable .sf-list-item h3:first-child {
   margin-top: 0; }
+
+.sf-lang-selector.list-inline > li {
+  padding-right: 0; }
+.sf-lang-selector a {
+  display: block;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 8px; }
+  .sf-lang-selector a.selected {
+    background-color: #f2f2f2;
+    color: #333; }
+.sf-lang-selector label select {
+  display: block;
+  font-weight: normal; }
 
 .sf-icon-blogger {
   background-image: url(../images/social-share-sprite.png);
