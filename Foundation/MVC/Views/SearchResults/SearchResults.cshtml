@@ -10,7 +10,7 @@
 
             <div class="row">
 
-              <div class="large-8 columns">
+              <div class="large-7 columns">
                  @if (@Model.Results.TotalCount > 0)
                  {
                     <h1>@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
@@ -21,21 +21,18 @@
                  }
               </div>
 
-              <div class="large-4 columns">
+              <div class="large-5 columns">
                @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
                {
-                  <div class="row">
-                    <div class="small-5 columns text-right">
-                        <span>@Html.Resource("SortBy")</span>
-                    </div>
-                    <div class="small-7 columns">
+
+                    <label>@Html.Resource("SortBy")
                         <select class="userSortDropdown">
                             <option value="@OrderByOptions.Relevance" @(Model.OrderBy == OrderByOptions.Relevance ? "selected=selected" : "")>@Html.Resource("Relevance")</option>
                             <option value="@OrderByOptions.Newest" @(Model.OrderBy == OrderByOptions.Newest ? "selected=selected" : "")>@Html.Resource("NewestFirst")</option>
                             <option value="@OrderByOptions.Oldest" @(Model.OrderBy == OrderByOptions.Oldest ? "selected=selected" : "")>@Html.Resource("OldestFirst")</option>
                         </select>
-                    </div>
-                  </div>
+                    </label>
+             
                }
 
               </div>
