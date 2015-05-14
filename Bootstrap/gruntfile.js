@@ -141,10 +141,10 @@ module.exports = function (grunt) {
 		// Sprite generation
 		sprite:{
 			all: {
-				src: 'assets/src/images/social-share/*.png',
-				dest: 'assets/src/images/social-share-sprite.png',
-				destCss: 'assets/src/sass/_sf-social-share-sprite.sass',
-				cssTemplate: 'assets/src/sass/social-share-sprite.mustache'
+				src: 'assets/src/images/sprite/*.png',
+				dest: 'assets/src/images/sprite.png',
+				destCss: 'assets/src/sass/_sf-sprite.sass',
+				cssTemplate: 'assets/src/sass/sf-sprite.mustache'
 			}
 		},
 

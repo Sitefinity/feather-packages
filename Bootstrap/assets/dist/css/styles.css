@@ -5997,74 +5997,108 @@ ul.sf-autocomplete {
   display: block;
   font-weight: normal; }
 
+.sf-Comments .sf-loading {
+  margin-bottom: 15px; }
+
+[data-sf-role="error-message"], [data-sf-role="list-loading-indicator"], [data-sf-role="list-loading-indicator"], [data-sf-role="comments-new-message-error"], [data-sf-role="comments-new-logged-out-view"], [data-sf-role="comments-new-name-error"], [data-sf-role="captcha-container"], [data-sf-role="single-comment-template"] {
+  display: none; }
+
+.sf-Comments-header {
+  margin-bottom: 30px; }
+  .sf-Comments-header h3 {
+    display: inline-block;
+    margin-top: 0;
+    margin-right: 20px; }
+  .sf-Comments-header a {
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 5px; }
+  .sf-Comments-header .selected {
+    color: #333; }
+
+.sf-Comments-list {
+  margin-bottom: 30px; }
+  .sf-Comments-list .sf-Comments-list-author {
+    padding-right: 5px;
+    border-right: 1px solid #ccc; }
+
+.sf-Comments-form textarea {
+  min-height: 90px; }
+
 .sf-icon-blogger {
-  background-image: url(../images/social-share-sprite.png);
+  background-image: url(../images/sprite.png);
   background-position: -16px 0px;
   width: 16px;
   height: 16px; }
 
 .sf-icon-delicious {
-  background-image: url(../images/social-share-sprite.png);
+  background-image: url(../images/sprite.png);
   background-position: 0px -32px;
   width: 16px;
   height: 16px; }
 
 .sf-icon-digg {
-  background-image: url(../images/social-share-sprite.png);
+  background-image: url(../images/sprite.png);
   background-position: 0px -16px;
   width: 16px;
   height: 16px; }
 
-.sf-icon-facebook {
-  background-image: url(../images/social-share-sprite.png);
-  background-position: -16px -16px;
-  width: 16px;
-  height: 16px; }
+.sf-icon-email {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -48px;
+  width: 19px;
+  height: 13px; }
 
-.sf-icon-google {
-  background-image: url(../images/social-share-sprite.png);
+.sf-icon-facebook {
+  background-image: url(../images/sprite.png);
   background-position: -32px 0px;
   width: 16px;
   height: 16px; }
 
-.sf-icon-linkedin {
-  background-image: url(../images/social-share-sprite.png);
+.sf-icon-google {
+  background-image: url(../images/sprite.png);
   background-position: -32px -16px;
   width: 16px;
   height: 16px; }
 
-.sf-icon-mailto {
-  background-image: url(../images/social-share-sprite.png);
+.sf-icon-linkedin {
+  background-image: url(../images/sprite.png);
   background-position: 0px 0px;
   width: 16px;
   height: 16px; }
 
-.sf-icon-myspace {
-  background-image: url(../images/social-share-sprite.png);
+.sf-icon-mailto {
+  background-image: url(../images/sprite.png);
   background-position: -16px -32px;
   width: 16px;
   height: 16px; }
 
-.sf-icon-reddit {
-  background-image: url(../images/social-share-sprite.png);
+.sf-icon-myspace {
+  background-image: url(../images/sprite.png);
   background-position: -32px -32px;
   width: 16px;
   height: 16px; }
 
-.sf-icon-stumble-upon {
-  background-image: url(../images/social-share-sprite.png);
+.sf-icon-reddit {
+  background-image: url(../images/sprite.png);
   background-position: -48px 0px;
   width: 16px;
   height: 16px; }
 
-.sf-icon-tumblr {
-  background-image: url(../images/social-share-sprite.png);
+.sf-icon-stumble-upon {
+  background-image: url(../images/sprite.png);
   background-position: -48px -16px;
   width: 16px;
   height: 16px; }
 
+.sf-icon-tumblr {
+  background-image: url(../images/sprite.png);
+  background-position: -16px -16px;
+  width: 16px;
+  height: 16px; }
+
 .sf-icon-twitter {
-  background-image: url(../images/social-share-sprite.png);
+  background-image: url(../images/sprite.png);
   background-position: -48px -32px;
   width: 16px;
   height: 16px; }
