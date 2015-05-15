@@ -37,7 +37,7 @@
 
     @if(Model.EnablePaging)
     {
-        <a href="#" data-sf-role="comments-load-more-button">@Html.Resource("LoadMoreComments")</a>
+        <a href="#" data-sf-role="comments-load-more-button" class="sf-Comments-more">@Html.Resource("LoadMoreComments")</a>
     }
 
     @if (Model.ThreadIsClosed)
@@ -108,8 +108,8 @@
 
                     @if (Model.AllowSubscription)
                     {
-                        <div >
-                            <span data-sf-role="comments-subscribe-text"><span class="sf-icon-email"></span></span>
+                        <div>
+                            <span data-sf-role="comments-subscribe-text"></span>
                             <a href="#" data-sf-role="comments-subscribe-button"></a>
                         </div>
                     }
@@ -132,7 +132,7 @@
         
         if (Model.RequiresAuthentication)
         {
-            <p data-sf-role="comments-new-requires-authentication"><a href='@Model.LoginPageUrl'>@Html.Resource("Login")</a>@Html.Resource("ToBeAbleToComment")</p>
+            <div class="alert alert-warning" data-sf-role="comments-new-requires-authentication"><a href='@Model.LoginPageUrl'>@Html.Resource("Login")</a>@Html.Resource("ToBeAbleToComment")</div>
         }
     }
     
