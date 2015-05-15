@@ -6034,33 +6034,39 @@ ul.sf-autocomplete {
   width: 16px;
   height: 16px; }
 
-.sf-icon-delicious {
+.sf-icon-comment {
   background-image: url(../images/sprite.png);
-  background-position: 0px -32px;
-  width: 16px;
-  height: 16px; }
+  background-position: 0px -48px;
+  width: 17px;
+  height: 15px; }
 
-.sf-icon-digg {
+.sf-icon-delicious {
   background-image: url(../images/sprite.png);
   background-position: 0px -16px;
   width: 16px;
   height: 16px; }
 
+.sf-icon-digg {
+  background-image: url(../images/sprite.png);
+  background-position: -16px -16px;
+  width: 16px;
+  height: 16px; }
+
 .sf-icon-email {
   background-image: url(../images/sprite.png);
-  background-position: 0px -48px;
+  background-position: -17px -48px;
   width: 19px;
   height: 13px; }
 
 .sf-icon-facebook {
   background-image: url(../images/sprite.png);
-  background-position: -32px 0px;
+  background-position: -32px -16px;
   width: 16px;
   height: 16px; }
 
 .sf-icon-google {
   background-image: url(../images/sprite.png);
-  background-position: -32px -16px;
+  background-position: 0px -32px;
   width: 16px;
   height: 16px; }
 
@@ -6072,31 +6078,31 @@ ul.sf-autocomplete {
 
 .sf-icon-mailto {
   background-image: url(../images/sprite.png);
-  background-position: -16px -32px;
+  background-position: -32px -32px;
   width: 16px;
   height: 16px; }
 
 .sf-icon-myspace {
   background-image: url(../images/sprite.png);
-  background-position: -32px -32px;
+  background-position: -48px 0px;
   width: 16px;
   height: 16px; }
 
 .sf-icon-reddit {
   background-image: url(../images/sprite.png);
-  background-position: -48px 0px;
+  background-position: -48px -16px;
   width: 16px;
   height: 16px; }
 
 .sf-icon-stumble-upon {
   background-image: url(../images/sprite.png);
-  background-position: -48px -16px;
+  background-position: -16px -32px;
   width: 16px;
   height: 16px; }
 
 .sf-icon-tumblr {
   background-image: url(../images/sprite.png);
-  background-position: -16px -16px;
+  background-position: -32px 0px;
   width: 16px;
   height: 16px; }
 
