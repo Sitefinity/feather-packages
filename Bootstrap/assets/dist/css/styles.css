@@ -6025,6 +6025,9 @@ ul.sf-autocomplete {
 .sf-Comments-form textarea {
   min-height: 90px; }
 
+.sf-Comments-more {
+  margin-bottom: 30px; }
+
 .sf-icon-blogger {
   background-image: url(../images/sprite.png);
   background-position: -16px 0px;
