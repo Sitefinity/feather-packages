@@ -12,7 +12,6 @@
             
 			<div class="item" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id)>
 				<a @Html.InlineEditingFieldAttributes("Title", "ShortText") href="@navigateUrl">@item.Fields.Title</a>
-                @Html.CommentsCount((string)navigateUrl, item.DataItem)
 
 				<div>
 					@item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
