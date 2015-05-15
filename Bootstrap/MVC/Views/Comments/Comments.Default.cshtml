@@ -22,9 +22,11 @@
             }
         </div>
 
-        <div class="col-md-6">
-             <a href="#" data-sf-role="comments-sort-new-button">@Html.Resource("NewestOnTop")</a>
-             <a href="#" data-sf-role="comments-sort-old-button">@Html.Resource("OldestOnTop")</a>
+        <div class="col-md-6 clearfix">
+            <div class="pull-right">
+                 <a href="#" data-sf-role="comments-sort-new-button">@Html.Resource("NewestOnTop")</a>
+                 <a href="#" data-sf-role="comments-sort-old-button">@Html.Resource("OldestOnTop")</a>
+            </div>
         </div>
 
     </div>
@@ -47,7 +49,7 @@
         <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)" class="sf-Comments-form">
             @if (Model.RequiresApproval)
             {
-                <p data-sf-role="comments-new-pending-approval-message">@Html.Resource("CommentPendingApproval")</p>
+                <div class="alert alert-warning" data-sf-role="comments-new-pending-approval-message">@Html.Resource("CommentPendingApproval")</div>
             }
 
             <div class="media sf-media">
@@ -72,7 +74,9 @@
                             <div class="form-group">
                                 <label class="sr-only">@Html.Resource("YourName")</label>
                                 <input placeholder="@Html.Resource("YourName")" data-sf-role="comments-new-name" class="form-control" />
-                                <span data-sf-role="comments-new-name-error" >@Html.Resource("NameIsRequired")</span>
+                                 <div class="has-error">
+                                     <span data-sf-role="comments-new-name-error" class="help-block">@Html.Resource("NameIsRequired")</span>
+                                 </div>
                             </div>
 
                             <div class="form-group">
