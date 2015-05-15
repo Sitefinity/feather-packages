@@ -49,7 +49,7 @@
         <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)" class="sf-Comments-form">
             @if (Model.RequiresApproval)
             {
-                <p data-sf-role="comments-new-pending-approval-message">@Html.Resource("CommentPendingApproval")</p>
+                <div class="alert alert-warning" data-sf-role="comments-new-pending-approval-message">@Html.Resource("CommentPendingApproval")</div>
             }
 
             <div class="media sf-media">
