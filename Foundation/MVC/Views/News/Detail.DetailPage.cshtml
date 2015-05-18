@@ -6,12 +6,13 @@
 <div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
     <h1>
         <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</span>
-        @Html.CommentsCount("", @Model.Item.DataItem)
+       
     </h1>
     <div>
         <span>@Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")</span>
         <span>@Html.Resource("By")</span>
         <span>@DataResolver.Resolve(@Model.Item.DataItem, "Author", null)</span>
+         @Html.CommentsCount("", @Model.Item.DataItem)
     </div>
     
 	<div @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.Raw(Model.Item.Fields.Summary)</div>
