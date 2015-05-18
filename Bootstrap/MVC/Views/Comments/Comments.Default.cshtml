@@ -10,7 +10,7 @@
     <input type="hidden" data-sf-role="comments-resources" value="@Model.SerializedWidgetResources" />
 
     <div class="row sf-Comments-header">
-        <div class="col-md-6">
+        <div class="col-md-7">
             <h3>
                 <span data-sf-role="comments-total-count"></span>
                 <span data-sf-role="comments-header"></span>
@@ -22,7 +22,7 @@
             }
         </div>
 
-        <div class="col-md-6 clearfix">
+        <div class="col-md-5 clearfix">
             <div class="pull-right">
                  <a href="#" data-sf-role="comments-sort-new-button">@Html.Resource("NewestOnTop")</a>
                  <a href="#" data-sf-role="comments-sort-old-button">@Html.Resource("OldestOnTop")</a>
@@ -63,9 +63,6 @@
                     <div class="form-group">
                         <label class="sr-only">@Html.Resource("LeaveComment")</label>
                         <textarea class="form-control" data-sf-role="comments-new-message" placeholder="@Html.Resource("LeaveComment")" ></textarea>
-                        <div class="has-error">
-                            <span data-sf-role="comments-new-message-error" class="help-block">@Html.Resource("MessageIsRequired")</span>
-                        </div>
                     </div>
 
                     <div data-sf-role="comments-new-logged-out-view" class="row" style="display:none;">
@@ -74,9 +71,6 @@
                             <div class="form-group">
                                 <label class="sr-only">@Html.Resource("YourName")</label>
                                 <input placeholder="@Html.Resource("YourName")" data-sf-role="comments-new-name" class="form-control" />
-                                 <div class="has-error">
-                                     <span data-sf-role="comments-new-name-error" class="help-block">@Html.Resource("NameIsRequired")</span>
-                                 </div>
                             </div>
 
                             <div class="form-group">
@@ -110,12 +104,14 @@
                     {
                         <div>
                             <span data-sf-role="comments-subscribe-text"></span>
-                            <a href="#" data-sf-role="comments-subscribe-button"></a>
+                            <a href="#" data-sf-role="comments-subscribe-button">
+                                 <span data-sf-role="comments-subscribe-button-text"></span>
+                            </a>
                         </div>
                     }
 
                     <div class="has-error">
-                        <span data-sf-role="error-message" class="help-block">@Html.Resource("MessageIsRequired")</span>
+                        <span data-sf-role="error-message" class="help-block"></span>
                     </div>
 
                     <div data-sf-role="list-loading-indicator"  class="sf-loading"><span></span></div>
