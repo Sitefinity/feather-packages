@@ -6041,6 +6041,15 @@ ul.sf-autocomplete {
 .sf-Comment-subscribe {
   margin-bottom: 15px; }
 
+.sf-site-selector a, .sf-site-selector span {
+  display: inline-block;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 8px; }
+  .sf-site-selector a.selected, .sf-site-selector span.selected {
+    background-color: #f2f2f2;
+    color: #333; }
+
 .sf-icon-blogger {
   background-image: url(../images/sprite.png);
   background-position: -16px 0px;

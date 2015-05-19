@@ -1,0 +1,62 @@
+﻿@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.SiteSelector.SiteSelectorViewModel
+
+@using Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.SiteSelector
+@using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+<div class="@Model.CssClass sf-site-selector">
+
+    <h3>@Html.Resource("Sites")</h3>
+   
+    <ul class="list-unstyled">
+    @foreach (var site in Model.Sites)
+    {
+        <li>
+            @if (!Model.EachLanguageAsSeparateSite)
+            {
+                if (site.IsCurrent)
+                {
+                    <span class="selected">@site.Name</span>
+                }
+                else if (SystemManager.IsDesignMode)
+                {   <a>@site.Name</a>
+                }
+                else
+                {
+                    <a href="@site.Url">@site.Name</a>
+                }
+            }
+            else if (Model.SiteLanguagesDisplayMode == SiteLanguagesDisplayMode.SiteNamesAndLanguages)
+            {
+                if (site.IsCurrent)
+                {
+                    <span class="selected">@site.Name - @site.Language</span>
+                }
+                else if (SystemManager.IsDesignMode && !SystemManager.IsInlineEditingMode && !SystemManager.IsPreviewMode)
+                {
+                    <a>@site.Name - @site.Language</a>
+                }
+                else
+                {
+                    <a href="@site.Url">@site.Name - @site.Language</a>
+                }
+            }
+            else
+            {
+                if (site.IsCurrent)
+                {
+                    <span class="selected">@site.Language</span>
+                }
+                else if (SystemManager.IsDesignMode && !SystemManager.IsInlineEditingMode && !SystemManager.IsPreviewMode)
+                {
+                    <a>@site.Language</a>
+                }
+                else
+                {
+                    <a href="@site.Url">@site.Language</a>
+                }
+            }
+        </li>
+    }
+    </ul>
+</div>
