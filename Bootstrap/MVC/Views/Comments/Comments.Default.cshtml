@@ -31,7 +31,7 @@
 
     </div>
           
-    <div data-sf-role="list-loading-indicator" class="sf-loading"><span></span></div>
+    <div data-sf-role="list-loading-indicator" class="sf-loading" style="display:none;"><span></span></div>
 
     <div data-sf-role="comments-container" class="media-list sf-Comments-list"></div>
 
@@ -115,7 +115,9 @@
                         <span class="help-block"></span>
                     </div>
 					
-                    <div data-sf-role="list-loading-indicator"  class="sf-loading"><span></span></div>
+                    <div data-sf-role="list-loading-indicator" class="sf-loading" style="display:none;">
+						<span></span>
+					</div>
 
                     <div>
                         <button class="btn btn-primary" data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
