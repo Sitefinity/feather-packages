@@ -6039,7 +6039,10 @@ ul.sf-autocomplete {
   margin-bottom: 30px; }
 
 .sf-Comment-subscribe {
-  margin-bottom: 15px; }
+  margin-top: 15px; }
+
+.sf-Review-already {
+  margin-top: 20px; }
 
 .sf-site-selector a, .sf-site-selector span {
   display: inline-block;
