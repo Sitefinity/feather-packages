@@ -5997,10 +5997,12 @@ ul.sf-autocomplete {
   display: block;
   font-weight: normal; }
 
-.sf-Comments [class^="sf-icon"] {
-  display: inline-block; }
-.sf-Comments .sf-loading {
-  margin-bottom: 15px; }
+.sf-Comments {
+  margin-top: 30px; }
+  .sf-Comments [class^="sf-icon"] {
+    display: inline-block; }
+  .sf-Comments .sf-loading {
+    margin-bottom: 15px; }
 
 .sf-Comment-count {
   display: inline-block;
@@ -6035,6 +6037,9 @@ ul.sf-autocomplete {
 
 .sf-Comments-more {
   margin-bottom: 30px; }
+
+.sf-Comment-subscribe {
+  margin-bottom: 15px; }
 
 .sf-icon-blogger {
   background-image: url(../images/sprite.png);
