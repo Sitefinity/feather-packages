@@ -111,11 +111,13 @@
                         </div>
                     }
 
-                    <div class="has-error">
-                        <span data-sf-role="error-message" class="help-block"></span>
+                    <div data-sf-role="error-message" class="has-error">
+                        <span class="help-block"></span>
                     </div>
-
-                    <div data-sf-role="list-loading-indicator" class="sf-loading" style="display:none;"><span></span></div>
+					
+                    <div data-sf-role="list-loading-indicator" class="sf-loading" style="display:none;">
+						<span></span>
+					</div>
 
                     <div>
                         <button class="btn btn-primary" data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
