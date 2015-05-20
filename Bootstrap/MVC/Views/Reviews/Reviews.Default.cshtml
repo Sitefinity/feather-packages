@@ -63,8 +63,11 @@
             
                     <div>
                         <label>@Html.Resource("Rating")</label>
-                        <div data-sf-role="submit-rating-container">
+                        <div class="sf-Ratings">
+                            <div data-sf-role="submit-rating-container" class="sf-Ratings-stars">
+                            </div>
                         </div>
+
                     </div>
 
                     <div data-sf-role="comments-new-logged-out-view" style="display:none;">
@@ -144,9 +147,15 @@
                 <span data-sf-role="comment-name" class="text-muted sf-Comments-list-author"></span> | 
                 <span data-sf-role="comment-date" class="text-muted"></span>
 
+                <div data-sf-role="list-rating-wrapper" class="sf-Ratings">
+                    <span data-sf-role="list-rating-container" class="sf-Ratings-stars sf-Ratings-stars--ronly"></span>
+                    <span class="text-muted sf-Ratings-average">
+                        (<span data-sf-role="list-rating-value"></span>)
+                    </span>
+                </div>
+
                 <p data-sf-role="comment-message"></p>
 
-                <div data-sf-role="list-rating-container"></div>
             </div>
 
         </div>
@@ -154,9 +163,9 @@
     </div>
 </div>
 
-@*Single review item template*@
+@*Single rating item template*@
 
-<div data-sf-role="rating-template"  style="display:none;"><span>&#9734</span></div>
+<div data-sf-role="rating-template"  style="display:none;"><span>&#9733;</span></div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Reviews/rating.js"), "bottom", false)
 @Html.Script(Url.WidgetContent("Mvc/Scripts/comments-list.js"), "bottom", false)
