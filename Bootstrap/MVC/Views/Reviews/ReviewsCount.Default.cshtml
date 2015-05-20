@@ -5,7 +5,7 @@
 
 @Html.Script(ScriptRef.JQuery, "top", true)
 
-<div data-sf-role="comments-count-wrapper" data-sf-thread-key="@Model.ThreadKey">
+<div data-sf-role="comments-count-wrapper" data-sf-thread-key="@Model.ThreadKey" class="sf-Comment-count">
 
     <span data-sf-role="list-rating-wrapper" class="sf-Ratings">
         <span data-sf-role="list-rating-container" class="sf-Ratings-stars sf-Ratings-stars--ronly"></span>
@@ -13,9 +13,6 @@
             (<span data-sf-role="list-rating-value"></span>)
         </span>
     </span>
-    <a data-sf-role="comments-count-anchor" href="@Model.NavigateUrl" class="sf-Ratings-count">
-        <span data-sf-role="comments-count-anchor-text"></span>
-    </a>
 
     <input type="hidden" data-sf-role="service-url" value="@ViewBag.ServiceUrl" />
     <input type="hidden" data-sf-role="comments-count-resources" value='{"commentsPlural": "@Html.Resource("ReviewsPlural")", "leaveComment":"@Html.Resource("WriteReview")", "comment":"@Html.Resource("Review")", "averageRating":"@Html.Resource("AverageRating")" }' />
