@@ -100,17 +100,6 @@
                         </div>
                     }
 
-                    @if (Model.AllowSubscription)
-                    {
-                        <div class="sf-Comment-subscribe">
-                            <span data-sf-role="comments-subscribe-text"></span>
-                            <a href="#" data-sf-role="comments-subscribe-button">
-                                 <span class="sf-icon-email"></span>
-                                <span data-sf-role="comments-subscribe-button-text"></span>
-                            </a>
-                        </div>
-                    }
-
                     <div data-sf-role="error-message" class="has-error">
                         <span class="help-block"></span>
                     </div>
@@ -123,6 +112,18 @@
                         <button class="btn btn-primary" data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
                     </div>
                     
+
+                    @if (Model.AllowSubscription)
+                    {
+                        <div class="sf-Comment-subscribe">
+                            <span data-sf-role="comments-subscribe-text"></span>
+                            <a href="#" data-sf-role="comments-subscribe-button">
+                                 <span class="sf-icon-email"></span>
+                                <span data-sf-role="comments-subscribe-button-text"></span>
+                            </a>
+                        </div>
+                    }
+
                 </div>
 
             </div>
@@ -135,6 +136,8 @@
         }
     }
     
+    @*Single comment template*@
+
     <div data-sf-role="single-comment-template">
 
         <div class="media sf-media">
