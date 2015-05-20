@@ -30,7 +30,7 @@
     </div>
           
     <div data-sf-role="list-loading-indicator" style="display:none;"></div>
-    <div data-sf-role="comments-container"></div>
+    <div data-sf-role="comments-container" class="sf-Comments-list"></div>
 
     @if(Model.EnablePaging)
     {
@@ -140,7 +140,7 @@
 
         <div class="media sf-media">
             <div class="media-left sf-img-thmb"> 
-                <img data-sf-role="comment-avatar" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")"/>
+                <img data-sf-role="comment-avatar" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")" width="40" height="40"/>
             </div>
 
             <div class="media-body sf-media-body">
