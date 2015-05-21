@@ -45,90 +45,93 @@
         <div class="alert alert-warning">@Html.Resource("ThreadIsClosedMessage")</div>
     }
     else 
-    {        
-        <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)" class="sf-Comments-form">
-            @if (Model.RequiresApproval)
-            {
-                <div class="alert alert-warning" data-sf-role="comments-new-pending-approval-message">@Html.Resource("CommentPendingApproval")</div>
-            }
+    {   
+        <div class="sf-Comments-form">    
+            <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)" >
+                @if (Model.RequiresApproval)
+                {
+                    <div class="alert alert-warning" data-sf-role="comments-new-pending-approval-message">@Html.Resource("CommentPendingApproval")</div>
+                }
 
-            <div class="media sf-media">
+                <div class="media sf-media">
 
-                <div class="media-left sf-img-thmb">
-                    <img src="@Model.UserAvatarImageUrl" width="40" height="40"/>
-                </div>
-
-                <div class="media-body sf-media-body">
-
-                    <div class="form-group">
-                        <label class="sr-only">@Html.Resource("LeaveComment")</label>
-                        <textarea class="form-control" data-sf-role="comments-new-message" placeholder="@Html.Resource("LeaveComment")" ></textarea>
+                    <div class="media-left sf-img-thmb">
+                        <img src="@Model.UserAvatarImageUrl" width="40" height="40"/>
                     </div>
 
-                    <div data-sf-role="comments-new-logged-out-view" class="row" style="display:none;">
-                        <div class="col-md-8">
+                    <div class="media-body sf-media-body">
 
-                            <div class="form-group">
-                                <label class="sr-only">@Html.Resource("YourName")</label>
-                                <input placeholder="@Html.Resource("YourName")" data-sf-role="comments-new-name" class="form-control" />
-                            </div>
+                        <div class="form-group">
+                            <label class="sr-only">@Html.Resource("LeaveComment")</label>
+                            <textarea class="form-control" data-sf-role="comments-new-message" placeholder="@Html.Resource("LeaveComment")" ></textarea>
+                        </div>
 
-                            <div class="form-group">
-                                <label class="sr-only">@Html.Resource("EmailOptional")</label>
-                                <input type="email" placeholder="@Html.Resource("EmailOptional")" data-sf-role="comments-new-email" class="form-control" /> 
-                            </div>
+                        <div data-sf-role="comments-new-logged-out-view" class="row" style="display:none;">
+                            <div class="col-md-8">
 
-                       </div>  
-                    </div>
-            
-                    @if (Model.RequiresCaptcha)
-                    {
-                        <div data-sf-role="captcha-container" class="sf-Comments-captcha">
-                            <div>
-                                <img data-sf-role="captcha-image" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")" />
-                            </div>
-
-                            <a data-sf-role="captcha-refresh-button"> @Html.Resource("NewCode") </a>
-
-                            <div class="form-inline">
                                 <div class="form-group">
-                                    <label>@Html.Resource("TypeCodeAbove")</label>
-                                    <input type="text" data-sf-role="captcha-input" class="form-control input-sm"/>
+                                    <label class="sr-only">@Html.Resource("YourName")</label>
+                                    <input placeholder="@Html.Resource("YourName")" data-sf-role="comments-new-name" class="form-control" />
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only">@Html.Resource("EmailOptional")</label>
+                                    <input type="email" placeholder="@Html.Resource("EmailOptional")" data-sf-role="comments-new-email" class="form-control" /> 
+                                </div>
+
+                           </div>  
+                        </div>
+            
+                        @if (Model.RequiresCaptcha)
+                        {
+                            <div data-sf-role="captcha-container" class="sf-Comments-captcha">
+                                <div>
+                                    <img data-sf-role="captcha-image" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")" />
+                                </div>
+
+                                <a data-sf-role="captcha-refresh-button"> @Html.Resource("NewCode") </a>
+
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label>@Html.Resource("TypeCodeAbove")</label>
+                                        <input type="text" data-sf-role="captcha-input" class="form-control input-sm"/>
+                                    </div>
+                                </div>
+
                             </div>
+                        }
 
+
+                        <div>
+                            <button class="btn btn-primary" data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
                         </div>
-                    }
 
-                    <div data-sf-role="error-message" class="has-error">
-                        <span class="help-block"></span>
                     </div>
-					
-                    <div data-sf-role="list-loading-indicator" class="sf-loading" style="display:none;">
-						<span></span>
-					</div>
-
-                    <div>
-                        <button class="btn btn-primary" data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
-                    </div>
-                    
-
-                    @if (Model.AllowSubscription)
-                    {
-                        <div class="sf-Comment-subscribe">
-                            <span data-sf-role="comments-subscribe-text"></span>
-                            <a href="#" data-sf-role="comments-subscribe-button">
-                                 <span class="sf-icon-email"></span>
-                                <span data-sf-role="comments-subscribe-button-text"></span>
-                            </a>
-                        </div>
-                    }
 
                 </div>
 
             </div>
 
-        </div>
+            <div data-sf-role="error-message" class="has-error">
+                <span class="help-block"></span>
+            </div>
+					
+            <div data-sf-role="list-loading-indicator" class="sf-loading" style="display:none;">
+				<span></span>
+			</div>
+
+       </div>
+
+        @if (Model.AllowSubscription)
+        {
+            <div class="sf-Comment-subscribe">
+                <span data-sf-role="comments-subscribe-text"></span>
+                <a href="#" data-sf-role="comments-subscribe-button">
+                        <span class="sf-icon-email"></span>
+                    <span data-sf-role="comments-subscribe-button-text"></span>
+                </a>
+            </div>
+        }
         
         if (Model.RequiresAuthentication)
         {
