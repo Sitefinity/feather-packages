@@ -13,7 +13,9 @@
             (<span data-sf-role="list-rating-value"></span>)
         </span>
     </span>
-
+     <a data-sf-role="comments-count-anchor" href="@Model.NavigateUrl" class="sf-Ratings-count">		
+          <span data-sf-role="comments-count-anchor-text"></span>		
+     </a>
     <input type="hidden" data-sf-role="service-url" value="@ViewBag.ServiceUrl" />
     <input type="hidden" data-sf-role="comments-count-resources" value='{"commentsPlural": "@Html.Resource("ReviewsPlural")", "leaveComment":"@Html.Resource("WriteReview")", "comment":"@Html.Resource("Review")", "averageRating":"@Html.Resource("AverageRating")" }' />
 </div>
