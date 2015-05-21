@@ -19,9 +19,10 @@
             {
                 <a href="#comment-submit-@HttpUtility.HtmlEncode(HttpUtility.UrlEncode(Model.ThreadKey))" data-sf-role="comments-new-form-button">@Html.Resource("WriteReview")</a>
             }
+
+            @Html.CommentsCount(string.Empty, Model.ThreadKey, Model.ThreadType)
         </div>
 
-        @Html.CommentsCount(string.Empty, Model.ThreadKey, Model.ThreadType)
 
         <div class="col-md-5 clearfix">
             <a href="#" data-sf-role="comments-sort-new-button" style="display:none;">@Html.Resource("NewestOnTop")</a>
@@ -115,22 +116,22 @@
 
                </div>
 
-                    @if (Model.AllowSubscription)
-                    {
-                        <div class="sf-Comment-subscribe">
-                            <span data-sf-role="comments-subscribe-text"></span>
-                            <a href="#" data-sf-role="comments-subscribe-button">
-                                <span class="sf-icon-email"></span>
-                                <span data-sf-role="comments-subscribe-button-text"></span>
-                            </a>
-                        </div>
-                    }
-
-                    <div class="has-error" data-sf-role="error-message">
-                        <span class="help-block"></span>
+                @if (Model.AllowSubscription)
+                {
+                    <div class="sf-Comment-subscribe">
+                        <span data-sf-role="comments-subscribe-text"></span>
+                        <a href="#" data-sf-role="comments-subscribe-button">
+                            <span class="sf-icon-email"></span>
+                            <span data-sf-role="comments-subscribe-button-text"></span>
+                        </a>
                     </div>
+                }
+
+                <div class="has-error" data-sf-role="error-message">
+                    <span class="help-block"></span>
+                </div>
         
-                    <div data-sf-role="submit-loading-indicator" class="sf-loading" style="display:none;"></div>
+                <div data-sf-role="submit-loading-indicator" class="sf-loading" style="display:none;"></div>
 
   
         </div>  

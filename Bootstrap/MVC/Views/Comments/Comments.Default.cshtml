@@ -112,6 +112,17 @@
 
             </div>
 
+            @if (Model.AllowSubscription)
+            {
+                <div class="sf-Comment-subscribe">
+                    <span data-sf-role="comments-subscribe-text"></span>
+                    <a href="#" data-sf-role="comments-subscribe-button">
+                            <span class="sf-icon-email"></span>
+                        <span data-sf-role="comments-subscribe-button-text"></span>
+                    </a>
+                </div>
+            }
+
             <div data-sf-role="error-message" class="has-error">
                 <span class="help-block"></span>
             </div>
@@ -122,16 +133,7 @@
 
        </div>
 
-        @if (Model.AllowSubscription)
-        {
-            <div class="sf-Comment-subscribe">
-                <span data-sf-role="comments-subscribe-text"></span>
-                <a href="#" data-sf-role="comments-subscribe-button">
-                        <span class="sf-icon-email"></span>
-                    <span data-sf-role="comments-subscribe-button-text"></span>
-                </a>
-            </div>
-        }
+
         
         if (Model.RequiresAuthentication)
         {
