@@ -6067,12 +6067,12 @@ ul.sf-autocomplete {
 .sf-Ratings .sf-Ratings-count span {
   vertical-align: middle; }
 
-.sf-site-selector a, .sf-site-selector span {
+.sf-site-selector a, .sf-site-selector span, .sf-site-selector strong {
   display: inline-block;
   font-size: 14px;
   padding: 6px 10px;
   border-radius: 8px; }
-  .sf-site-selector a.selected, .sf-site-selector span.selected {
+  .sf-site-selector a.selected, .sf-site-selector span.selected, .sf-site-selector strong.selected {
     background-color: #f2f2f2;
     color: #333; }
 
