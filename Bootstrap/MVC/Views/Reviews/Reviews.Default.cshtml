@@ -10,6 +10,7 @@
 
     <div class="row sf-Comments-header">
         <div class="col-md-7">
+
             <h3>
                 <span data-sf-role="comments-total-count"></span>
                 <span data-sf-role="comments-header"></span>
@@ -28,8 +29,10 @@
 
 
         <div class="col-md-5 clearfix">
-            <a href="#" data-sf-role="comments-sort-new-button" style="display:none;">@Html.Resource("NewestOnTop")</a>
-            <a href="#" data-sf-role="comments-sort-old-button" style="display:none;">@Html.Resource("OldestOnTop")</a>
+            <div class="pull-right">
+                <a href="#" data-sf-role="comments-sort-new-button" style="display:none;">@Html.Resource("NewestOnTop")</a>
+                <a href="#" data-sf-role="comments-sort-old-button" style="display:none;">@Html.Resource("OldestOnTop")</a>
+            </div>
         </div>
     </div>
           
