@@ -20,7 +20,9 @@
                 <a href="#comment-submit-@HttpUtility.HtmlEncode(HttpUtility.UrlEncode(Model.ThreadKey))" data-sf-role="comments-new-form-button">@Html.Resource("WriteReview")</a>
             }
 
+            <span class="text-muted">@Html.Resource("AverageRating")</span>
             @Html.CommentsCount(string.Empty, Model.ThreadKey, Model.ThreadType)
+
         </div>
 
 
