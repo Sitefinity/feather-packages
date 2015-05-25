@@ -6045,7 +6045,11 @@ ul.sf-autocomplete {
 .sf-Review-already {
   margin-top: 20px; }
 
-.sf-Comment-count--block .sf-Comment-count {
+.sf-Review-count {
+  display: inline-block;
+  margin-left: 10px; }
+
+.sf-Comment-count--block .sf-Comment-count, .sf-Comment-count--block .sf-Review-count {
   display: block;
   margin-left: 0;
   margin-bottom: 10px; }
