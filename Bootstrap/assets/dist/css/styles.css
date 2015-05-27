@@ -6082,6 +6082,11 @@ ul.sf-autocomplete {
     background-color: #f2f2f2;
     color: #333; }
 
+.sf-Code pre {
+  background-color: #fff;
+  border: 0;
+  color: #666; }
+
 .sf-icon-blogger {
   background-image: url(../images/sprite.png);
   background-position: -16px 0px;
