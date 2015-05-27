@@ -6087,6 +6087,19 @@ ul.sf-autocomplete {
   border: 0;
   color: #666; }
 
+.sf-Tags .sf-Tags-size1 {
+  font-size: 11px; }
+.sf-Tags .sf-Tags-size2 {
+  font-size: 13px; }
+.sf-Tags .sf-Tags-size3 {
+  font-size: 18px; }
+.sf-Tags .sf-Tags-size4 {
+  font-size: 24px; }
+.sf-Tags .sf-Tags-size5 {
+  font-size: 30px; }
+.sf-Tags .sf-Tags-size6 {
+  font-size: 36px; }
+
 .sf-icon-blogger {
   background-image: url(../images/sprite.png);
   background-position: -16px 0px;
