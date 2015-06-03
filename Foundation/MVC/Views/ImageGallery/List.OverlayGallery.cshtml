@@ -18,7 +18,7 @@
     @foreach (var item in Model.Items)
     {
         <a class="pull-left text-center image-link"
-            href="@item.Fields.MediaUrl"
+            href="@(((ThumbnailViewModel)item).MediaUrl)"
             title="@item.Fields.AlternativeText">
             <img src="@(((ThumbnailViewModel)item).ThumbnailUrl)" data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, itemIndex)" alt="@item.Fields.AlternativeText" />
         </a>
