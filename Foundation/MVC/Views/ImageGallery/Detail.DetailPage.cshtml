@@ -13,8 +13,8 @@
         @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
         @Html.Resource("By")
         @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
-        @Html.CommentsCount(string.Empty, @Model.Item.DataItem)
     </h6>
+    @Html.CommentsCount(string.Empty, @Model.Item.DataItem)
 
     <p @Html.InlineEditingFieldAttributes("Description", "LongText")>@Html.Raw(Model.Item.Fields.Description)</p>
 

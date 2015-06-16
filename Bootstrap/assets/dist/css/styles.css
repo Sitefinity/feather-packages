@@ -5679,6 +5679,11 @@ img.mfp-img {
 .icon-lg {
   font-size: 48px; }
 
+.u-toe {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
 .sf-loading:before, .sf-loading:after, .sf-loading > span {
   background-color: #9cc5f7;
   height: 30px;
