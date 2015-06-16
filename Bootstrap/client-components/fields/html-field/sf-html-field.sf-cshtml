@@ -28,17 +28,17 @@
     "createTable", "addColumnLeft", "addColumnRight", "addRowAbove", "addRowBelow", "deleteRow", "deleteColumn",
     "cleanFormatting",
 	"strikethrough", "justifyFull", "subscript", "superscript","fontName", "fontSize", "foreColor", "backColor", "print",
-	{
-        name: "showAll",
-        template: "<a class=\"custom-tool show-all-button k-button\" title=\"@(Res.Get<ClientComponentsResources>().AllTools)\" ng-click=\"toggleAllTools()\">===</a>"
-    },
     {
-        name: "htmlView",
-        template: "<button class=\"custom-tool k-button pull-right js-custom-tool\" ng-click=\"toggleHtmlView()\">\{\{htmlViewLabel\}\}</button>"
+        name: "showAll",
+        template: "<a class=\"custom-tool show-all-button k-button\" title=\"@(Res.Get<ClientComponentsResources>().AllTools)\" ng-click=\"toggleAllTools()\"><span class=\"glyphicon glyphicon-option-horizontal\"></span></a>"
     },
     {
         name: "fullscreen",
-        template: "<a class=\"k-button js-custom-tool custom-tool\" ng-click=\"toggleFullScreen()\"><span class=\"js-fullScreen glyphicon\"></span></a>"
+        template: "<a class=\"k-tool js-custom-tool custom-tool\" title=\"Fullscreen\" ng-click=\"toggleFullScreen()\"><span class=\"js-fullScreen glyphicon\"></span></a>"
+	},
+    {
+        name: "htmlView",
+        template: "<button class=\"custom-tool btn btn-default btn-xs pull-right js-htmlview js-custom-tool\" ng-class=\"\{htmlViewLabel==\"Design\":\"active\"\}\" ng-click=\"toggleHtmlView()\">\{\{htmlViewLabel\}\}</button>"
     }
     ]'>
 </textarea>
