@@ -1,0 +1,59 @@
+﻿@model Telerik.Sitefinity.Frontend.EmailCampaigns.Mvc.Models.UnsubscribeForm.UnsubscribeFormViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top", false)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", false)
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", false)
+
+<div class="@Model.CssClass">
+    @if (ViewBag.IsSucceded == true)
+    {
+        <h3>Unsubscribe successful</h3> 
+        <div>@Html.Raw(Model.Message)</div>
+    }
+    else
+    {
+        using (Html.BeginFormSitefinity())
+        {
+            @Html.ValidationSummary(true)
+        
+            <h1>@Model.WidgetTitle</h1>
+            
+            <p class="text-muted">@Model.WidgetDescription</p>
+            
+            <div class="form-group">
+                <label>
+                    @Html.Resource("Email")
+                </label>
+
+                <div class="form-inline">
+
+                    @Html.TextBoxFor(u => u.Email, new { @class = "form-control", type = "email" })
+
+                    <button type="submit" class="btn btn-primary">@Html.Resource("ButtonUnsubscribe")</button>
+
+                    @if (Html.ValidationMessageFor(u => u.Email) != null)
+                    {
+                        <div class="has-error">
+                            <span class="help-block">@Html.ValidationMessageFor(u => u.Email)</span>
+                        </div>
+                    }
+        
+                </div>
+            </div>
+            
+            if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger">
+                    @ViewBag.Error
+                </div>
+            }
+            
+        }
+    }
+</div>

@@ -5679,6 +5679,13 @@ img.mfp-img {
 .icon-lg {
   font-size: 48px; }
 
+pre {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px; }
+
 .u-toe {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -6088,8 +6095,6 @@ ul.sf-autocomplete {
     color: #333; }
 
 .sf-Code pre {
-  background-color: #fff;
-  border: 0;
   color: #666; }
 
 .sf-Tags .sf-Tags-size1 {
