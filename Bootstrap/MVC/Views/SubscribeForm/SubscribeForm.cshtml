@@ -41,7 +41,7 @@
         
         //Uncomment this if you want to show FirstName and LastName inputs
         
-        @* 
+         
 
             <div class="form-group">
                 <label>@Html.Resource("FirstName")</label><em class="text-muted">@Html.Resource("Optional")</em> 
@@ -57,7 +57,7 @@
 
                 @Html.TextBoxFor(u => u.LastName, new { @class = "form-control" })
                     
-            </div>*@
+            </div>
 
         <div class="form-group">
 
@@ -69,7 +69,7 @@
 
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
 
-                    <button class="btn btn-default" type="submit">@Html.Resource("ButtonSubscribe")</button>
+                    <button class="btn btn-primary" type="submit">@Html.Resource("ButtonSubscribe")</button>
                 </div>
                 @if (Html.ValidationMessageFor(m => m.Email) != null)
                 {
