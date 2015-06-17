@@ -15,9 +15,9 @@
     {
         <h1>@Html.Resource("ThankYou")</h1>
 
-        <p>
-            @Html.Resource("ThankYouMessage") <a href="mailto:@Model.Email">Email Me</a>
-        </p>
+        <div class="alert alert-success">
+            @Html.Resource("ThankYouMessage") (@Model.Email)
+        </div>
     }
 
     else
