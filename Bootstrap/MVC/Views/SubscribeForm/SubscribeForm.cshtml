@@ -24,12 +24,6 @@
     {
         using (Html.BeginFormSitefinity())
         {
-            <h1>@Html.Resource("Subscribe")</h1>
-        
-            <p class="text-muted">
-                @Html.Resource("SubscribeMail")
-            </p>
-        
             @Html.ValidationSummary(true)
             if (ViewBag.Error != null)
             {
@@ -37,25 +31,32 @@
                     @Model.Email @ViewBag.Error
                 </p>
             }
-            
+
+            <h1>@Html.Resource("Subscribe")</h1>
+        
+            <p class="text-muted">
+                @Html.Resource("SubscribeMail")
+            </p>
+        
+        @*
         //Uncomment this if you want to show FirstName and LastName inputs
         
-        @* 
 
             <div class="form-group">
-                <label>@Html.Resource("FirstName")</label><em class="text-muted">@Html.Resource("Optional")</em> 
-                @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control"})
+                <label>@Html.Resource("FirstName")</label><em class="text-muted"> @Html.Resource("Optional")</em> 
+
+                <div class="form-inline">
+                    @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control"})
+                </div>
             </div>
 
-
             <div class="form-group">
-                <label>
-                    @Html.Resource("LastName")
-                </label>
-                <em class="text-muted">@Html.Resource("Optional")</em> 
+                <label> @Html.Resource("LastName")</label><em class="text-muted"> @Html.Resource("Optional")</em> 
 
-                @Html.TextBoxFor(u => u.LastName, new { @class = "form-control" })
-                    
+                <div class="form-inline">
+                    @Html.TextBoxFor(u => u.LastName, new { @class = "form-control" })
+                </div>   
+
             </div>*@
 
         <div class="form-group">
@@ -63,13 +64,13 @@
             <label>
                @Html.Resource("Email")
             </label>
-            <div class="form-inline">
-                <div class="form-group">
 
+            <div class="form-inline">
+               
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
 
-                    <button class="btn btn-default" type="submit">@Html.Resource("ButtonSubscribe")</button>
-                </div>
+                    <button class="btn btn-primary" type="submit">@Html.Resource("ButtonSubscribe")</button>
+                
                 @if (Html.ValidationMessageFor(m => m.Email) != null)
                 {
                     <div class="has-error">
