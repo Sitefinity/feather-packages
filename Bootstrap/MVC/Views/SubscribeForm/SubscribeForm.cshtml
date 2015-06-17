@@ -24,6 +24,12 @@
     {
         using (Html.BeginFormSitefinity())
         {
+            <h1>@Html.Resource("Subscribe")</h1>
+        
+            <p class="text-muted">
+                @Html.Resource("SubscribeMail")
+            </p>
+        
             @Html.ValidationSummary(true)
             if (ViewBag.Error != null)
             {
@@ -31,14 +37,7 @@
                     @Model.Email @ViewBag.Error
                 </p>
             }
-
-            <h1>@Html.Resource("Subscribe")</h1>
-        
-            <p class="text-muted">
-                @Html.Resource("SubscribeMail")
-            </p>
-        
-        
+            
         //Uncomment this if you want to show FirstName and LastName inputs
         
         @* 
