@@ -13,7 +13,7 @@
 <div class="@Model.CssClass">
 	@using (Html.BeginFormSitefinity())
 	{
-		<h1>@Html.Resource("Subscribe")</h1>
+		<h3>@Html.Resource("Subscribe")</h3>
 	
 		<p class="text-muted">
 			@Html.Resource("SubscribeMail")
@@ -21,18 +21,16 @@
 	
 		if (ViewBag.IsSucceeded == true)
 		{
-			<h3>@Html.Resource("ThankYou")</h3>
-
 			<div class="alert alert-success">
-				@Html.Resource("ThankYouMessage") (@Model.Email)
+				@Html.Resource("ThankYou"). @Html.Resource("ThankYouMessage") (@Model.Email)
 			</div>
 		}
 	
 		@Html.ValidationSummary(true)
-		if (ViewBag.Error != null)
+		 if(!string.IsNullOrEmpty(ViewBag.Error))
 		{
 			<div class="alert alert-warning">
-				@Model.Email @ViewBag.Error
+				@ViewBag.Error
 			</div>
 		}
 	
@@ -65,17 +63,18 @@
 
 		<div class="form-inline">
 		   
-				@Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+			@Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
 
-				<button class="btn btn-primary" type="submit">@Html.Resource("ButtonSubscribe")</button>
+			<button class="btn btn-primary" type="submit">@Html.Resource("ButtonSubscribe")</button>
 			
-			@if (Html.ValidationMessageFor(m => m.Email) != null)
-			{
-				<div class="has-error">
-					<span class="help-block">@Html.ValidationMessageFor(u => u.Email)</span>
-				</div>
-			}
 		</div>
+
+		@if (Html.ValidationMessageFor(m => m.Email) != null)
+		{
+			<div class="has-error">
+				<span class="help-block">@Html.ValidationMessageFor(u => u.Email)</span>
+			</div>
+		}
 
 	</div>
 
