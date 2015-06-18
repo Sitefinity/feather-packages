@@ -22,7 +22,7 @@
 		if (ViewBag.IsSucceeded == true)
 		{
 			<div class="alert alert-success">
-				@Html.Resource("ThankYou"). @Html.Resource("ThankYouMessage") (@Model.Email)
+				@Html.Resource("ThankYou"). @Html.Resource("ThankYouMessage") (@ViewBag.Email)
 			</div>
 		}
 	
