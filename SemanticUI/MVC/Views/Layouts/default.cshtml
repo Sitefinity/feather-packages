@@ -23,9 +23,7 @@
     </div>
 
     @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
-    @if (!SitefinityContext.IsBackend
-        && ControlExtensions.InlineEditingIsEnabled()
-        && !SystemManager.CurrentHttpContext.Request.IsAjaxRequest())
+    @if (Html.ShouldRenderInlineEditing())
     {
         @Html.Script(ScriptRef.MicrosoftAjax, "top")
         @Html.Script(ScriptRef.MicrosoftAjaxCore, "top")
