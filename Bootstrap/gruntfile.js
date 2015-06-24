@@ -85,7 +85,8 @@ module.exports = function (grunt) {
 					partialPrefix: true,
 					relativeFontPath: '../fonts/',
 					template: 'feather-icons.css',
-					order: 'eot,svg,woff,ttf',
+					types: 'eot,woff,ttf,svg',
+					order: 'eot,woff,ttf,svg',
 					startCodepoint: 0x00b1,
 					normalize: true,
 					fontHeight: 4096,
@@ -181,17 +182,23 @@ module.exports = function (grunt) {
 
 	// Tasks
 	grunt.registerTask('iconfont', [
-		'webfont'
+		'webfont',
+		'build'
+	]);
+
+	// Runs once
+	grunt.registerTask('build', [
+		'newer:sprite',
+		'sass:dist',
+		'cssmin',
+		'uglify:dist',
+		'newer:imagemin'
 	]);
 
 	// default task runs csslint once on startup on documentation's css
 	grunt.registerTask('default', [
 		// 'clean:all',
-		'newer:sprite',
-		'sass:dist',
-		'cssmin',
-		'uglify:dist',
-		'newer:imagemin',
+		'build',
 		'concurrent:dev'
 	]);
 };
