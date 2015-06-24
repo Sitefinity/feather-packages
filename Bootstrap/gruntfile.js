@@ -49,6 +49,9 @@ module.exports = function (grunt) {
 		},
 
 		sass: {
+			options: {
+				outputStyle: 'nested'
+			},
 			dist: {
 				files: {
 					'<%= dist.path %>/css/styles.css': '<%= src.path %>/sass/styles.sass'
