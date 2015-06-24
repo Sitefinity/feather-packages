@@ -6453,8 +6453,8 @@ img.mfp-img {
 
 @font-face {
   font-family: "sf-icon-font";
-  src: url("../fonts/sf-icon-font-33a8f9a01aebe13c3e6d147f423b4e63.eot");
-  src: url("../fonts/sf-icon-font-33a8f9a01aebe13c3e6d147f423b4e63.eot?#iefix") format("embedded-opentype"), url("../fonts/sf-icon-font-33a8f9a01aebe13c3e6d147f423b4e63.svg?#sf-icon-font") format("svg"), url("../fonts/sf-icon-font-33a8f9a01aebe13c3e6d147f423b4e63.woff") format("woff"), url("../fonts/sf-icon-font-33a8f9a01aebe13c3e6d147f423b4e63.ttf") format("truetype");
+  src: url("../fonts/sf-icon-font.eot?b965b029509990d4490a2549c56d6627");
+  src: url("../fonts/sf-icon-font.eot?#iefix") format("embedded-opentype"), url("../fonts/sf-icon-font.woff?b965b029509990d4490a2549c56d6627") format("woff"), url("../fonts/sf-icon-font.ttf?b965b029509990d4490a2549c56d6627") format("truetype"), url("../fonts/sf-icon-font.svg?b965b029509990d4490a2549c56d6627#sf-icon-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -6474,89 +6474,17 @@ img.mfp-img {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-align-center-single, .icon-item-align-center:after {
-  content: "\b1"; }
-
-.icon-align-left-single, .icon-item-align-left:after {
-  content: "\b2"; }
-
-.icon-align-none-single, .icon-item-align-none:after {
-  content: "\b3"; }
-
-.icon-align-right-single, .icon-item-align-right:after {
-  content: "\b4"; }
-
-.icon-bin-single, .icon-item-bin:after {
-  content: "\b5"; }
-
-.icon-draft-single, .icon-item-draft:after {
-  content: "\b6"; }
-
 .icon-file-single, .icon-item-file:after {
-  content: "\b7"; }
-
-.icon-homepage-single, .icon-item-homepage:after {
-  content: "\b8"; }
-
-.icon-locked-single, .icon-item-locked:after {
-  content: "\b9"; }
+  content: "\b1"; }
 
 .icon-no-image-single, .icon-item-no-image:after {
-  content: "\ba"; }
-
-.icon-published-single, .icon-item-published:after {
-  content: "\bb"; }
-
-.icon-scheduled-single, .icon-item-scheduled:after {
-  content: "\bc"; }
-
-.icon-settings-single, .icon-item-settings:after {
-  content: "\bd"; }
-
-.icon-unpublished-single, .icon-item-unpublished:after {
-  content: "\be"; }
-
-.icon-align-center:before {
-  content: "\b1"; }
-
-.icon-align-left:before {
   content: "\b2"; }
 
-.icon-align-none:before {
-  content: "\b3"; }
-
-.icon-align-right:before {
-  content: "\b4"; }
-
-.icon-bin:before {
-  content: "\b5"; }
-
-.icon-draft:before {
-  content: "\b6"; }
-
 .icon-file:before {
-  content: "\b7"; }
-
-.icon-homepage:before {
-  content: "\b8"; }
-
-.icon-locked:before {
-  content: "\b9"; }
+  content: "\b1"; }
 
 .icon-no-image:before {
-  content: "\ba"; }
-
-.icon-published:before {
-  content: "\bb"; }
-
-.icon-scheduled:before {
-  content: "\bc"; }
-
-.icon-settings:before {
-  content: "\bd"; }
-
-.icon-unpublished:before {
-  content: "\be"; }
+  content: "\b2"; }
 
 .icon--text:before {
   vertical-align: baseline;
