@@ -29,7 +29,7 @@
 </div>
 
 @* The inline editing functionality is loading jQuery too. *@
-@if (!SystemManager.IsDesignMode && !ControlExtensions.InlineEditingIsEnabled())
+@if (!SystemManager.IsDesignMode)
 {
     @Html.Script(ScriptRef.JQuery, "top", true)
 }
