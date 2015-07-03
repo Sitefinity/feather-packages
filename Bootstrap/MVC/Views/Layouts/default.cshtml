@@ -17,24 +17,9 @@
 
 <body>
     @Html.Section("top")
-
-    <div class="container" id="PublicWrapper">
-        <div>
-            @Html.SfPlaceHolder("Header")
-        </div>
-        <div class="row">
-
-            <div class="col-md-3">
-                @Html.SfPlaceHolder("Column-1")
-            </div>
-            <div class="col-md-9">
-                @Html.SfPlaceHolder("Column-2")
-            </div>
-
-        </div>
-        <div>
-            @Html.SfPlaceHolder("Footer")
-        </div>
+        
+    <div class="sfPublicWrapper" id="PublicWrapper">		
+        @Html.SfPlaceHolder("Contentplaceholder1")		
     </div>
 
     @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
