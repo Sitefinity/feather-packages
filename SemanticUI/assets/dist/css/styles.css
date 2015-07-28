@@ -35955,6 +35955,9 @@ ul.sf-autocomplete a:hover {
 .sf-search-results {
   margin-bottom: 20px;
 }
+.sf-document-link .icon-txt {
+  line-height: 1;
+}
 .sf-social-share li {
   display: inline-block;
   vertical-align: top;
