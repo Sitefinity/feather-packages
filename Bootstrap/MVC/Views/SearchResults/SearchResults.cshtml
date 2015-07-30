@@ -50,9 +50,9 @@
                         }
                     }
                 </div>
-            }   
-             
-            <div class="sf-search-results media-list">
+            }
+
+            <div class="sf-SearchResults media-list">
                 @foreach (var item in Model.Results.Data)
                 {
                     var hasLink = item.GetValue("Link") != null && !String.IsNullOrEmpty(item.GetValue("Link").ToString());
@@ -60,7 +60,7 @@
 
                     @if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Image).ToString())
                     {
-            
+
                     <div class="media-left sf-img-thmb">
                         <a href="@item.GetValue("Link")">
                             <img src="@item.GetValue("Link")" alt="@item.GetValue("Title")" width="120"/>
@@ -76,15 +76,15 @@
                         if (video != null)
                         {
                             var thumbUrl = video.ThumbnailUrl;
-                        
+
                         <div class="media-left">
                             <div class="sf-video-thmb">
 
                                 <a href="@item.GetValue("Link")">
                                     <img src="@thumbUrl" alt="@item.GetValue("Title")" width="120"/>
-                               
+
                                     <div class="sf-icon-play"></div>
-                                
+
                                 </a>
                             </div>
                         </div>
@@ -96,8 +96,8 @@
                     {
 
                     }
-                    
-                    
+
+
                     <div class="media-body sf-media-body">
 
                         <h3>
@@ -132,7 +132,7 @@
                     {
                         <em class="text-muted">@Model.ItemsPerPage of @Model.Results.TotalCount results</em>
                     }
-                    
+
                     <div>
                             @Html.Action("Index", "ContentPager", new
                        {
@@ -148,7 +148,7 @@
         <input type="hidden" data-sf-role="searchResIndexCatalogue" value="@Request.QueryString["indexCatalogue"]" />
         <input type="hidden" data-sf-role="searchResQuery" value='@Request.QueryString["searchQuery"]' />
         <input type="hidden" data-sf-role="searchResWordsMode" value='@Request.QueryString["wordsMode"]' />
-        
+
 </div>
 
 @Html.Script(ScriptRef.JQuery, "top")
