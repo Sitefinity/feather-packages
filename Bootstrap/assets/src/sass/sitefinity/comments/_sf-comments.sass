@@ -4,10 +4,10 @@
 	[class^="sf-icon"]
 		display: inline-block
 
-	.sf-loading
-		margin-bottom: 15px
+.sf-Comments-loading
+	margin-bottom: 15px
 
-.sf-Comment-count
+.sf-Comments-count
 	display: inline-block
 	margin-left: 10px
 
@@ -16,7 +16,6 @@
 		vertical-align: middle
 
 // Hide elements before js initialization
-
 [data-sf-role="error-message"],
 [data-sf-role="list-loading-indicator"],
 [data-sf-role="list-loading-indicator"],
@@ -33,7 +32,6 @@
 [data-sf-role="comments-new-requires-authentication"],
 [data-sf-role="list-rating-wrapper"],
 [data-sf-role="review-new-form-replacement"]
-
 	display: none
 
 .sf-Comments-header
@@ -48,7 +46,8 @@
 		margin-top: 5px
 		margin-left: 5px
 
-	.selected
+	.selected, //should be removed if feather/widgets/../comments-list.js has the ".sf--selected" class
+	.sf--selected
 		color: #333
 
 .sf-Comments-list
@@ -68,8 +67,8 @@
 .sf-Comment-subscribe
 	margin-top: 15px
 	margin-left: 50px
-	//Reviews
 
+//Reviews
 .sf-Review-already
 	margin-top: 20px
 
@@ -78,9 +77,8 @@
 	margin-left: 10px
 
 //Comment count on new line
-
-.sf-Comment-count--block
-	.sf-Comment-count,
+.sf-Comments-count--block
+	.sf-Comments-count,
 	.sf-Review-count
 		display: block
 		margin-left: 0
