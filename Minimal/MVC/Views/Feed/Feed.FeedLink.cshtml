@@ -1,6 +1,8 @@
 ﻿@model Telerik.Sitefinity.Frontend.Publishing.Mvc.Models.FeedViewModel
-
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers
 @using Telerik.Sitefinity.Frontend.Publishing.Mvc.Models;
+
+@Html.StyleSheet(Url.WidgetContent("assets/dist/css/feed.css"), "head", false)
 
 <div class="@Model.CssClass">
 @if ((Model.InsertionOption == FeedInsertionOption.PageOnly || Model.InsertionOption == FeedInsertionOption.PageAndAddressBar) && !string.IsNullOrEmpty(Model.Url))
