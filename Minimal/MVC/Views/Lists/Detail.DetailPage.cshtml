@@ -9,9 +9,7 @@
         <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</span>
     </h3>
 
-    <div class="sf-Comment-count--block">
-        @Html.CommentsCount(string.Empty, @Model.Item.DataItem)
-    </div>
+    @Html.CommentsCount(string.Empty, @Model.Item.DataItem)
 
     <div @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.Raw(Model.Item.Fields.Content)</div>
 
@@ -19,6 +17,6 @@
     {
         @Html.SocialShareOptions()
     }
-	
+
     @Html.CommentsList(@Model.Item.DataItem)
 </div>

@@ -10,8 +10,8 @@
 @using System.Linq;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery, "top")
-@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/thumbnail-strip.js"), "bottom")
+@Html.Script(ScriptRef.JQuery, "top", false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/thumbnail-strip.js"), "bottom", false)
 
 @{
     bool hasItems = Model.Items.Count() > 0;
@@ -24,53 +24,44 @@
     }
 }
 
-<div class="sf-Gallery sf-Gallery--strip">
-
 @if (hasItems)
 {
-		if (isBackendDesignMode)
-		{
-	<h2 class="js-Gallery-title">@firstItem.DataItem.Title</h2>
+        if (isBackendDesignMode)
+        {
+    <h2 class="js-Gallery-title">@firstItem.DataItem.Title</h2>
 
-	<p class="js-Gallery-description">@firstItem.DataItem.Description</p>
+    <p class="js-Gallery-description">@firstItem.DataItem.Description</p>
 
-	<div><span class="js-Gallery-index">1</span> of @Model.Items.Count()</div>
+    <div><span class="js-Gallery-index">1</span> of @Model.Items.Count()</div>
 
-	<p class="sf-Gallery-image js-Gallery-image">
-		<a class='js-Gallery-prev sf-Gallery-prev'><span class="glyphicon glyphicon-chevron-left"></span></a>
-		<a class='js-Gallery-next sf-Gallery-next'><span class="glyphicon glyphicon-chevron-right"></span></a>
-		<img src="@(((ThumbnailViewModel)firstItem).MediaUrl)" title="@firstItem.DataItem.Title" alt="@firstItem.DataItem.AlternativeText" />
+    <p class="js-Gallery-image">
+        <a class='js-Gallery-prev'>Prev</a>
+        <a class='js-Gallery-next'>Next</a>
+        <img src="@(((ThumbnailViewModel)firstItem).MediaUrl)" title="@firstItem.DataItem.Title" alt="@firstItem.DataItem.AlternativeText" />
+    </p>
+        }
+        else
+        {
+    <h2 class="js-Gallery-title"></h2>
 
-	</p>
-		}
-		else
-		{
-	<h2 class="js-Gallery-title"></h2>
+    <p class="js-Gallery-description"></p>
 
-	<p class="js-Gallery-description"></p>
+    <div><span class="js-Gallery-index"></span> of @Model.Items.Count()</div>
 
-	<div><span class="js-Gallery-index"></span> of @Model.Items.Count()</div>
-
-	<p class="sf-Gallery-image js-Gallery-image">
-		<a class='js-Gallery-prev sf-Gallery-prev'><span class="glyphicon glyphicon-chevron-left"></span></a>
-		<a class='js-Gallery-next sf-Gallery-next'><span class="glyphicon glyphicon-chevron-right"></span></a>
-		<img />
-	</p>
-	}
+    <p class="js-Gallery-image">
+        <a class='js-Gallery-prev'>Prev</a>
+        <a class='js-Gallery-next'>Next</a>
+        <img />
+    </p>
+    }
 }
 
 
-
-	<div class="sf-Gallery-thumbs-container">
-		<div class="sf-Gallery-thumbs js-Gallery-thumbs clearfix">
-		@{int itemIndex = 0;}
-		@foreach(var item in Model.Items)
-		{
-			<a class="pull-left text-center" title="@item.Fields.Title" data-item="@Html.GetSerializedImage(item)" data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, itemIndex)">
-				<img src="@(((ThumbnailViewModel)item).ThumbnailUrl)"  alt="@item.Fields.AlternativeText"/>
-			</a>
-			itemIndex++;
-		}
-		</div>
-	</div>
+<div class="js-Gallery-thumbs">
+@foreach(var item in Model.Items)
+{
+    <a title="@item.Fields.Title" data-item="@Html.GetSerializedImage(item)" data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">
+        <img src="@(((ThumbnailViewModel)item).ThumbnailUrl)" alt="@item.Fields.AlternativeText"/>
+    </a>
+}
 </div>

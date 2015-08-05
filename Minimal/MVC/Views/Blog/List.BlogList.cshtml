@@ -9,7 +9,6 @@
 @Html.Script(ScriptRef.JQuery, "top", false)
 
 <div class="@Model.CssClass">
-
     <ul>
         @foreach (var item in Model.Items)
         {
@@ -29,7 +28,7 @@
                     var lastPostDate = item.GetLastPostDate();
                     if (lastPostDate != null && lastPostDate.HasValue)
                     {
-                        <p>@Html.Resource("LastPost") : @lastPostDate.Value.ToShortDateString()</p>
+                        <p>@Html.Resource("LastPost") : @lastPostDate.Value.ToShortDateString() </p>
                     }
                 }
 

@@ -4,11 +4,11 @@
 @using Telerik.Sitefinity.Services;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 
-<div class="@Model.CssClass sf-site-selector">
+<div class="@Model.CssClass">
 
     <h3>@Html.Resource("Sites")</h3>
-   
-    <ul class="list-unstyled">
+
+    <ul>
     @{
         string currentSite = string.Empty;
     }
@@ -19,10 +19,11 @@
         {
             if (site.IsCurrent)
             {
-                <li><span class="selected">@site.Name</span></li>
+                <li><strong>@site.Name</strong></li>
             }
-            else if (SystemManager.IsDesignMode)
-            {   <li><a>@site.Name</a></li>
+            else if (SystemManager.IsDesignMode && !SystemManager.IsInlineEditingMode && !SystemManager.IsPreviewMode)
+            {
+                <li><a>@site.Name</a></li>
             }
             else
             {
@@ -33,7 +34,7 @@
         {
             if (site.IsCurrent)
             {
-                <li><span class="selected">@site.Name - @site.Language</span></li>
+                <li><strong>@site.Name - @site.Language</strong></li>
             }
             else if (SystemManager.IsDesignMode && !SystemManager.IsInlineEditingMode && !SystemManager.IsPreviewMode)
             {
@@ -47,14 +48,14 @@
         else
         {
             if(currentSite != site.Name)
-            {                                   
+            {
                 <li><strong>@site.Name</strong></li>
                 currentSite = site.Name;
             }
 
             if (site.IsCurrent)
             {
-                <li><span class="selected">@site.Language</span></li>
+                <li><strong>@site.Language</strong></li>
             }
             else if (SystemManager.IsDesignMode && !SystemManager.IsInlineEditingMode && !SystemManager.IsPreviewMode)
             {
@@ -62,7 +63,6 @@
             }
             else
             {
-
                 <li><a href="@site.Url">@site.Language</a></li>
             }
         }

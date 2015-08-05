@@ -5,12 +5,13 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery, "top")
-@Html.Script(Url.WidgetContent("assets/dist/js/bootstrap.min.js"), "top")
+@Html.Script(ScriptRef.JQuery, "top", false)
+
+@Html.Script("http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js", "top", false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"), "bottom", false)
 
 <div class="@Model.CssClass">
-    @* @Html.Action("GetView", new { viewName = "Dropdown",  model= Model}) *@
-
+    @Html.Action("GetView", new { viewName = "Dropdown",  model= Model})
     <nav class="navbar navbar-default" role="navigation">
 
         <div class="container-fluid">

@@ -15,8 +15,8 @@
         foreach (var listItem in ((ListViewModel)item).ListItemViewModel.Items)
         {
             <div @Html.InlineEditingAttributes(Model.ProviderName, ((ListViewModel)item).ListItemViewModel.ContentType.FullName, (Guid)listItem.Fields.Id)>
-                <h3 @Html.InlineEditingFieldAttributes("Title", "ShortText")>@listItem.Fields.Title</h3>
-                <p @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.Raw(listItem.Fields.Content)</p>
+                <h2 @Html.InlineEditingFieldAttributes("Title", "ShortText")>@listItem.Fields.Title</h2>
+                <div @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.Raw(listItem.Fields.Content)</div>
             </div>
         }
     }

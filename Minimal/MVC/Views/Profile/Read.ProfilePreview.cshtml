@@ -4,21 +4,15 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 
 <div class="@Model.CssClass">
-    <div class="row sf-profile">
-        <div class="col-md-3">
-            <img src="@Model.AvatarImageUrl" alt="@Model.UserName"  width="100" height="100"/>
-        </div>
+    <img src="@Model.AvatarImageUrl" alt="@Model.UserName" width="100" height="100"/>
+    <h3>@Model.DisplayName</h3>
+    <p>@Model.Email</p>
 
-        <div class="col-md-9">
-           <h3>@Model.DisplayName</h3>
-           <p>@Model.Email</p>
-            @*User does not have 'About' property*@
-            @*<p>@Model.About</p>*@
+    @*User does not have 'About' property*@
+    @*<p>@Model.About</p>*@
 
-            @if (Model.CanEdit && ViewBag.Mode == ViewMode.Both)
-            {
-                @Html.ActionLink(Html.Resource("EditProfileLink"), "EditProfile");
-            }
-        </div>
-    </div>
+    @if (Model.CanEdit && ViewBag.Mode == ViewMode.Both)
+    {
+        @Html.ActionLink(Html.Resource("EditProfileLink"), "EditProfile");
+    }
 </div>
