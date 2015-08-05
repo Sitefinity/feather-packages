@@ -4,17 +4,9 @@
     @if(!string.IsNullOrEmpty(Model.MediaUrl))
     {
         <div>
-          <i>
-              <span>@Model.Extension</span>
-          </i>
+            <a class="@String.Concat("sf", Model.Extension)" href="@Model.MediaUrl">@Model.Title</a>
+            <span>(@Model.Extension)</span>
         </div>
-        <div>
-            <div>
-              <a href="@Model.MediaUrl">@Model.Title</a>
-              <br>
-              <span>(@Model.Extension)</span>
-            </div>
-          <span>@Model.FileSize KB</span>
-        </div>
+        <span>@Model.FileSize KB</span>
     }
 </div>

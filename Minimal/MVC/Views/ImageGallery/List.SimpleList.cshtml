@@ -5,14 +5,13 @@
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
 
-@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script(ScriptRef.JQuery, "top", false)
 
-
-<div class="clearfix @Model.CssClass">
+<div class="@Model.CssClass">
 
     @foreach (var item in Model.Items)
     {
-    <a class="pull-left text-center" title="@(string.IsNullOrEmpty(item.Fields.Description) ? item.Fields.Title : item.Fields.Description)">
+    <a title="@(string.IsNullOrEmpty(item.Fields.Description) ? item.Fields.Title : item.Fields.Description)">
       <img src="@(((ThumbnailViewModel)item).ThumbnailUrl)" alt='@System.Text.RegularExpressions.Regex.Replace(item.Fields.AlternativeText, @"[^\w\d_-]", "")' />
     </a>
     }

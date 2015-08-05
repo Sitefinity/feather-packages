@@ -5,9 +5,12 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top", false)
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"), "bottom", false)
 
 <div class="@Model.CssClass">
-    @* @Html.Action("GetView", new { viewName = "Dropdown",  model= Model}) *@
+    @Html.Action("GetView", new { viewName = "Dropdown", model= Model})
 
     @RenderRootLevelNode(@Model.Nodes)
     @RenderSubLevelsRecursive(@Model.Nodes)
@@ -16,7 +19,7 @@
 @*Here is specified the rendering for the root level*@
 @helper RenderRootLevelNode(IList<NodeViewModel> nodes)
 {
-    <ul class="nav nav-tabs">
+    <ul>
         @foreach(var node in nodes)
         {
             <li class="@GetClass(node)">
@@ -33,7 +36,7 @@
 
     if(selectedNode !=null)
     {
-         <ul class="nav nav-pills">
+         <ul>
             @foreach (var node in selectedNode.ChildNodes)
             {
                 <li class="@GetClass(node)">

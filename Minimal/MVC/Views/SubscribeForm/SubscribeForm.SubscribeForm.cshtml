@@ -11,72 +11,56 @@
 @Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", false)
 
 <div class="@Model.CssClass">
-	@using (Html.BeginFormSitefinity())
-	{
-		<h3>@Html.Resource("Subscribe")</h3>
-	
-		<p class="text-muted">
-			@Html.Resource("SubscribeMail")
-		</p>
-	
-		if (ViewBag.IsSucceeded == true)
-		{
-			<div class="alert alert-success">
-				@Html.Resource("ThankYou"). @Html.Resource("ThankYouMessage") (@ViewBag.Email)
-			</div>
-		}
-	
-		@Html.ValidationSummary(true)
-		 if(!string.IsNullOrEmpty(ViewBag.Error))
-		{
-			<div class="alert alert-warning">
-				@ViewBag.Error
-			</div>
-		}
-	
-	@*
-	//Uncomment this if you want to show FirstName and LastName inputs
-	
+    @using (Html.BeginFormSitefinity())
+    {
+        <h3>@Html.Resource("Subscribe")</h3>
 
-		<div class="form-group">
-			<label>@Html.Resource("FirstName")</label><em class="text-muted"> @Html.Resource("Optional")</em> 
+        <p>
+            @Html.Resource("SubscribeMail")
+        </p>
 
-			<div class="form-inline">
-				@Html.TextBoxFor(u => u.FirstName, new { @class = "form-control"})
-			</div>
-		</div>
+        if (ViewBag.IsSucceeded == true)
+        {
 
-		<div class="form-group">
-			<label> @Html.Resource("LastName")</label><em class="text-muted"> @Html.Resource("Optional")</em> 
+            <p>
+               @Html.Resource("ThankYou"). @Html.Resource("ThankYouMessage") (@ViewBag.Email)
+            </p>
+        }
 
-			<div class="form-inline">
-				@Html.TextBoxFor(u => u.LastName, new { @class = "form-control" })
-			</div>   
+            @Html.ValidationSummary(true)
 
-		</div>*@
+            if (!string.IsNullOrEmpty(ViewBag.Error))
+            {
+                <div>
+                    @ViewBag.Error
+                </div>
+            }
+          //Uncomment this if you want to show FirstName and LastName inputs
+            @*
 
-	<div class="form-group">
+                <div>
+                    <label>
+                        @Html.Resource("FirstName") @Html.Resource("Optional")
+                        @Html.TextBoxFor(u => u.FirstName)
+                    </label>
+                </div>
 
-		<label>
-		   @Html.Resource("Email")
-		</label>
 
-		<div class="form-inline">
-		   
-			@Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+                <div>
+                    <label>
+                        @Html.Resource("LastName") @Html.Resource("Optional")
+                        @Html.TextBoxFor(u => u.LastName)
+                    </label>
+                </div>*@
 
-			<button class="btn btn-primary" type="submit">@Html.Resource("ButtonSubscribe")</button>
-			
-		</div>
 
-		@if (Html.ValidationMessageFor(m => m.Email) != null)
-		{
-			<div class="has-error">
-				<span class="help-block">@Html.ValidationMessageFor(u => u.Email)</span>
-			</div>
-		}
-
-	</div>
-
-	}
+            <div>
+                <label>
+                    @Html.Resource("Email")
+                    @Html.TextBoxFor(u => u.Email)
+                </label>
+                <input type="submit" value="@Html.Resource("ButtonSubscribe")" />
+                @Html.ValidationMessageFor(u => u.Email)
+            </div>
+        }
 </div>

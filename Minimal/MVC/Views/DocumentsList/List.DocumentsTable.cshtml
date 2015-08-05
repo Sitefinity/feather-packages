@@ -6,42 +6,35 @@
 
 <div class="@Model.CssClass">
 
-    <div>
-
-        <table>
-            <thead>
-                <tr>
-                    <td><strong>@Html.Resource("Title")</strong></td>
-                    <td><strong>@Html.Resource("Type")</strong></td>
-                    <td><strong>@Html.Resource("Size")</strong></td>
-                    <td></td>
-                </tr>
-            </thead>
-            @foreach (var item in Model.Items)
-            {
-                <tr>
-                    <td>
-                        <i>
-                            <span>@(((DocumentItemViewModel)item).Extension)</span>
-                        </i>
-                        <a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">
-                            @item.Fields.Title
-                        </a>
-                    </td>
-                    <td>
-                        @(((DocumentItemViewModel)item).Extension)
-                    </td>
-                    <td>
-                        @(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB")
-                    </td>
-                    <td>
-                        <a href="@item.Fields.MediaUrl" target="_blank">Download</a>
-                    </td>
-                </tr>
-            }
-        </table>
-
-    </div>
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>@Html.Resource("Title")</td>
+                <td>@Html.Resource("Type")</td>
+                <td>@Html.Resource("Size")</td>
+                <td></td>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    <a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">
+                        @item.Fields.Title
+                    </a>
+                </td>
+                <td>
+                    @(((DocumentItemViewModel)item).Extension)
+                </td>
+                <td>
+                    @(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB")
+                </td>
+                <td>
+                    <a href="@item.Fields.MediaUrl" target="_blank">Download</a>
+                </td>
+            </tr>
+        }
+    </table>
 
 </div>
 

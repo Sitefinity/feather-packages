@@ -9,28 +9,21 @@
         @Model.Item.Fields.Title
     </h1>
 
-
-    <p>
+    <div>
         @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
         @Html.Resource("By")
         @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
-    </p>
+    </div>
 
     <div>
         @Model.Item.Fields.Description
     </div>
 
     <div>
-        <i>
-            <span>@Model.Extension</span>
-        </i>
-    </div>
-    <div>
         <a href="@Model.Item.Fields.MediaUrl" target="_blank">Download</a>
-        <br>
-        <span>(@Model.Extension)</span>
+        (@Model.Extension)
+        <span>@(Math.Ceiling((double)Model.Item.Fields.TotalSize / 1024) + " KB")</span>
     </div>
-    <span>@(Math.Ceiling((double)Model.Item.Fields.TotalSize / 1024) + " KB")</span>
 
     @if (Model.EnableSocialSharing)
     {

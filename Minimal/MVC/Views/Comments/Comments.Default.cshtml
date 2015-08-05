@@ -19,21 +19,17 @@
         {
             <a href="#comment-submit-@HttpUtility.HtmlEncode(HttpUtility.UrlEncode(Model.ThreadKey))" data-sf-role="comments-new-form-button">@Html.Resource("LeaveComment")</a>
         }
+
+        <a href="#" data-sf-role="comments-sort-new-button" style="display:none;">@Html.Resource("NewestOnTop")</a>
+        <a href="#" data-sf-role="comments-sort-old-button" style="display:none;">@Html.Resource("OldestOnTop")</a>
     </div>
 
-    <div>
-        <a href="#" data-sf-role="comments-sort-new-button">@Html.Resource("NewestOnTop")</a>
-        <a href="#" data-sf-role="comments-sort-old-button">@Html.Resource("OldestOnTop")</a>
-    </div>
-
-
-    <div data-sf-role="list-loading-indicator" style="display:none;">Loading...</div>
-
+    <div data-sf-role="list-loading-indicator" style="display:none;"></div>
     <div data-sf-role="comments-container"></div>
 
     @if(Model.EnablePaging)
     {
-        <a href="#" data-sf-role="comments-load-more-button">@Html.Resource("LoadMoreComments")</a>
+        <a href="#" data-sf-role="comments-load-more-button" style="display:none;">@Html.Resource("LoadMoreComments")</a>
     }
 
     @if (Model.ThreadIsClosed)
@@ -42,85 +38,61 @@
     }
     else
     {
-        <div>
-            <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)" >
-                @if (Model.RequiresApproval)
-                {
-                    <div data-sf-role="comments-new-pending-approval-message">@Html.Resource("CommentPendingApproval")</div>
-                }
+        <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)">
+            @if (Model.RequiresApproval)
+            {
+                <div data-sf-role="comments-new-pending-approval-message" style="display:none;">@Html.Resource("CommentPendingApproval")</div>
+            }
 
-                    <div>
-                        <img src="@Model.UserAvatarImageUrl" width="40" height="40"/>
-                    </div>
+            <img src="@Model.UserAvatarImageUrl" />
+            <textarea data-sf-role="comments-new-message" placeholder="@Html.Resource("LeaveComment")" ></textarea>
 
-                    <div>
+            <div data-sf-role="comments-new-logged-out-view" style="display:none;">
+                <div>
+                    <label style="display: none;">@Html.Resource("YourName")</label>
+                    <input placeholder="@Html.Resource("YourName")" data-sf-role="comments-new-name" />
+                </div>
 
-                        <div>
-                            <label>@Html.Resource("LeaveComment")</label>
-                            <textarea data-sf-role="comments-new-message" placeholder="@Html.Resource("LeaveComment")" ></textarea>
-                        </div>
-
-                        <div data-sf-role="comments-new-logged-out-view" style="display:none;">
-
-                                <div>
-                                    <label>@Html.Resource("YourName")</label>
-                                    <input placeholder="@Html.Resource("YourName")" data-sf-role="comments-new-name" />
-                                </div>
-
-                                <div>
-                                    <label>@Html.Resource("EmailOptional")</label>
-                                    <input type="email" placeholder="@Html.Resource("EmailOptional")" data-sf-role="comments-new-email" />
-                                </div>
-
-                        </div>
-
-                        @if (Model.RequiresCaptcha)
-                        {
-                            <div data-sf-role="captcha-container">
-                                <div>
-                                    <img data-sf-role="captcha-image" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")" />
-                                </div>
-
-                                <a data-sf-role="captcha-refresh-button"> @Html.Resource("NewCode") </a>
-
-                                <div>
-                                    <label>@Html.Resource("TypeCodeAbove")</label>
-                                    <input type="text" data-sf-role="captcha-input" />
-                                </div>
-
-                            </div>
-                        }
-
-
-                        <div>
-                            <button data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
-                        </div>
-
-                    </div>
+                <div>
+                    <label style="display: none;">@Html.Resource("EmailOptional")</label>
+                    <input type="email" placeholder="@Html.Resource("EmailOptional")" data-sf-role="comments-new-email" />
+                </div>
 
             </div>
 
-            @if (Model.AllowSubscription)
+            @if (Model.RequiresCaptcha)
             {
-                <div>
-                    <span data-sf-role="comments-subscribe-text"></span>
-                    <a href="#" data-sf-role="comments-subscribe-button">
-                        <span data-sf-role="comments-subscribe-button-text"></span>
-                    </a>
+                <div data-sf-role="captcha-container" style="display:none;">
+                    <div>
+                        <img data-sf-role="captcha-image" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")"/>
+                    </div>
+                    <a data-sf-role="captcha-refresh-button"> @Html.Resource("NewCode") </a>
+                    <div>
+                        <label>@Html.Resource("TypeCodeAbove")
+                            <input type="text" data-sf-role="captcha-input" />
+                        </label>
+                    </div>
                 </div>
             }
 
-            <div data-sf-role="error-message">
-                <span></span>
+            <button data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
+        </div>
+
+        if (Model.AllowSubscription)
+        {
+            <div>
+                <span data-sf-role="comments-subscribe-text"></span>
+                <a href="#" data-sf-role="comments-subscribe-button">
+                    <span data-sf-role="comments-subscribe-button-text"></span>
+                </a>
             </div>
+        }
 
-            <div data-sf-role="list-loading-indicator" style="display:none;">
-				<span></span>
-			</div>
+        <div data-sf-role="error-message" style="display:none;">
+            <span></span>
+        </div>
 
-       </div>
-
-
+        <div data-sf-role="submit-loading-indicator" style="display:none;"></div>
 
         if (Model.RequiresAuthentication)
         {
@@ -130,23 +102,19 @@
 
     @*Single comment template*@
 
-    <div data-sf-role="single-comment-template">
-
+    <div data-sf-role="single-comment-template" style="display:none;">
         <div>
-            <img alt="comment-avatar" data-sf-role="comment-avatar" width="40" height="40" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")"/>
+            <img data-sf-role="comment-avatar" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")"/>
+            <p>
+                <span data-sf-role="comment-name"></span>
+                <span data-sf-role="comment-date"></span>
+            </p>
+            <p>
+                <span data-sf-role="comment-message"></span>
+            </p>
         </div>
-        <div>
-
-            <span data-sf-role="comment-name"></span>
-            <span data-sf-role="comment-date"></span>
-
-            <p data-sf-role="comment-message"></p>
-        </div>
-
     </div>
-
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/comments-list.js"), "bottom", false)
-
 
