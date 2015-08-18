@@ -1,13 +1,10 @@
 .sf-Comments
-	margin-top: 30px
+	@extend %sf-Comments
 
-	[class^="sf-icon"]
-		display: inline-block
+.sf-Comments-loading
+	margin-bottom: 15px
 
-	.sf-loading
-		margin-bottom: 15px
-
-.sf-Comment-count
+.sf-Comments-count
 	display: inline-block
 	margin-left: 10px
 
@@ -16,7 +13,6 @@
 		vertical-align: middle
 
 // Hide elements before js initialization
-
 [data-sf-role="error-message"],
 [data-sf-role="list-loading-indicator"],
 [data-sf-role="list-loading-indicator"],
@@ -33,55 +29,30 @@
 [data-sf-role="comments-new-requires-authentication"],
 [data-sf-role="list-rating-wrapper"],
 [data-sf-role="review-new-form-replacement"]
-
 	display: none
 
 .sf-Comments-header
-	margin-bottom: 30px
-
-	h3
-		display: inline-block
-		margin-top: 0
-		margin-right: 20px
-
-	a
-		margin-top: 5px
-		margin-left: 5px
-
-	.selected
-		color: #333
+	@extend %sf-Comments-header
 
 .sf-Comments-list
-	margin-bottom: 30px
+	@extend %sf-Comments-list
 
-	.sf-Comments-list-author
-		padding-right: 5px
-		border-right: 1px solid #ccc
+.sf-Comments-list-author
+	@extend %sf-Comments-list-author
 
 .sf-Comments-form
-	textarea
-		min-height: 90px
+	@extend %sf-Comments-form
 
 .sf-Comments-more
 	margin-bottom: 30px
 
-.sf-Comment-subscribe
-	margin-top: 15px
-	margin-left: 50px
-	//Reviews
-
-.sf-Review-already
-	margin-top: 20px
-
-.sf-Review-count
-	display: inline-block
-	margin-left: 10px
+.sf-Comments-subscribe
+	@extend %sf-Comments-subscribe
 
 //Comment count on new line
-
-.sf-Comment-count--block
-	.sf-Comment-count,
-	.sf-Review-count
+.sf-Comments-count--block
+	.sf-Comments-count,
+	.sf-Reviews-count
 		display: block
 		margin-left: 0
 		margin-bottom: 10px

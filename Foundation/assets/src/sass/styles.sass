@@ -1,6 +1,10 @@
 // Import Foundation from npm
 @import "../../../node_modules/zurb-foundation-5/scss/foundation.scss";
 
+// Icon font
+@import "icons/_sf-icon-font"
+@import "icons/_icons"
+
 //Loading
 @import "sitefinity/loading";
 
@@ -22,8 +26,11 @@
 @import "sitefinity/navigation/tabs-nav";
 
 // Search
-@import "sitefinity/searchBox/sf-search-box";
+@import "sitefinity/searchBox/sf-autocomplete";
 @import "sitefinity/searchResults/sf-search-results";
+
+// Document link
+@import "sitefinity/documentLink/_sf-document-link";
 
 // Social share
 // Due to some unfortunate circumstances, these files must be

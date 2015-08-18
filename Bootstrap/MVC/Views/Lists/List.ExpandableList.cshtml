@@ -8,14 +8,14 @@
 
 <div class="@Model.CssClass" data-sf-role="lists">
 
-    <div class="sf-list sf-list--expandable clearfix">
-    
+    <div class="sf-ListExpandable clearfix">
+
         <div class="pull-right">
             <a  href="#" data-sf-role="expandAll">@Html.Resource("ExpandAll")</a>
             <a class="pull-right" href="#" data-sf-role="collapseAll" style="display:none;">@Html.Resource("CollapseAll")</a>
         </div>
 
-        <div class="sf-list-item pull-left">
+        <div class="sf-ListExpandable-item pull-left">
             @foreach (var item in Model.Items)
             {
 
@@ -23,12 +23,12 @@
                     @item.Fields.Title
                 </h3>
 
-        
+
                 foreach (var listItem in ((ListViewModel)item).ListItemViewModel.Items)
                 {
                     <div @Html.InlineEditingAttributes(Model.ProviderName, ((ListViewModel)item).ListItemViewModel.ContentType.FullName, (Guid)listItem.Fields.Id)>
                         <a href="#" @Html.InlineEditingFieldAttributes("Title", "ShortText") data-sf-role="toggleLink"><i class="text-muted sf-icon glyphicon glyphicon-chevron-right"></i>@listItem.Fields.Title</a>
-                        <div @Html.InlineEditingFieldAttributes("Content", "LongText") style="display:none;" class="sf-list-content">
+                        <div @Html.InlineEditingFieldAttributes("Content", "LongText") style="display:none;" class="sf-ListExpandable-content">
                             @Html.Raw(@listItem.Fields.Content)
                         </div>
                     </div>

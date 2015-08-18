@@ -4,6 +4,10 @@
 // in our own .less files, but currently there's no other way
 @import (inline) "../../../node_modules/semantic-ui/dist/semantic.css";
 
+// Icon font
+@import "icons/_sf-icon-font";
+@import "icons/_icons";
+
 // Loading
 @import "sitefinity/_loading";
 
@@ -27,8 +31,11 @@
 @import "sitefinity/profile/_sf-profile";
 
 // Search
-@import "sitefinity/searchBox/_sf-search-box";
+@import "sitefinity/searchBox/_sf-autocomplete";
 @import "sitefinity/searchResults/_sf-search-results";
+
+// Document link
+@import "sitefinity/documentLink/_sf-document-link";
 
 // Social share
 // Due to some unfortunate circumstances, these files must be

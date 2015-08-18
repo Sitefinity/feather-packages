@@ -1,11 +1,10 @@
 ﻿@model Telerik.Sitefinity.Frontend.Comments.Mvc.Models.CommentsCountViewModel
-
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
 
 @Html.Script(ScriptRef.JQuery, "top", true)
 
-<div data-sf-role="comments-count-wrapper" data-sf-thread-key="@Model.ThreadKey" class="sf-Comment-count">
+<div data-sf-role="comments-count-wrapper" data-sf-thread-key="@Model.ThreadKey" class="sf-Comments-count">
     <a data-sf-role="comments-count-anchor" href="@Model.NavigateUrl">
         <span class="sf-icon-comment"></span>
         <span data-sf-role="comments-count-anchor-text"></span>
