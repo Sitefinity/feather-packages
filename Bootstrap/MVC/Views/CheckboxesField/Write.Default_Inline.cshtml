@@ -14,14 +14,16 @@
 
 <div class="@Model.CssClass" data-sf-role="checkboxes-field-container">
     <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
-
+	<input type="hidden" data-sf-role="required-validator" value='@Model.IsRequired' />
+	
        <strong> @Model.MetaField.Title</strong>
         <p class="text-muted">@Model.MetaField.Description</p>
         
         @foreach (var choice in Model.Choices)
         {
+			var selctedAttributes = !Model.IsRequired && !string.IsNullOrEmpty(Model.MetaField.DefaultValue) && Model.MetaField.DefaultValue.Contains(choice as string) ? "checked" : string.Empty;
             <label class="checkbox-inline">
-                <input type="checkbox" name="@fieldName" value="@choice" data-sf-role="checkboxes-field-input" @requiredAttributes />
+                <input type="checkbox" name="@fieldName" value="@choice" data-sf-role="checkboxes-field-input" @selctedAttributes />
                 @choice
             </label>
         }
@@ -29,9 +31,9 @@
         @if(Model.HasOtherChoice)
         {
             <label class="checkbox-inline">
-                <input type="checkbox" name="@fieldName" data-sf-multiple-choice-role="other-choice-checkbox" data-sf-role="checkboxes-field-input"/>
+                <input type="checkbox" name="@fieldName" data-sf-checkboxes-role="other-choice-checkbox" data-sf-role="checkboxes-field-input"/>
                 @Html.Resource("Other")
-                <input type="hidden" data-sf-multiple-choice-role="other-choice-text" />
+                <input type="hidden" data-sf-checkboxes-role="other-choice-text" data-sf-role="checkboxes-field-input" />
             </label>
         }
 
