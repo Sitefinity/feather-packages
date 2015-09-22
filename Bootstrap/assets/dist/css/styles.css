@@ -7029,7 +7029,7 @@ ul.sf-autocomplete {
 
 .sf-icon-comment {
   background-image: url(../images/sprite.png);
-  background-position: -16px -52px;
+  background-position: -32px -52px;
   width: 17px;
   height: 15px; }
 
@@ -7047,7 +7047,7 @@ ul.sf-autocomplete {
 
 .sf-icon-email {
   background-image: url(../images/sprite.png);
-  background-position: -33px -52px;
+  background-position: -49px -52px;
   width: 19px;
   height: 13px; }
 
@@ -7065,13 +7065,13 @@ ul.sf-autocomplete {
 
 .sf-icon-google {
   background-image: url(../images/sprite.png);
-  background-position: -20px 0px;
+  background-position: -16px -36px;
   width: 16px;
   height: 16px; }
 
 .sf-icon-linkedin {
   background-image: url(../images/sprite.png);
-  background-position: -32px -36px;
+  background-position: -20px 0px;
   width: 16px;
   height: 16px; }
 
@@ -7093,9 +7093,15 @@ ul.sf-autocomplete {
   width: 16px;
   height: 16px; }
 
+.sf-icon-remove {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -52px;
+  width: 16px;
+  height: 16px; }
+
 .sf-icon-stumble-upon {
   background-image: url(../images/sprite.png);
-  background-position: -16px -36px;
+  background-position: -32px -36px;
   width: 16px;
   height: 16px; }
 
@@ -7107,7 +7113,7 @@ ul.sf-autocomplete {
 
 .sf-icon-twitter {
   background-image: url(../images/sprite.png);
-  background-position: 0px -52px;
+  background-position: -16px -52px;
   width: 16px;
   height: 16px; }
 
