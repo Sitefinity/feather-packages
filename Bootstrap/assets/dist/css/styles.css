@@ -7021,6 +7021,13 @@ ul.sf-autocomplete {
   display: inline-block;
   vertical-align: middle; }
 
+.sf-FileField .sf-icon-remove {
+  display: inline-block;
+  cursor: pointer; }
+
+input[type=file].sf-FileField-input {
+  display: inline-block; }
+
 .sf-icon-blogger {
   background-image: url(../images/sprite.png);
   background-position: 0px -36px;
