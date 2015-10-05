@@ -1,0 +1,11 @@
+@model Telerik.Sitefinity.Frontend.Engagement.Mvc.Models.Engagement.EngagementViewModel
+
+<div class="@Model.CssClass">
+	<div class="jumbotron" style="background: url('@Model.SelectedSizeUrl') center center; background-size: cover;">
+		<h1>@Html.Raw(Model.Heading)</h1>
+		<p>@Html.Raw(Model.Description)</p>
+		@if (Model.ActionName != null && !String.IsNullOrEmpty(Model.ActionName))
+		{
+				<p><a href="@Model.ActionUrl" class="btn btn-primary" role="button" >@Model.ActionName</a></p>
+		}
+	</div>
