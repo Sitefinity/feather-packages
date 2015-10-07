@@ -15,8 +15,8 @@
 
     <div class="form-inline">
         <div class="form-group">
-            <label>@Html.Resource("TypeCodeAbove") </label>
-            <input type="text" data-sf-role="captcha-input" name="@Model.CaptchaAnswerFormKey" class="form-control input-sm"/>
+            <label for='@Html.UniqueId("Textbox")'>@Html.Resource("TypeCodeAbove") </label>
+            <input id='@Html.UniqueId("Textbox")' type="text" data-sf-role="captcha-input" name="@Model.CaptchaAnswerFormKey" class="form-control input-sm"/>
         </div>
     </div>
     <input type="hidden" data-sf-role="captcha-ca" name="@Model.CaptchaCorrectAnswerFormKey" />
