@@ -12,7 +12,11 @@
     <label>
         @Model.MetaField.Title
     </label>
-    <p class="text-muted">@Model.MetaField.Description</p>
+    @if (!string.IsNullOrEmpty(Model.MetaField.Description)) 
+    { 
+        <p class="text-muted">@Model.MetaField.Description</p>
+    } 
+
     <select data-sf-role="dropdown-list-field-select" name="@Model.MetaField.FieldName" @MvcHtmlString.Create(Model.ValidationAttributes) class="form-control">
     @foreach (var choice in Model.Choices)
     {
