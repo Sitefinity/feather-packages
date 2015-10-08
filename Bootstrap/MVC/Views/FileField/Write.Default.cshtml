@@ -7,7 +7,7 @@
 @Html.Script(ScriptRef.JQuery, "top", false)
 
 <div class="@Model.CssClass sf-FileField from-group" data-sf-role="file-field-container" data-sf-config="@(Html.AttributeEncode(Model.Serialize()))">
-    <label>@Model.MetaField.Title</label>
+    <strong>@Model.MetaField.Title</strong>
     <p class="text-danger" data-sf-role="required-violation-message" style="display: none;">@Model.RequiredViolationMessage</p>
     @if (!string.IsNullOrEmpty(Model.MetaField.Description)) 
     {
@@ -19,7 +19,7 @@
             @:<script type="text/template" data-sf-role="file-input-template">
         }
             <div data-sf-role="single-file-input">
-                <input type="file" name="@(Model.MetaField.FieldName)" @Html.Raw(Model.ValidationAttributes) class="sf-FileField-input"/>
+                <input title="file" type="file" name="@(Model.MetaField.FieldName)" @Html.Raw(Model.ValidationAttributes) class="sf-FileField-input"/>
                 @if (Model.AllowMultipleFiles)
                 {
                     <span style="display: none;" data-sf-role="remove-input" class="sf-icon-remove"></span>
