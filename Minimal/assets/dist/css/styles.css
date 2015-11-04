@@ -32,9 +32,8 @@
   font-size: 12px;
   color: #000;
   line-height: 1;
-  transition: background 0.2s ease; }
-  .sf-share-button:hover,
-  .sf-share-button:focus {
+  transition: background .2s ease; }
+  .sf-share-button:hover, .sf-share-button:focus {
     text-decoration: none;
     background: #efefef;
     color: #000; }
