@@ -1,6 +1,6 @@
 @model Telerik.Sitefinity.Frontend.Card.Mvc.Models.Card.CardViewModel
 
-<div class="@Model.CssClass container">
+<div class="@Model.CssClass container sf-card hero">
     <div class="jumbotron" style="background: url('@Model.SelectedSizeUrl') center center; background-size: cover;">
         <h1>@Html.Raw(Model.Heading)</h1>
         <p>@Html.Raw(Model.Description)</p>
