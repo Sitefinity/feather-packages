@@ -3,5 +3,9 @@
 @using Telerik.Sitefinity.Frontend.Forms.Mvc.Helpers;
 
 <div class="@Model.CssClass">
+    @if (Model.AllowGoBack)
+    {
+        <a href="">@Html.Raw(Model.PreviousStepText) </a>
+    }
     <button type="submit" @Html.SubmitButtonRequiredAttributes() class="btn btn-primary">@Model.Label</button>
 </div>
