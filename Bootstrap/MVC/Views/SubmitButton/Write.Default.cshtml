@@ -7,11 +7,13 @@
 @Html.Script(ScriptRef.JQuery, "top", false)
 
 <div class="@Model.CssClass">
-    <button type="submit" @Html.SubmitButtonRequiredAttributes() class="btn btn-primary">@Model.Label</button>
-	@if (Model.AllowGoBack)
+
+    @if (Model.AllowGoBack)
     {
         <a href="">@Html.Raw(Model.PreviousStepText) </a>
     }
+
+    <button type="submit" @Html.SubmitButtonRequiredAttributes() class="sf-SubmitButton btn btn-primary">@Model.Label</button>
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/SubmitButton/submit-button.js"), "bottom", false)
