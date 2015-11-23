@@ -7021,13 +7021,6 @@ ul.sf-autocomplete {
   display: inline-block;
   vertical-align: middle; }
 
-.sf-FileField .sf-icon-remove {
-  display: inline-block;
-  cursor: pointer; }
-
-input[type=file].sf-FileField-input {
-  display: inline-block; }
-
 .sf-icon-blogger {
   background-image: url(../images/sprite.png);
   background-position: 0px -36px;
@@ -7036,7 +7029,7 @@ input[type=file].sf-FileField-input {
 
 .sf-icon-comment {
   background-image: url(../images/sprite.png);
-  background-position: -32px -52px;
+  background-position: -16px -52px;
   width: 17px;
   height: 15px; }
 
@@ -7054,7 +7047,7 @@ input[type=file].sf-FileField-input {
 
 .sf-icon-email {
   background-image: url(../images/sprite.png);
-  background-position: -49px -52px;
+  background-position: -33px -52px;
   width: 19px;
   height: 13px; }
 
@@ -7072,13 +7065,13 @@ input[type=file].sf-FileField-input {
 
 .sf-icon-google {
   background-image: url(../images/sprite.png);
-  background-position: -16px -36px;
+  background-position: -20px 0px;
   width: 16px;
   height: 16px; }
 
 .sf-icon-linkedin {
   background-image: url(../images/sprite.png);
-  background-position: -20px 0px;
+  background-position: -32px -36px;
   width: 16px;
   height: 16px; }
 
@@ -7100,15 +7093,9 @@ input[type=file].sf-FileField-input {
   width: 16px;
   height: 16px; }
 
-.sf-icon-remove {
-  background-image: url(../images/sprite.png);
-  background-position: 0px -52px;
-  width: 16px;
-  height: 16px; }
-
 .sf-icon-stumble-upon {
   background-image: url(../images/sprite.png);
-  background-position: -32px -36px;
+  background-position: -16px -36px;
   width: 16px;
   height: 16px; }
 
@@ -7120,7 +7107,7 @@ input[type=file].sf-FileField-input {
 
 .sf-icon-twitter {
   background-image: url(../images/sprite.png);
-  background-position: -16px -52px;
+  background-position: 0px -52px;
   width: 16px;
   height: 16px; }
 
