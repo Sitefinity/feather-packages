@@ -7060,6 +7060,21 @@ input[type=file].sf-FileField-input {
 .past .sf-FormNav-page-number {
   display: none; }
 
+.sf-Progress-percent,
+.sf-Progress-page-title {
+  font-size: 14px; }
+
+.sf-Progress-percent {
+  font-weight: bold; }
+
+.sf-Progress-page-title {
+  display: inline-block;
+  padding-left: 0; }
+  .sf-Progress-page-title li {
+    display: none; }
+    .sf-Progress-page-title li.active {
+      display: inline-block; }
+
 .sf-icon-blogger {
   background-image: url(../images/sprite.png);
   background-position: 0px -36px;
