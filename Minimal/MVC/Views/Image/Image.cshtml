@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.Image.ImageViewModel
+﻿@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.Image.ImageViewModel
 
 @if (string.IsNullOrEmpty(Model.LinkedContentUrl))
 {
@@ -10,3 +10,4 @@ else
         <img class="@Model.CssClass" src="@Model.SelectedSizeUrl" title="@Model.Title" alt="@Model.AlternativeText" />
     </a>
 }
+

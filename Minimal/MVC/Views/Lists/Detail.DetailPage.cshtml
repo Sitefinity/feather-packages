@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
 
 @using Telerik.Sitefinity;
 @using Telerik.Sitefinity.Frontend.Lists.Mvc.Models;
@@ -17,6 +17,6 @@
     {
         @Html.SocialShareOptions()
     }
-
+    
     @Html.CommentsList(@Model.Item.DataItem)
 </div>

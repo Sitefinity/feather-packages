@@ -19,11 +19,11 @@
         {
             <a href="#comment-submit-@HttpUtility.HtmlEncode(HttpUtility.UrlEncode(Model.ThreadKey))" data-sf-role="comments-new-form-button">@Html.Resource("LeaveComment")</a>
         }
-
+        
         <a href="#" data-sf-role="comments-sort-new-button" style="display:none;">@Html.Resource("NewestOnTop")</a>
         <a href="#" data-sf-role="comments-sort-old-button" style="display:none;">@Html.Resource("OldestOnTop")</a>
     </div>
-
+          
     <div data-sf-role="list-loading-indicator" style="display:none;"></div>
     <div data-sf-role="comments-container"></div>
 
@@ -36,8 +36,8 @@
     {
         <div>@Html.Resource("CommentsThreadIsClosedMessage")</div>
     }
-    else
-    {
+    else 
+    {        
         <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)">
             @if (Model.RequiresApproval)
             {
@@ -77,7 +77,7 @@
 
             <button data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
         </div>
-
+        
         if (Model.AllowSubscription)
         {
             <div>
@@ -87,19 +87,19 @@
                 </a>
             </div>
         }
-
+        
         <div data-sf-role="error-message" style="display:none;">
             <span></span>
         </div>
-
+        
         <div data-sf-role="submit-loading-indicator" style="display:none;"></div>
-
+        
         if (Model.RequiresAuthentication)
         {
             <div data-sf-role="comments-new-requires-authentication"><a href='@Model.LoginPageUrl'>@Html.Resource("Login")</a>@Html.Resource("ToBeAbleToComment")</div>
         }
     }
-
+    
     @*Single comment template*@
 
     <div data-sf-role="single-comment-template" style="display:none;">
@@ -117,4 +117,5 @@
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/comments-list.js"), "bottom", false)
+
 

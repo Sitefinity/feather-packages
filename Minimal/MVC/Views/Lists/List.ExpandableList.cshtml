@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
@@ -15,7 +15,7 @@
                 @item.Fields.Title
             </span>
         </h3>
-
+        
         foreach (var listItem in ((ListViewModel)item).ListItemViewModel.Items)
         {
             <div @Html.InlineEditingAttributes(Model.ProviderName, ((ListViewModel)item).ListItemViewModel.ContentType.FullName, (Guid)listItem.Fields.Id)>

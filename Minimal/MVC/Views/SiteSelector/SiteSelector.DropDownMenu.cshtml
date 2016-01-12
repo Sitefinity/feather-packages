@@ -18,7 +18,7 @@
         @:<select onchange="document.location.href = this.value">
     }
             @if (!Model.IncludeCurrentSite)
-            {
+            { 
                 <option>@Html.Resource("SelectSite")</option>
             }
 
@@ -27,7 +27,7 @@
              }
 
             @foreach (var site in Model.Sites)
-            {
+            {                                                                               
                 if (!Model.EachLanguageAsSeparateSite)
                 {
                      <option value="@site.Url" @(site.IsCurrent ? "selected=selected" : "")>@site.Name</option>

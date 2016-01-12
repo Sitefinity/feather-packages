@@ -20,16 +20,16 @@
         {
             <a href="#comment-submit-@HttpUtility.HtmlEncode(HttpUtility.UrlEncode(Model.ThreadKey))" data-sf-role="comments-new-form-button">@Html.Resource("WriteReview")</a>
         }
-
+        
         <span data-sf-role="comments-count-list-wrapper">
-            <span>@Html.Resource("AverageRating")</span>
+            <span class="text-muted">@Html.Resource("AverageRating")</span>
             @Html.CommentsCount(string.Empty, Model.ThreadKey, Model.ThreadType)
         </span>
-
+        
         <a href="#" data-sf-role="comments-sort-new-button" style="display:none;">@Html.Resource("NewestOnTop")</a>
         <a href="#" data-sf-role="comments-sort-old-button" style="display:none;">@Html.Resource("OldestOnTop")</a>
     </div>
-
+          
     <div data-sf-role="list-loading-indicator" style="display:none;"></div>
     <div data-sf-role="comments-container"></div>
 
@@ -42,8 +42,8 @@
     {
         <div>@Html.Resource("ReviewsThreadIsClosedMessage")</div>
     }
-    else
-    {
+    else 
+    {        
         <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)">
             @if (Model.RequiresApproval)
             {
@@ -52,7 +52,7 @@
 
             <img src="@Model.UserAvatarImageUrl"/>
             <textarea data-sf-role="comments-new-message" placeholder="@Html.Resource("WriteReview")" ></textarea>
-
+            
             <div>
                 <span>@Html.Resource("Rating")</span>
                 <div class="sf-Ratings">
@@ -89,7 +89,7 @@
             }
             <button data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
         </div>
-
+        
         <p data-sf-role="review-new-form-replacement">@Html.Resource("UserAlreadySubmitedReview")</p>
 
         if (Model.AllowSubscription)
@@ -105,28 +105,28 @@
         <div data-sf-role="error-message" style="display:none;">
             <span></span>
         </div>
-
+        
         <div data-sf-role="submit-loading-indicator" style="display:none;"></div>
-
+        
         if (Model.RequiresAuthentication)
         {
             <div data-sf-role="comments-new-requires-authentication"><a href='@Model.LoginPageUrl'>@Html.Resource("Login")</a>@Html.Resource("ToBeAbleToReview")</div>
         }
     }
-
+    
     <div data-sf-role="single-comment-template" style="display:none;">
         <div>
             <img data-sf-role="comment-avatar" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")"/>
 
             <div>
-                <span data-sf-role="comment-name"></span> |
+                <span data-sf-role="comment-name"></span> | 
                 <span data-sf-role="comment-date"></span>
             </div>
 
             <span data-sf-role="list-rating-wrapper" class="sf-Ratings" style="display: none;">
 
                 <span data-sf-role="list-rating-container" class="sf-Ratings-stars sf-Ratings-stars--ronly"></span>
-                <span class="sf-Ratings-average">
+                <span class="text-muted sf-Ratings-average">
                     (<span data-sf-role="list-rating-value"></span>)
                 </span>
 
@@ -145,3 +145,4 @@
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Reviews/rating.js"), "bottom", false)
 @Html.Script(Url.WidgetContent("Mvc/Scripts/comments-list.js"), "bottom", false)
+

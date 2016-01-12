@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.EmailCampaigns.Mvc.Models.SubscribeFormViewModel
+﻿@model Telerik.Sitefinity.Frontend.EmailCampaigns.Mvc.Models.SubscribeFormViewModel
 
 @using Telerik.Sitefinity.UI.MVC;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
@@ -21,12 +21,12 @@
 
         if (ViewBag.IsSucceeded == true)
         {
-
+        
             <p>
                @Html.Resource("ThankYou"). @Html.Resource("ThankYouMessage") (@ViewBag.Email)
             </p>
         }
-
+            
             @Html.ValidationSummary(true)
 
             if (!string.IsNullOrEmpty(ViewBag.Error))
@@ -64,3 +64,4 @@
             </div>
         }
 </div>
+

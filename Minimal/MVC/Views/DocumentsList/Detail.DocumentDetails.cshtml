@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.DocumentsList.DocumentDetailsViewModel
+﻿@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.DocumentsList.DocumentDetailsViewModel
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Web.DataResolving;
@@ -9,7 +9,7 @@
         @Model.Item.Fields.Title
     </h1>
 
-    <div>
+    <div class="text-muted">
         @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
         @Html.Resource("By")
         @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
@@ -30,3 +30,4 @@
         @Html.SocialShareOptions()
     }
 </div>
+

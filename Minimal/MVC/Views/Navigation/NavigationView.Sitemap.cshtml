@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.INavigationModel
+﻿@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.INavigationModel
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Frontend.Navigation.Mvc.Models;
@@ -23,7 +23,7 @@
 @helper RenderRootLevelNode(NodeViewModel node)
 {
     <li>
-        <a href="@node.Url" target="@node.LinkTarget">@node.Title</a>
+        <a href="@node.Url" target="@node.LinkTarget"><strong>@node.Title</strong></a>
         @if (node.ChildNodes.Count > 0)
         {
             <ul>
@@ -52,3 +52,4 @@
         }
     </li>
 }
+
