@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
 
 @using Telerik.Sitefinity;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
@@ -15,11 +15,11 @@
         @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
         @Html.CommentsCount(string.Empty, @Model.Item.DataItem)
     </div>
-
+    
     <div @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.Raw(Model.Item.Fields.Summary)</div>
 
     <div @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.Raw(Model.Item.Fields.Content)</div>
-
+    
     @if (Model.EnableSocialSharing)
     {
         @Html.SocialShareOptions()

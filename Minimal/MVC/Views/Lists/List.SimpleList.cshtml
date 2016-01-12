@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
 @using Telerik.Sitefinity.Frontend.Lists.Mvc.Models;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 
@@ -11,7 +11,7 @@
 
             @item.Fields.Title
         </h3>
-
+        
         <ul>
             @foreach (var listItem in ((ListViewModel)item).ListItemViewModel.Items)
             {
@@ -25,3 +25,4 @@
     }
 
 </div>
+

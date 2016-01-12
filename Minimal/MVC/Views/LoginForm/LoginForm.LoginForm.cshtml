@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.LoginForm.LoginFormViewModel
+﻿@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.LoginForm.LoginFormViewModel
 
 @using Telerik.Sitefinity.UI.MVC;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
@@ -14,7 +14,7 @@
     @if (Telerik.Sitefinity.Security.SecurityManager.GetCurrentUserId() == Guid.Empty || SystemManager.IsInlineEditingMode || SystemManager.IsDesignMode)
     {
     <div>
-        @using (Html.BeginFormSitefinity())
+        @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, null, true))
         {
          @Html.ValidationSummary(true)
             <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
@@ -46,18 +46,18 @@
             }
 
            <div><input type="submit" value='@Html.Resource("LoginFormLogInButton")' /></div>
-
+        
 
             if (Model.ShowForgotPasswordLink)
             {
                 @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
             }
-
+ 
             if (Model.IncorrectCredentials)
             {
-
+            
             <p>@Html.Resource("IncorrectCredentialsMessage")</p>
-
+                
             }
 
             if (Model.ShowRegistrationLink)
@@ -67,7 +67,7 @@
         }
     </div>
     }
-
+    
     else
     {
         <p>@Html.Resource("AlreadyLoggedIn")</p>
@@ -75,3 +75,4 @@
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/LoginForm/login-form.js"), "bottom", false)
+

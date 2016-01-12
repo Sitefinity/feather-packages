@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.INavigationModel
+﻿@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.INavigationModel
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Frontend.Navigation.Mvc.Models;
@@ -12,24 +12,21 @@
 
 <div class="@Model.CssClass">
     @Html.Action("GetView", new { viewName = "Dropdown",  model= Model})
-    <nav class="navbar navbar-default" role="navigation">
 
-        <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-            </div>
+        <div>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#@Html.UniqueId("navbar")">
+            @*Toggle navigation button for responsive design*@
+              Toggle navigation
+            </button>
+        </div>
 
-            <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
-                <div class="nav navbar-nav">
-                    @foreach (var node in Model.Nodes)
-                    {
-                        @RenderRootLevelNode(node);
-                    }
-              </div>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
+        <ul id='@Html.UniqueId("navbar")'>
+            @foreach (var node in Model.Nodes)
+            {
+                @RenderRootLevelNode(node);
+            }
+        </ul>
+
 </div>
 
 @*Here is specified the rendering for the root level*@
@@ -37,18 +34,16 @@
 {
     if (node.ChildNodes.Count > 0)
     {
-        <span class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">@node.Title
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
+        <li>
+            <a href="#" data-toggle="dropdown">@node.Title</a>
+            <ul>
                 @RenderSubLevelsRecursive(node)
             </ul>
-        </span>
+        </li>
     }
     else
     {
-        <span class="@GetClass(node)"><a href="@node.Url" target="@node.LinkTarget">@node.Title</a></span>
+        <li class="@GetClass(node)"><a href="@node.Url" target="@node.LinkTarget">@node.Title</a></li>
     }
 }
 
@@ -59,20 +54,18 @@
     {
         if(childNode.ChildNodes.Count > 0)
         {
-             <span class="dropdown-submenu">
-                <a href="@childNode.Url" target="@childNode.LinkTarget">@childNode.Title
-                    <span class="right-caret"></span>
-                </a>
-                <ul class="dropdown-menu">
+             <li>
+                <a href="@childNode.Url" target="@childNode.LinkTarget">@childNode.Title</a>
+                <ul>
                     @RenderSubLevelsRecursive(childNode)
                 </ul>
-            </span>
+            </li>
         }
         else
         {
-            <span class="@GetClass(childNode)">
+            <li class="@GetClass(childNode)">
                 <a href="@childNode.Url" target="@childNode.LinkTarget">@childNode.Title</a>
-            </span>
+            </li>
         }
     }
 }
@@ -90,3 +83,4 @@
         @Html.Raw("active");
     }
 }
+

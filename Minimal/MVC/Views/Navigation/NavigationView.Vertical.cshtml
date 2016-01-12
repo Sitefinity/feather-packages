@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.INavigationModel
+﻿@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.INavigationModel
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Frontend.Navigation.Mvc.Models;
@@ -28,7 +28,7 @@
 
         @if (node.ChildNodes.Count > 0)
         {
-            <ul >
+            <ul>
                 @foreach (var childNode in node.ChildNodes)
                 {
                     @RenderSubLevelsRecursive(childNode)
@@ -50,3 +50,4 @@
         @Html.Raw("active");
     }
 }
+

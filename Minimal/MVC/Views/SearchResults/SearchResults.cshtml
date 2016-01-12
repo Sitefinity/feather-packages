@@ -121,7 +121,7 @@
         {
             <em>@Model.ItemsPerPage of @Model.Results.TotalCount results</em>
         }
-
+    
         @Html.Action("Index", "ContentPager", new
         {
             currentPage = Model.CurrentPage,
@@ -129,7 +129,7 @@
             redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
         })
     }
-
+   
     <input type="hidden" data-sf-role="searchResOrderBy" value="@Request.QueryString["orderBy"]" />
     <input type="hidden" data-sf-role="searchResLanguage" value="@Request.QueryString["language"]" />
     <input type="hidden" data-sf-role="searchResIndexCatalogue" value="@Request.QueryString["indexCatalogue"]" />
@@ -139,3 +139,4 @@
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/SearchResults/Search-results.js"), "bottom", false)
+
