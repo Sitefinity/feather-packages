@@ -15,33 +15,33 @@
 <div class="@Model.CssClass form-group" data-sf-role="multiple-choice-field-container">
     <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
 
-        <strong>@Model.MetaField.Title</strong>
-        @if (!string.IsNullOrEmpty(Model.MetaField.Description)) 
-        {
-           <p class="text-muted">@Model.MetaField.Description</p>
-        }
-        @foreach (var choice in Model.Choices)
-        {
-            var selctedAttributes = !Model.IsRequired && choice == Model.MetaField.DefaultValue as string ? "checked" : string.Empty;
-            <div class="radio">
-                <label>
-                  <input type="radio" name="@fieldName" value="@choice" data-sf-role="multiple-choice-field-input" @selctedAttributes @requiredAttributes />
-                    @choice
-                </label>
-            </div>
-        }
+    <strong>@Model.MetaField.Title</strong>
+    @if (!string.IsNullOrEmpty(Model.MetaField.Description))
+    {
+       <p class="text-muted">@Model.MetaField.Description</p>
+    }
+    @foreach (var choice in Model.Choices)
+    {
+        var selctedAttributes = !Model.IsRequired && choice == Model.MetaField.DefaultValue as string ? "checked" : string.Empty;
+        <div class="radio">
+            <label>
+                <input type="radio" name="@fieldName" value="@choice" data-sf-role="multiple-choice-field-input" @selctedAttributes @requiredAttributes />
+                @choice
+            </label>
+        </div>
+    }
 
-        @if(Model.HasOtherChoice)
-        {
-           <div class="radio">
-               <label>
-                    <input type="radio" name="@fieldName" data-sf-multiple-choice-role="other-choice-radio" data-sf-role="multiple-choice-field-input"/>
-                    @Html.Resource("Other")
-               </label>
-               <input type="hidden" data-sf-multiple-choice-role="other-choice-text" />
-           </div>
-          
-        }
+    @if(Model.HasOtherChoice)
+    {
+       <div class="radio">
+           <label>
+                <input type="radio" name="@fieldName" data-sf-multiple-choice-role="other-choice-radio" data-sf-role="multiple-choice-field-input"/>
+                @Html.Resource("Other")
+           </label>
+           <input type="hidden" data-sf-multiple-choice-role="other-choice-text" />
+       </div>
+
+    }
 
 
 </div>

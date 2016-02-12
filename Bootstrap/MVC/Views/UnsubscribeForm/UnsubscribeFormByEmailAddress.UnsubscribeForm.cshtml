@@ -10,47 +10,47 @@
 @Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", false)
 @Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", false)
 
-<div class="@Model.CssClass">    
-	@using (Html.BeginFormSitefinity())
-	{	
-		<h3>@Model.WidgetTitle</h3>
-		
-		<p class="text-muted">@Model.WidgetDescription</p>
-		
-		if (ViewBag.IsSucceded == true)
-		{
-			<div class="alert alert-success">@Html.Raw(Model.Message)</div>
-		}
-		
-		@Html.ValidationSummary(true)
-		
-		if (!string.IsNullOrEmpty(ViewBag.Error))
-		{
-			<div class="alert alert-danger">
-				@ViewBag.Error
-			</div>
-		}
-		
-		<div class="form-group">
-			<label>
-				@Html.Resource("Email")
-			</label>
+<div class="@Model.CssClass">
+    @using (Html.BeginFormSitefinity())
+    {
+        <h3>@Model.WidgetTitle</h3>
 
-			<div class="form-inline">
+        <p class="text-muted">@Model.WidgetDescription</p>
 
-				@Html.TextBoxFor(u => u.Email, new { @class = "form-control", type = "email" })
+        if (ViewBag.IsSucceded == true)
+        {
+            <div class="alert alert-success">@Html.Raw(Model.Message)</div>
+        }
 
-				<button type="submit" class="btn btn-primary">@Html.Resource("ButtonUnsubscribe")</button>
-	
-			</div>
+        @Html.ValidationSummary(true)
 
-			@if (Html.ValidationMessageFor(u => u.Email) != null)
-			{
-				<div class="has-error">
-					<span class="help-block">@Html.ValidationMessageFor(u => u.Email)</span>
-				</div>
-			}
+        if (!string.IsNullOrEmpty(ViewBag.Error))
+        {
+            <div class="alert alert-danger">
+                @ViewBag.Error
+            </div>
+        }
 
-		</div>		
-	}
+        <div class="form-group">
+            <label>
+                @Html.Resource("Email")
+            </label>
+
+            <div class="form-inline">
+
+                @Html.TextBoxFor(u => u.Email, new { @class = "form-control", type = "email" })
+
+                <button type="submit" class="btn btn-primary">@Html.Resource("ButtonUnsubscribe")</button>
+
+            </div>
+
+            @if (Html.ValidationMessageFor(u => u.Email) != null)
+            {
+                <div class="has-error">
+                    <span class="help-block">@Html.ValidationMessageFor(u => u.Email)</span>
+                </div>
+            }
+
+        </div>
+    }
 </div>

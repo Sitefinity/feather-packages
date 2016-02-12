@@ -10,13 +10,13 @@
 <!-- InputCssClass class variable -->
 
 @{ var inputCssClass = "";
-   HashSet<TextType> availableOptions = new HashSet<TextType>() { TextType.Text, TextType.Password, TextType.Date, TextType.DateTimeLocal, TextType.Month, TextType.Time,
-   TextType.Week, TextType.Number, TextType.Email,TextType.Url, TextType.Tel, TextType.Color };
+    HashSet<TextType> availableOptions = new HashSet<TextType>() { TextType.Text, TextType.Password, TextType.Date, TextType.DateTimeLocal, TextType.Month, TextType.Time,
+    TextType.Week, TextType.Number, TextType.Email,TextType.Url, TextType.Tel, TextType.Color };
 
-   if (availableOptions.Contains(Model.InputType))
-   {
-       inputCssClass = "form-control";
-   }
+    if (availableOptions.Contains(Model.InputType))
+    {
+        inputCssClass = "form-control";
+    }
 }
 
 
@@ -26,9 +26,9 @@
 
     <label for='@Html.UniqueId("Textbox")'>@Model.MetaField.Title</label>
     <input id='@Html.UniqueId("Textbox")' data-sf-role="text-field-input" type="@Model.InputType.ToHtmlInputType()" name="@Model.MetaField.FieldName" placeholder="@Model.PlaceholderText" value="@Model.Value" @Model.ValidationAttributes class="@inputCssClass"></input>
-     @if (!string.IsNullOrEmpty(Model.MetaField.Description)) 
+     @if (!string.IsNullOrEmpty(Model.MetaField.Description))
      {
-         <p class="text-muted">@Model.MetaField.Description</p>
+        <p class="text-muted">@Model.MetaField.Description</p>
      }
 </div>
 

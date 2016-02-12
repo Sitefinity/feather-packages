@@ -14,17 +14,17 @@
 
 <div class="@Model.CssClass form-group" data-sf-role="checkboxes-field-container">
     <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
-	<input type="hidden" data-sf-role="required-validator" value='@Model.IsRequired.ToString()' />
-	
+    <input type="hidden" data-sf-role="required-validator" value='@Model.IsRequired.ToString()' />
+
        <strong> @Model.MetaField.Title</strong>
-         @if (!string.IsNullOrEmpty(Model.MetaField.Description)) 
+         @if (!string.IsNullOrEmpty(Model.MetaField.Description))
          {
                 <p class="text-muted">@Model.MetaField.Description</p>
          }
-        
+
         @foreach (var choice in Model.Choices)
         {
-			var selctedAttributes = !string.IsNullOrEmpty(Model.MetaField.DefaultValue) && Model.MetaField.DefaultValue.Contains(choice as string) ? "checked" : string.Empty;
+            var selctedAttributes = !string.IsNullOrEmpty(Model.MetaField.DefaultValue) && Model.MetaField.DefaultValue.Contains(choice as string) ? "checked" : string.Empty;
             <label class="checkbox-inline">
                 <input type="checkbox" name="@fieldName" value="@choice" data-sf-role="checkboxes-field-input" @selctedAttributes />
                 @choice

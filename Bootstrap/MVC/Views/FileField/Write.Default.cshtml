@@ -9,7 +9,7 @@
 <div class="@Model.CssClass sf-FileField form-group" data-sf-role="file-field-container" data-sf-config="@(Html.AttributeEncode(Model.Serialize()))">
     <strong>@Model.MetaField.Title</strong>
     <p class="text-danger" data-sf-role="required-violation-message" style="display: none;">@Model.RequiredViolationMessage</p>
-    @if (!string.IsNullOrEmpty(Model.MetaField.Description)) 
+    @if (!string.IsNullOrEmpty(Model.MetaField.Description))
     {
         <p class="text-muted">@Model.MetaField.Description</p>
     }
@@ -26,19 +26,19 @@
                 }
 
                 @if (Model.AcceptedFileTypes.Length > 0)
-                { 
+                {
                     <p class="text-danger" data-sf-role="filetype-violation-message" style="display: none;">@Model.FileTypeViolationMessage</p>
                 }
-				@if (Model.MinFileSizeInMb > 0 || Model.MaxFileSizeInMb > 0)
-				{
+                @if (Model.MinFileSizeInMb > 0 || Model.MaxFileSizeInMb > 0)
+                {
                     <p class="text-danger" data-sf-role="filesize-violation-message" style="display: none;">@Model.FileSizeViolationMessage</p>
-				}
+                }
             </div>
         @if (!SystemManager.IsDesignMode)
         {
             @:</script>
         }
-        
+
         @* File inputs will be generated here *@
     </div>
 
