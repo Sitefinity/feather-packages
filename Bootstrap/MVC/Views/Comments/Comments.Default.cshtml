@@ -30,7 +30,7 @@
         </div>
 
     </div>
-          
+
     <div data-sf-role="list-loading-indicator" class="sf-loading" style="display:none;"><span></span></div>
 
     <div data-sf-role="comments-container" class="media-list sf-Comments-list"></div>
@@ -44,9 +44,9 @@
     {
         <div class="alert alert-warning">@Html.Resource("CommentsThreadIsClosedMessage")</div>
     }
-    else 
-    {   
-        <div class="sf-Comments-form">    
+    else
+    {
+        <div class="sf-Comments-form">
             <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)" >
                 @if (Model.RequiresApproval)
                 {
@@ -76,12 +76,12 @@
 
                                 <div class="form-group">
                                     <label class="sr-only">@Html.Resource("EmailOptional")</label>
-                                    <input type="email" placeholder="@Html.Resource("EmailOptional")" data-sf-role="comments-new-email" class="form-control" /> 
+                                    <input type="email" placeholder="@Html.Resource("EmailOptional")" data-sf-role="comments-new-email" class="form-control" />
                                 </div>
 
-                           </div>  
+                           </div>
                         </div>
-            
+
                         @if (Model.RequiresCaptcha)
                         {
                             <div data-sf-role="captcha-container" class="sf-Comments-captcha">
@@ -126,37 +126,37 @@
             <div data-sf-role="error-message" class="has-error">
                 <span class="help-block"></span>
             </div>
-					
+
             <div data-sf-role="list-loading-indicator" class="sf-loading" style="display:none;">
-				<span></span>
-			</div>
+                <span></span>
+            </div>
 
        </div>
 
 
-        
+
         if (Model.RequiresAuthentication)
         {
             <div class="alert alert-warning" data-sf-role="comments-new-requires-authentication"><a href='@Model.LoginPageUrl'>@Html.Resource("Login")</a>@Html.Resource("ToBeAbleToComment")</div>
         }
     }
-    
+
     @*Single comment template*@
 
     <div data-sf-role="single-comment-template">
 
         <div class="media sf-media">
-            <div class="media-left sf-img-thmb"> 
+            <div class="media-left sf-img-thmb">
                 <img alt="comment-avatar" data-sf-role="comment-avatar" width="40" height="40" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")"/>
             </div>
             <div class="media-body sf-media-body">
-           
-                <span data-sf-role="comment-name" class="text-muted sf-Comments-list-author"></span> 
+
+                <span data-sf-role="comment-name" class="text-muted sf-Comments-list-author"></span>
                 <span data-sf-role="comment-date" class="text-muted"></span>
-               
+
                 <p data-sf-role="comment-message"></p>
-            </div>  
-        </div>  
+            </div>
+        </div>
 
     </div>
 

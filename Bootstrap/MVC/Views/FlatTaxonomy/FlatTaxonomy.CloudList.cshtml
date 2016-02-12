@@ -4,7 +4,7 @@
     @foreach (var taxa in Model.Taxa)
     {
         var cloudSizeClass = "sf-Tags-size" + @taxa.CloudSize;
-    
+
         <li>
             <a href="@taxa.Url" class="@cloudSizeClass">@taxa.Title</a>
             <span class="small text-muted">

@@ -30,7 +30,7 @@
                     <div class="has-error">
                         <span class="help-block">@Html.ValidationMessage("UserName")</span>
                     </div>
-                }  
+                }
 
             </div>
 
@@ -45,7 +45,7 @@
                     <div class="has-error">
                         <span class="help-block">@Html.ValidationMessage("Password")</span>
                     </div>
-                }  
+                }
 
             </div>
 
@@ -62,20 +62,20 @@
             }
 
            <button type="submit" class="btn btn-primary">@Html.Resource("LoginFormLogInButton")</button>
-        
+
 
             if (Model.ShowForgotPasswordLink)
             {
                 @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
             }
- 
+
             if (Model.IncorrectCredentials)
             {
-            
+
             <div class="has-error">
                 <span class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
             </div>
-                
+
             }
 
             if (Model.ShowRegistrationLink)
@@ -87,7 +87,7 @@
         }
     </div>
     }
-    
+
     else
     {
         <p>@Html.Resource("AlreadyLoggedIn")</p>

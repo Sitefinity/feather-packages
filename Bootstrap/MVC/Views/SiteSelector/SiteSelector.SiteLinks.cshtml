@@ -7,7 +7,7 @@
 <div class="@Model.CssClass sf-site-selector">
 
     <h3>@Html.Resource("Sites")</h3>
-   
+
     <ul class="list-unstyled">
     @{
         string currentSite = string.Empty;
@@ -47,7 +47,7 @@
         else
         {
             if(currentSite != site.Name)
-            {                                   
+            {
                 <li><strong>@site.Name</strong></li>
                 currentSite = site.Name;
             }
