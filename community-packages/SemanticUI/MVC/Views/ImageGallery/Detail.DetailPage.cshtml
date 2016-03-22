@@ -30,7 +30,7 @@
 
 			@if (Model.PreviousItem != null) 
             {
-				<a class="sf-Gallery-prev-link" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, previousItemIndex)">
+				<a class="sf-Gallery-prev-link" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, previousItemIndex)">
 					@Html.Resource("PreviousImage")
 				</a>
 			}
@@ -42,7 +42,7 @@
 
 			@if (Model.NextItem != null) 
             {
-				<a class="sf-Gallery-next-link" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, nextItemIndex)">
+				<a class="sf-Gallery-next-link" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, nextItemIndex)">
 					@Html.Resource("NextImage")
 				</a>
 			}
