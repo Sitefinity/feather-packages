@@ -54,7 +54,7 @@ module.exports = function (grunt) {
 			},
 			dist: {
 				files: {
-					'<%= dist.path %>/css/styles.css': '<%= src.path %>/sass/styles.sass'
+					'<%= dist.path %>/css/styles.css': '<%= src.path %>/sass/styles.scss'
 				}
 			}
 		},
@@ -147,7 +147,7 @@ module.exports = function (grunt) {
 			all: {
 				src: 'assets/src/images/sprite/*.png',
 				dest: 'assets/src/images/sprite.png',
-				destCss: 'assets/src/sass/_sf-sprite.sass',
+				destCss: 'assets/src/sass/_sf-sprite.scss',
 				cssTemplate: 'assets/src/sass/sf-sprite.mustache'
 			}
 		},

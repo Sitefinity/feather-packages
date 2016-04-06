@@ -6209,18 +6209,18 @@ img.mfp-img {
   display: inline-block;
   margin-top: -4px;
   font-size: 19px;
-  color: #3390CF; }
+  color: #3390cf; }
 
 .icon-no-image {
   font-size: 70px;
-  color: #ddd; }
+  color: #dddddd; }
 
 .icon-txt {
   position: relative;
   display: inline-block;
   line-height: normal; }
   .icon-txt.icon-file {
-    color: #999; }
+    color: #999999; }
   .icon-txt [class^="icon-txt-"] {
     position: absolute;
     top: 47%;
@@ -6232,8 +6232,8 @@ img.mfp-img {
     font-style: normal;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: #333;
-    color: #fff; }
+    background-color: #333333;
+    color: white; }
   .icon-txt .icon-txt-xlsx {
     background-color: #38ab63; }
   .icon-txt .icon-txt-doc,
@@ -6265,7 +6265,7 @@ pre {
   padding: 0;
   border: 0;
   background: transparent;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px; }
 
 .u-toe {
@@ -6295,8 +6295,8 @@ pre {
     animation-delay: -1.2s;
     left: -10px; }
   .sf-loading:after {
-    -webkit-animation-delay: -1.0s;
-    animation-delay: -1.0s;
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
     right: -10px; }
 
 .sf-loading-wrapper {
@@ -6370,7 +6370,7 @@ pre {
         position: absolute;
         left: 12px;
         top: 9px;
-        content: ''; }
+        content: ""; }
 
 .sf-media .sf-media-body h3 {
   margin-top: 0; }
@@ -6396,7 +6396,7 @@ body[contenteditable="true"] {
     overflow: hidden;
     cursor: pointer; }
     .sf-Gallery-thumbs a.is-selected {
-      border-color: #428BCA; }
+      border-color: #428bca; }
     .sf-Gallery-thumbs a > img {
       vertical-align: middle; }
 
@@ -6406,8 +6406,8 @@ body[contenteditable="true"] {
   line-height: 600px;
   margin-top: 30px;
   text-align: center;
-  background: #E4E4E4;
-  border: 1px solid #E4E4E4; }
+  background: #e4e4e4;
+  border: 1px solid #e4e4e4; }
   .sf-Gallery-image > img {
     max-height: 100%;
     width: auto;
@@ -6429,7 +6429,7 @@ body[contenteditable="true"] {
   line-height: 600px;
   text-shadow: 0 0 3px #fff;
   opacity: 0;
-  transition: opacity .2s ease;
+  transition: opacity 0.2s ease;
   background: rgba(0, 0, 0, 0.1);
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -6552,6 +6552,7 @@ ul.sf-autocomplete {
     ul.sf-autocomplete a.ui-state-focus {
       background-color: #eee; }
     ul.sf-autocomplete a:hover {
+      cursor: pointer;
       text-decoration: none; }
 
 .sf-search-results {
@@ -6561,6 +6562,7 @@ ul.sf-autocomplete {
   position: relative;
   display: inline-block; }
   .sf-profile .sf-profile-avatar .glyphicon-remove-sign {
+    position: absolute;
     top: 5px;
     right: 5px;
     text-decoration: none;
@@ -6684,7 +6686,7 @@ ul.sf-autocomplete {
   .sf-Ratings .sf-Ratings-stars.sf-Ratings-stars--ronly span {
     cursor: default; }
     .sf-Ratings .sf-Ratings-stars.sf-Ratings-stars--ronly span.on {
-      color: #fc0; }
+      color: #ffcc00; }
 
 .sf-Ratings .sf-Ratings-average,
 .sf-Ratings .sf-Ratings-count {
@@ -6701,10 +6703,10 @@ ul.sf-autocomplete {
   border-radius: 8px; }
   .sf-site-selector a.selected, .sf-site-selector span.selected, .sf-site-selector strong.selected {
     background-color: #f2f2f2;
-    color: #333; }
+    color: #333333; }
 
 .sf-Code pre {
-  color: #666; }
+  color: #666666; }
 
 .sf-Tags .sf-Tags-size1 {
   font-size: 11px; }
@@ -6762,7 +6764,7 @@ input[type=file].sf-FileField-input {
     color: #333;
     border-color: #333; }
   .past .sf-FormNav-page:after {
-    content: '\2713';
+    content: "\2713";
     position: absolute;
     left: 7px; }
 
@@ -6896,7 +6898,7 @@ input[type=file].sf-FileField-input {
   font-size: 12px;
   color: #000;
   line-height: 1;
-  transition: background .2s ease; }
+  transition: background 0.2s ease; }
   .sf-share-button:hover, .sf-share-button:focus {
     text-decoration: none;
     background: #efefef;
