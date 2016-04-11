@@ -4,13 +4,13 @@
 		vertical-align: middle;
 
 		span {
-			font-size: 24px;
-			color: #ccc;
+			font-size: $ratings-stars-font-size;
+			color: $ratings-stars-color;
 			cursor: pointer;
 
 			&.hover,
 			&.on {
-				color: #006cd8;
+				color: $ratings-stars--on-color;
 			}
 		}
 		&.sf-Ratings-stars--ronly {
@@ -18,14 +18,14 @@
 				cursor: default;
 
 				&.on {
-					color: #ffcc00;
+					color: $ratings-stars--ronly-color;
 				}
 			}
 		}
 	}
 	.sf-Ratings-average,
 	.sf-Ratings-count, {
-		font-size: 16px;
+		font-size: $ratings-count-font-size;
 		vertical-align: middle;
 	}
 	.sf-Ratings-count {

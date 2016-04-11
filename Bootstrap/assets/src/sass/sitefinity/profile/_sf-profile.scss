@@ -8,9 +8,9 @@
 			top: 5px;
 			right: 5px;
 			text-decoration: none;
-			color: #999;
-			background: #fff;
-			border-radius: 50%;
+			color: $profile-avatar-remove-color;
+			background: $profile-avatar-remove-background;
+			border-radius: $profile-avatar-remove-border-radius;
 		}
 	}
 }

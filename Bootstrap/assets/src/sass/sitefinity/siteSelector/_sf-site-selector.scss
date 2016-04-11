@@ -1,13 +1,13 @@
 .sf-site-selector {
 	a, span, strong {
 		display: inline-block;
-		font-size: 14px;
+		font-size: $site-selector-font-size;
 		padding: 6px 10px;
-		border-radius: 8px;
+		border-radius: $site-selector-border-radius;
 		
 		&.selected {
-			background-color: #f2f2f2;
-			color: #333333;
+			background-color: $site-selector--selected-background;
+			color: $site-selector--selected-background;
 		}
 	}
 }

@@ -1058,7 +1058,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #333333;
+  color: #333;
   background-color: #fff; }
 
 input,
@@ -1114,7 +1114,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #eeeeee; }
+  border-top: 1px solid #eee; }
 
 .sr-only {
   position: absolute;
@@ -1335,7 +1335,7 @@ a.bg-danger:focus {
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #eeeeee; }
+  border-bottom: 1px solid #eee; }
 
 ul,
 ol {
@@ -1405,7 +1405,7 @@ blockquote {
   padding: 10px 20px;
   margin: 0 0 20px;
   font-size: 17.5px;
-  border-left: 5px solid #eeeeee; }
+  border-left: 5px solid #eee; }
   blockquote p:last-child,
   blockquote ul:last-child,
   blockquote ol:last-child {
@@ -1426,7 +1426,7 @@ blockquote {
 blockquote.pull-right {
   padding-right: 15px;
   padding-left: 0;
-  border-right: 5px solid #eeeeee;
+  border-right: 5px solid #eee;
   border-left: 0;
   text-align: right; }
   .blockquote-reverse footer:before,
@@ -1458,7 +1458,7 @@ samp {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #c7254e;
+  color: #999;
   background-color: #f9f2f4;
   border-radius: 4px; }
 
@@ -1483,7 +1483,7 @@ pre {
   line-height: 1.428571429;
   word-break: break-all;
   word-wrap: break-word;
-  color: #333333;
+  color: #333;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   border-radius: 4px; }
@@ -2257,7 +2257,7 @@ legend {
   margin-bottom: 20px;
   font-size: 21px;
   line-height: inherit;
-  color: #333333;
+  color: #333;
   border: 0;
   border-bottom: 1px solid #e5e5e5; }
 
@@ -2301,7 +2301,7 @@ output {
   padding-top: 7px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #555555; }
+  color: #999; }
 
 .form-control {
   display: block;
@@ -2310,7 +2310,7 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #555555;
+  color: #999;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
@@ -2337,7 +2337,7 @@ output {
     background-color: transparent; }
   .form-control[disabled], .form-control[readonly],
   fieldset[disabled] .form-control {
-    background-color: #eeeeee;
+    background-color: #eee;
     opacity: 1; }
   .form-control[disabled],
   fieldset[disabled] .form-control {
@@ -3184,7 +3184,7 @@ tbody.collapse.in {
     clear: both;
     font-weight: normal;
     line-height: 1.428571429;
-    color: #333333;
+    color: #333;
     white-space: nowrap; }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
@@ -3471,9 +3471,9 @@ tbody.collapse.in {
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
-  color: #555555;
+  color: #999;
   text-align: center;
-  background-color: #eeeeee;
+  background-color: #eee;
   border: 1px solid #ccc;
   border-radius: 4px; }
   .input-group-addon.input-sm,
@@ -3554,7 +3554,7 @@ tbody.collapse.in {
       padding: 10px 15px; }
       .nav > li > a:hover, .nav > li > a:focus {
         text-decoration: none;
-        background-color: #eeeeee; }
+        background-color: #eee; }
     .nav > li.disabled > a {
       color: #777777; }
       .nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
@@ -3563,7 +3563,7 @@ tbody.collapse.in {
         background-color: transparent;
         cursor: not-allowed; }
   .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-    background-color: #eeeeee;
+    background-color: #eee;
     border-color: #337ab7; }
   .nav .nav-divider {
     height: 1px;
@@ -3584,9 +3584,9 @@ tbody.collapse.in {
       border: 1px solid transparent;
       border-radius: 4px 4px 0 0; }
       .nav-tabs > li > a:hover {
-        border-color: #eeeeee #eeeeee #ddd; }
+        border-color: #eee #eee #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-      color: #555555;
+      color: #999;
       background-color: #fff;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
@@ -4102,7 +4102,7 @@ tbody.collapse.in {
   .pagination > li > span:focus {
     z-index: 2;
     color: #23527c;
-    background-color: #eeeeee;
+    background-color: #eee;
     border-color: #ddd; }
   .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
   .pagination > .active > span,
@@ -4178,7 +4178,7 @@ tbody.collapse.in {
     .pager li > a:hover,
     .pager li > a:focus {
       text-decoration: none;
-      background-color: #eeeeee; }
+      background-color: #eee; }
   .pager .next > a,
   .pager .next > span {
     float: right; }
@@ -4288,7 +4288,7 @@ a.badge:hover, a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eeeeee; }
+  background-color: #eee; }
   .jumbotron h1,
   .jumbotron .h1 {
     color: inherit; }
@@ -4337,7 +4337,7 @@ a.badge:hover, a.badge:focus {
     margin-right: auto; }
   .thumbnail .caption {
     padding: 9px;
-    color: #333333; }
+    color: #333; }
 
 a.thumbnail:hover,
 a.thumbnail:focus,
@@ -4566,7 +4566,7 @@ button.list-group-item {
   text-align: left; }
 
 .list-group-item.disabled, .list-group-item.disabled:hover, .list-group-item.disabled:focus {
-  background-color: #eeeeee;
+  background-color: #eee;
   color: #777777;
   cursor: not-allowed; }
   .list-group-item.disabled .list-group-item-heading, .list-group-item.disabled:hover .list-group-item-heading, .list-group-item.disabled:focus .list-group-item-heading {
@@ -4911,14 +4911,14 @@ button.list-group-item-danger {
 .panel-default {
   border-color: #ddd; }
   .panel-default > .panel-heading {
-    color: #333333;
+    color: #333;
     background-color: #f5f5f5;
     border-color: #ddd; }
     .panel-default > .panel-heading + .panel-collapse > .panel-body {
       border-top-color: #ddd; }
     .panel-default > .panel-heading .badge {
       color: #f5f5f5;
-      background-color: #333333; }
+      background-color: #333; }
   .panel-default > .panel-footer + .panel-collapse > .panel-body {
     border-bottom-color: #ddd; }
 
@@ -6213,14 +6213,14 @@ img.mfp-img {
 
 .icon-no-image {
   font-size: 70px;
-  color: #dddddd; }
+  color: #ddd; }
 
 .icon-txt {
   position: relative;
   display: inline-block;
   line-height: normal; }
   .icon-txt.icon-file {
-    color: #999999; }
+    color: #999; }
   .icon-txt [class^="icon-txt-"] {
     position: absolute;
     top: 47%;
@@ -6232,8 +6232,8 @@ img.mfp-img {
     font-style: normal;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: #333333;
-    color: white; }
+    background-color: #333;
+    color: #fff; }
   .icon-txt .icon-txt-xlsx {
     background-color: #38ab63; }
   .icon-txt .icon-txt-doc,
@@ -6248,12 +6248,12 @@ img.mfp-img {
     background-color: #596c9b; }
 
 .icon-sm {
-  font-size: 22px; }
+  font-size: 22px 22px; }
   .icon-sm [class^=icon-txt-] {
     top: 43%;
     right: -20%;
     padding: .1em .3em;
-    font-size: .35em; }
+    font-size: 0.35em; }
 
 .icon-md {
   font-size: 38px; }
@@ -6359,7 +6359,7 @@ pre {
       background-color: #000;
       opacity: 0.8; }
       .sf-media .sf-video-thmb a .sf-icon-play:hover {
-        background-color: #333333; }
+        background-color: #333; }
       .sf-media .sf-video-thmb a .sf-icon-play:before {
         display: block;
         width: 0;
@@ -6649,7 +6649,7 @@ ul.sf-autocomplete {
   margin-bottom: 30px; }
   .sf-Comments-list .sf-Comments-list-author {
     padding-right: 5px;
-    border-right: 1px solid #ccc; }
+    border-right: 1px solid #333; }
 
 .sf-Comments-form textarea {
   min-height: 90px; }
@@ -6703,10 +6703,10 @@ ul.sf-autocomplete {
   border-radius: 8px; }
   .sf-site-selector a.selected, .sf-site-selector span.selected, .sf-site-selector strong.selected {
     background-color: #f2f2f2;
-    color: #333333; }
+    color: #f2f2f2; }
 
 .sf-Code pre {
-  color: #666666; }
+  color: #999; }
 
 .sf-Tags .sf-Tags-size1 {
   font-size: 11px; }
@@ -6897,7 +6897,7 @@ input[type=file].sf-FileField-input {
   vertical-align: top;
   font-size: 12px;
   color: #000;
-  line-height: 1;
+  line-height: 1px;
   transition: background 0.2s ease; }
   .sf-share-button:hover, .sf-share-button:focus {
     text-decoration: none;

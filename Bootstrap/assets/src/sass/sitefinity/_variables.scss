@@ -1,2 +1,303 @@
 //** Load fonts from this directory.
-$icon-font-path: "../../fonts/"
+$icon-font-path:                                "../../fonts/";
+//
+// Variables
+// --------------------------------------------------
+
+//== Bootstrap variables
+
+$gray-base:                                     #000 !default;
+$gray-dark:                                     #333 !default;
+$gray-lighter:                                  #eee !default;
+
+$font-size-small:                               12px !default;
+$font-size-base:                                14px !default;
+$font-size-h1:                                  36px !default;
+$font-size-h2:                                  30px !default;
+$font-size-h3:                                  24px !default;
+$font-size-h4:                                  18px !default;
+
+//== Sitefinity variables
+
+//Colors
+
+//## White and transparent
+
+$transparent:                                   transparent;
+$white:                                         #fff;
+
+//## Gray
+
+$white-gray:                                    #f2f2f2;
+$lightest-gray:                                 #e4e4e4;
+$lighter-gray:                                  #ddd;
+$light-gray:                                    #ccc;
+$dark-gray:                                     #666;
+$gray:                                          #999;
+
+//## Blue
+
+$light-blue:                                    #3390cf;
+$denim:                                         #105ab5;
+
+//Size
+
+$s-border:                                     1px;
+$m-border:                                      4px;
+$l-border:                                      5px;
+$xl-border:                                     6px;
+$xxl-border:                                    8px;
+
+$xxl-border-radius:                             8px;
+
+$font-size-md:                                  16px;
+
+//== Sitefinity widget colors
+
+//Icons
+
+//## Colors
+
+$icon-align-color:                              $light-blue;
+$icon-no-image-color:                           $lighter-gray;
+$icon-file-color:                               $gray;
+$icon-txt-background:                           $gray-dark;
+$icon-txt-color:                                $white;
+$icon-txt-xlsx-background:                      #38ab63;
+$icon-txt-doc-background:                       #1a8cff;
+$icon-txt-ppt-background:                       #ed8527;
+$icon-txt-pdf-background:                       #ff4848;
+$icon-txt-zip-background:                       #596c9b;
+
+//## Sizes
+
+$icon-align-font-size:                          19px;
+$icon-no-image-font-size:                       70px;
+$icon-txt-font-size:                            0.25em;
+$icon-sm-font-size:                             22px;
+$icon-md-font-size:                             38px;
+$icon-lg-font-size:                             48px;
+$icon-txt--sm-font-size:                        .35em;
+
+//Code
+
+$code-color:                                    $gray;
+
+//Comments
+
+//## Colors
+
+$comments-header--selected-color:               $gray-dark;
+$comments-list-author-border-color:             $gray-dark;
+
+//## Size
+
+$comments-list-author-border-width:             $s-border;
+$comments-form-min-height:                      90px;
+
+//Ratings
+
+//## Colors
+
+$ratings-stars-color:                           $light-gray;
+$ratings-stars--on-color:                       #006cd8;
+$ratings-stars--ronly-color:                    #ffcc00;
+
+//## Size
+
+$ratings-stars-font-size:                       $font-size-h3;
+$ratings-count-font-size:                       $font-size-md;
+
+//Form navigation
+
+$formNav-page-color:                            $gray;
+$formNav-page-border-color:                     $gray;
+$formNav-page--active-color:                    $gray-dark;
+$formNav-page--active-border-color:             $gray-dark;
+
+//Gallery
+
+//## Colors
+
+$gallery-thumbs-border-color:                   $transparent;
+$gallery-thumbs--is-selected-border-color:      #428bca;
+$gallery-image-background:                      $lightest-gray;
+$gallery-image-border-color:                    $lightest-gray;
+$gallery-prev-next-color:                       $gray-base;
+$gallery-prev-next-text-shadow-color:           $white;
+$gallery-prev-next-background:                  rgba(0, 0, 0, 0.1);
+$gallery-prev-next-hover-color:                 $gray-base;
+$gallery-prev-background:                       linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+$gallery-next-background:                       linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+$gallery-thumbs--video-border-color:            $transparent;
+
+//## Size
+
+$gallery-thumbs-border-width:                   $l-border;
+$gallery-thumbs-width:                          130px;
+$gallery-thumbs-height:                         130px;
+$gallery-thumbs-line-height:                    120px;
+$gallery-image-height:                          600px;
+$gallery-image-line-height:                     $gallery-image-height;
+$gallery-image-border-width:                    $s-border;
+$gallery-image-img-min-height:                  100%;
+$gallery-image-img-width:                       auto;
+$gallery-prev-next-height:                      600px;
+$gallery-prev-next-line-height:                 $gallery-prev-next-height;
+$gallery-prev-next-font-size:                   40px;
+$gallery-prev-next-text-shadow-blur-radius:     3px;
+$gallery-prev-next-width:                       50%;
+$gallery-thumbs--video-border-width:            $l-border;
+$gallery-thumbs--video-width:                   160px;
+$gallery-thumbs--video-height:                  170px;
+$gallery-thumbs--video-anchor-width:            160px;
+$gallery-thumbs--video-anchor-height:           130px;
+$gallery-thumbs--video-h3-font-size:            $font-size-md;
+
+//Language selector
+
+//## Colors
+
+$lang-selector-anchor--selected-background:     $white-gray;
+$lang-selector-anchor--selected-color:          $gray-dark;
+
+//## Size
+
+$lang-selector-anchor-font-size:                $font-size-base;
+$lang-selector-anchor-border-radius:            $xxl-border-radius;
+
+//Media
+
+//## Colors
+
+$video-thmb-background:                         $gray-base;
+$icon-play-background:                          $gray-base;
+$icon-play-hover-background:                    $gray-dark;
+$icon-play-before-border-top-color:             $transparent;
+$icon-play-before-border-bottom-color:          $transparent;
+$icon-play-before-border-left-color:            $white;
+
+//## Size
+
+$img-thmb-width:                                120px;
+$img-thmb-height:                               90px;
+$video-thmb-width:                              120px;
+$video-thmb-height:                             90px;
+$video-thmb-anchor-height:                      70px;
+$icon-play-width:                               30px;
+$icon-play-height:                              30px;
+$icon-play-border-radius:                       50%;
+$icon-play-before-border-top-width:             $xl-border;
+$icon-play-before-border-bottom-width:          $xl-border;
+$icon-play-before-border-left-width:            $xxl-border;
+
+//Navigation
+
+//## Colors
+
+$right-caret-border-top-color:                  $transparent;
+$right-caret-border-bottom-color:               $transparent;
+$nav-sitemap-border-left-color:                 $light-gray;
+
+//## Size
+
+$right-caret-border-top-width:                  $m-border;
+$right-caret-border-bottom-width:               $m-border;
+$right-caret-border-left-width:                 $m-border;
+$nav-sitemap-width:                             100%;
+$nav-sitemap-first-child-border-left-width:     0;
+
+//Profile
+
+//##Colors
+
+$profile-avatar-remove-color:                   $gray;
+$profile-avatar-remove-background:              $white;
+
+//## Size
+
+$profile-avatar-remove-border-radius:           50%;
+
+//Search
+
+//## Colors
+
+$autocomplete-background:                       $white;
+$autocomplete-border-color:                     $light-gray;
+$autocomplete-anchor-color:                     $gray-base;
+$autocomplete-anchor-focus-background:          $gray-lighter;
+
+//## Size
+
+$autocomplete-border-width:                     $s-border;
+
+//@media only screen and (max-width: $screen-xs)
+
+$mobile-nav-sitemap-li-border-left-width:       0;
+$mobile-nav-sitemap-li-first-border-top-width:  0;
+
+//@media only screen and (min-width: $screen-xs) and (max-width: $screen-sm) 
+
+$mobile-nav-sitemap-li-width:                   48%;
+
+//Site selector
+
+//## Colors
+
+$site-selector--selected-background:           $white-gray;
+$site-selector--selected-color:                $gray-dark;
+
+//## Size
+
+$site-selector-font-size:                      $font-size-base;
+$site-selector-border-radius:                  $xxl-border-radius;
+
+//Taxonomies
+
+//## Size
+
+$tags-size1-font-size:                         11px;
+$tags-size2-font-size:                         13px;
+$tags-size3-font-size:                         $font-size-h4;
+$tags-size4-font-size:                         $font-size-h3;
+$tags-size5-font-size:                         $font-size-h2;
+$tags-size6-font-size:                         $font-size-h1;
+
+//Loading
+
+//## Colors
+
+$loading-line-background:                      #9cc5f7;
+$loading-wrapper-background:                   rgba(0, 0, 0, 0.5);
+$webkit-keyframes-background:                  $denim;
+$keyframes-background:                         $denim;
+
+//## Size
+
+$loading-line-height:                          30px;
+$loading-line-width:                           6px;
+
+//Common
+
+//## Colors
+
+$pre-background:                               $transparent;
+
+//## Size
+
+$pre-font-size:                                $font-size-base;
+
+//Social share
+
+//## Colors
+
+$share-button-border-color:                    #d3d3d3;
+$share-button-focus-hover-background:          #efefef;
+$share-button-focus-hover-color:               $gray-base;
+$share-button-color:  $gray-base;
+
+//## Size
+$share-button-border-width:                    $s-border;
+$share-button-border-radius:                   3px;
+$share-button-font-size:                       $font-size-small;
+$share-button-line-height:                     1px;

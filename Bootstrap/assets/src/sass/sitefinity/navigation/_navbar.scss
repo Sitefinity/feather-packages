@@ -5,9 +5,9 @@
 	height: 0;
 	margin-left: 2px;
 	vertical-align: middle;
-	border-top: 4px solid transparent;
-	border-bottom: 4px solid transparent;
-	border-left: 4px solid;
+	border-top: $right-caret-border-top-width solid $right-caret-border-top-color;
+	border-bottom: $right-caret-border-bottom-width solid $right-caret-border-bottom-color;
+	border-left: $right-caret-border-left-width solid;
 }
 
 .dropdown-submenu {

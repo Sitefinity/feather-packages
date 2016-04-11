@@ -8,13 +8,13 @@
 	position: relative;
 	display: inline-block;
 	margin-top: -4px;
-	font-size: 19px;
-	color: #3390cf;
+	font-size: $icon-align-font-size;
+	color: $icon-align-color;
 }
 
 .icon-no-image {
-	font-size: 70px;
-	color: #dddddd;
+	font-size: $icon-no-image-font-size;
+	color: $icon-no-image-color;
 }
 
 .icon-txt {
@@ -23,7 +23,7 @@
 	line-height: normal;
 
 	&.icon-file {
-		color: #999999;
+		color: $icon-file-color;
 	}
 
 	[class^="icon-txt-"] {
@@ -31,48 +31,48 @@
 		top: 47%;
 		right: -3%;
 		padding: 0.2em 0.4em;
-		font-size: 0.25em;
+		font-size: $icon-txt-font-size;
 		line-height: normal;
 		height: auto;
 		font-style: normal;
 		font-weight: bold;
 		text-transform: uppercase;
-		background-color: #333333;
-		color: white;
+		background-color: $icon-txt-background;
+		color: $icon-txt-color;
 	}
 	.icon-txt-xlsx {
-		background-color: #38ab63;
+		background-color: $icon-txt-xlsx-background;
 	}
 	.icon-txt-doc,
 	.icon-txt-docx {
-		background-color: #1a8cff;
+		background-color: $icon-txt-doc-background;
 	}
 	.icon-txt-ppt,
 	.icon-txt-pptx {
-		background-color: #ed8527;
+		background-color: $icon-txt-ppt-background;
 	}
 	.icon-txt-pdf {
-		background-color: #ff4848;
+		background-color: $icon-txt-pdf-background;
 	}
 	.icon-txt-zip {
-		background-color: #596c9b;
+		background-color: $icon-txt-zip-background;
 	}
 }
 
 //Icon sizes
 .icon-sm {
-	font-size: 22px;
+	font-size: 22px $icon-sm-font-size;
 
 	[class^=icon-txt-] {
 		top: 43%;
 		right: -20%;
 		padding: .1em .3em;
-		font-size: .35em;
+		font-size: $icon-txt--sm-font-size;
 	}
 }
 .icon-md {
-	font-size: 38px;
+	font-size: $icon-md-font-size;
 }
 .icon-lg {
-	font-size: 48px;
+	font-size: $icon-lg-font-size;
 }

@@ -1,17 +1,17 @@
 ul.sf-autocomplete {
 	position: absolute;
 	padding: 0;
-	background: #fff;
-	border: 1px solid #ccc;
+	background: $autocomplete-background;
+	border: $autocomplete-border-width solid $autocomplete-border-color;
 	list-style: none;
 
 	a {
 		padding: 3px;
 		display: block;
-		color: #000;
+		color: $autocomplete-anchor-color;
 
 		&.ui-state-focus {
-			background-color: #eee;
+			background-color: $autocomplete-anchor-focus-background;
 		}
 
 		&:hover {
