@@ -1,14 +1,14 @@
 // SiteMap
 .nav-sitemap {
+	@extend .sf-p-xxs; //0
+	@extend .sf-m-xxs;  //0
 	display: table;
 	width: $nav-sitemap-width;
-	margin: 0;
-	padding: 0;
 	overflow: hidden;
 
 	ul {
-		margin: 0;
-		padding: 0;
+		@extend .sf-p-xxs; //0
+		@extend .sf-m-xxs; //0
 	}
 
 	li {
@@ -17,7 +17,7 @@
 
 	> li {
 		display: table-cell;
-		border-left: 1px solid $nav-sitemap-border-left-color;
+		border-left: $nav-sitemap-border-width solid $nav-sitemap-border-left-color;
 
 		&:first-child {
 			border-left-width: $nav-sitemap-first-child-border-left-width;
@@ -40,9 +40,12 @@
 		display: block;
 
 		> li {
+			@extend sf-mt-xxs; //0
+			@extend sf-mb-xxs; //0
+			margin-left: 1%;
+			margin-right: 1%;
 			float: left;
 			width: $mobile-nav-sitemap-li-width;
-			margin: 0 1%;
 			border-left-width: $mobile-nav-sitemap-li-border-left-width;
 			
 			&:nth-child(odd) {

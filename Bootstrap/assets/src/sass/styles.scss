@@ -1,9 +1,12 @@
-// Import variables to pre-define (and actually overwrite) Bootstrap variables
-@import "sitefinity/variables";
 
 // Import Bootstrap from npm
 @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
 @import "../../../node_modules/magnific-popup/src/css/main.scss";
+
+//Variables
+
+@import "variables";
+@import "mixins";
 
 // Icon font
 @import "icons/_sf-icon-font";
@@ -11,9 +14,6 @@
 
 //Common styles
 @import "common";
-
-//Utility classes
-@import "sf-utility";
 
 //Loading
 @import "sitefinity/loading";

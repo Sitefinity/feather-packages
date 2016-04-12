@@ -1,10 +1,11 @@
 // Default template
 
 .sf-FormNav {
-	padding: 0;
+	@extend .sf-p-xxs; //0
+
 	li {
 		display: inline-block;
-		margin-right: 20px;
+		@extend .sf-mr-l; //20px
 
 		&.active {
 			font-weight: bold;
@@ -13,17 +14,17 @@
 }
 
 .sf-FormNav-page {
+	@extend .sf-mr-s; //10px
 	position: relative;
 	display: inline-block;
-	margin-right: 10px;
-	width: 28px;
-	height: 28px;
-	line-height: 28px;
+	width: $formNav-page-width;
+	height: $formNav-page-height;
+	line-height: $formNav-page-line-height;
 	color: $formNav-page-color;
-	font-size: 18px;
-	border: 1px solid $formNav-page-border-color;
+	font-size: $formNav-page-font-size;
+	border: $formNav-page-border-width solid $formNav-page-border-color;
 	font-weight: bold;
-	border-radius: 50%;
+	border-radius: $formNav-page-border-radius;
 	text-align: center;
 	vertical-align: middle;
 	.active & {
@@ -48,7 +49,7 @@
 // Progress template
 .sf-Progress-percent,
 .sf-Progress-page-title {
-	font-size: 14px;
+	font-size: $progress-page-title-font-size;
 }
 
 .sf-Progress-percent {
@@ -56,8 +57,8 @@
 }
 
 .sf-Progress-page-title {
+	@extend .sf-pl-xxs; //0
 	display: inline-block;
-	padding-left: 0;
 
 	li {
 		display: none;

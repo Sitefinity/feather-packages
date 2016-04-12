@@ -1,6 +1,6 @@
 ul.sf-autocomplete {
+	@extend .sf-p-xxs; //0
 	position: absolute;
-	padding: 0;
 	background: $autocomplete-background;
 	border: $autocomplete-border-width solid $autocomplete-border-color;
 	list-style: none;

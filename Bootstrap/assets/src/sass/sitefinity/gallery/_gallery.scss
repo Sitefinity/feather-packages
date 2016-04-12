@@ -1,6 +1,6 @@
 .sf-Gallery {
 	h2 {
-		margin-top: 10px;
+		@extend .sf-mt-s //10px;
 	}
 }
 
@@ -9,10 +9,10 @@
 }
 
 .sf-Gallery-thumbs {
-	margin: 0 -5px;
+	// margin: 0 -5px;
 	a {
 		display: inline-block;
-		margin: 0 5px 10px;
+		// margin: 0 5px 10px;
 		border: $gallery-thumbs-border-width solid $gallery-thumbs-border-color;
 		width: $gallery-thumbs-width;
 		height: $gallery-thumbs-height;
@@ -29,10 +29,10 @@
 }
 
 .sf-Gallery-image {
+	@extend .sf-mt-xl; //30px
 	position: relative;
 	height: $gallery-image-height;
 	line-height: $gallery-image-line-height;
-	margin-top: 30px;
 	text-align: center;
 	background: $gallery-image-background;
 	border: $gallery-image-border-width solid $gallery-image-border-color;
@@ -46,11 +46,18 @@
 
 .sf-Gallery-next,
 .sf-Gallery-prev {
+	@extend .sf-mt-xxs; //0
+	@extend .sf-mb-xxs; //0
+	@extend .sf-ml-xxxl; //50px
+	@extend .sf-mr-xxxl; //50px
+	@extend .sf-pt-xxs; //0
+	@extend .sf-pb-xxs; //0
+	@extend .sf-pl-xxxl; //50px
+	@extend .sf-pr-xxxl; //50px
 	cursor: pointer;
 	position: absolute;
 	height: $gallery-prev-next-height;
 	width: $gallery-prev-next-width;
-	padding: 0 50px;
 	left: 0;
 	top: 0;
 	text-align: left;
@@ -86,31 +93,37 @@
 }
 
 .sf-Gallery-navigation {
-	margin: 5px 0 30px;
+	@extend .sf-mt-xs; // 5px
+	@extend .sf-mb-xl; // 30px
+	@extend .sf-ml-xxs; //0
+	@extend .sf-mr-xxs; //0
 }
 
 //Video gallery
 .sf-Gallery-thumbs {
 	&.sf-Gallery-thumbs--video {
 		>div {
+			@extend .sf-mt-xxs; //0
+			@extend .sf-mb-s; //30px
+			@extend .sf-ml-xs; //5px
+			@extend .sf-mr-xs; //5px
 			display: inline-block;
-			margin: 0 5px 10px;
 			border: $gallery-thumbs--video-border-width solid $gallery-thumbs--video-border-color;
 			width: $gallery-thumbs--video-width;
 			height: $gallery-thumbs--video-height;
 			cursor: pointer;
 		}
 		a {
+			@extend .sf-m-xxs; //0
 			display: block;
-			margin: 0;
-			border: 0;
+			border: $gallery-thumbs--video-anchor-border-width;
 			width: $gallery-thumbs--video-anchor-width;
 			height: $gallery-thumbs--video-anchor-height;
 			overflow: hidden;
 			cursor: pointer;
 		}
 		h3 {
-			margin-top: 10px;
+			@extend .sf-mt-s; //10px
 			font-size: $gallery-thumbs--video-h3-font-size;
 			font-weight: bold;
 			white-space: nowrap;

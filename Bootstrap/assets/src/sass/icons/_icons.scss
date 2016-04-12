@@ -4,18 +4,18 @@
 	margin-right: 0.3em;
 }
 
-.icon-align {
-	position: relative;
-	display: inline-block;
-	margin-top: -4px;
-	font-size: $icon-align-font-size;
-	color: $icon-align-color;
-}
+// .icon-align {
+// 	position: relative;
+// 	display: inline-block;
+// 	margin-top: -4px;
+// 	font-size: $icon-align-font-size;
+// 	color: $icon-align-color;
+// }
 
-.icon-no-image {
-	font-size: $icon-no-image-font-size;
-	color: $icon-no-image-color;
-}
+// .icon-no-image {
+// 	font-size: $icon-no-image-font-size;
+// 	color: $icon-no-image-color;
+// }
 
 .icon-txt {
 	position: relative;
@@ -61,7 +61,7 @@
 
 //Icon sizes
 .icon-sm {
-	font-size: 22px $icon-sm-font-size;
+	font-size: $icon-sm-font-size;
 
 	[class^=icon-txt-] {
 		top: 43%;

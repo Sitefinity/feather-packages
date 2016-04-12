@@ -1,20 +1,8 @@
-.sf-Tags {
-	.sf-Tags-size1 {
-		font-size: $tags-size1-font-size;
-	}
-	.sf-Tags-size2 {
-		font-size: $tags-size2-font-size;
-	}
-	.sf-Tags-size3 {
-		font-size: $tags-size3-font-size;
-	}
-	.sf-Tags-size4 {
-		font-size: $tags-size4-font-size;
-	}
-	.sf-Tags-size5 {
-		font-size: $tags-size5-font-size;
-	}
-	.sf-Tags-size6 {
-		font-size: $tags-size6-font-size;
-	}
-}
+//Arrays with
+$names: "1", "2", "3", "4", "5", "6";
+$sizes: $tags-size1-font-size, $tags-size2-font-size, $tags-size3-font-size, $tags-size4-font-size, $tags-size5-font-size, $tags-size6-font-size;
+$class: "sf-Tags-size";
+
+//Creating tag classes
+
+@include create-taxa-size-class($names, $sizes, $class);

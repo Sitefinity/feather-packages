@@ -1,5 +1,5 @@
 .sf-icon-feed {
-	margin-right: 3px;
+	@extend .sf-mr-xs; //5px
 	display: inline-block;
 	vertical-align: middle;
 }

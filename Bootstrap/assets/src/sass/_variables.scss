@@ -1,5 +1,5 @@
 //** Load fonts from this directory.
-$icon-font-path:                                "../../fonts/";
+$icon-font-path:                                "../fonts/";
 //
 // Variables
 // --------------------------------------------------
@@ -23,34 +23,46 @@ $font-size-h4:                                  18px !default;
 
 //## White and transparent
 
-$transparent:                                   transparent;
-$white:                                         #fff;
+$transparent:                                   transparent !default;
+$white:                                         #fff !default;
 
 //## Gray
 
-$white-gray:                                    #f2f2f2;
-$lightest-gray:                                 #e4e4e4;
-$lighter-gray:                                  #ddd;
-$light-gray:                                    #ccc;
-$dark-gray:                                     #666;
-$gray:                                          #999;
+$white-gray:                                    #f2f2f2 !default;
+$lightest-gray:                                 #e4e4e4 !default;
+$lighter-gray:                                  #ddd !default;
+$light-gray:                                    #ccc !default;
+$dark-gray:                                     #666 !default;
+$gray:                                          #999 !default;
 
 //## Blue
 
-$light-blue:                                    #3390cf;
-$denim:                                         #105ab5;
+$light-blue:                                    #3390cf !default;
+$denim:                                         #105ab5 !default;
 
 //Size
 
-$s-border:                                     1px;
-$m-border:                                      4px;
-$l-border:                                      5px;
-$xl-border:                                     6px;
-$xxl-border:                                    8px;
+$s-border:                                      1px !default;
+$m-border:                                      4px !default;
+$l-border:                                      5px !default;
+$xl-border:                                     6px !default;
+$xxl-border:                                    8px !default;
 
-$xxl-border-radius:                             8px;
+$xxl-border-radius:                             8px !default;
+$round-border-radius:                           50% !default;
 
-$font-size-md:                                  16px;
+$font-size-md:                                  16px !default;
+
+//Margins and paddings
+
+$spacing-size-xxs: 0px;
+$spacing-size-xs: 5px;
+$spacing-size-s: 10px;
+$spacing-size-m: 15px;
+$spacing-size-l: 20px;
+$spacing-size-xl: 30px;
+$spacing-size-xxl: 40px;
+$spacing-size-xxxl: 50px;
 
 //== Sitefinity widget colors
 
@@ -71,8 +83,8 @@ $icon-txt-zip-background:                       #596c9b;
 
 //## Sizes
 
-$icon-align-font-size:                          19px;
-$icon-no-image-font-size:                       70px;
+// $icon-align-font-size:                          19px;
+// $icon-no-image-font-size:                       70px;
 $icon-txt-font-size:                            0.25em;
 $icon-sm-font-size:                             22px;
 $icon-md-font-size:                             38px;
@@ -95,6 +107,28 @@ $comments-list-author-border-color:             $gray-dark;
 $comments-list-author-border-width:             $s-border;
 $comments-form-min-height:                      90px;
 
+$comments-margin-top:                           30px;
+$comments-loading-margin-bottom:                15px;
+$comments-count-margin-left:                    10px;
+$comments-header-margin-bottom:                 30px;
+$comments-header-h3-margin-right:               20px;
+$comments-header-a-margin-top:                  5px;
+$comments-header-a-margin-bottom:               $comments-header-a-margin-top;
+$comments-list-margin-bottom:                   30px;
+$comments-list-author-padding-right:            5px;
+$comments-more-margin-bottom:                   30px;
+$comments-subscribe-margin-top:                 15px;
+$comments-subscribe-margin-left:                50px;
+
+//Reviews
+
+//## Size
+
+$review-already-margin-top:                     20px;
+$review-count-margin-left:                      10px;
+$review-count--block-margin-left:               0;
+$review-count--block-margin-bottom:             10px;
+
 //Ratings
 
 //## Colors
@@ -110,10 +144,22 @@ $ratings-count-font-size:                       $font-size-md;
 
 //Form navigation
 
+//## Colors
+
 $formNav-page-color:                            $gray;
 $formNav-page-border-color:                     $gray;
 $formNav-page--active-color:                    $gray-dark;
 $formNav-page--active-border-color:             $gray-dark;
+
+//## Size
+
+$formNav-page-width:                            28px;
+$formNav-page-height:                           $formNav-page-width;
+$formNav-page-line-height:                      $formNav-page-width;
+$formNav-page-font-size:                        $font-size-h4;
+$formNav-page-border-width:                     $s-border;
+$formNav-page-border-radius:                    $round-border-radius;
+$progress-page-title-font-size:                 $font-size-base;
 
 //Gallery
 
@@ -153,6 +199,7 @@ $gallery-thumbs--video-height:                  170px;
 $gallery-thumbs--video-anchor-width:            160px;
 $gallery-thumbs--video-anchor-height:           130px;
 $gallery-thumbs--video-h3-font-size:            $font-size-md;
+$gallery-thumbs--video-anchor-border-width:     $s-border;
 
 //Language selector
 
@@ -186,7 +233,7 @@ $video-thmb-height:                             90px;
 $video-thmb-anchor-height:                      70px;
 $icon-play-width:                               30px;
 $icon-play-height:                              30px;
-$icon-play-border-radius:                       50%;
+$icon-play-border-radius:                       $round-border-radius;
 $icon-play-before-border-top-width:             $xl-border;
 $icon-play-before-border-bottom-width:          $xl-border;
 $icon-play-before-border-left-width:            $xxl-border;
@@ -198,6 +245,9 @@ $icon-play-before-border-left-width:            $xxl-border;
 $right-caret-border-top-color:                  $transparent;
 $right-caret-border-bottom-color:               $transparent;
 $nav-sitemap-border-left-color:                 $light-gray;
+$nav-sitemap-border-width:                      $s-border;
+$right-caret-width:                             0;
+$right-caret-height:                            $right-caret-width;
 
 //## Size
 
@@ -216,7 +266,7 @@ $profile-avatar-remove-background:              $white;
 
 //## Size
 
-$profile-avatar-remove-border-radius:           50%;
+$profile-avatar-remove-border-radius:           $round-border-radius;
 
 //Search
 
@@ -282,6 +332,7 @@ $loading-line-width:                           6px;
 //## Colors
 
 $pre-background:                               $transparent;
+$pre-border-width:                             $s-border;
 
 //## Size
 

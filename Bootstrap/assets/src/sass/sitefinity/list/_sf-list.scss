@@ -1,18 +1,18 @@
 .sf-list--expandable {
 	i {
-		margin-right: 5px;
+		@extend .sf-mr-xs; //5px
 	}
 
 	.sf-list-content {
-		margin-left: 20px;
+		@extend .sf-ml-l; //20px
 	}
 
 	.sf-list-item {
 		>div {
-			margin-bottom: 5px;
+			@extend .sf-mb-xs; //5px
 		}
 		h3:first-child {
-			margin-top: 0;
+			@extend .sf-mt-xxs; //0
 		}
 	}
 }
