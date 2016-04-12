@@ -6395,7 +6395,7 @@ pre {
   padding-top: 0px; }
 
 .sf-pb-xxs, .sf-Gallery-next,
-.sf-Gallery-prev {
+.sf-Gallery-prev, .sf-share-button {
   padding-bottom: 0px; }
 
 .sf-pl-xxs, .sf-Progress-page-title {
@@ -6407,7 +6407,7 @@ pre {
 .sf-p-xs {
   padding: 5px; }
 
-.sf-pt-xs, .sf-lang-selector a, .sf-site-selector a, .sf-site-selector span, .sf-site-selector strong {
+.sf-pt-xs, .sf-lang-selector a, .sf-site-selector a, .sf-site-selector span, .sf-site-selector strong, .sf-share-button {
   padding-top: 5px; }
 
 .sf-pb-xs, .sf-lang-selector a, .sf-site-selector a, .sf-site-selector span, .sf-site-selector strong {
@@ -6416,7 +6416,7 @@ pre {
 .sf-pl-xs, .sf-Comments-list .sf-Comments-list-author {
   padding-left: 5px; }
 
-.sf-pr-xs {
+.sf-pr-xs, .sf-share-button {
   padding-right: 5px; }
 
 .sf-p-s {
@@ -6866,7 +6866,7 @@ ul.sf-autocomplete {
     color: #333333; }
 
 .sf-Code pre {
-  color: #555555; }
+  color: #c7254e; }
 
 .sf-Tags-size1 {
   font-size: 11px; }
@@ -7044,8 +7044,8 @@ input[type=file].sf-FileField-input {
   display: inline-block; }
 
 .sf-share-button {
+  padding-left: 2px;
   display: inline-block;
-  padding: 5px 5px 0 2px;
   border: 1px solid #d3d3d3;
   border-radius: 3px;
   vertical-align: top;
