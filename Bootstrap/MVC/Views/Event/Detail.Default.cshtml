@@ -9,7 +9,7 @@
         <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</span>
         
     </h3>
-    <span class="sf-event-type" data-calendar-color="@Model.Item.EventCalendarColour()" style="background:@Model.Item.EventCalendarColour()"></span>
+    <span class="sf-event-type" style="background:@Model.Item.EventCalendarColour()"></span>
 
      @if (!string.IsNullOrEmpty(@Model.Item.EventDates())) {
         <p class="text-muted">
