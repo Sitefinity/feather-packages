@@ -171,7 +171,7 @@ module.exports = function (grunt) {
 			},
 			styles: {
 				files: ['<%= src.path %>/**/*.{scss,sass}'],
-				tasks: ['sass:dist', 'cssmin']
+				tasks: ['sass:sitefinityBootstrap', 'cssmin']
 			},
 			images: {
 				files: ['<%= src.path %>/**/*.{png,jpg,gif,jpeg}'],
