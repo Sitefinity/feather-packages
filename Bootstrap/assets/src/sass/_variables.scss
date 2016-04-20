@@ -105,7 +105,7 @@ $code-color:                                    $gray !default;
 //## Colors
 
 $comments-header--selected-color:               $gray-dark !default;
-$comments-list-author-border-color:             $gray-dark !default;
+$comments-list-author-border-color:             #777 !default;
 
 //## Size
 
@@ -357,3 +357,11 @@ $share-button-border-width:                    $s-border !default;
 $share-button-border-radius:                   3px !default;
 $share-button-font-size:                       $font-size-small !default;
 $share-button-line-height:                     1 !default;
+
+//Events
+
+//#Size
+
+$event-type-width:                             10px;
+$event-type-height:                            10px;
+$event-type-border-radius:                     $round-border-radius;

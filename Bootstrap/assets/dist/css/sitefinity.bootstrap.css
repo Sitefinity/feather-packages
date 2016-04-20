@@ -6272,7 +6272,7 @@ pre {
 .sf-Gallery-prev {
   margin-bottom: 0px; }
 
-.sf-ml-xxs, .sf-Gallery-navigation, .sf-Comment-count--block .sf-Comment-count,
+.sf-ml-xxs, .sf-Gallery-navigation, .sf-Comment-count--block .sf-Comment-count, .sf-Review-count--block .sf-Review-count,
 .sf-Comment-count--block .sf-Review-count {
   margin-left: 0px; }
 
@@ -6282,7 +6282,7 @@ pre {
 .sf-m-xs {
   margin: 5px; }
 
-.sf-mt-xs, .sf-Gallery-navigation, .sf-Comments-header a {
+.sf-mt-xs, .sf-Gallery-navigation, .sf-Comment-count--block .sf-Comment-count, .sf-Comments-header a, .sf-Review-count--block .sf-Review-count {
   margin-top: 5px; }
 
 .sf-mb-xs, .sf-list--expandable .sf-list-item > div {
@@ -6304,7 +6304,7 @@ pre {
 .sf-Comment-count--block .sf-Review-count {
   margin-bottom: 10px; }
 
-.sf-ml-s, .sf-document-list--table .sf-title, .sf-Comment-count, .sf-Review-count {
+.sf-ml-s, .sf-document-list--table .sf-title, .sf-Comment-count, .sf-Review-count, .sf-event-type {
   margin-left: 10px; }
 
 .sf-mr-s, .sf-FormNav-page {
@@ -6413,10 +6413,10 @@ pre {
 .sf-pb-xs, .sf-lang-selector a, .sf-site-selector a, .sf-site-selector span, .sf-site-selector strong {
   padding-bottom: 5px; }
 
-.sf-pl-xs, .sf-Comments-list .sf-Comments-list-author {
+.sf-pl-xs {
   padding-left: 5px; }
 
-.sf-pr-xs, .sf-share-button {
+.sf-pr-xs, .sf-Comments-list .sf-Comments-list-author, .sf-share-button {
   padding-right: 5px; }
 
 .sf-p-s {
@@ -6796,6 +6796,8 @@ ul.sf-autocomplete {
   .sf-Comment-count [class^="sf-icon"] {
     display: inline-block;
     vertical-align: middle; }
+  .sf-Comment-count--block .sf-Comment-count {
+    display: block; }
 
 [data-sf-role="error-message"],
 [data-sf-role="list-loading-indicator"],
@@ -6823,13 +6825,15 @@ ul.sf-autocomplete {
   color: #333333; }
 
 .sf-Comments-list .sf-Comments-list-author {
-  border-right: 1px solid #333333; }
+  border-right: 1px solid #777; }
 
 .sf-Comments-form textarea {
   min-height: 90px; }
 
 .sf-Review-count {
   display: inline-block; }
+  .sf-Review-count--block .sf-Review-count {
+    display: block; }
 
 .sf-Comment-count--block .sf-Comment-count,
 .sf-Comment-count--block .sf-Review-count {
@@ -6939,6 +6943,15 @@ input[type=file].sf-FileField-input {
     display: none; }
     .sf-Progress-page-title li.active {
       display: inline-block; }
+
+.sf-event-title {
+  display: inline-block; }
+
+.sf-event-type {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; }
 
 .sf-icon-blogger {
   background-image: url(../images/sprite.png);
