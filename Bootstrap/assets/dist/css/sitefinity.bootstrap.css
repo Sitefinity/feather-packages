@@ -6953,6 +6953,9 @@ input[type=file].sf-FileField-input {
   height: 10px;
   border-radius: 50%; }
 
+.sf-event-addToList {
+  display: inline-block; }
+
 .sf-icon-blogger {
   background-image: url(../images/sprite.png);
   background-position: 0px -36px;
