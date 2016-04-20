@@ -23,45 +23,52 @@
 
             @if (!string.IsNullOrEmpty(Model.Item.Fields.City) && !string.IsNullOrEmpty(Model.Item.Fields.Country))
             {
-                <p>@Model.Item.Fields.City, @Model.Item.Fields.Country</p>
+                @Model.Item.Fields.City <span>,</span> @Model.Item.Fields.Country
+                <br>
             }
             else
             {
-                <p>@(string.IsNullOrEmpty(Model.Item.Fields.City) ? Model.Item.Fields.Country : Model.Item.Fields.City)</p>
+                @(string.IsNullOrEmpty(Model.Item.Fields.City) ? Model.Item.Fields.Country : Model.Item.Fields.City)
+                <br>
             }
 
             @if (!string.IsNullOrEmpty(Model.Item.Fields.Street))
             {
-                <p>@Model.Item.Fields.Street</p>
+                @Model.Item.Fields.Street
             }
         </address>
     }
     
+    <div class="text-muted sf-mb-m">
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactName))
+        {
+            @Model.Item.Fields.ContactName
+            <br>
+        }
 
-    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactName))
-    {
-        <p class="text-muted">@Model.Item.Fields.ContactName</p>
-    }
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactPhone))
+        {
+            @Model.Item.Fields.ContactPhone
+            <br>
+        }
 
-    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactPhone))
-    {
-        <p class="text-muted">@Model.Item.Fields.ContactPhone</p>
-    }
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactCell))
+        {
+            @Model.Item.Fields.ContactCell
+            <br>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactEmail))
+        {
+            <address class="sf-mb-xxs"><a href="mailto:@(Model.Item.Fields.ContactEmail)" target="_blank">@Model.Item.Fields.ContactEmail</a></address>
+        }
 
-    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactCell))
-    {
-        <p class="text-muted">@Model.Item.Fields.ContactCell</p>
-    }
-    
-    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactEmail))
-    {
-        <address><a href="mailto:@(Model.Item.Fields.ContactEmail)" target="_blank">@Model.Item.Fields.ContactEmail</a></address>
-    }
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactWeb))
+        {
+            <a href="@(Model.Item.Fields.ContactWeb)" target="_blank">@Model.Item.Fields.ContactWeb</a>
+        }
 
-    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactWeb))
-    {
-        <a href="@(Model.Item.Fields.ContactWeb)" target="_blank">@Model.Item.Fields.ContactWeb</a>
-    }
+    </div>
 
     @if (!string.IsNullOrEmpty(Model.Item.Fields.Location))
     {        
