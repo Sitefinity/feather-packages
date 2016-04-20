@@ -10,15 +10,18 @@
         
     </h3>
     <span class="sf-event-type" data-calendar-color="@Model.Item.EventCalendarColour()" style="background:@Model.Item.EventCalendarColour()"></span>
-    <div>
-        <time>@Model.Item.EventDates()</time>
-    </div>
 
-    <address>
-        @if (!string.IsNullOrEmpty(Model.Item.Fields.City) || !string.IsNullOrEmpty(Model.Item.Fields.Country))
-        {
+     @if (!string.IsNullOrEmpty(@Model.Item.EventDates())) {
+        <p class="text-muted">
+            <time>@Model.Item.EventDates()</time>
+        </p>
+    }
 
-            if (!string.IsNullOrEmpty(Model.Item.Fields.City) && !string.IsNullOrEmpty(Model.Item.Fields.Country))
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.City) || !string.IsNullOrEmpty(Model.Item.Fields.Country))
+    {
+        <address class="text-muted">
+
+            @if (!string.IsNullOrEmpty(Model.Item.Fields.City) && !string.IsNullOrEmpty(Model.Item.Fields.Country))
             {
                 <p>@Model.Item.Fields.City, @Model.Item.Fields.Country</p>
             }
@@ -27,36 +30,51 @@
                 <p>@(string.IsNullOrEmpty(Model.Item.Fields.City) ? Model.Item.Fields.Country : Model.Item.Fields.City)</p>
             }
 
-            if (!string.IsNullOrEmpty(Model.Item.Fields.Street))
+            @if (!string.IsNullOrEmpty(Model.Item.Fields.Street))
             {
                 <p>@Model.Item.Fields.Street</p>
             }
+        </address>
+    }
+    
 
-        }
-    </address>
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactName))
+    {
+        <p class="text-muted">@Model.Item.Fields.ContactName</p>
+    }
 
-    <div>
-        <p>@Model.Item.Fields.ContactName</p>
-        <p>@Model.Item.Fields.ContactPhone</p>
-        <p>@Model.Item.Fields.ContactCell</p>
-        
-        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactEmail))
-        {
-            <address><a href="mailto:@(Model.Item.Fields.ContactEmail)" target="_blank">@Model.Item.Fields.ContactEmail</a></address>
-        }
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactPhone))
+    {
+        <p class="text-muted">@Model.Item.Fields.ContactPhone</p>
+    }
 
-        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactWeb))
-        {
-            <p><a href="@(Model.Item.Fields.ContactWeb)" target="_blank">@Model.Item.Fields.ContactWeb</a></p>
-        }
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactCell))
+    {
+        <p class="text-muted">@Model.Item.Fields.ContactCell</p>
+    }
+    
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactEmail))
+    {
+        <address><a href="mailto:@(Model.Item.Fields.ContactEmail)" target="_blank">@Model.Item.Fields.ContactEmail</a></address>
+    }
 
-        <p>@*How to find us field*@
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactWeb))
+    {
+        <a href="@(Model.Item.Fields.ContactWeb)" target="_blank">@Model.Item.Fields.ContactWeb</a>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.Location))
+    {        
+        <p class="text-muted"> @*How to find us field*@
         @Model.Item.Fields.Location</p>
-    </div>
-        
-    <div>
-        @Model.Item.Fields.Description
-    </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.Description))
+    {        
+        <p class="text-muted">
+            @Model.Item.Fields.Description
+        </p>
+    }
 
     <div class="row">
         <div class="col-md-7 sf-Comment-count--block"> @Html.CommentsCount(string.Empty, @Model.Item.DataItem)</div>
@@ -73,10 +91,15 @@
         </div>
     </div>
 
-    
-    <div class="text-muted" @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.Raw(Model.Item.Fields.Summary)</div>
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.Summary))
+    {        
+        <p class="text-muted" @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.Raw(Model.Item.Fields.Summary)</p>
+    }
 
-    <div @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.Raw(Model.Item.Fields.Content)</div>
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.Content))
+    {        
+        <p @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.Raw(Model.Item.Fields.Content)</p>
+    }
     
     @if (Model.EnableSocialSharing)
     {
