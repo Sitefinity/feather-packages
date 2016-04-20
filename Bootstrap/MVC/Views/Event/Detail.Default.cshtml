@@ -11,7 +11,7 @@
     </h3>
     <span class="sf-event-type" style="background:@Model.Item.EventCalendarColour()"></span>
 
-     @if (!string.IsNullOrEmpty(@Model.Item.EventDates())) {
+     @if (!string.IsNullOrEmpty(Model.Item.EventDates())) {
         <p class="text-muted">
             <time>@Model.Item.EventDates()</time>
         </p>
