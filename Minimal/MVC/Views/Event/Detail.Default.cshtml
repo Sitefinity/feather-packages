@@ -7,8 +7,8 @@
 <div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
     <h3>
         <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</span>
-        <span style="background: @Model.Item.EventCalendarColour()"></span>
     </h3>
+    <span style="background: @Model.Item.EventCalendarColour()"></span>
 
     @if (!string.IsNullOrEmpty(Model.Item.EventDates())) 
 	{
@@ -22,44 +22,51 @@
 
         @if (!string.IsNullOrEmpty(Model.Item.Fields.City) && !string.IsNullOrEmpty(Model.Item.Fields.Country))
         {
-            <p>@Model.Item.Fields.City, @Model.Item.Fields.Country</p>
+            @Model.Item.Fields.City <span>,</span> @Model.Item.Fields.Country
+            <br>
         }
         else
         {
-            <p>@(string.IsNullOrEmpty(Model.Item.Fields.City) ? Model.Item.Fields.Country : Model.Item.Fields.City)</p>
+            @(string.IsNullOrEmpty(Model.Item.Fields.City) ? Model.Item.Fields.Country : Model.Item.Fields.City)
+             <br>
         }
 
         @if (!string.IsNullOrEmpty(Model.Item.Fields.Street))
         {
-            <p>@Model.Item.Fields.Street</p>
+            @Model.Item.Fields.Street
         }
     </address>
     }
     
-    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactName))
-    {
-        <p>@Model.Item.Fields.ContactName</p>
-    }
+    <div>
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactName))
+        {
+            @Model.Item.Fields.ContactName
+            <br>
+        }
 
-    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactPhone))
-    {
-        <p>@Model.Item.Fields.ContactPhone</p>
-    }
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactPhone))
+        {
+            @Model.Item.Fields.ContactPhone
+            <br>
+        }
 
-    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactCell))
-    {
-        <p>@Model.Item.Fields.ContactCell</p>
-    }
-        
-    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactEmail))
-    {
-        <address><a href="mailto:@(Model.Item.Fields.ContactEmail)" target="_blank">@Model.Item.Fields.ContactEmail</a></address>
-    }
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactCell))
+        {
+            @Model.Item.Fields.ContactCell
+            <br>
+        }
+            
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactEmail))
+        {
+            <address><a href="mailto:@(Model.Item.Fields.ContactEmail)" target="_blank">@Model.Item.Fields.ContactEmail</a></address>
+        }
 
-    @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactWeb))
-    {
-        <p><a href="@(Model.Item.Fields.ContactWeb)" target="_blank">@Model.Item.Fields.ContactWeb</a></p>
-    }
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactWeb))
+        {
+            <a href="@(Model.Item.Fields.ContactWeb)" target="_blank">@Model.Item.Fields.ContactWeb</a>
+        }
+    </div>
 
     @if (!string.IsNullOrEmpty(Model.Item.Fields.Location))
     {        
