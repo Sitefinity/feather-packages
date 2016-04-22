@@ -38,7 +38,7 @@
     {
     <div class="ui form">
 
-        @using (Html.BeginFormSitefinity())
+        @using (Html.BeginFormSitefinity(true))
         {
             @Html.ValidationSummary(true);
 
@@ -117,7 +117,7 @@
                 }
             </div>
 
-            if (SystemManager.IsPreviewMode || SystemManager.IsDesignMode)
+            if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode)
             {
                 <input type="button" class="ui submit button" value="@Html.Resource("Register")" />
             }
