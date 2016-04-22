@@ -142,6 +142,10 @@
                 @Html.ActionLink(Html.Resource("EditProfileCancel"), "Index")  
             }
 
+            @if (SystemManager.IsPreviewMode)
+            {
+                <span data-sf-role="profile-submit-preview-message" style="display:none">message</span>
+            }
         </div>
      </div>
     }
