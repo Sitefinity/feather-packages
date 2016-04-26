@@ -144,7 +144,9 @@
 
             @if (SystemManager.IsPreviewMode)
             {
-                <span data-sf-role="profile-submit-preview-message" style="display:none">@Html.Resource("PreviewProfileSaveMessage")</span>
+                <div class="has-error" data-sf-role="profile-submit-preview-message" style="display:none">
+                    <span class="help-block"><span class="field-validation-error">@Html.Resource("PreviewProfileSaveMessage")</span></span>
+                </div>
             }
         </div>
      </div>
