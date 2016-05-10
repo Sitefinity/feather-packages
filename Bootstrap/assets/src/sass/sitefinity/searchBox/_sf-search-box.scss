@@ -1,0 +1,24 @@
+﻿ul.sf-autocomplete {
+  position: absolute;
+  padding: 0;
+  background: white;
+  border: 1px solid #cccccc;
+  list-style: none;
+
+  a {
+    padding: 3px;
+    display: block;
+    color: black;
+
+    &.ui-state-focus {
+      background-color: #eeeeee;
+    }
+
+    &:hover {
+      cursor:pointer {
+      }
+
+      text-decoration: none;
+    }
+  }
+}
