@@ -4,6 +4,7 @@
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.UI.MVC;
 @using Telerik.Sitefinity.Utilities;
+@using Telerik.Sitefinity.Services;
 
 @Html.Script(ScriptRef.JQuery, "top")
 @Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top")
@@ -130,9 +131,23 @@
                 </div>
             </div>
 
-            <button data-sf-role="profile-submit" type="submit" class="btn btn-primary">@Html.Resource("EditProfileSave")</button>
-            @Html.ActionLink(Html.Resource("EditProfileCancel"), "Index")
+            @if (SystemManager.IsDesignMode)
+            {
+                <button data-sf-role="profile-submit" type="button" class="btn btn-primary">@Html.Resource("EditProfileSave")</button>
+                <a href="javascript:void(0);">@Html.Resource("EditProfileCancel")</a>
+            }
+            else 
+            {
+                <button data-sf-role="profile-submit" type="submit" class="btn btn-primary">@Html.Resource("EditProfileSave")</button>
+                @Html.ActionLink(Html.Resource("EditProfileCancel"), "Index")  
+            }
 
+            @if (SystemManager.IsPreviewMode)
+            {
+                <div class="has-error" data-sf-role="profile-submit-preview-message" style="display:none">
+                    <span class="help-block"><span class="field-validation-error">@Html.Resource("PreviewProfileSaveMessage")</span></span>
+                </div>
+            }
         </div>
      </div>
     }

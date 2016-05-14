@@ -4,6 +4,7 @@
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.UI.MVC;
 @using Telerik.Sitefinity.Utilities;
+@using Telerik.Sitefinity.Services;
 
 @*Add scripts and stylesheets*@
 @Html.Script(ScriptRef.JQuery, "top")
@@ -132,8 +133,15 @@
 
             </div>
 
+            if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode )
+            {
+                <button type="button" class="btn btn-primary">@Html.Resource("Register")</button>
+            }
+            else
+            {
+                <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
+            }
 
-            <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
             <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
          }
 
