@@ -6304,10 +6304,10 @@ pre {
 .sf-Comment-count--block .sf-Review-count {
   margin-bottom: 10px; }
 
-.sf-ml-s, .sf-document-list--table .sf-title, .sf-Comment-count, .sf-Review-count, .sf-event-type {
+.sf-ml-s, .sf-document-list--table .sf-title, .sf-Comment-count, .sf-Review-count {
   margin-left: 10px; }
 
-.sf-mr-s, .sf-FormNav-page {
+.sf-mr-s, .sf-FormNav-page, .sf-event-type {
   margin-right: 10px; }
 
 .sf-m-m {
@@ -6944,17 +6944,58 @@ input[type=file].sf-FileField-input {
     .sf-Progress-page-title li.active {
       display: inline-block; }
 
+div.k-event {
+  border: 0; }
+
+.nav-pills > li + li {
+  margin-left: 0; }
+
+.sf-event-item {
+  margin-top: -1px;
+  margin-left: -1px;
+  margin-right: -1px;
+  padding: 5px 7px;
+  min-height: 100%;
+  background: #f5f5f5;
+  border-radius: 3px; }
+
 .sf-event-title {
   display: inline-block; }
 
 .sf-event-type {
   display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%; }
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  vertical-align: middle; }
+  .sf-event-type.sf-event-type--all {
+    background-color: #fff;
+    border: 1px solid #999; }
+  .sf-event-type.sf-event-type--small {
+    margin-right: 0;
+    width: 10px;
+    height: 10px; }
 
 .sf-event-addToList {
   display: inline-block; }
+
+.sf-calendarList-title {
+  font-weight: bold; }
+
+.sf-calendarList-item {
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer; }
+  .sf-calendarList-item.active {
+    background: #f2f2f2; }
+
+.k-scheduler-agendaview .sf-event-item {
+  display: inline-block;
+  padding: 0;
+  background: transparent; }
+
+.k-scheduler-agendaview .sf-event-type {
+  display: none; }
 
 .sf-icon-blogger {
   background-image: url(../images/sprite.png);
