@@ -1,0 +1,48 @@
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+@using ServiceStack.Text;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Web.DataResolving;
+@using Telerik.Sitefinity.Frontend.Events.Mvc.Controllers;
+@using Telerik.Sitefinity.Services;
+
+@Html.StyleSheet("http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.common.min.css", "head")
+@if (Html.ShouldRenderInlineEditing() || SystemManager.IsDesignMode || SystemManager.IsPreviewMode)
+{
+    @Html.StyleSheet("http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.bootstrap.min.css", "bottom")
+}
+else { 
+    @Html.StyleSheet("http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.bootstrap.min.css", "head")
+}
+@Html.Script(ScriptRef.JQuery, "top", false)
+@Html.Script(ScriptRef.KendoAll, "top", false)
+
+<div data-sf-role="scheduler-wrapper" data-sf-loaded="false">
+    <div data-sf-role="scheduler-list">
+        <h4 class="sf-calendarList-title">@Html.Resource("Calendars")</h4>
+        <ul>
+            <li class="sf-calendarList-item active" data-sf-id="-1">@Html.Resource("AllEvents")</li>
+        </ul>
+    </div>
+    <div data-sf-role="scheduler"></div>
+    <input type="hidden" data-sf-role="scheduler-controller-model" value='@Html.Raw(JsonSerializer.SerializeToString(((EventController)Html.ViewContext.Controller).Model))' />
+    <input type="hidden" data-sf-role="scheduler-controller-events" value='@Url.Content("~/web-interface/events")' />
+    <input type="hidden" data-sf-role="scheduler-controller-calendars" value='@Url.Content("~/web-interface/calendars")' />
+	<script data-sf-role="event-template" type="text/x-kendo-tmpl">
+		<div class="sf-event-item">
+            <div style="background-color: #= data.Color #"></div>
+			<a href="#= eventUrl #">#= title #</a>
+		</div>
+    </script>
+</div>
+@if (SystemManager.IsDesignMode)
+{
+    var scriptUrl = Url.WidgetContent("Mvc/Scripts/Event/scheduler-events.js");
+    var queryAddition = scriptUrl.Contains("?") ? "&" : "?"; 
+    var fullScriptUrl = scriptUrl + queryAddition + string.Format("_={0}", DateTime.UtcNow.Ticks.ToString());
+    <script type="text/javascript" src='@fullScriptUrl'></script>
+}
+else
+{
+    @Html.Script(Url.WidgetContent("Mvc/Scripts/Event/scheduler-events.js"), "bottom", false)
+}
