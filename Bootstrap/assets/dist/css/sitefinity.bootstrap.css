@@ -6276,7 +6276,7 @@ pre {
 .sf-Comment-count--block .sf-Review-count {
   margin-left: 0px; }
 
-.sf-mr-xxs, .sf-Gallery-navigation {
+.sf-mr-xxs, .sf-Gallery-navigation, .sf-event-type.sf-event-type--small {
   margin-right: 0px; }
 
 .sf-m-xs {
@@ -6387,7 +6387,7 @@ pre {
 .sf-Gallery-prev {
   margin-right: 50px; }
 
-.sf-p-xxs, pre, .nav-sitemap, .nav-sitemap ul, ul.sf-autocomplete, .sf-FormNav {
+.sf-p-xxs, pre, .nav-sitemap, .nav-sitemap ul, ul.sf-autocomplete, .sf-FormNav, .k-scheduler-agendaview .sf-event-item {
   padding: 0px; }
 
 .sf-pt-xxs, .sf-Gallery-next,
@@ -6951,9 +6951,7 @@ div.k-event {
   margin-left: 0; }
 
 .sf-event-item {
-  margin-top: -1px;
-  margin-left: -1px;
-  margin-right: -1px;
+  margin: -1px -1px 0;
   padding: 5px 7px;
   min-height: 100%;
   background: #f5f5f5;
@@ -6972,7 +6970,6 @@ div.k-event {
     background-color: #fff;
     border: 1px solid #999; }
   .sf-event-type.sf-event-type--small {
-    margin-right: 0;
     width: 10px;
     height: 10px; }
 
@@ -6991,7 +6988,6 @@ div.k-event {
 
 .k-scheduler-agendaview .sf-event-item {
   display: inline-block;
-  padding: 0;
   background: transparent; }
 
 .k-scheduler-agendaview .sf-event-type {

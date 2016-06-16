@@ -7,14 +7,14 @@ div.k-event {
 	margin-left: 0;
 }
 
+//Event styles
+
 .sf-event-item {
-	margin-top: -1px;
-	margin-left: -1px;
-	margin-right: -1px;
-	padding: 5px 7px;
-	min-height: 100%;
-	background: #f5f5f5;
-	border-radius: 3px;
+	margin: $event-item-margin;
+	padding: $event-item-padding;
+	min-height: $event-item-min-height;
+	background: $event-item-background;
+	border-radius: $event-item-border-radius;
 }
 .sf-event-title {
 	display: inline-block;
@@ -28,12 +28,12 @@ div.k-event {
 	vertical-align: middle;
 
 	&.sf-event-type--all {
-		background-color:#fff;
-		border:1px solid #999;
+		background-color: $event-type-all-background;
+		border: $event-type-all-border-width solid $event-type-all-border-color;
 	}
 
 	&.sf-event-type--small {
-		margin-right: 0;
+		@extend .sf-mr-xxs; //0
 		width: $event-type-small-width;
 		height: $event-type-small-height;
 	}
@@ -42,21 +42,21 @@ div.k-event {
 	display: inline-block;
 }
 .sf-calendarList-title {
-	font-weight: bold;
+	font-weight: $calendarList-title-font-weight;
 }
 .sf-calendarList-item {
-	padding: 5px 10px;
-	border-radius: 5px;
+	padding: $calendarList-item-padding;
+	border-radius: $calendarList-item-border-radius;
 	cursor: pointer;
 	&.active {
-		background: #f2f2f2;
+		background: $calendarList-item--active-background;
 	}
 }
 .k-scheduler-agendaview{
 	.sf-event-item {
 		display: inline-block;
-		padding: 0;
-		background: transparent;
+		@extend .sf-p-xxs; //0
+		background: $event-item-agendaview-background;
 	}
 	.sf-event-type {
 		display: none;

@@ -367,3 +367,21 @@ $event-type-height:                            15px;
 $event-type-small-width:                       10px;
 $event-type-small-height:                      10px;
 $event-type-border-radius:                     $round-border-radius;
+$event-item-margin:                            -1px -1px 0;
+$event-item-padding:                           5px 7px;
+$event-item-min-height:                        100%;
+$event-item-border-radius:                     3px;
+$event-type-all-border-width:                  1px;
+$calendarList-item-padding:                    5px 10px;
+$calendarList-item-border-radius:              5px;
+
+
+
+//## Colors
+
+$event-item-background:                        #f5f5f5;
+$event-type-all-background:                    #fff;
+$event-type-all-border-color:                  #999;
+$calendarList-item--active-background:         #f2f2f2;
+$event-item-agendaview-background:             transparent;
+$calendarList-title-font-weight:               bold;
