@@ -13,10 +13,17 @@ div.k-event {
 	margin: $event-item-margin;
 	padding: $event-item-padding;
 	min-height: $event-item-min-height;
-	background: $event-item-background;
+	white-space: nowrap;
 }
-.sf-event-title {
+.sf-event-title,
+.sf-event-link {
 	display: inline-block;
+}
+.sf-event-link {
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: top;
 }
 .sf-event-type {
 	display: inline-block;
@@ -31,11 +38,6 @@ div.k-event {
 		border: $event-type-all-border-width solid $event-type-all-border-color;
 	}
 
-	&.sf-event-type--small {
-		@extend .sf-mr-xxs; //0
-		width: $event-type-small-width;
-		height: $event-type-small-height;
-	}
 }
 .sf-event-addToList {
 	display: inline-block;
@@ -55,7 +57,6 @@ div.k-event {
 	.sf-event-item {
 		display: inline-block;
 		@extend .sf-p-xxs; //0
-		background: $event-item-agendaview-background;
 	}
 	.sf-event-type {
 		display: none;

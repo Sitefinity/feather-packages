@@ -6276,7 +6276,7 @@ pre {
 .sf-Comment-count--block .sf-Review-count {
   margin-left: 0px; }
 
-.sf-mr-xxs, .sf-Gallery-navigation, .sf-event-type.sf-event-type--small {
+.sf-mr-xxs, .sf-Gallery-navigation {
   margin-right: 0px; }
 
 .sf-m-xs {
@@ -6954,10 +6954,17 @@ div.k-event {
   margin: 0;
   padding: 5px 7px;
   min-height: 100%;
-  background: #fff; }
+  white-space: nowrap; }
 
-.sf-event-title {
+.sf-event-title,
+.sf-event-link {
   display: inline-block; }
+
+.sf-event-link {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top; }
 
 .sf-event-type {
   display: inline-block;
@@ -6968,9 +6975,6 @@ div.k-event {
   .sf-event-type.sf-event-type--all {
     background-color: #fff;
     border: 1px solid #999; }
-  .sf-event-type.sf-event-type--small {
-    width: 10px;
-    height: 10px; }
 
 .sf-event-addToList {
   display: inline-block; }
@@ -6986,8 +6990,7 @@ div.k-event {
     background: #f2f2f2; }
 
 .k-scheduler-agendaview .sf-event-item {
-  display: inline-block;
-  background: transparent; }
+  display: inline-block; }
 
 .k-scheduler-agendaview .sf-event-type {
   display: none; }
