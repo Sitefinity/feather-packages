@@ -22,7 +22,9 @@ else {
     data-sf-controller-events='@Url.Content("~/web-interface/events")'
     data-sf-controller-calendars='@Url.Content("~/web-interface/calendars")'
     data-sf-loaded='false'
-    data-sf-calendarlist-class-active='active'>
+	data-sf-mincalendarlength='2'
+    data-sf-calendarlist-class-active='active'
+	data-sf-uiculture='@ViewBag.UiCulture'>
     <div class="row">
         <div class="col-md-10">
             <div data-sf-role="scheduler"></div>
