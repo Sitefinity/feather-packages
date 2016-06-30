@@ -14,7 +14,6 @@ module.exports = function (grunt) {
     var jsfiles = grunt.file.readJSON('files.json').concatJsFiles;
     // rename this with your custom resources folder
     var customFolder = "oranges";
-    var customJavascriptFileName = 'output';
 
     // load all grunt tasks
     require('load-grunt-tasks')(grunt);
