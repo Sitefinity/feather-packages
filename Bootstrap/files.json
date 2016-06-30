@@ -1,0 +1,6 @@
+{
+  "concatJsFiles": [
+	"assets/src/orange/js/jquery.fixit.js",
+	"assets/src/orange/js/pageEvents.js"	
+  ]
+}
