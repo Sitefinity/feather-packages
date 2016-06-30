@@ -9,16 +9,18 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title></title>
-
+    <title>Oranges</title>
+    <link rel="shortcut icon" type="image/png" href="~/ResourcePackages/Bootstrap/assets/dist/images/favicon.png" />
     @Html.Section("head")
     @Html.StyleSheet(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/css/sitefinity.bootstrap.min.css"), "head")
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/css/oranges.min.css"), "head")
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/Bootstrap/assets/src/oranges/font-awesome/css/font-awesome.min.css"), "head")
 </head>
 
 <body>
     @Html.Section("top")
         
-    <div class="sfPublicWrapper" id="PublicWrapper">		
+    <div class="sfPublicWrapper" id="PublicWrapper">	
         @Html.SfPlaceHolder("Contentplaceholder1")		
     </div>
 
@@ -36,5 +38,8 @@
     }
 
     @Html.Section("bottom")
+
+    @Html.Script(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/js/bootstrap.min.js"), "bottom")
+    @Html.Script(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/js/output.min.js"), "bottom")
 </body>
 </html>

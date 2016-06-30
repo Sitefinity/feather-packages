@@ -6741,6 +6741,8 @@ pre {
     .nav-sitemap {
       display: block; }
       .nav-sitemap > li {
+        margin-top: 0;
+        margin-bottom: 0;
         margin-left: 1%;
         margin-right: 1%;
         float: left;
