@@ -9,11 +9,11 @@ var path = require('path');
 module.exports = function (grunt) {
     'use strict';
 
-    // CUSTOM
+    // User assets
     // Load the order for minifying js files
     var jsfiles = grunt.file.readJSON('files.json').concatJsFiles;
-    // rename this with your custom resources folder
-    var customFolder = "oranges";
+    // Rename this with the name of your your user assets folder
+    var userAssetsFolder = "oranges";
 
     // load all grunt tasks
     require('load-grunt-tasks')(grunt);
@@ -75,12 +75,12 @@ module.exports = function (grunt) {
                     '<%= dist.path %>/css/sitefinity.css': '<%= src.path %>/sitefinity/sass/sitefinity.scss'
                 }
             },
-            // CUSTOM
-            // Will look for any .scss file in customStyles/sass/ directory
-            sassToCss: {
+            // User assets 
+            // Will look for any .scss files in userAssetsFolder sass directory
+            userAssets: {
                 files: [{
                     expand: true,
-                    cwd: '<%= src.path %>/' + customFolder + '/sass',
+                    cwd: '<%= src.path %>/' + userAssetsFolder + '/sass',
                     src: ['*.scss'],
                     dest: '<%= dist.path %>/css/',
                     ext: '.css'
@@ -141,16 +141,18 @@ module.exports = function (grunt) {
         uglify: {
             options: {
                 report: 'gzip',
-                warnings: true
+                warnings: true,
+                mangle: true,
+                compress: true
             },
-            dist: {
-                options: {
-                    mangle: true,
-                    compress: true
-                },
+            sitefinityBootstrap: {
                 files: {
                     '<%= dist.path %>/js/bootstrap.min.js': 'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
-                    // CUSTOM
+                }
+            },
+            userAssets: {
+                files: {
+                    // User assets
                     // Will uglify all files listed in files.json
                     '<%= dist.path %>/js/output.min.js': jsfiles
                 }
@@ -159,26 +161,29 @@ module.exports = function (grunt) {
 
         // Image Optimization
         imagemin: {
-            dist: {
+            sitefinity: {
                 options: {
                     optimizationLevel: 4,
                     progressive: true
                 },
-                files: [
-					{
-					    expand: true,
-					    cwd: 'assets/src/sitefinity',
-					    src: ['**/*.{png,jpg,gif,jpeg}'],
-					    dest: 'assets/dist'
-					},
-                    // CUSTOM
-                    {
-					    expand: true,
-					    cwd: 'assets/src/' + customFolder,
-					    src: ['**/*.{png,jpg,gif,jpeg}'],
-					    dest: 'assets/dist'
-					}
-                ]
+                files: [{
+                    expand: true,
+                    cwd: 'assets/src/sitefinity',
+                    src: ['**/*.{png,jpg,gif,jpeg}'],
+                    dest: 'assets/dist'
+                }],
+            },
+            userAssets: {
+                options: {
+                    optimizationLevel: 4,
+                    progressive: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'assets/src/' + userAssetsFolder,
+                    src: ['**/*.{png,jpg,gif,jpeg}'],
+                    dest: 'assets/dist'
+                }]
             }
         },
 
@@ -196,9 +201,13 @@ module.exports = function (grunt) {
             options: {
                 spawn: false
             },
-            styles: {
+            stylesSitefinityBootstrap: {
                 files: ['<%= src.path %>/**/*.{scss,sass}'],
-                tasks: ['sass:sitefinityBootstrap', 'sass:sassToCss', 'cssmin']
+                tasks: ['sass:sitefinityBootstrap', 'sass:userAssets', 'cssmin']
+            },
+            stylesSitefinity: {
+                files: ['<%= src.path %>/**/*.{scss,sass}'],
+                tasks: ['sass:sitefinity', 'sass:userAssets', 'cssmin']
             },
             images: {
                 files: ['<%= src.path %>/**/*.{png,jpg,gif,jpeg}'],
@@ -206,13 +215,19 @@ module.exports = function (grunt) {
             },
             js: {
                 files: ['<%= src.path %>/**/*.js'],
-                tasks: ['uglify:dist']
+                tasks: ['uglify:userAssets']
             }
         },
 
         concurrent: {
-            dev: {
-                tasks: ['watch:styles', 'watch:js', 'watch:images'],
+            sitefinityBootstrap: {
+                tasks: ['watch:stylesSitefinityBootstrap', 'watch:js', 'watch:images'],
+                options: {
+                    logConcurrentOutput: true
+                }
+            },
+            sitefinity: {
+                tasks: ['watch:stylesSitefinity', 'watch:js', 'watch:images'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -230,8 +245,9 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
 		'newer:sprite',
 		'sass:sitefinityBootstrap',
+        'sass:userAssets',
 		'cssmin',
-		'uglify:dist',
+		'uglify',
 		'newer:imagemin'
     ]);
 
@@ -240,24 +256,25 @@ module.exports = function (grunt) {
 		'clean:css',
 		'newer:sprite',
 		'sass:sitefinity',
+        'sass:userAssets',
 		'cssmin',
-		'uglify:dist',
-		'newer:imagemin'
+		'uglify:userAssets',
+		'newer:imagemin',
+        'concurrent:sitefinity'
     ]);
-    // CUSTOM
-    // Will compile and minify custom .scss file, clean images and concat and uglify js files
-    grunt.registerTask('custom', [
-        'sass:sassToCss',
+    // User assets
+    // Will compile and minify user .scss file, clean images and concat and uglify js files, located in the userAssetsFolder 
+    grunt.registerTask('userAssets', [
+        'sass:userAssets',
         'cssmin',
-		'uglify:dist',
-		'newer:imagemin'
+		'uglify:userAssets',
+		'newer:imagemin:userAssets'
     ]);
 
     // default task runs csslint once on startup on documentation's css
     grunt.registerTask('default', [
 		'clean:css',
-        'sass:sassToCss',
 		'build',
-		'concurrent:dev'
+		'concurrent:sitefinityBootstrap'
     ]);
 };
