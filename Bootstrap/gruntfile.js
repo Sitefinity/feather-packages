@@ -273,21 +273,17 @@ module.exports = function (grunt) {
 
     grunt.event.on('watch', function (action, filepath) {
         var sassNames = [];
-        options.forEach(function (value) {
-            sassNames.push('sass:' + value);
-        });
-
         var jsNames = [];
         options.forEach(function (value) {
+            sassNames.push('sass:' + value);
             jsNames.push('uglify:' + value);
         });
 
         grunt.config('watch.js.tasks', jsNames);
         grunt.config('watch.styles.tasks', sassNames);
 
-
-
     });
+
 
     //support for subtasks
     var exists = function (task, target) {
