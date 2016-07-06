@@ -1,0 +1,6 @@
+{
+  "concatJsFiles": [
+	"assets/src/sitefinity/js/magnific-init.js",
+	"assets/src/sitefinity/js/JavaScript1.js"
+  ]
+}

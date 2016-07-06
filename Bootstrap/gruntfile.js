@@ -9,9 +9,12 @@ var path = require('path');
 module.exports = function (grunt) {
     'use strict';
 
+    //Package js files
+    var sfjsfiles = grunt.file.readJSON('sf-jsfiles.json').concatJsFiles;
+
     // User assets
     // Load the order for minifying js files
-    var jsfiles = grunt.file.readJSON('files.json').concatJsFiles;
+    var jsfiles = grunt.file.readJSON('jsfiles.json').concatJsFiles;
     // Rename this with the name of your your user assets folder
     var userAssetsFolder = "oranges";
 
@@ -22,7 +25,7 @@ module.exports = function (grunt) {
     if (target) {
         options = target.split(",");
     } else {
-        options = ["bootstrap"];
+        options = ["sitefinityBootstrap"];
     }
 
     // load all grunt tasks
@@ -156,9 +159,16 @@ module.exports = function (grunt) {
                 mangle: true,
                 compress: true
             },
+            sitefinity: {
+                files: {
+                    '<%= dist.path %>/js/output.min.js': sfjsfiles
+
+                }
+            },
             sitefinityBootstrap: {
                 files: {
-                    '<%= dist.path %>/js/bootstrap.min.js': 'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
+                    '<%= dist.path %>/js/sitefinity.bootstrap.min.js': [ 'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',  sfjsfiles] 
+
                 }
             },
             userAssets: {
@@ -242,44 +252,7 @@ module.exports = function (grunt) {
 		'build'
     ]);
 
-    // Runs once
-    grunt.registerTask('build', [
-		'newer:sprite',
-		'sass:sitefinityBootstrap',
-        'sass:userAssets',
-		'cssmin',
-		'uglify',
-		'newer:imagemin'
-    ]);
-
-    // task that generates Sitefinity styles without bootstrap sources
-    grunt.registerTask('sitefinity', [
-		'clean:css',
-		'newer:sprite',
-		'sass:sitefinity',
-        'sass:userAssets',
-		'cssmin',
-		'uglify:userAssets',
-		'newer:imagemin',
-        'concurrent:dist'
-    ]);
-    // User assets
-    // Will compile and minify user .scss file, clean images and concat and uglify js files, located in the userAssetsFolder 
-    grunt.registerTask('userAssets', [
-        'sass:userAssets',
-        'cssmin',
-		'uglify:userAssets',
-		'newer:imagemin:userAssets'
-    ]);
-
-    // default task runs csslint once on startup on documentation's css
-    grunt.registerTask('default', [
-		'clean:css',
-		'build',
-		'concurrent:sitefinity'
-    ]);
-
-    grunt.registerTask('dev', ' ', function () {
+    grunt.registerTask('default', ' ', function () {
         grunt.task.run('clean:css');
         grunt.task.run('newer:sprite');
 
@@ -303,8 +276,17 @@ module.exports = function (grunt) {
         options.forEach(function (value) {
             sassNames.push('sass:' + value);
         });
+
+        var jsNames = [];
+        options.forEach(function (value) {
+            jsNames.push('uglify:' + value);
+        });
+
+        grunt.config('watch.js.tasks', jsNames);
         grunt.config('watch.styles.tasks', sassNames);
-        grunt.config('watch.js.tasks', sassNames);
+
+
+
     });
 
     //support for subtasks
