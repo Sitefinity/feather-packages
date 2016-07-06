@@ -15,10 +15,21 @@ module.exports = function (grunt) {
     // Rename this with the name of your your user assets folder
     var userAssetsFolder = "oranges";
 
+    //defining platforms
+    var options,
+        target = grunt.option("target");
+
+    if (target) {
+        options = target.split(",");
+    } else {
+        options = ["bootstrap"];
+    }
+
     // load all grunt tasks
     require('load-grunt-tasks')(grunt);
 
     // show elapsed time at the end
+
     require('time-grunt')(grunt);
     // Init
     grunt.initConfig({
@@ -201,13 +212,9 @@ module.exports = function (grunt) {
             options: {
                 spawn: false
             },
-            stylesSitefinityBootstrap: {
+            styles: {
                 files: ['<%= src.path %>/**/*.{scss,sass}'],
-                tasks: ['sass:sitefinityBootstrap', 'sass:userAssets', 'cssmin']
-            },
-            stylesSitefinity: {
-                files: ['<%= src.path %>/**/*.{scss,sass}'],
-                tasks: ['sass:sitefinity', 'sass:userAssets', 'cssmin']
+                tasks: ['sass', 'cssmin']
             },
             images: {
                 files: ['<%= src.path %>/**/*.{png,jpg,gif,jpeg}'],
@@ -215,19 +222,13 @@ module.exports = function (grunt) {
             },
             js: {
                 files: ['<%= src.path %>/**/*.js'],
-                tasks: ['uglify:userAssets']
+                tasks: ['uglify']
             }
         },
 
         concurrent: {
-            sitefinityBootstrap: {
-                tasks: ['watch:stylesSitefinityBootstrap', 'watch:js', 'watch:images'],
-                options: {
-                    logConcurrentOutput: true
-                }
-            },
-            sitefinity: {
-                tasks: ['watch:stylesSitefinity', 'watch:js', 'watch:images'],
+            dist: {
+                tasks: ['watch:styles', 'watch:js', 'watch:images'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -260,7 +261,7 @@ module.exports = function (grunt) {
 		'cssmin',
 		'uglify:userAssets',
 		'newer:imagemin',
-        'concurrent:sitefinity'
+        'concurrent:dist'
     ]);
     // User assets
     // Will compile and minify user .scss file, clean images and concat and uglify js files, located in the userAssetsFolder 
@@ -275,6 +276,44 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
 		'clean:css',
 		'build',
-		'concurrent:sitefinityBootstrap'
+		'concurrent:sitefinity'
     ]);
+
+    grunt.registerTask('dev', ' ', function () {
+        grunt.task.run('clean:css');
+        grunt.task.run('newer:sprite');
+
+        options.forEach(function (value) {
+            if (exists('sass', value)) {
+                grunt.task.run('sass:' + value);
+            }
+            if (exists('uglify', value)) {
+                grunt.task.run('uglify:' + value);
+            }
+        });
+
+        grunt.task.run('cssmin');
+        grunt.task.run('newer:imagemin');
+        grunt.task.run('concurrent');
+
+    });
+
+    grunt.event.on('watch', function (action, filepath) {
+        var sassNames = [];
+        options.forEach(function (value) {
+            sassNames.push('sass:' + value);
+        });
+        grunt.config('watch.styles.tasks', sassNames);
+        grunt.config('watch.js.tasks', sassNames);
+    });
+
+    //support for subtasks
+    var exists = function (task, target) {
+        var path = [task];
+        if (target && target.length > 0) {
+            path.push(target);
+        }
+        return !!grunt.config.get(path);
+    };
+
 };
