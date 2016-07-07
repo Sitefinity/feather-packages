@@ -130,7 +130,7 @@ Currently grunt tasks are executed with the following command:
 
 
 ```
- grunt –-target=\[single target or targets, separated by comma\]
+ grunt –-target=single target or targets, separated by comma
  
 ```
 
