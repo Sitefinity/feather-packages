@@ -15,6 +15,7 @@ Github repo example:
 
 ***file.json* should looks like this: **
 
+```
 {
 
 "concatJsFiles": \[
@@ -26,6 +27,8 @@ Github repo example:
 \]
 
 }
+ 
+```
 
 1.  Create a folder for your custom resources in
     \~\\ResourcePackages\\Bootstrap\\assets\\src
@@ -140,7 +143,12 @@ Targets can be one of these there:
     folder should be specified in the gruntfile, assigned to the
     userAssetsFolder variable
 
-Example: &gt; grunt –-target=sitefinityBootstrap,userAssets
+Example: 
+
+```
+ grunt –-target=sitefinityBootstrap,userAssets
+ 
+```
 
 This will build package resources with Bootstrap, as well as user
 resources and will activate Watch task for those files
