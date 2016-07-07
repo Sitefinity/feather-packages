@@ -121,7 +121,28 @@ Then create a \*.cshtml files as follows:
 *Hint: You can find current used templates as you navigate to Design
 &gt; Widget Templates from Sitefinity Backend.*
 
-**Custom grunt task:**
+**Grunt tasks:**
 
-grunt custom -&gt; will compile and minify custom \*.scss file, clean
-images and concat and uglify \*.js files
+Currently grunt tasks are executed with the following command:
+
+&gt; grunt –-target=\[single target or targets, separated by comma\]
+
+Targets can be one of these there:
+
+-   Sitefinity – builds package resources and doesn’t include Bootstrap
+    in the generated files
+
+-   sitefinityBootstrap - builds package resources and includes
+    Bootstrap in the generated files
+
+-   userAssets – builds user specific resources, located in the user
+    folder under \~\\ResourcePackages\\Bootstrap\\assets\\src. This
+    folder should be specified in the gruntfile, assigned to the
+    userAssetsFolder variable
+
+Example: &gt; grunt –-target=sitefinityBootstrap,userAssets
+
+This will build package resources with Bootstrap, as well as user
+resources and will activate Watch task for those files
+
+If target isn’t set, the default one is sitefinityBootstrap
