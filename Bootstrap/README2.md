@@ -128,7 +128,11 @@ Then create a \*.cshtml files as follows:
 
 Currently grunt tasks are executed with the following command:
 
-&gt; grunt –-target=\[single target or targets, separated by comma\]
+
+```
+ grunt –-target=\[single target or targets, separated by comma\]
+ 
+```
 
 Targets can be one of these there:
 
