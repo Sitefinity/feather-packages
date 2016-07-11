@@ -6,25 +6,25 @@ Github repo example:
 2.  Do “npm install” at
     \~\\SitefinityWebApp\\ResourcePackages\\Bootstrap
 
-3.  Create *file.json* in the same directory as *gruntfile.js*. In this
+3.  Create *jsfiles.json* in the same directory as *gruntfile.js*. In this
     file will be defined the order for concating and unglifing your
     javascript files. As result there will be one javascript file named
     “*output.min.js*” (*you can rename it in *gruntfile.js* in the
     initialization of “uglify”*) located in
     \~\\ResourcePackages\\Bootstrap\\assets\\dist\\js\\
 
-***file.json* should looks like this: **
+***jsfiles.json* should looks like this: **
 
 ```
 {
 
-"concatJsFiles": \[
+	"concatJsFiles": [
 
-"path/to/your/javascript/files/.js",
+	"path/to/your/javascript/files/.js",
 
-" path/to/your/javascript/files/.js"
+	" path/to/your/javascript/files/.js"
 
-\]
+	]
 
 }
  
@@ -41,12 +41,14 @@ Now to use the custom javascript file located in the “assets\\dist\\js”
 simply add this piece of code in the *\*.cshtml* template, right before
 the closing &lt;/body&gt; tag.
 
-@Html.Section("bottom")
+```
+	@Html.Section("bottom")
 
-@Html.Script(Url.Content"\~/ResourcePackages/Bootstrap/assets/dist/js/output.min.js"),
-"bottom")
+	@Html.Script(Url.Content"\~/ResourcePackages/Bootstrap/assets/dist/js/output.min.js"),
+	"bottom")
 
-\[Name may differ if you change it in gruntfile.js\]
+	\[Name may differ if you change it in gruntfile.js\]
+```
 
 If you want to use it in all templates based on the “default” one, then
 just add the code in *default.cshtml* file.
@@ -67,13 +69,15 @@ files in your custom stylesheet.
 Add custom styles as following in the *\*.cshtml* template, right before
 the closing &lt;/head&gt; tag
 
-@Html.Section("head")
+```
+	@Html.Section("head")
 
-@Html.StyleSheet(Url.Content("\~/ResourcePackages/Bootstrap/assets/dist/css/oranges.min.css"),
-"head")
+	@Html.StyleSheet(Url.Content("\~/ResourcePackages/Bootstrap/assets/dist/css/oranges.min.css"),
+	"head")
 
-\[Name may differ. It will be the same as the one created in your “sass”
-folder\]
+	\[Name may differ. It will be the same as the one created in your “sass”
+	folder\]
+```
 
 If you want to use it in all templates based on the “default” one, then
 just add the code in default.cshtml file.
@@ -87,8 +91,10 @@ editor” add a *\*.html* file in
 e.g. This create a simple placeholder for &lt;section&gt; you can use
 this code:
 
-&lt;section class="section" data-sf-element="Section"
-data-placeholder-label="Section"&gt;&lt;/section&gt;
+```
+	&lt;section class="section" data-sf-element="Section"
+	data-placeholder-label="Section"&gt;&lt;/section&gt;
+```
 
 ***\*Works only on Bootstrap based page templates***
 
