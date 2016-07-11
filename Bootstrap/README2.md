@@ -47,7 +47,7 @@ the closing &lt;/body&gt; tag.
 	@Html.Script(Url.Content"\~/ResourcePackages/Bootstrap/assets/dist/js/output.min.js"),
 	"bottom")
 
-	\[Name may differ if you change it in gruntfile.js\]
+	(Name may differ if you change it in gruntfile.js)
 ```
 
 If you want to use it in all templates based on the “default” one, then
@@ -75,8 +75,8 @@ the closing &lt;/head&gt; tag
 	@Html.StyleSheet(Url.Content("\~/ResourcePackages/Bootstrap/assets/dist/css/oranges.min.css"),
 	"head")
 
-	\[Name may differ. It will be the same as the one created in your “sass”
-	folder\]
+	(Name may differ. It will be the same as the one created in your “sass”
+	folder)
 ```
 
 If you want to use it in all templates based on the “default” one, then
@@ -92,8 +92,8 @@ e.g. This create a simple placeholder for &lt;section&gt; you can use
 this code:
 
 ```
-	&lt;section class="section" data-sf-element="Section"
-	data-placeholder-label="Section"&gt;&lt;/section&gt;
+	<section class="section" data-sf-element="Section"
+	data-placeholder-label="Section"></section>;
 ```
 
 ***\*Works only on Bootstrap based page templates***
