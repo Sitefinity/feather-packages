@@ -7,7 +7,7 @@ Github repo example:
     \~\\SitefinityWebApp\\ResourcePackages\\Bootstrap
 
 3.  Create *jsfiles.json* in the same directory as *gruntfile.js*. In this
-    file will be defined the order for concating and unglifing your
+    file will be defined the order for concating and uglifing your
     javascript files. As result there will be one javascript file named
     “*output.min.js*” (*you can rename it in *gruntfile.js* in the
     initialization of “uglify”*) located in
@@ -20,9 +20,9 @@ Github repo example:
 
 	"concatJsFiles": [
 
-	"path/to/your/javascript/files/.js",
+		"path/to/your/javascript/files/.js",
 
-	" path/to/your/javascript/files/.js"
+		" path/to/your/javascript/files/.js"
 
 	]
 
@@ -38,13 +38,13 @@ Github repo example:
 Add “js” folder in your custom resources folder.
 
 Now to use the custom javascript file located in the “assets\\dist\\js”
-simply add this piece of code in the *\*.cshtml* template, right before
+simply add this piece of code in the \*.cshtml template, right before
 the closing &lt;/body&gt; tag.
 
 ```
 	@Html.Section("bottom")
 
-	@Html.Script(Url.Content"\~/ResourcePackages/Bootstrap/assets/dist/js/output.min.js"),
+	@Html.Script(Url.Content"~/ResourcePackages/Bootstrap/assets/dist/js/output.min.js"),
 	"bottom")
 
 	(Name may differ if you change it in gruntfile.js)
@@ -57,22 +57,22 @@ just add the code in *default.cshtml* file.
 
 Add “sass” folder in your custom resources folder.
 
-Create a single *\*.scss* file where all of the SASS files will be
+Create a single \*.scss file where all of the SASS files will be
 included (*the name for this file it is not important*)
 
-It is **very important** to be only one *\*.scss* file in the “sass”
+It is **very important** to be only one \*.scss file in the “sass”
 folder.
 
 Create as many as you like subfolders with files and then @import those
 files in your custom stylesheet.
 
-Add custom styles as following in the *\*.cshtml* template, right before
+Add custom styles as following in the \*.cshtml template, right before
 the closing &lt;/head&gt; tag
 
 ```
 	@Html.Section("head")
 
-	@Html.StyleSheet(Url.Content("\~/ResourcePackages/Bootstrap/assets/dist/css/oranges.min.css"),
+	@Html.StyleSheet(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/css/oranges.min.css"),
 	"head")
 
 	(Name may differ. It will be the same as the one created in your “sass”
@@ -82,10 +82,10 @@ the closing &lt;/head&gt; tag
 If you want to use it in all templates based on the “default” one, then
 just add the code in default.cshtml file.
 
-**Custom layout templates {placeholders}\***
+**Custom layout templates {placeholders}**
 
 To add custom layout templates {placeholders} that can be used in “Page
-editor” add a *\*.html* file in
+editor” add a \*.html file in
 \~\\ResourcePackages\\Bootstrap\\GridSystem\\Templates\\
 
 e.g. This create a simple placeholder for &lt;section&gt; you can use
@@ -96,11 +96,11 @@ this code:
 	data-placeholder-label="Section"></section>;
 ```
 
-***\*Works only on Bootstrap based page templates***
+***Works only on Bootstrap based page templates***
 
 **Custom View template**
 
-Add a custom *\*.cshtml* file in \~\\SitefinityWebApp\\Mvc\\Views\\ and
+Add a custom \*.cshtml file in \~\\SitefinityWebApp\\Mvc\\Views\\ and
 follow the conventions as in \~\\ResourcePackages\\Bootstrap\\MVC\\Views
 (*The folder containing the templates for widgets is named singular*)
 
