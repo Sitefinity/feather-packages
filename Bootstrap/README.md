@@ -1,23 +1,25 @@
 # Bootstrap package
 
-This package is based on the [Bootstrap framework](http://getbootstrap.com/) . In order to use it you need to add the package to the `ResourcePackages folder` of your project. If the `ResourcePackages` folder doesn't contain any packages, widget templates will be loaded from Feather or from the MVC folder of SitefinityWebApp (if this folder contains files with names, matching the naming convention). Templates from the source of Feather have lowest loading priority. Templates in the MVC folder of SitefinityWebApp are with higher priority, and templates from a package have highest loading priority.
+This package is based on the [Bootstrap framework](http://getbootstrap.com/). In order to use it you need to add the package to the `ResourcePackages folder` of your project. If the `ResourcePackages` folder doesn't contain any packages, widget templates will be loaded from Feather or from the MVC folder of SitefinityWebApp (if this folder contains files with names, matching the naming convention). Templates from the source of Feather have lowest loading priority. Templates in the MVC folder of SitefinityWebApp are with higher priority, and templates from a package have highest loading priority.
 
 ## Package structure
 
-The Bootstrap package contains front-end assets, widget template, grid widget templates and grunt configuration. Below are listed some of the folders and files
- - assets - contains front-end files such as CSS, JS, images and fonts.
+The Bootstrap package contains front-end assets, widget template, grid widget templates and grunt configuration. Below are listed some of the folders and files.
+ - assets - contains front-end files such as CSS, JS, images and fonts
  	- dist - contains the processed ready-to-use front-end assets
- 		- images - contains compressed images from src folder which are usually used as background images in the css
- 		- js - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
  		- css - contains the processed css files
  			- main.css - this is output of the processed `main.scss` from `assets/src/project/sass`. This file contains Sitefinity, Bootstrap and project css
- 			- main.min.css - this is same as `main.css` but minified. This is the distributed css file which is linked in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
+ 			- main.min.css - this is the same as `main.css` but minified. This is the distributed css file which is linked in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
  			- sitefinity.bootstrap.css - this is the processed css file which contains the combined sitefinity and bootstrap css
  			- sitefinity.bootstrap.min.css - minified `sitefinity.bootstrap.css`
  			- sitefinity.css - this is output of the processed `sitefinity.scss` from `assets/src/sitefinity/sass`. This files contain Sitefinity css only
  			- sitefinity.min.css - minified `sitefinity.css`
- 	- src - contains the source front-end files which are processed via Grunt javascript task runner to dist folder
+        - fonts - contains files for sitefinity and project icon font
+        - images - contains compressed images from src folder which are usually used as background images in the css
+        - js - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
+ 	- src - contains the source front-end files which are processed via grunt to dist folder
  		- project - add your non-sitefinity front-end assets here
+ 			- icons - add `svg` files here to be added to the icon font that is generated when grunt is run
  			- images - add images here. Images added in this folder will be compressed and output to `assets/dist/images`
  			- js - add js files here and list them in `jsfiles.json`. All js files listed in `jsfiles.json` will be concatenated and uglified to `assets/dist/js/project.min.js`
  			- sass - create subfolders in this folder and add your scss files here
@@ -30,7 +32,6 @@ The Bootstrap package contains front-end assets, widget template, grid widget te
  - gruntfile.js - contains grunt tasks configuration and definition as well as load grunt plugins
  - jsfiles.json - contains a list of js files to be automatically concatenated and uglified when grunt is run
  - package.json - stores metadata for grunt and grunt plugins that the project needs
-
 
 ## Editing and creating a widget
 By default we include all widget templates in every package. Modifying a template is super easy. If you want to modify the Pills navigation template, just go to `/ResourcePackages/Bootstrap/MVC/Views/Navigation`, open the `NavigationView.Pills.cshtml` file and make your changes. 
@@ -46,7 +47,7 @@ When you create a new Dynamic module list and details widget templates are autom
 
 ## Editing and creating a grid widget
 By default we include the most popular column combinations as grid widgets. Modifying a grid widget template is super easy.  If you want to modify the grid widget with two equal columns go to `/ResourcePackages/Bootstrap/GridSystem/Templates`, open `grid-6+6.html` and make your changes.
-You may want to add an extra CSS class to a column, change the label of the field for adding CSS classes for this column in the grid widget designer in Page editor or change the name of a column's placeholder name in Page editor .
+You can add an extra CSS class to a column, change the label of the field for adding CSS classes for this column in the grid widget designer in Page editor or change the name of a column's placeholder name in Page editor .
 
 Example:
 ```
@@ -57,9 +58,10 @@ Example:
     </div>
 </div>
 ```
+Don't remove `sf_colsIn`. It is a system css classed which indicates where a placeholder will be created.
 
 Creating a new grid widget is just as easy.
-Duplicate an existing grid widget template, give a name to the new file. Then the new grid widget will appear in the list of grid widgets in Layout tab in Page editor.
+Duplicate an existing grid widget template, give a name to the new file. Then the new grid widget will appear in the list of grid widgets in the Layout tab in Page editor.
 
 Example: To create a simple placeholder with &lt;section&gt; tag create `section.html` in `/ResourcePackages/Bootstrap/GridSystem/Templates/`
 ```
@@ -165,11 +167,19 @@ jsfiles.json
 }
 ```
 
-To load the `project.min.js` open the project Razor layout file (`MVC/Views/Layouts/default.cshtml`) and add a reference there.
+To load `project.min.js` open the project Razor layout file (`MVC/Views/Layouts/default.cshtml`) and add a reference there.
 ```
 	@Html.Script(Url.Content"\~/ResourcePackages/Bootstrap/assets/dist/js/project.min.js"),
 	"bottom")
 ```
+
+###Icons
+Place all svg files that you want to use as icon via an icon font in `assets/src/project/icons`. The icon font will be created the first time grunt is run. If you add new svg files you will have to run the task manually (`grunt webfont`) or rerun default grunt task.
+Two css classes will be generated for each icon. If the name of the svg file is logo.svg, the names of the css classes will be:
+- `icon-logo` - icon is displayed before Company name
+`<span class="icon-logo">Company name</span>`
+- `icon-item-logo` - icon is displayed after Company name
+`<span class="icon-item-logo">Company name</span>`
 
 ## Upgrade recommendations
 - If you work on a copy of Bootstrap, e.g. BootstrapCustom

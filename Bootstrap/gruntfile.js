@@ -125,7 +125,7 @@ module.exports = function (grunt) {
 
         webfont: {
             icons: {
-                src: 'assets/src/sitefinity/icons/*.svg',
+                src: ['assets/src/sitefinity/icons/*.svg', 'assets/src/project/icons/*.svg'],
                 dest: 'assets/dist/fonts/',
                 destCss: 'assets/src/sitefinity/sass/components/icons/',
                 options: {
