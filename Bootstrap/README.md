@@ -61,9 +61,7 @@ Example:
 Creating a new grid widget is just as easy.
 Duplicate an existing grid widget template, give a name to the new file. Then the new grid widget will appear in the list of grid widgets in Layout tab in Page editor.
 
-Example:
-
-To create a simple placeholder with &lt;section&gt; tag create `section.html` in `/ResourcePackages/Bootstrap/GridSystem/Templates/`
+Example: To create a simple placeholder with &lt;section&gt; tag create `section.html` in `/ResourcePackages/Bootstrap/GridSystem/Templates/`
 ```
 	<section class="section" data-sf-element="Section" data-placeholder-label="Section">
 	</section>
@@ -126,13 +124,13 @@ Example:
 ```
 File structure
 - sass
--- settings
---- _colors.scss
---- _typography.scss
+	- settings
+		- _colors.scss
+		- _typography.scss
 ...
--- base
---- _link.scss
---- _typography.scss
+	- base
+		- _link.scss
+		- _typography.scss
 ...
 main.scss
 // Sitefinity + Bootstrap CSS
@@ -175,11 +173,11 @@ To load the `project.min.js` open the project Razor layout file (`MVC/Views/Layo
 
 ## Upgrade recommendations
 - If you work on a copy of Bootstrap, e.g. BootstrapCustom
-..- Upgrade Bootstrap package
-..- Merge changes from Bootstrap to BootstrapCustom manually
+	- Upgrade Bootstrap package
+	- Merge changes from Bootstrap to BootstrapCustom manually
 - If you work on Bootstrap package directly
-..- Before upgrade make a copy of Bootstrap package to another location
-..- Upgrade Bootstrap package
-..- Merge conflicts
-....- If you use a source control, merge the changes using the source control
-....- If you don't use a source control, merge the changes from the copy of the Bootstrap package to the Bootstrap package manually
+	- Before upgrade make a copy of Bootstrap package to another location
+	- Upgrade Bootstrap package
+	- Merge conflicts
+		- If you use a source control, merge the changes using the source control
+		- If you don't use a source control, merge the changes from the copy of the Bootstrap package to the Bootstrap package manually
