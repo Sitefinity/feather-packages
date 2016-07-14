@@ -1,79 +1,81 @@
-
 //Variables
+@import "settings/variables";
 
-@import "variables";
-@import "mixins";
-@import "bootstrap-mixins";
+//Mixins
+@import "tools/mixins";
+@import "tools/bootstrap-mixins";
 
-// Icon font
-@import "icons/_sf-icon-font";
-@import "icons/_icons";
+//Base - elements
+@import "base/pre";
 
-//Common styles
-@import "common";
+//Helper classes
+@import "utilities/spacing";
+@import "utilities/text";
 
+//Components
+//Icon font
+@import "components/icons/sf-icon-font";
+@import "components/icons/icons";
 //Loading
-@import "sitefinity/loading";
+@import "components/loading/loading";
 
+//---Sitefinity Widgets---//
 //Media
-@import "sitefinity/media/sf-media";
+@import "widgets/media/sf-media";
 
 // Content block
-@import "sitefinity/sf-content-block";
+@import "widgets/contentBlock/sf-content-block";
 
 // Gallery
-@import "sitefinity/gallery/gallery";
+@import "widgets/gallery/gallery";
 
 // Navigation
-@import "sitefinity/navigation/navbar";
-@import "sitefinity/navigation/sitemap";
-@import "sitefinity/navigation/stacked";
+@import "widgets/navigation/navbar";
+@import "widgets/navigation/sitemap";
+@import "widgets/navigation/stacked";
 
 // Search
-@import "sitefinity/searchBox/sf-search-box";
-@import "sitefinity/searchResults/sf-search-results";
+@import "widgets/searchBox/sf-search-box";
+@import "widgets/searchResults/sf-search-results";
 
 // Profile
-@import "sitefinity/profile/sf-profile";
+@import "widgets/profile/sf-profile";
 
 // Document list
-@import "sitefinity/documentList/sf-document-list";
+@import "widgets/documentList/sf-document-list";
 
 // List
-@import "sitefinity/list/sf-list";
+@import "widgets/list/sf-list";
 
 // Language selector
-@import "sitefinity/languageSelector/sf-language-selector";
+@import "widgets/languageSelector/sf-language-selector";
 
 // Comments and reviews
-@import "sitefinity/comments/sf-comments";
-@import "sitefinity/comments/sf-ratings";
+@import "widgets/comments/sf-comments";
+@import "widgets/comments/sf-ratings";
 
 // Site selector
-@import "sitefinity/siteSelector/sf-site-selector";
+@import "widgets/siteSelector/sf-site-selector";
 
 // Code widgets (Stylesheet, JavaScript, Embed code)
-@import "sitefinity/code/sf-code";
+@import "widgets/code/sf-code";
 
 // Taxonomies (Tags, Categories)
-@import "sitefinity/taxonomies/sf-tags";
+@import "widgets/taxonomies/sf-tags";
 
 // Feed
-@import "sitefinity/feed/sf-feed";
+@import "widgets/feed/sf-feed";
 
 //Forms
-
 //File Field
-@import "sitefinity/fileField/sf-file-field";
+@import "widgets/fileField/sf-file-field";
 
 //Form navigation
-@import "sitefinity/formNavigation/sf-form-nav";
+@import "widgets/formNavigation/sf-form-nav";
 
 //Events
-@import "sitefinity/event/sf-event";
+@import "widgets/event/sf-event";
 
 // Social share
-// Due to some unfortunate circumstances, these files must be
-// directly in the `sass` folder :/
-@import "sf-sprite";
-@import "sf-social-share";
+@import "widgets/socialShare/sf-sprite";
+@import "widgets/socialShare/sf-social-share";
