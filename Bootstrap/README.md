@@ -7,24 +7,24 @@ This package is based on the [Bootstrap framework](http://getbootstrap.com/) . I
 The Bootstrap package contains front-end assets, widget template, grid widget templates and grunt configuration. Below are listed some of the folders and files
  - assets - contains front-end files such as CSS, JS, images and fonts.
  	- dist - contains the processed ready-to-use front-end assets
- --- images - contains compressed images from src folder which are usually used as background images in the css
- --- js - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
- --- css - contains the processed css files
- ---- main.css - this is output of the processed `main.scss` from `assets/src/project/sass`. This file contains Sitefinity, Bootstrap and project css
- ---- main.min.css - this is same as `main.css` but minified. This is the distributed css file which is linked in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
- ---- sitefinity.bootstrap.css - this is the processed css file which contains the combined sitefinity and bootstrap css
- ---- sitefinity.bootstrap.min.css - minified `sitefinity.bootstrap.css`
- ---- sitefinity.css - this is output of the processed `sitefinity.scss` from `assets/src/sitefinity/sass`. This files contain Sitefinity css only
- ---- sitefinity.min.css - minified `sitefinity.css`
- -- src - contains the source front-end files which are processed via Grunt javascript task runner to dist folder
- --- project - add your non-sitefinity front-end assets here
- ---- images - add images here. Images added in this folder will be compressed and output to `assets/dist/images`
- ---- js - add js files here and list them in `jsfiles.json`. All js files listed in `jsfiles.json` will be concatenated and uglified to `assets/dist/js/project.min.js`
- ---- sass - create subfolders in this folder and add your scss files here
- ---- sass/main.scss - import all your scss files here. This file will be processed to `assets/dist/css/main.min.css`
- --- sitefinity - contains scss files for Sitefinity styling
+ 		- images - contains compressed images from src folder which are usually used as background images in the css
+ 		- js - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
+ 		- css - contains the processed css files
+ 			- main.css - this is output of the processed `main.scss` from `assets/src/project/sass`. This file contains Sitefinity, Bootstrap and project css
+ 			- main.min.css - this is same as `main.css` but minified. This is the distributed css file which is linked in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
+ 			- sitefinity.bootstrap.css - this is the processed css file which contains the combined sitefinity and bootstrap css
+ 			- sitefinity.bootstrap.min.css - minified `sitefinity.bootstrap.css`
+ 			- sitefinity.css - this is output of the processed `sitefinity.scss` from `assets/src/sitefinity/sass`. This files contain Sitefinity css only
+ 			- sitefinity.min.css - minified `sitefinity.css`
+ 	- src - contains the source front-end files which are processed via Grunt javascript task runner to dist folder
+ 		- project - add your non-sitefinity front-end assets here
+ 			- images - add images here. Images added in this folder will be compressed and output to `assets/dist/images`
+ 			- js - add js files here and list them in `jsfiles.json`. All js files listed in `jsfiles.json` will be concatenated and uglified to `assets/dist/js/project.min.js`
+ 			- sass - create subfolders in this folder and add your scss files here
+ 				-main.scss - import all your scss files here. This file will be processed to `assets/dist/css/main.min.css`
+ 		- sitefinity - contains scss files for Sitefinity styling
  - MVC folder - contains all widget templates categorized by widget and the Razor layout file
- -- Layouts/default.cshtml - Razor layout file
+ 	- Layouts/default.cshtml - Razor layout file
  - GridSystem - contains grid widget templates
  - csslint.json - contains csslint options and globals
  - gruntfile.js - contains grunt tasks configuration and definition as well as load grunt plugins
