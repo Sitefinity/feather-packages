@@ -36,15 +36,11 @@ The Bootstrap package contains front-end assets, widget template, grid widget te
 ## Editing and creating a widget
 By default we include all widget templates in every package. Modifying a template is super easy. If you want to modify the Pills navigation template, just go to `/ResourcePackages/Bootstrap/MVC/Views/Navigation`, open the `NavigationView.Pills.cshtml` file and make your changes. 
 
-Creating a new template is just as easy.
-
-Duplicate an existing template, give a name to the new file, keeping in mind the following structure - `NavigationView.XXXXXX.cshtml`. Then the new template will appear in the list of templates for this widget in the widget designer in Page editor.
+Creating a new template is just as easy. Duplicate an existing template, give a name to the new file, keeping in mind the following structure - `NavigationView.XXXXXX.cshtml`. Then the new template will appear in the list of templates for this widget in the widget designer in Page editor.
 
 For widgets that have list and details views, the structure should be `List.XXXXXX.cshtml` or `Detail.XXXXXX.cshtml`, respectively.
 
-Creating a new widget template for Dynamic content
-
-Create a folder with the name of the dynamic module in singular where you have organized the project widget templates (`/Mvc/Views/` or `/ResourcePackages/Bootstrap/MVC/Views`). After that create a `*.cshtml` files having in mind the structure described above List.XXXXXX.cshtml for list view and Detail.XXXXXX.cshtml for details view.
+To create a new widget template for Dynamic content first create a folder with the name of the dynamic module in singular where you have organized the project widget templates (`/Mvc/Views/` or `/ResourcePackages/Bootstrap/MVC/Views`). After that create a `*.cshtml` files having in mind the structure described above List.XXXXXX.cshtml for list view and Detail.XXXXXX.cshtml for details view and write the markup of the template.
 When you create a new Dynamic module list and details widget templates are automatically created for this module in `Design > Widget Templates` in Sitefinity Backend. As a starting point, you can use the template from Sitefinity Backend and make the desired changes on the file system.
 
 ## Editing and creating a grid widget
@@ -172,8 +168,7 @@ jsfiles.json
 
 To load `project.min.js` open the project Razor layout file (`MVC/Views/Layouts/default.cshtml`) and add a reference there.
 ```
-	@Html.Script(Url.Content"\~/ResourcePackages/Bootstrap/assets/dist/js/project.min.js"),
-	"bottom")
+	@Html.Script(Url.Content"\~/ResourcePackages/Bootstrap/assets/dist/js/project.min.js"), "bottom")
 ```
 
 ###Icons
