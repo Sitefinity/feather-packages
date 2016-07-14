@@ -54,7 +54,7 @@ You can add an extra CSS class to a column, change the label of the field for ad
 Example:
 ```
 <div class="row" data-sf-element="Row">
-    <div class="sf_colsIn col-md-6 EXTRA_CSS_CLASS" data-sf-element="NEW_COLUMN_1_CSS_CLASS_FIELD_LABEL" data-placeholder-label="NEW_COLUMN_1_PLACEHOLDER_NAME">
+    <div class="sf_colsIn col-md-6 **EXTRA_CSS_CLASS**" data-sf-element="**NEW_COLUMN_1_CSS_CLASS_FIELD_LABEL**" data-placeholder-label="**NEW_COLUMN_1_PLACEHOLDER_NAME**">
     </div>
     <div class="sf_colsIn col-md-6" data-sf-element="Column 2" data-placeholder-label="Column 2">
     </div>
