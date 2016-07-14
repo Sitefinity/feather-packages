@@ -45,7 +45,7 @@ For widgets that have list and details views, the structure should be `List.XXXX
 Creating a new widget template for Dynamic content
 
 Create a folder with the name of the dynamic module in singular where you have organized the project widget templates (`/Mvc/Views/` or `/ResourcePackages/Bootstrap/MVC/Views`). After that create a `*.cshtml` files having in mind the structure described above List.XXXXXX.cshtml for list view and Detail.XXXXXX.cshtml for details view.
-When you create a new Dynamic module list and details widget templates are automatically created for this module in `Design &gt; Widget Templates` in Sitefinity Backend. As a starting point, you can use the template from Sitefinity Backend and make the desired changes on the file system.
+When you create a new Dynamic module list and details widget templates are automatically created for this module in `Design > Widget Templates` in Sitefinity Backend. As a starting point, you can use the template from Sitefinity Backend and make the desired changes on the file system.
 
 ## Editing and creating a grid widget
 By default we include the most popular column combinations as grid widgets. Modifying a grid widget template is super easy.  If you want to modify the grid widget with two equal columns go to `/ResourcePackages/Bootstrap/GridSystem/Templates`, open `grid-6+6.html` and make your changes.
@@ -107,9 +107,9 @@ Currently grunt tasks are executed with the following command:
 ```
 
 Targets can be one of the following:
--   sitefinity – builds package resources and doesn’t include Bootstrap or project resources in the generated files
--   sitefinityBootstrap - builds package resources and includes Bootstrap in the generated files but does not include project resources
--   project [default target] – builds project specific resources, located in the project folder `/ResourcePackages/Bootstrap/assets/src/project`. If the name of this folder has to be changed, it has to be changed in the gruntfile as well. The name is assigned to `userAssetsFolder` variable.
+- **sitefinity** – builds package resources and doesn’t include Bootstrap or project resources in the generated files
+- **sitefinityBootstrap** - builds package resources and includes Bootstrap in the generated files but does not include project resources
+- **project [default target]** – builds project specific resources, located in the project folder `/ResourcePackages/Bootstrap/assets/src/project`. If the name of this folder has to be changed, it has to be changed in the gruntfile as well. The name is assigned to `userAssetsFolder` variable.
 
 Example:
 ```
@@ -127,15 +127,16 @@ Place all your scss files in `assets/src/project/sass`. We recommend to create s
 Example:
 ```
 File structure
-- sass
-	- settings
-		- _colors.scss
-		- _typography.scss
+|- sass
+|-- settings
+|--- _colors.scss
+|--- _typography.scss
 ...
-	- base
-		- _link.scss
-		- _typography.scss
+|-- base
+|--- _link.scss
+|--- _typography.scss
 ...
+
 main.scss
 // Sitefinity + Bootstrap CSS
 @import "../../sitefinity/sass/sitefinity.bootstrap.scss";
