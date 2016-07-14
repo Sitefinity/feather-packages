@@ -47,7 +47,7 @@ By default we include three grid widgets. We don't include CSS to style the grid
 Modifying a grid widget template is super easy.  If you want to modify the grid widget with two columns go to `/ResourcePackages/Minimal/GridSystem/Templates`, open `two-columns.html` and make your changes.
 You can add an extra CSS class to a column, change the label of the field for adding CSS classes for this column in the grid widget designer in Page editor or change the name of a column's placeholder name in Page editor .
 
-Example:
+**Example:**
 ```
 <div class="" data-sf-element="Row">
     <div class="sf_colsIn EXTRA_CSS_CLASS" data-sf-element="NEW_COLUMN_1_CSS_CLASS_FIELD_LABEL" data-placeholder-label="NEW_COLUMN_1_PLACEHOLDER_NAME">
@@ -62,7 +62,7 @@ Don't remove `sf_colsIn`. It is a system css classed which indicates where a pla
 Creating a new grid widget is just as easy.
 Duplicate an existing grid widget template, give a name to the new file. Then the new grid widget will appear in the list of grid widgets in the Layout tab in Page editor.
 
-Example: To create a simple placeholder with &lt;section&gt; tag create `section.html` in `/ResourcePackages/Minimal/GridSystem/Templates/`
+**Example:** To create a simple placeholder with &lt;section&gt; tag create `section.html` in `/ResourcePackages/Minimal/GridSystem/Templates/`
 ```
 <section class="section" data-sf-element="Section" data-placeholder-label="Section">
 </section>
@@ -92,7 +92,7 @@ All project specific front-end assets like scss, images, js, fonts, etc. should 
 
 ### Scss
 Place all your scss files in `assets/src/project/sass`. We recommend to create subfolders to organize the project's files and then import them in `main.scss`
-Example:
+**Example:**
 ```
 File structure
 |- sass
@@ -128,7 +128,7 @@ Place all your js files in `assets/src/project/js`. It is always best to load on
 
 In `jsfiles.json` define the order in which the project's js files will be concatenated and uglified. After you run grunt all js files listed in `jsfiles.json` will be processed and output to `assets/dist/js/project.min.js`.
 
-jsfiles.json
+**jsfiles.json**
 ```
 {
 	"concatJsFiles": [
@@ -138,7 +138,7 @@ jsfiles.json
 }
 ```
 
-To load `project.min.js` open the project Razor layout file (`MVC/Views/Layouts/default.cshtml`) and add a reference there.
+**Example:** To load `project.min.js` open the project Razor layout file (`MVC/Views/Layouts/default.cshtml`) and add a reference there.
 ```
 	@Html.Script(Url.Content"\~/ResourcePackages/Minimal/assets/dist/js/project.min.js"), "bottom")
 ```
