@@ -261,6 +261,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ' ', function () {
         grunt.task.run('clean:all');
         grunt.task.run('newer:sprite');
+        grunt.task.run('webfont');
 
         options.forEach(function (option) {
             if (exists('sass', option)) {
