@@ -36,22 +36,18 @@ The Bootstrap package contains front-end assets, widget template, grid widget te
 ## Editing and creating a widget
 By default we include all widget templates in every package. Modifying a template is super easy. If you want to modify the Pills navigation template, just go to `/ResourcePackages/Bootstrap/MVC/Views/Navigation`, open the `NavigationView.Pills.cshtml` file and make your changes. 
 
-Creating a new template is just as easy.
-
-Duplicate an existing template, give a name to the new file, keeping in mind the following structure - `NavigationView.XXXXXX.cshtml`. Then the new template will appear in the list of templates for this widget in the widget designer in Page editor.
+Creating a new template is just as easy. Duplicate an existing template, give a name to the new file, keeping in mind the following structure - `NavigationView.XXXXXX.cshtml`. Then the new template will appear in the list of templates for this widget in the widget designer in Page editor.
 
 For widgets that have list and details views, the structure should be `List.XXXXXX.cshtml` or `Detail.XXXXXX.cshtml`, respectively.
 
-Creating a new widget template for Dynamic content
-
-Create a folder with the name of the dynamic module in singular where you have organized the project widget templates (`/Mvc/Views/` or `/ResourcePackages/Bootstrap/MVC/Views`). After that create a `*.cshtml` files having in mind the structure described above List.XXXXXX.cshtml for list view and Detail.XXXXXX.cshtml for details view.
+To create a new widget template for Dynamic content first create a folder with the name of the dynamic module in singular where you have organized the project widget templates (`/Mvc/Views/` or `/ResourcePackages/Bootstrap/MVC/Views`). After that create a `*.cshtml` files having in mind the structure described above List.XXXXXX.cshtml for list view and Detail.XXXXXX.cshtml for details view and write the markup of the template.
 When you create a new Dynamic module list and details widget templates are automatically created for this module in `Design > Widget Templates` in Sitefinity Backend. As a starting point, you can use the template from Sitefinity Backend and make the desired changes on the file system.
 
 ## Editing and creating a grid widget
 By default we include the most popular column combinations as grid widgets. Modifying a grid widget template is super easy.  If you want to modify the grid widget with two equal columns go to `/ResourcePackages/Bootstrap/GridSystem/Templates`, open `grid-6+6.html` and make your changes.
 You can add an extra CSS class to a column, change the label of the field for adding CSS classes for this column in the grid widget designer in Page editor or change the name of a column's placeholder name in Page editor .
 
-Example:
+**Example:**
 ```
 <div class="row" data-sf-element="Row">
     <div class="sf_colsIn col-md-6 **EXTRA_CSS_CLASS**" data-sf-element="**NEW_COLUMN_1_CSS_CLASS_FIELD_LABEL**" data-placeholder-label="**NEW_COLUMN_1_PLACEHOLDER_NAME**">
@@ -65,7 +61,7 @@ Don't remove `sf_colsIn`. It is a system css classed which indicates where a pla
 Creating a new grid widget is just as easy.
 Duplicate an existing grid widget template, give a name to the new file. Then the new grid widget will appear in the list of grid widgets in the Layout tab in Page editor.
 
-Example: To create a simple placeholder with &lt;section&gt; tag create `section.html` in `/ResourcePackages/Bootstrap/GridSystem/Templates/`
+**Example:** To create a simple placeholder with &lt;section&gt; tag create `section.html` in `/ResourcePackages/Bootstrap/GridSystem/Templates/`
 ```
 	<section class="section" data-sf-element="Section" data-placeholder-label="Section">
 	</section>
@@ -111,7 +107,7 @@ Targets can be one of the following:
 - **sitefinityBootstrap** - builds package resources and includes Bootstrap in the generated files but does not include project resources
 - **project [default target]** – builds project specific resources, located in the project folder `/ResourcePackages/Bootstrap/assets/src/project`. If the name of this folder has to be changed, it has to be changed in the gruntfile as well. The name is assigned to `userAssetsFolder` variable.
 
-Example:
+**Example:**
 ```
  grunt –-target=sitefinityBootstrap,project
 ```
@@ -124,7 +120,7 @@ All project specific front-end assets like scss, images, js, fonts, etc. should 
 
 ### Scss
 Place all your scss files in `assets/src/project/sass`. We recommend to create subfolders to organize the project's files and then import them in `main.scss`
-Example:
+**Example:**
 ```
 File structure
 |- sass
@@ -160,7 +156,7 @@ Place all your js files in `assets/src/project/js`. It is always best to load on
 
 In `jsfiles.json` define the order in which the project's js files will be concatenated and uglified. After you run grunt all js files listed in `jsfiles.json` will be processed and output to `assets/dist/js/project.min.js`.
 
-jsfiles.json
+**jsfiles.json**
 ```
 {
 	"concatJsFiles": [
@@ -170,10 +166,9 @@ jsfiles.json
 }
 ```
 
-To load `project.min.js` open the project Razor layout file (`MVC/Views/Layouts/default.cshtml`) and add a reference there.
+**Example:** To load `project.min.js` open the project Razor layout file (`MVC/Views/Layouts/default.cshtml`) and add a reference there.
 ```
-	@Html.Script(Url.Content"\~/ResourcePackages/Bootstrap/assets/dist/js/project.min.js"),
-	"bottom")
+	@Html.Script(Url.Content"\~/ResourcePackages/Bootstrap/assets/dist/js/project.min.js"), "bottom")
 ```
 
 ###Icons
