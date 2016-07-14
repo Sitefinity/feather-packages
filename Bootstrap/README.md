@@ -62,7 +62,8 @@ Creating a new grid widget is just as easy.
 Duplicate an existing grid widget template, give a name to the new file. Then the new grid widget will appear in the list of grid widgets in Layout tab in Page editor.
 
 Example:
-To create a simple placeholder with &lt;section&gt; tag create `/ResourcePackages/Bootstrap/GridSystem/Templates/section.html`
+
+To create a simple placeholder with &lt;section&gt; tag create `section.html` in `/ResourcePackages/Bootstrap/GridSystem/Templates/`
 ```
 	<section class="section" data-sf-element="Section" data-placeholder-label="Section">
 	</section>
