@@ -6,7 +6,7 @@ This package is based on the [Bootstrap framework](http://getbootstrap.com/) . I
 
 The Bootstrap package contains front-end assets, widget template, grid widget templates and grunt configuration. Below are listed some of the folders and files
  - assets - contains front-end files such as CSS, JS, images and fonts.
- -- dist - contains the processed ready-to-use front-end assets
+ 	- dist - contains the processed ready-to-use front-end assets
  --- images - contains compressed images from src folder which are usually used as background images in the css
  --- js - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
  --- css - contains the processed css files
