@@ -5,18 +5,18 @@ This package is based on the [Bootstrap framework](http://getbootstrap.com/). In
 ## Package structure
 
 The Bootstrap package contains front-end assets, widget template, grid widget templates and grunt configuration. Below are listed some of the folders and files.
- - assets - contains front-end files such as CSS, JS, images and fonts
- 	- dist - contains the processed ready-to-use front-end assets
- 		- css - contains the processed css files
- 			- main.css - this is output of the processed `main.scss` from `assets/src/project/sass`. This file contains Sitefinity, Bootstrap and project css
- 			- main.min.css - this is the same as `main.css` but minified. This is the distributed css file which is linked in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
- 			- sitefinity.bootstrap.css - this is the processed css file which contains the combined sitefinity and bootstrap css
- 			- sitefinity.bootstrap.min.css - minified `sitefinity.bootstrap.css`
- 			- sitefinity.css - this is output of the processed `sitefinity.scss` from `assets/src/sitefinity/sass`. This files contain Sitefinity css only
- 			- sitefinity.min.css - minified `sitefinity.css`
-        - fonts - contains files for sitefinity and project icon font
-        - images - contains compressed images from src folder which are usually used as background images in the css
-        - js - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
+ - **assets** - contains front-end files such as CSS, JS, images and fonts
+ 	- **dist** - contains the processed ready-to-use front-end assets
+ 		- **css** - contains the processed css files
+ 			- **main.css** - this is output of the processed `main.scss` from `assets/src/project/sass`. This file contains Sitefinity, Bootstrap and project css
+ 			- **main.min.css** - this is the same as `main.css` but minified. This is the distributed css file which is linked in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
+ 			- **sitefinity.bootstrap.css** - this is the processed css file which contains the combined sitefinity and bootstrap css
+ 			- **sitefinity.bootstrap.min.css** - minified `sitefinity.bootstrap.css`
+ 			- **sitefinity.css** - this is output of the processed `sitefinity.scss` from `assets/src/sitefinity/sass`. This files contain Sitefinity css only
+ 			- **sitefinity.min.css** - minified `sitefinity.css`
+        - **fonts** - contains files for sitefinity and project icon font
+        - **images** - contains compressed images from src folder which are usually used as background images in the css
+        - **js** - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
  	- src - contains the source front-end files which are processed via grunt to dist folder
  		- project - add your non-sitefinity front-end assets here
  			- icons - add `svg` files here to be added to the icon font that is generated when grunt is run
