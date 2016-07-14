@@ -174,11 +174,11 @@ To load the `project.min.js` open the project Razor layout file (`MVC/Views/Layo
 
 ## Upgrade recommendations
 - If you work on a copy of Bootstrap, e.g. BootstrapCustom
--- Upgrade Bootstrap package
--- Merge changes from Bootstrap to BootstrapCustom manually
+    - Upgrade Bootstrap package
+    - Merge changes from Bootstrap to BootstrapCustom manually
 - If you work on Bootstrap package directly
--- Before upgrade make a copy of Bootstrap package to another location
--- Upgrade Bootstrap package
--- Merge conflicts
---- If you use a source control, merge the changes using the source control
---- If you don't use a source control, merge the changes from the copy of the Bootstrap package to the Bootstrap package manually
+..- Before upgrade make a copy of Bootstrap package to another location
+..- Upgrade Bootstrap package
+..- Merge conflicts
+....- If you use a source control, merge the changes using the source control
+....- If you don't use a source control, merge the changes from the copy of the Bootstrap package to the Bootstrap package manually
