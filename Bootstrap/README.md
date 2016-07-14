@@ -17,31 +17,33 @@ The Bootstrap package contains front-end assets, widget template, grid widget te
         - **fonts** - contains files for sitefinity and project icon font
         - **images** - contains compressed images from src folder which are usually used as background images in the css
         - **js** - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
- 	- src - contains the source front-end files which are processed via grunt to dist folder
- 		- project - add your non-sitefinity front-end assets here
- 			- icons - add `svg` files here to be added to the icon font that is generated when grunt is run
- 			- images - add images here. Images added in this folder will be compressed and output to `assets/dist/images`
- 			- js - add js files here and list them in `jsfiles.json`. All js files listed in `jsfiles.json` will be concatenated and uglified to `assets/dist/js/project.min.js`
- 			- sass - create subfolders in this folder and add your scss files here
- 				-main.scss - import all your scss files here. This file will be processed to `assets/dist/css/main.min.css`
- 		- sitefinity - contains scss files for Sitefinity styling
- - MVC folder - contains all widget templates categorized by widget and the Razor layout file
- 	- Layouts/default.cshtml - Razor layout file
- - GridSystem - contains grid widget templates
- - csslint.json - contains csslint options and globals
- - gruntfile.js - contains grunt tasks configuration and definition as well as load grunt plugins
- - jsfiles.json - contains a list of js files to be automatically concatenated and uglified when grunt is run
- - package.json - stores metadata for grunt and grunt plugins that the project needs
+ 	- **src** - contains the source front-end files which are processed via grunt to dist folder
+ 		- **project** - add your non-sitefinity front-end assets here
+ 			- **icons** - add `svg` files here to be added to the icon font that is generated when grunt is run
+ 			- **images** - add images here. Images added in this folder will be compressed and output to `assets/dist/images`
+ 			- **js** - add js files here and list them in `jsfiles.json`. All js files listed in `jsfiles.json` will be concatenated and uglified to `assets/dist/js/project.min.js`
+ 			- **sass** - create subfolders in this folder and add your scss files here
+ 				- **main.scss** - import all your scss files here. This file will be processed to `assets/dist/css/main.min.css`
+ 		- **sitefinity** - contains scss files for Sitefinity styling
+ - **MVC folder** - contains all widget templates categorized by widget and the Razor layout file
+ 	- **Layouts/default.cshtml** - Razor layout file
+ - **GridSystem** - contains grid widget templates
+ - **csslint.json** - contains csslint options and globals
+ - **gruntfile.js** - contains grunt tasks configuration and definition as well as load grunt plugins
+ - **jsfiles.json** - contains a list of js files to be automatically concatenated and uglified when grunt is run
+ - **package.json** - stores metadata for grunt and grunt plugins that the project needs
 
 ## Editing and creating a widget
 By default we include all widget templates in every package. Modifying a template is super easy. If you want to modify the Pills navigation template, just go to `/ResourcePackages/Bootstrap/MVC/Views/Navigation`, open the `NavigationView.Pills.cshtml` file and make your changes. 
 
-Creating a new template is just as easy. 
-Duplicate an existing template, give a name to the new file, keeping in mind the following structure - NavigationView.XXXXXX.cshtml. Then the new template will appear in the list of templates for this widget in the widget designer in Page editor.
+Creating a new template is just as easy.
 
-For widgets that have list and details views, the structure should be List.XXXXXX.cshtml or Detail.XXXXXX.cshtml, respectively.
+Duplicate an existing template, give a name to the new file, keeping in mind the following structure - `NavigationView.XXXXXX.cshtml`. Then the new template will appear in the list of templates for this widget in the widget designer in Page editor.
+
+For widgets that have list and details views, the structure should be `List.XXXXXX.cshtml` or `Detail.XXXXXX.cshtml`, respectively.
 
 Creating a new widget template for Dynamic content
+
 Create a folder with the name of the dynamic module in singular where you have organized the project widget templates (`/Mvc/Views/` or `/ResourcePackages/Bootstrap/MVC/Views`). After that create a `*.cshtml` files having in mind the structure described above List.XXXXXX.cshtml for list view and Detail.XXXXXX.cshtml for details view.
 When you create a new Dynamic module list and details widget templates are automatically created for this module in `Design &gt; Widget Templates` in Sitefinity Backend. As a starting point, you can use the template from Sitefinity Backend and make the desired changes on the file system.
 
@@ -52,7 +54,7 @@ You can add an extra CSS class to a column, change the label of the field for ad
 Example:
 ```
 <div class="row" data-sf-element="Row">
-    <div class="sf_colsIn col-md-6 EXTRA_CSS_CLASS" data-sf-element="NEW_COLUMN_1_CSS_CLASS_FIELD_LABEL" data-placeholder-label="NEW_COLUMN_1_PLACEHOLDER_NAME">
+    <div class="sf_colsIn col-md-6 **EXTRA_CSS_CLASS**" data-sf-element="**NEW_COLUMN_1_CSS_CLASS_FIELD_LABEL**" data-placeholder-label="**NEW_COLUMN_1_PLACEHOLDER_NAME**">
     </div>
     <div class="sf_colsIn col-md-6" data-sf-element="Column 2" data-placeholder-label="Column 2">
     </div>
