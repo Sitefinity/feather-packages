@@ -5,44 +5,42 @@ This is a basic package, which contains all default templates of the frontend wi
 ## Package structure ##
 
 The Minimal package contains minimal front-end assets, widget template, grid widget templates and grunt configuration.  Below are listed some of the folders and files.
- - assets - contains front-end files such as CSS, JS, images and fonts
-    - dist - contains the processed ready-to-use front-end assets
-        - images - contains compressed images from src folder which are usually used as background images in the css
-        - js - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
-        - css - contains the processed css files
-            - main.css - this is output of the processed `main.scss` from `assets/src/project/sass`. This file contains Sitefinity and project css
-            - main.min.css - this is the same as `main.css` but minified. This is the distributed css file which is linked in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
-            - sitefinity.css - this is output of the processed sitefinity.scss from assets/src/sitefinity/sass. This files contain css added by Sitefinity
-            - sitefinity.min.css - minified sitefinity.css
-    - src - contains the source front-end files which are processed via grunt to dist folder
-        - project - add your non-sitefinity front-end assets here
-            - images - add images here. Images added in this folder will be compressed and output to `assets/dist/images`
-            - js - add js files here and list them in `jsfiles.json`. All js files listed in `jsfiles.json` will be concatenated and uglified to `assets/dist/js/project.min.js`
-            - sass - create subfolders in this folder and add your scss files here
-                - main.scss - import all your scss files here. This file will be processed to `assets/dist/css/main.min.css`
-        - sitefinity - contains css and images for tags and social share widgets
- - MVC folder - contains all widget templates categorized by widget and the Razor layout file
- 	- Layouts/default.cshtml - Razor layout file
- - GridSystem - contains grid widget templates
-    - Templates/container.html - contains one placeholder
-    - Templates/one-column.html - contains one column widget - row + column
-    - Templates/two-columns.html - contains two column widget (columns are display as rows one below the other, it is up to you to style the columns to be displayed one side by side)
- - csslint.json - contains csslint options and globals
- - gruntfile.js - used to configure and define tasks as well as load grunt plugins
- - jsfiles.json - contains a list of js files to be automatically concatenated and minified when grunt is run
- - package.json - stores metadata grunt and grunt plugins that the project needs
+ - **assets** - contains front-end files such as CSS, JS, images and fonts
+    - **dist** - contains the processed ready-to-use front-end assets
+        - **images** - contains compressed images from src folder which are usually used as background images in the css
+        - **js** - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
+        - **css** - contains the processed css files
+            - **main.css** - this is output of the processed `main.scss` from `assets/src/project/sass`. This file contains Sitefinity and project css
+            - **main.min.css** - this is the same as `main.css` but minified. This is the distributed css file which is linked in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
+            - **sitefinity.css** - this is output of the processed sitefinity.scss from assets/src/sitefinity/sass. This files contain css added by Sitefinity
+            - **sitefinity.min.css** - minified sitefinity.css
+    - **src** - contains the source front-end files which are processed via grunt to dist folder
+        - **project** - add your non-sitefinity front-end assets here
+            - **images** - add images here. Images added in this folder will be compressed and output to `assets/dist/images`
+            - **js** - add js files here and list them in `jsfiles.json`. All js files listed in `jsfiles.json` will be concatenated and uglified to `assets/dist/js/project.min.js`
+            - **sass** - create subfolders in this folder and add your scss files here
+                - **main.scss** - import all your scss files here. This file will be processed to `assets/dist/css/main.min.css`
+        - **sitefinity** - contains css and images for tags and social share widgets
+ - **MVC** - contains all widget templates categorized by widget and the Razor layout file
+ 	- **Layouts/default.cshtml** - Razor layout file
+ - **GridSystem** - contains grid widget templates
+    - **Templates/container.html** - contains one placeholder
+    - **Templates/one-column.html** - contains one column widget - row + column
+    - **Templates/two-columns.html** - contains two column widget (columns are display as rows one below the other, it is up to you to style the columns to be displayed one side by side)
+ - **csslint.json** - contains csslint options and globals
+ - **gruntfile.js** - used to configure and define tasks as well as load grunt plugins
+ - **jsfiles.json** - contains a list of js files to be automatically concatenated and minified when grunt is run
+ - **package.json** - stores metadata grunt and grunt plugins that the project needs
 
 ## Editing and creating a widget
 By default all default widget templates are included in Minimal package. Modifying a template is super easy. If you want to modify the Horizontal navigation template, just go to `/ResourcePackages/Minimal/MVC/Views/Navigation`, open the `NavigationView.Horizontal.cshtml` file and make your changes.
 
-Creating a new template is just as easy.
-Duplicate an existing template, give a name to the new file, keeping in mind the following structure - NavigationView.XXXXXX.cshtml. Then the new template will appear in the list of templates for this widget in the widget designer in Page editor.
+Creating a new template is just as easy. Duplicate an existing template, give a name to the new file, keeping in mind the following structure - `NavigationView.XXXXXX.cshtml`. Then the new template will appear in the list of templates for this widget in the widget designer in Page editor.
 
-For widgets that have list and details views, the structure should be List.XXXXXX.cshtml or Detail.XXXXXX.cshtml, respectively.
+For widgets that have list and details views, the structure should be `List.XXXXXX.cshtml` or `Detail.XXXXXX.cshtml`, respectively.
 
-Creating a new widget template for Dynamic content
-Create a folder with the name of the dynamic module in singular where you have organized the project widget templates (`/Mvc/Views/` or `/ResourcePackages/Minimal/MVC/Views`). After that create a `*.cshtml` files having in mind the structure described above List.XXXXXX.cshtml for list view and Detail.XXXXXX.cshtml for details view and write the markup of the template.
-When you create a new Dynamic module, list and details widget templates are automatically created for this module in `Design &gt; Widget Templates` in Sitefinity Backend. As a starting point, you can use the template from Sitefinity Backend and make the desired changes on the file system.
+To create a new widget template for Dynamic content first create a folder with the name of the dynamic module in singular where you have organized the project widget templates (`/Mvc/Views/` or `/ResourcePackages/Minimal/MVC/Views`). After that create a `*.cshtml` file having in mind the structure described above `List.XXXXXX.cshtml` for list view and `Detail.XXXXXX.cshtml` for details view and write the markup of the template.
+When you create a new Dynamic module, list and details widget templates are automatically created for this module in `Design > Widget Templates` in Sitefinity Backend. As a starting point, you can use the template from Sitefinity Backend and make the desired changes on the file system.
 
 ## Editing and creating a grid widget
 By default we include three grid widgets. We don't include CSS to style the grid widgets. It is up to you to add a grid system and make the columns appear side by side.
@@ -66,8 +64,8 @@ Duplicate an existing grid widget template, give a name to the new file. Then th
 
 Example: To create a simple placeholder with &lt;section&gt; tag create `section.html` in `/ResourcePackages/Minimal/GridSystem/Templates/`
 ```
-	<section class="section" data-sf-element="Section" data-placeholder-label="Section">
-	</section>
+<section class="section" data-sf-element="Section" data-placeholder-label="Section">
+</section>
 ```
 
 ## Widget templates management recommendations
@@ -106,6 +104,7 @@ File structure
 |--- _link.scss
 |--- _typography.scss
 ...
+
 main.scss
 // Sitefinity CSS
 @import "../../sitefinity/sass/sitefinity";
@@ -119,7 +118,7 @@ main.scss
 ...
 ```
 When you run grunt all scss files imported in `assets/src/project/sass/main.scss` will be processed and output in `assets/dist/css/main.css`
-If you don't want to include Sitefinity CSS remove the import rule `@import "../../sitefinity/sass/sitefinity";` in `assets/src/project/sass/main.scss`.
+If you don't want to include Sitefinity CSS remove the import rule `@import "../../sitefinity/sass/sitefinity";` from `assets/src/project/sass/main.scss`.
 
 ### Images
 Place all images in `assets/src/project/images`. After grunt is run all images from this folder will be compressed and moved to `assets/dist/images`.
@@ -141,8 +140,7 @@ jsfiles.json
 
 To load `project.min.js` open the project Razor layout file (`MVC/Views/Layouts/default.cshtml`) and add a reference there.
 ```
-	@Html.Script(Url.Content"\~/ResourcePackages/Minimal/assets/dist/js/project.min.js"),
-	"bottom")
+	@Html.Script(Url.Content"\~/ResourcePackages/Minimal/assets/dist/js/project.min.js"), "bottom")
 ```
 
 ## Upgrade recommendations
