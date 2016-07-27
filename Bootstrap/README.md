@@ -26,24 +26,23 @@ The Bootstrap package contains front-end assets, widget template, grid widget te
  			- **js** - add js files here and list them in `jsfiles.json`. All js files listed in `jsfiles.json` will be concatenated and uglified to `assets/dist/js/project.min.js`
  			- **sass** - create subfolders in this folder and add your scss files here
  				- **main.scss** - import all your scss files here. This file will be processed to `assets/dist/css/main.min.css`
- 		    New structure should looks like this:
-            ```
-            File structure
-            | ResourcePackages
-            |-- Bootstrap
-            |---- assests
-            |------ dist
-            |------ src
-            |-------- sitefinity
-            |-------- project
-            |---------- fonts
-            |---------- icons
-            |---------- images
-            |---------- js
-            |---------- sass
-            |------------ main.scss
-            ```
-            **! It is NOT recommended to rename the subfolders because they are used in gruntfile.js !**
+        ```
+        File structure example:
+        | ResourcePackages
+        |-- Bootstrap
+        |---- assests
+        |------ dist
+        |------ src
+        |-------- sitefinity
+        |-------- project
+        |---------- fonts
+        |---------- icons
+        |---------- images
+        |---------- js
+        |---------- sass
+        |------------ main.scss
+        ```
+        **! It is NOT recommended to rename the subfolders because they are used in gruntfile.js !**
  - **MVC folder** - contains all widget templates categorized by widget and the Razor layout file
  	- **Layouts/default.cshtml** - Razor layout file
  - **GridSystem** - contains grid widget templates
