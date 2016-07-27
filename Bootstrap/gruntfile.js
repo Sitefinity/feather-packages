@@ -12,7 +12,7 @@ module.exports = function (grunt) {
     // Project assets
     // Loads project js files which will be concatenated and minified in one file
     var projectJsfiles = grunt.file.readJSON('jsfiles.json').concatJsFiles;
-    
+
     // Name of the folder that contains project specific assets (scss, js, images, etc.)
     // Rename this folder if needed
     var projectAssetsFolder = "project";
@@ -23,6 +23,31 @@ module.exports = function (grunt) {
     // project [default] - builds Sitefinity + Bootstrap + project assets
     var options,
         target = grunt.option("target");
+
+    // Options needed for webfont task.
+    // Starting code point for Sitefinity font icons.
+    var sfCodePoints = {
+        "file": 0xF001,
+        "no-image": 0xF002
+    }
+    var webFontOptions = {
+        destHtml: '',
+        engine: 'node',
+        font: 'sf-icon-font',
+        stylesheet: 'scss',
+        partialPrefix: true,
+        relativeFontPath: '../fonts/',
+        template: 'assets/src/sitefinity/sass/components/icons/feather-icons.css',
+        types: 'eot,woff,ttf,svg',
+        order: 'eot,woff,ttf,svg',
+        codepoints: sfCodePoints,
+        startCodepoint: 0x00b1,
+        normalize: true,
+        fontHeight: 4096,
+        ascent: 4096,
+        descent: 0,
+        autoHint: false
+    }
 
     if (target) {
         options = target.split(",");
@@ -128,23 +153,7 @@ module.exports = function (grunt) {
                 src: ['assets/src/sitefinity/icons/*.svg', 'assets/src/project/icons/*.svg'],
                 dest: 'assets/dist/fonts/',
                 destCss: 'assets/src/sitefinity/sass/components/icons/',
-                options: {
-                    destHtml: '',
-                    engine: 'node',
-                    font: 'sf-icon-font',
-                    stylesheet: 'scss',
-                    partialPrefix: true,
-                    relativeFontPath: '../fonts/',
-                    template: 'assets/src/sitefinity/sass/components/icons/feather-icons.css',
-                    types: 'eot,woff,ttf,svg',
-                    order: 'eot,woff,ttf,svg',
-                    startCodepoint: 0x00b1,
-                    normalize: true,
-                    fontHeight: 4096,
-                    ascent: 4096,
-                    descent: 0,
-                    autoHint: false
-                }
+                options: webFontOptions
             }
         },
 
@@ -157,6 +166,14 @@ module.exports = function (grunt) {
                 ext: '.min.css',
                 extDot: 'last'
             }
+        },
+
+        copy: {
+            bootstrapFonts: {
+                files: [
+                    { expand: true, src: ['node_modules/bootstrap-sass/assets/fonts/bootstrap/*'], dest: 'assets/dist/fonts/bootstrap/', flatten: true, filter: 'isFile' }
+                ]
+            },
         },
 
         // Concatenates & minifies js files
@@ -262,6 +279,7 @@ module.exports = function (grunt) {
         grunt.task.run('clean:all');
         grunt.task.run('newer:sprite');
         grunt.task.run('webfont');
+        grunt.task.run('copy');
 
         options.forEach(function (option) {
             if (exists('sass', option)) {
@@ -303,5 +321,4 @@ module.exports = function (grunt) {
         }
         return !!grunt.config.get(path);
     };
-
 };

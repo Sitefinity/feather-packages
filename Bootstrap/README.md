@@ -34,7 +34,7 @@ The Bootstrap package contains front-end assets, widget template, grid widget te
  - **package.json** - stores metadata for grunt and grunt plugins that the project needs
 
 ## Editing and creating a widget
-By default we include all widget templates in every package. Modifying a template is super easy. If you want to modify the Pills navigation template, just go to `/ResourcePackages/Bootstrap/MVC/Views/Navigation`, open the `NavigationView.Pills.cshtml` file and make your changes. 
+By default we include all widget templates in every package. Modifying a template is super easy. If you want to modify the Pills navigation template, just go to `/ResourcePackages/Bootstrap/MVC/Views/Navigation`, open the `NavigationView.Pills.cshtml` file and make your changes.
 
 Creating a new template is just as easy. Duplicate an existing template, give a name to the new file, keeping in mind the following structure - `NavigationView.XXXXXX.cshtml`. Then the new template will appear in the list of templates for this widget in the widget designer in Page editor.
 
@@ -168,7 +168,7 @@ In `jsfiles.json` define the order in which the project's js files will be conca
 
 **Example:** To load `project.min.js` open the project Razor layout file (`MVC/Views/Layouts/default.cshtml`) and add a reference there.
 ```
-	@Html.Script(Url.Content"\~/ResourcePackages/Bootstrap/assets/dist/js/project.min.js"), "bottom")
+	@Html.Script(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/js/project.min.js"), "bottom")
 ```
 
 ###Icons
