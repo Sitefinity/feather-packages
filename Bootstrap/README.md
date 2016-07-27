@@ -18,13 +18,32 @@ The Bootstrap package contains front-end assets, widget template, grid widget te
         - **images** - contains compressed images from src folder which are usually used as background images in the css
         - **js** - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
  	- **src** - contains the source front-end files which are processed via grunt to dist folder
+        - **sitefinity** - contains scss files for Sitefinity styling
  		- **project** - add your non-sitefinity front-end assets here
+            - **fonts** - contains files for project icon font
  			- **icons** - add `svg` files here to be added to the icon font that is generated when grunt is run
  			- **images** - add images here. Images added in this folder will be compressed and output to `assets/dist/images`
  			- **js** - add js files here and list them in `jsfiles.json`. All js files listed in `jsfiles.json` will be concatenated and uglified to `assets/dist/js/project.min.js`
  			- **sass** - create subfolders in this folder and add your scss files here
  				- **main.scss** - import all your scss files here. This file will be processed to `assets/dist/css/main.min.css`
- 		- **sitefinity** - contains scss files for Sitefinity styling
+ 		    New structure should looks like this:
+            ```
+            File structure
+            | ResourcePackages
+            |-- Bootstrap
+            |---- assests
+            |------ dist
+            |------ src
+            |-------- sitefinity
+            |-------- project
+            |---------- fonts
+            |---------- icons
+            |---------- images
+            |---------- js
+            |---------- sass
+            |------------ main.scss
+            ```
+            **! It is NOT recommended to rename the subfolders because they are used in gruntfile.js !**
  - **MVC folder** - contains all widget templates categorized by widget and the Razor layout file
  	- **Layouts/default.cshtml** - Razor layout file
  - **GridSystem** - contains grid widget templates
