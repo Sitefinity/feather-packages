@@ -3,11 +3,11 @@
 
 @font-face {
   font-family:"sf-icon-font";
-  src:url("../fonts/sf-icon-font.eot?ab7fe418928425436e9697dbfdaeeb61");
+  src:url("../fonts/sf-icon-font.eot?546f2d6cc71e39999e65a7b674e436f2");
   src:url("../fonts/sf-icon-font.eot?#iefix") format("embedded-opentype"),
-		url("../fonts/sf-icon-font.woff?ab7fe418928425436e9697dbfdaeeb61") format("woff"),
-		url("../fonts/sf-icon-font.ttf?ab7fe418928425436e9697dbfdaeeb61") format("truetype"),
-		url("../fonts/sf-icon-font.svg?ab7fe418928425436e9697dbfdaeeb61#sf-icon-font") format("svg");
+		url("../fonts/sf-icon-font.woff?546f2d6cc71e39999e65a7b674e436f2") format("woff"),
+		url("../fonts/sf-icon-font.ttf?546f2d6cc71e39999e65a7b674e436f2") format("truetype"),
+		url("../fonts/sf-icon-font.svg?546f2d6cc71e39999e65a7b674e436f2#sf-icon-font") format("svg");
   font-weight:normal;
   font-style:normal;
 }
@@ -36,12 +36,12 @@
 
 
 // Icons
-.icon-file-single {content:"\b1";}
-.icon-no-image-single {content:"\b2";}
+.icon-file-single {content:"\f001";}
+.icon-no-image-single {content:"\f002";}
 
 // Icons
-.icon-file:before {content:"\b1";}
-.icon-no-image:before {content:"\b2";}
+.icon-file:before {content:"\f001";}
+.icon-no-image:before {content:"\f002";}
 
 
 

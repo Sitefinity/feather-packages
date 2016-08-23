@@ -6,7 +6,7 @@ var path = require('path');
 // use this if you want to recursively match all subfolders:
 // e.g. 'bar/foo/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     'use strict';
 
     // Project assets
@@ -21,8 +21,8 @@ module.exports = function (grunt) {
     // sitefinity - builds only Sitefinity assets
     // sitefinityBootstrap - builds Sitefinity + Bootstrap assets
     // project [default] - builds Sitefinity + Bootstrap + project assets
-    var options,
-        target = grunt.option("target");
+    // var options,
+    //     target = grunt.option("target");
 
     // Options needed for webfont task.
     // Starting code point for Sitefinity font icons.
@@ -49,11 +49,11 @@ module.exports = function (grunt) {
         autoHint: false
     }
 
-    if (target) {
-        options = target.split(",");
-    } else {
-        options = ["project"];
-    }
+    // if (target) {
+    //     options = target.split(",");
+    // } else {
+    //     options = ["project"];
+    // }
 
     // Load all grunt tasks
     require('load-grunt-tasks')(grunt);
@@ -79,9 +79,9 @@ module.exports = function (grunt) {
             all: {
                 files: [{
                     src: [
-						'<%= dist.path %>/**/*.css',
-						'<%= dist.path %>/**/*.js',
-						'<%= dist.path %>/**/*.{png,jpg,gif,jpeg}',
+                        '<%= dist.path %>/**/*.css',
+                        '<%= dist.path %>/**/*.js',
+                        '<%= dist.path %>/**/*.{png,jpg,gif,jpeg}',
                         'csslint_report'
                     ]
                 }]
@@ -89,14 +89,14 @@ module.exports = function (grunt) {
             css: {
                 files: [{
                     src: [
-						'<%= dist.path %>/**/*.css',
+                        '<%= dist.path %>/**/*.css',
                     ]
                 }]
             },
             images: {
                 files: [{
                     src: [
-						'<%= dist.path %>/**/*.{png,jpg,gif,jpeg}'
+                        '<%= dist.path %>/**/*.{png,jpg,gif,jpeg}'
                     ]
                 }]
             }
@@ -106,19 +106,7 @@ module.exports = function (grunt) {
             options: {
                 outputStyle: 'nested'
             },
-            sitefinityBootstrap: {
-                files: {
-                    '<%= dist.path %>/css/sitefinity.bootstrap.css': '<%= src.path %>/sitefinity/sass/sitefinity.bootstrap.scss'
-                }
-            },
-            sitefinity: {
-                files: {
-                    '<%= dist.path %>/css/sitefinity.css': '<%= src.path %>/sitefinity/sass/sitefinity.scss'
-                }
-            },
-            // Project assets
-            // Will look for any .scss files in projectAssetsFolder directory
-            project: {
+            dist: {
                 files: [{
                     expand: true,
                     cwd: '<%= src.path %>/' + projectAssetsFolder + '/sass',
@@ -137,9 +125,10 @@ module.exports = function (grunt) {
             options: {
                 csslintrc: 'csslint.json',
                 quiet: true,
-                formatters: [
-                    {id: 'csslint-xml', dest: 'csslint_report/csslint.xml'}
-                ]
+                formatters: [{
+                    id: 'csslint-xml',
+                    dest: 'csslint_report/csslint.xml'
+                }]
             },
             dev: {
                 expand: true,
@@ -169,11 +158,12 @@ module.exports = function (grunt) {
         },
 
         copy: {
-            bootstrapFonts: {
+            dist: {
                 files: [
-                    { expand: true, src: ['node_modules/bootstrap-sass/assets/fonts/bootstrap/*'], dest: 'assets/dist/fonts/bootstrap/', flatten: true, filter: 'isFile' }
+                    { expand: true, src: ['node_modules/bootstrap-sass/assets/fonts/bootstrap/*'], dest: 'assets/dist/fonts/bootstrap/', flatten: true, filter: 'isFile' },
+                    { expand: true, cwd: 'assets/src/project/fonts', src: '**', dest: 'assets/dist/fonts/'}
                 ]
-            },
+            }
         },
 
         // Concatenates & minifies js files
@@ -185,54 +175,33 @@ module.exports = function (grunt) {
                 mangle: true,
                 compress: true
             },
-            sitefinityBootstrap: {
-                files: {
-                    '<%= dist.path %>/js/sitefinity.bootstrap.min.js': [ 'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js']
-
-                }
-            },
-            project: {
+            dist: {
                 files: {
                     // Project assets
-                    // Concatenates bootstrap.js + project files listed in jsfiles.json
-                    '<%= dist.path %>/js/project.min.js': [ 'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js', projectJsfiles],
-                    '<%= dist.path %>/js/sitefinity.bootstrap.min.js': [ 'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js']
+                    // Concatenates project files listed in jsfiles.json
+                    '<%= dist.path %>/js/project.min.js': projectJsfiles
                 }
             }
         },
 
         // Image Optimization
         imagemin: {
-            sitefinity: {
+            dist: {
                 options: {
                     optimizationLevel: 4,
                     progressive: true
                 },
-                files: [{
-                    expand: true,
-                    cwd: 'assets/src/sitefinity',
-                    src: ['**/*.{png,jpg,gif,jpeg}', '!images/sprite/*.*'],
-                    dest: 'assets/dist'
-                }],
-            },
-            project: {
-                options: {
-                    optimizationLevel: 4,
-                    progressive: true
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'assets/src/' + projectAssetsFolder,
-                    src: ['**/*.{png,jpg,gif,jpeg}'],
-                    dest: 'assets/dist'
-                }]
+                files: [
+                    {expand: true, cwd: 'assets/src/sitefinity/images', src: ['**/*.{png,jpg,gif,jpeg,svg}', '!fonts/*', '!sprite/*.*'], dest: 'assets/dist/images'},
+                    {expand: true, cwd: 'assets/src/' + projectAssetsFolder + '/images', src: ['**/*.{png,jpg,gif,jpeg,svg}', '!fonts/*', '!sprite/*.*'], dest: 'assets/dist/images'}
+                ]
             }
         },
 
         // Sprite generation
         sprite: {
-            all: {
-                src: 'assets/src/sitefinity/images/sprite/*.png',
+            dist: {
+                src: ['assets/src/sitefinity/images/sprite/*.png', 'assets/src/project/images/sprite/*.png'],
                 dest: 'assets/src/sitefinity/images/sprite.png',
                 destCss: 'assets/src/sitefinity/sass/widgets/socialShare/_sf-sprite.scss',
                 imgPath: '../images/sprite.png',
@@ -271,54 +240,21 @@ module.exports = function (grunt) {
     // Tasks
     // Task to generate icon font
     grunt.registerTask('iconfont', [
-		'webfont'
+        'webfont'
     ]);
 
     // Default task
-    grunt.registerTask('default', ' ', function () {
+    grunt.registerTask('default', ' ', function() {
         grunt.task.run('clean:all');
         grunt.task.run('newer:sprite');
         grunt.task.run('webfont');
         grunt.task.run('copy');
-
-        options.forEach(function (option) {
-            if (exists('sass', option)) {
-                grunt.task.run('sass:' + option);
-            }
-            if (exists('uglify', option)) {
-                grunt.task.run('uglify:' + option);
-            }
-        });
-
+        grunt.task.run('sass');
+        grunt.task.run('uglify');
         grunt.task.run('csslint:dev');
         grunt.task.run('cssmin');
         grunt.task.run('newer:imagemin');
         grunt.task.run('concurrent');
 
     });
-
-    grunt.event.on('watch', function (action, filepath) {
-        var sassNames = [];
-        var jsNames = [];
-
-        options.forEach(function (option) {
-            sassNames.push('sass:' + option);
-            jsNames.push('uglify:' + option);
-        });
-        sassNames.push('csslint:dev', 'cssmin');
-
-        grunt.config('watch.styles.tasks', sassNames);
-        grunt.config('watch.js.tasks', jsNames);
-
-    });
-
-
-    // Support for subtasks
-    var exists = function (task, target) {
-        var path = [task];
-        if (target && target.length > 0) {
-            path.push(target);
-        }
-        return !!grunt.config.get(path);
-    };
 };
