@@ -4,7 +4,7 @@
         if (window.DataIntelligenceSubmitScript && target.attr('aria-expanded') === 'false') {
             DataIntelligenceSubmitScript._client.sentenceClient.writeSentence({
                 predicate: "Toggle navigation",
-                object: target.text(),
+                object: target.text().trim(),
                 objectMetadata: [{
                     'K': 'PageTitle',
                     'V': document.title
