@@ -199,8 +199,8 @@ Two css classes will be generated for each icon. If the name of the svg file is 
 
 ## Upgrade recommendations
 - If you work on a copy of Bootstrap, e.g. BootstrapCustom
-    - Upgrade Bootstrap package
-    - Merge changes from Bootstrap to BootstrapCustom manually
+	- Upgrade Bootstrap package
+	- Merge changes from Bootstrap to BootstrapCustom manually
 - If you work on Bootstrap package directly
 	- Before upgrade make a copy of Bootstrap package to another location
 	- Upgrade Bootstrap package
