@@ -104,7 +104,6 @@ An exception is made for the Navigation widget. There is a possibility to transf
 In the navigation widget templates (e.g. `/Bootstrap/MVC/Views/Navigation/NavigationView.Horizontal.cshtml`) there is a helper method `@Html.Action("GetView", new { viewName = "Dropdown",  model= Model})` which renders the `<select>`. It's commented out by default, but if you want to, you can use it with combination with the responsive utility classes of Bootstrap.
 If you decide to use it, you can modify its markup in the `/Bootstrap/MVC/Views/Navigation/Dropdown.cshtml` file.
 
-
 ## Grunt
 ### Install
 Prerequisites: If you have not installed grunt yet refer to [Grunt gettings started documentation](http://gruntjs.com/getting-started) for details.
@@ -113,25 +112,6 @@ Prerequisites: If you have not installed grunt yet refer to [Grunt gettings star
 > grunt
 ```
 `grunt` executes the default grunt tasks and watches for any changes in the files after that.
-
-###Grunt tasks
-Currently grunt tasks are executed with the following command:
-```
- grunt –-target=single target or targets, separated by comma
-```
-
-Targets can be one of the following:
-- **sitefinity** – builds package resources and doesn’t include Bootstrap or project resources in the generated files
-- **sitefinityBootstrap** - builds package resources and includes Bootstrap in the generated files but does not include project resources
-- **project [default target]** – builds project specific resources, located in the project folder `/ResourcePackages/Bootstrap/assets/src/project`. If the name of this folder has to be changed, it has to be changed in the gruntfile as well. The name is assigned to `userAssetsFolder` variable.
-
-**Example:**
-```
- grunt –-target=sitefinityBootstrap,project
-```
-This will build package resources with Bootstrap, as well as project resources and will activate Watch task for those files.
-
-If target isn’t set, the default one is project
 
 ## Where to put project front-end assets
 All project specific front-end assets like scss, images, js, fonts, etc. should be placed in `assets/src/project`. When the default grunt task is run all source files are processed and moved to `assets/dist` from where there are used in the project.
@@ -165,7 +145,6 @@ main.scss
 ```
 When you run grunt all scss files imported in `assets/src/project/sass/main.scss` will be processed and output in `assets/dist/css/main.css`
 If you don't want to include Sitefinity or Bootstrap css or you want to use another Bootstrap version change the import rule `@import "../../sitefinity/sass/sitefinity.bootstrap.scss";` in `assets/src/project/sass/main.scss`.
-If you run grunt with sitefinity or sitefinityBootstrap target `assets/src/sitefinity/sass/sitefinity.scss` or `assets/src/sitefinity/sass/sitefinity.bootstrap.scss` will be processed and output to `assets/dist/css/sitefinity.css` or `assets/dist/css/sitefinity.bootstrap.css` respectively.
 ### Images
 Place all images in `assets/src/project/images`. After grunt is run all images from this folder will be compressed and moved to `assets/dist/images`.
 
