@@ -14,7 +14,7 @@
     @if (Telerik.Sitefinity.Security.SecurityManager.GetCurrentUserId() == Guid.Empty || SystemManager.IsInlineEditingMode || SystemManager.IsDesignMode)
     {
     <div>
-        @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, null, true))
+        @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, FormMethod.Post, new Dictionary<string, object> { { "role", "form" }, { "aria-label", @Html.Resource("LoginFormLogInLegendHeader") } }, true))
         {
          @Html.ValidationSummary(true)
             <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
@@ -22,7 +22,7 @@
             <div>
                 <label>
                     @Html.Resource("Username")
-                    @Html.TextBoxFor(u => u.UserName)
+                    @Html.TextBoxFor(u => u.UserName, new { aria_required="true", aria_labelledby="IncorrectCredentialsMessage" })
                 </label>
                 @Html.ValidationMessage("UserName")
             </div>
@@ -30,7 +30,7 @@
             <div>
                 <label>
                     @Html.Resource("Password")
-                    @Html.PasswordFor(u => u.Password)
+                    @Html.PasswordFor(u => u.Password, new { aria_required="true", aria_labelledby="IncorrectCredentialsMessage" })
                 </label>
                 @Html.ValidationMessage("Password")
             </div>
@@ -56,7 +56,7 @@
             if (Model.IncorrectCredentials)
             {
             
-            <p>@Html.Resource("IncorrectCredentialsMessage")</p>
+            <p id="IncorrectCredentialsMessage" >@Html.Resource("IncorrectCredentialsMessage")</p>
                 
             }
 
