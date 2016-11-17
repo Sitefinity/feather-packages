@@ -14,7 +14,7 @@
     @if (Telerik.Sitefinity.Security.SecurityManager.GetCurrentUserId() == Guid.Empty || SystemManager.IsInlineEditingMode || SystemManager.IsDesignMode)
     {
     <div>
-        @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, null, true))
+        @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" }, { "aria-label", @Html.Resource("LoginFormLogInLegendHeader") } }, true))
         {
          @Html.ValidationSummary(true)
             <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
@@ -22,30 +22,30 @@
             <div class="form-group">
                 <label>
                     @Html.Resource("Username")
+                    @Html.TextBoxFor(u => u.UserName, new { @class = "form-control", aria_required="true", aria_labelledby="IncorrectCredentialsMessage" })
                 </label>
 
-                @Html.TextBoxFor(u => u.UserName, new { @class = "form-control" })
-                @if(Html.ValidationMessage("UserName")!=null)
+                @if(Html.ValidationMessage("UserName") != null)
                 {
                     <div class="has-error">
                         <span class="help-block">@Html.ValidationMessage("UserName")</span>
                     </div>
-                }  
+                }
 
             </div>
 
             <div class="form-group">
                 <label>
                     @Html.Resource("Password")
+                    @Html.PasswordFor(u => u.Password, new { @class = "form-control", aria_required="true", aria_labelledby="IncorrectCredentialsMessage" })
                 </label>
 
-                @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
                 @if(Html.ValidationMessage("Password") != null)
                 {
                     <div class="has-error">
                         <span class="help-block">@Html.ValidationMessage("Password")</span>
                     </div>
-                }  
+                }
 
             </div>
 
@@ -62,20 +62,19 @@
             }
 
            <button type="submit" class="btn btn-primary">@Html.Resource("LoginFormLogInButton")</button>
-        
 
             if (Model.ShowForgotPasswordLink)
             {
                 @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
             }
- 
+
             if (Model.IncorrectCredentials)
             {
-            
+
             <div class="has-error">
-                <span class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
+                <span id="IncorrectCredentialsMessage" class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
             </div>
-                
+
             }
 
             if (Model.ShowRegistrationLink)
@@ -87,7 +86,7 @@
         }
     </div>
     }
-    
+
     else
     {
         <p>@Html.Resource("AlreadyLoggedIn")</p>
