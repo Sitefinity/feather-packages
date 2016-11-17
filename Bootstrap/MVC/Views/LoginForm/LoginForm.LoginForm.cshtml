@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label>
                     @Html.Resource("Username")
-                    @Html.TextBoxFor(u => u.UserName, new { @class = "form-control", aria_required="true", aria_labelledby="IncorrectCredentialsMessage" })
+                    @Html.TextBoxFor(u => u.UserName, new { @class = "form-control", aria_required="true", aria_labelledby="incorrectCredentialsMessage" })
                 </label>
 
                 @if(Html.ValidationMessage("UserName") != null)
@@ -37,7 +37,7 @@
             <div class="form-group">
                 <label>
                     @Html.Resource("Password")
-                    @Html.PasswordFor(u => u.Password, new { @class = "form-control", aria_required="true", aria_labelledby="IncorrectCredentialsMessage" })
+                    @Html.PasswordFor(u => u.Password, new { @class = "form-control", aria_required="true", aria_labelledby="incorrectCredentialsMessage" })
                 </label>
 
                 @if(Html.ValidationMessage("Password") != null)
@@ -72,7 +72,7 @@
             {
 
             <div class="has-error">
-                <span id="IncorrectCredentialsMessage" class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
+                <span id="incorrectCredentialsMessage" class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
             </div>
 
             }
