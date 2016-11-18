@@ -31,7 +31,7 @@
     else if (ViewBag.ShowSuccessfulRegistrationMsg is bool && ViewBag.ShowSuccessfulRegistrationMsg)
     {
         <h3>@Html.Resource("ThankYou")</h3>
-        <p>@Html.Resource("DefaultSuccessfulRegistrationMessage")</p>
+        <p tabindex="0">@Html.Resource("DefaultSuccessfulRegistrationMessage")</p>
 
     }
     else
@@ -43,7 +43,7 @@
           if (!string.IsNullOrEmpty(ViewBag.Error))
             {
 
-                <div class="alert alert-danger">
+                <div tabindex="0" class="alert alert-danger">
                     @ViewBag.Error
                 </div>
 
@@ -52,27 +52,22 @@
            <div class="form-group">
                 <label>
                     @Html.Resource("FirstName")
+                    @Html.TextBox("Profile[FirstName]", null, new { @class = "form-control" })
                 </label>
-
-                @Html.TextBox("Profile[FirstName]", null, new { @class = "form-control" })
-
             </div>
         
             <div class="form-group">
                 <label>
                     @Html.Resource("LastName")
+                    @Html.TextBox("Profile[LastName]", null, new { @class = "form-control" })
                 </label>
-
-                @Html.TextBox("Profile[LastName]", null, new { @class = "form-control" })
-
             </div>
         
             <div class="form-group">
                 <label>
                     @Html.Resource("Email")
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", aria_required="true" })
                 </label>
-
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
                       
                 @if (Html.ValidationMessageFor(m => m.Email) != null)
                 {
@@ -87,9 +82,8 @@
             <div class="form-group">
                 <label>
                     @Html.Resource("UserName")
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", aria_required="true" })
                 </label>
-
-                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
                         
                 @if (Html.ValidationMessageFor(m => m.UserName) != null)
                 {
@@ -104,9 +98,8 @@
             <div class="form-group">
                 <label>
                     @Html.Resource("Password")
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", aria_required="true" })
                 </label>
-
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
 
                 @if (Html.ValidationMessageFor(m => m.Password) != null)
                 {
@@ -120,9 +113,8 @@
            <div class="form-group">
                 <label>
                     @Html.Resource("ReTypePassword")
+                    @Html.PasswordFor(m => m.ReTypePassword, new { @class = "form-control", aria_required="true" })
                 </label>
-
-                @Html.PasswordFor(m => m.ReTypePassword, new { @class = "form-control" })
                         
                 @if (Html.ValidationMessageFor(m => m.ReTypePassword) != null)
                 {

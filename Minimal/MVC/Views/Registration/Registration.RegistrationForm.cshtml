@@ -31,7 +31,7 @@
     else if (ViewBag.ShowSuccessfulRegistrationMsg is bool && ViewBag.ShowSuccessfulRegistrationMsg)
     {
         <h3>@Html.Resource("ThankYou")</h3>
-        <p>@Html.Resource("DefaultSuccessfulRegistrationMessage")</p>
+        <p tabindex="0">@Html.Resource("DefaultSuccessfulRegistrationMessage")</p>
 
     }
     else
@@ -39,7 +39,11 @@
         using (Html.BeginFormSitefinity(true))
         {
             @Html.ValidationSummary(true);
-            @ViewBag.Error
+            if (!String.IsNullOrEmpty(ViewBag.Error))
+            {
+                <div tabindex="0"> @ViewBag.Error</div>
+            }
+           
 
             <div>
                 <label>
@@ -56,7 +60,7 @@
             <div>
                 <label>
                     @Html.Resource("Email")
-                    @Html.TextBoxFor(m => m.Email, new { type = "email" })
+                    @Html.TextBoxFor(m => m.Email, new { type = "email", aria_required="true" })
                 </label>
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
@@ -65,7 +69,7 @@
             <div>
                 <label>
                     @Html.Resource("UserName")
-                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName, new { aria_required="true" })
                 </label>
                 @Html.ValidationMessageFor(m => m.UserName)
             </div>
@@ -73,14 +77,14 @@
             <div>
                 <label>
                     @Html.Resource("Password")
-                    @Html.PasswordFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { aria_required="true" })
                 </label>
                 @Html.ValidationMessageFor(m => m.Password)
             </div>
             <div>
                 <label>
                     @Html.Resource("ReTypePassword")
-                    @Html.PasswordFor(m => m.ReTypePassword)
+                    @Html.PasswordFor(m => m.ReTypePassword, new { aria_required="true" })
                 </label>
                 @Html.ValidationMessageFor(m => m.ReTypePassword)
             </div>
