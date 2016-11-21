@@ -13,13 +13,13 @@
 <div class="@Model.CssClass">
     @if (Model.ShowProfileChangedMsg)
     {
-        <div tabindex="0" class="alert alert-success">@Html.Resource("ChangesAreSaved")</div>
+        <div tabindex="0" class="alert alert-success" role="status">@Html.Resource("ChangesAreSaved")</div>
     }
 
     @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
     {
 
-        <div tabindex="0" class="alert alert-danger">
+        <div tabindex="0" class="alert alert-danger" role="alert">
             @ViewBag.ErrorMessage
         </div>
     }

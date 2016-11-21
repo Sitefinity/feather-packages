@@ -18,12 +18,12 @@
             @Html.Resource("VisitYourEmail")
         </h3>
 
-        <p>@string.Format(Html.Resource("ActivationLinkHasBeenSent"), Model.Email)</p>
-        <a data-sf-role="sendAgainLink" class="btn btn-primary">@Html.Resource("SendAgain")</a>
+        <p tabindex="0" role="status">@string.Format(Html.Resource("ActivationLinkHasBeenSent"), Model.Email)</p>
+        <button data-sf-role="sendAgainLink" class="btn btn-primary">@Html.Resource("SendAgain")</button>
 
         <div data-sf-role="confirmationResendInfo" style="display:none;">
             @string.Format(Html.Resource("ActivationLinkHasBeenSentAgain"), Model.Email)
-            <a data-sf-role="sendAgainLink" class="btn btn-primary">@Html.Resource("SendAgain")</a>
+            <button data-sf-role="sendAgainLink" class="btn btn-primary">@Html.Resource("SendAgain")</button>            
         </div>
 
         <input type="hidden" data-sf-role="sf-resend-confirmation-endpoint-url" value="@Url.Action("ResendConfirmationEmail", new { email = Model.Email})" />
@@ -31,24 +31,24 @@
     else if (ViewBag.ShowSuccessfulRegistrationMsg is bool && ViewBag.ShowSuccessfulRegistrationMsg)
     {
         <h3>@Html.Resource("ThankYou")</h3>
-        <p tabindex="0">@Html.Resource("DefaultSuccessfulRegistrationMessage")</p>
+        <p tabindex="0" role="status">@Html.Resource("DefaultSuccessfulRegistrationMessage")</p>
 
     }
     else
     {
-        using (Html.BeginFormSitefinity(null, "Form", (System.Web.Routing.RouteValueDictionary)null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" }, { "aria-label", "Registration" } }, true ))
+        using (Html.BeginFormSitefinity(null, null, (System.Web.Routing.RouteValueDictionary)null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" }, { "aria-label", "Registration" } }, true ))
         {
             @Html.ValidationSummary(true);
 
           if (!string.IsNullOrEmpty(ViewBag.Error))
             {
 
-                <div tabindex="0" class="alert alert-danger">
+                <div tabindex="0" class="alert alert-danger" role="alert">
                     @ViewBag.Error
                 </div>
 
             }
-            
+
            <div class="form-group">
                 <label>
                     @Html.Resource("FirstName")
