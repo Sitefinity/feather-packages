@@ -19,7 +19,7 @@
             @:<script type="text/template" data-sf-role="file-input-template">
         }
             <div data-sf-role="single-file-input">
-                <input title="file" type="file" name="@(Model.MetaField.FieldName)" @Html.Raw(Model.ValidationAttributes) class="sf-FileField-input"/>
+                <input title="file" type="file" name="@(Model.MetaField.FieldName)" @Html.Raw(Model.ValidationAttributes) class="sf-FileField-input" aria-label="@Model.MetaField.Title"/>
                 @if (Model.AllowMultipleFiles)
                 {
                     <span style="display: none;" data-sf-role="remove-input" class="sf-icon-remove"></span>
