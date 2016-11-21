@@ -14,6 +14,13 @@
     @if (Telerik.Sitefinity.Security.SecurityManager.GetCurrentUserId() == Guid.Empty || SystemManager.IsInlineEditingMode || SystemManager.IsDesignMode)
     {
     <div>
+        @if (Model.IncorrectCredentials)
+        {
+            <div tabindex="0" class="alert alert-danger">
+                @Html.Resource("IncorrectCredentialsMessage")
+            </div>
+        }
+
         @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" }, { "aria-label", @Html.Resource("LoginFormLogInLegendHeader") } }, true))
         {
          @Html.ValidationSummary(true)
@@ -66,15 +73,6 @@
             if (Model.ShowForgotPasswordLink)
             {
                 @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
-            }
-
-            if (Model.IncorrectCredentials)
-            {
-
-            <div class="has-error">
-                <span tabindex="0" class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
-            </div>
-
             }
 
             if (Model.ShowRegistrationLink)
