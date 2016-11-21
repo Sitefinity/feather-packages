@@ -90,13 +90,13 @@
                 <div class="form-group">
                     <label>
                         @Html.Resource("EditProfileOldPassword")
-                        @Html.PasswordFor(u => u.OldPassword, new { @class = "form-control", autocomplete = "off", aria_required="true", aria_labelledby="validationMessageOldPassword" })
+                        @Html.PasswordFor(u => u.OldPassword, new { @class = "form-control", autocomplete = "off", aria_required="true" })
                     </label>
 
                     @if (Html.ValidationMessageFor(u => u.OldPassword) != null)
                     {
                         <div class="has-error">
-                            <span id="validationMessageOldPassword" class="help-block">@Html.ValidationMessageFor(u => u.OldPassword)</span>
+                            <span class="help-block">@Html.ValidationMessageFor(u => u.OldPassword)</span>
                         </div>
                     }
                 </div>
@@ -104,13 +104,13 @@
                 <div class="form-group">
                     <label>
                         @Html.Resource("EditProfileNewPassword")
-                        @Html.PasswordFor(u => u.NewPassword, new { @class = "form-control", aria_required="true", aria_labelledby="validationMessageNewPassword" })
+                        @Html.PasswordFor(u => u.NewPassword, new { @class = "form-control", aria_required="true" })
                     </label>
 
                     @if (Html.ValidationMessageFor(u => u.NewPassword) != null)
                     {
                         <div class="has-error">
-                            <span id="validationMessageNewPassword" class="help-block">@Html.ValidationMessageFor(u => u.NewPassword)</span>
+                            <span class="help-block">@Html.ValidationMessageFor(u => u.NewPassword)</span>
                         </div>
                     }
                 </div>
@@ -118,13 +118,13 @@
                 <div class="form-group">
                     <label>
                         @Html.Resource("EditProfileRepeatPassword")
-                        @Html.PasswordFor(u => u.RepeatPassword, new { @class = "form-control", aria_required="true", aria_labelledby="validationMessageRepeatPassowrd" })
+                        @Html.PasswordFor(u => u.RepeatPassword, new { @class = "form-control", aria_required="true" })
                     </label>
 
                     @if (Html.ValidationMessageFor(u => u.RepeatPassword) != null)
                     {
                         <div class="has-error">
-                            <span id="validationMessageRepeatPassowrd" class="help-block">@Html.ValidationMessageFor(u => u.RepeatPassword)</span>
+                            <span class="help-block">@Html.ValidationMessageFor(u => u.RepeatPassword)</span>
                         </div>
                     }
                 </div>

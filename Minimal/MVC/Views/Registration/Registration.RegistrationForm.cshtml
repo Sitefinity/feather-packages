@@ -36,7 +36,7 @@
     }
     else
     {
-        using (Html.BeginFormSitefinity(true))
+        using (Html.BeginFormSitefinity(null, "Form", (System.Web.Routing.RouteValueDictionary)null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" }, { "aria-label", "Registration" } }, true ))
         {
             @Html.ValidationSummary(true);
             if (!String.IsNullOrEmpty(ViewBag.Error))
@@ -61,8 +61,8 @@
                 <label>
                     @Html.Resource("Email")
                     @Html.TextBoxFor(m => m.Email, new { type = "email", aria_required="true" })
+                    @Html.ValidationMessageFor(m => m.Email)
                 </label>
-                @Html.ValidationMessageFor(m => m.Email)
             </div>
             if (!Model.EmailAddressShouldBeTheUsername)
             {
@@ -70,23 +70,23 @@
                 <label>
                     @Html.Resource("UserName")
                     @Html.TextBoxFor(m => m.UserName, new { aria_required="true" })
+                    @Html.ValidationMessageFor(m => m.UserName)
                 </label>
-                @Html.ValidationMessageFor(m => m.UserName)
             </div>
             }
             <div>
                 <label>
                     @Html.Resource("Password")
                     @Html.PasswordFor(m => m.Password, new { aria_required="true" })
+                    @Html.ValidationMessageFor(m => m.Password)
                 </label>
-                @Html.ValidationMessageFor(m => m.Password)
             </div>
             <div>
                 <label>
                     @Html.Resource("ReTypePassword")
                     @Html.PasswordFor(m => m.ReTypePassword, new { aria_required="true" })
+                    @Html.ValidationMessageFor(m => m.ReTypePassword)
                 </label>
-                @Html.ValidationMessageFor(m => m.ReTypePassword)
             </div>
 
             <div>

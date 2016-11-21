@@ -22,17 +22,17 @@
             <div>
                 <label>
                     @Html.Resource("Username")
-                    @Html.TextBoxFor(u => u.UserName, new { aria_required="true", aria_labelledby="incorrectCredentialsMessage" })
+                    @Html.TextBoxFor(u => u.UserName, new { aria_required="true" })
+                    @Html.ValidationMessage("UserName")
                 </label>
-                @Html.ValidationMessage("UserName")
             </div>
 
             <div>
                 <label>
                     @Html.Resource("Password")
-                    @Html.PasswordFor(u => u.Password, new { aria_required="true", aria_labelledby="incorrectCredentialsMessage" })
+                    @Html.PasswordFor(u => u.Password, new { aria_required="true" })
+                    @Html.ValidationMessage("Password")
                 </label>
-                @Html.ValidationMessage("Password")
             </div>
 
             if (Model.ShowRememberMe)
@@ -56,7 +56,7 @@
             if (Model.IncorrectCredentials)
             {
             
-            <p id="incorrectCredentialsMessage" >@Html.Resource("IncorrectCredentialsMessage")</p>
+            <p tabindex="0">@Html.Resource("IncorrectCredentialsMessage")</p>
                 
             }
 

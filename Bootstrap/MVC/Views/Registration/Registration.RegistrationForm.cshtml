@@ -36,7 +36,7 @@
     }
     else
     {
-        using (Html.BeginFormSitefinity(true))
+        using (Html.BeginFormSitefinity(null, "Form", (System.Web.Routing.RouteValueDictionary)null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" }, { "aria-label", "Registration" } }, true ))
         {
             @Html.ValidationSummary(true);
 
