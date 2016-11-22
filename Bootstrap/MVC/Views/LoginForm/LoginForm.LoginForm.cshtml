@@ -30,30 +30,26 @@
                 <label>
                     @Html.Resource("Username")
                     @Html.TextBoxFor(u => u.UserName, new { @class = "form-control", aria_required="true" })
+                    @if(Html.ValidationMessage("UserName") != null)
+                    {
+                        <div class="has-error" role="alert">
+                            <span class="help-block">@Html.ValidationMessage("UserName")</span>
+                        </div>
+                    }
                 </label>
-
-                @if(Html.ValidationMessage("UserName") != null)
-                {
-                    <div class="has-error">
-                        <span class="help-block">@Html.ValidationMessage("UserName")</span>
-                    </div>
-                }
-
             </div>
 
             <div class="form-group">
                 <label>
                     @Html.Resource("Password")
                     @Html.PasswordFor(u => u.Password, new { @class = "form-control", aria_required="true" })
+                    @if(Html.ValidationMessage("Password") != null)
+                    {
+                        <div class="has-error" role="alert">
+                            <span class="help-block">@Html.ValidationMessage("Password")</span>
+                        </div>
+                    }
                 </label>
-
-                @if(Html.ValidationMessage("Password") != null)
-                {
-                    <div class="has-error">
-                        <span class="help-block">@Html.ValidationMessage("Password")</span>
-                    </div>
-                }
-
             </div>
 
             if (Model.ShowRememberMe)

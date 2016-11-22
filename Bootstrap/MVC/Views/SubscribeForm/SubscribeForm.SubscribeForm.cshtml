@@ -65,12 +65,11 @@
 				@Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", aria_required = "true" })					
 			</div>
 		</label>
-		<button class="btn btn-primary" type="submit">@Html.Resource("ButtonSubscribe")</button>		
-
+		<button class="btn btn-primary" type="submit">@Html.Resource("ButtonSubscribe")</button>
 
 		@if (Html.ValidationMessageFor(m => m.Email) != null)
 		{
-			<div class="has-error">
+			<div class="has-error" role="alert">
 				<span class="help-block">@Html.ValidationMessageFor(u => u.Email)</span>
 			</div>
 		}
