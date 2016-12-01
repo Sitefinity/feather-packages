@@ -21,7 +21,7 @@
 	
 		if (ViewBag.IsSucceeded == true)
 		{
-			<div tabindex="0" class="alert alert-success" role="status">
+			<div class="alert alert-success" role="alert">
 				@Html.Resource("ThankYou"). @Html.Resource("ThankYouMessage") (@ViewBag.Email)
 			</div>
 		}
@@ -29,7 +29,7 @@
 		@Html.ValidationSummary(true)
 		 if(!string.IsNullOrEmpty(ViewBag.Error))
 		{
-			<div tabindex="0" class="alert alert-warning" role="alert">
+			<div class="alert alert-warning" role="alert">
 				@ViewBag.Error
 			</div>
 		}
@@ -62,7 +62,7 @@
 		<label>
 		   @Html.Resource("Email")		   
 			<div class="form-inline">		   
-				@Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", aria_required = "true" })					
+				@Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", aria_required = "true", aria_label=@Html.Resource("SubscribeMail") })					
 			</div>
 		</label>
 		<button class="btn btn-primary" type="submit">@Html.Resource("ButtonSubscribe")</button>
