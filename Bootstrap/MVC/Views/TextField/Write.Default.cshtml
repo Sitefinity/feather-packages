@@ -12,6 +12,13 @@
 @{ var inputCssClass = "";
    HashSet<TextType> availableOptions = new HashSet<TextType>() { TextType.Text, TextType.Password, TextType.Date, TextType.DateTimeLocal, TextType.Month, TextType.Time,
    TextType.Week, TextType.Number, TextType.Email,TextType.Url, TextType.Tel, TextType.Color };
+   var isRequired = "false";
+   
+   if (Model.ValidatorDefinition.Required.HasValue && Model.ValidatorDefinition.Required.Value)
+   {
+       isRequired = "true";
+   }
+   
 
    if (availableOptions.Contains(Model.InputType))
    {
@@ -25,7 +32,7 @@
     <input data-sf-role="violation-messages" type="hidden" value='{"maxLength":"@Model.ValidatorDefinition.MaxLengthViolationMessage", "required": "@Model.ValidatorDefinition.RequiredViolationMessage", "invalid": "@Html.Resource("InvalidEntryMessage")", "regularExpression": "@Model.ValidatorDefinition.RegularExpressionViolationMessage"}' />
 
     <label for='@Html.UniqueId("Textbox")'>@Model.MetaField.Title</label>
-    <input id='@Html.UniqueId("Textbox")' data-sf-role="text-field-input" type="@Model.InputType.ToHtmlInputType()" name="@Model.MetaField.FieldName" placeholder="@Model.PlaceholderText" value="@Model.Value" @Model.ValidationAttributes class="@inputCssClass"></input>
+    <input id='@Html.UniqueId("Textbox")' data-sf-role="text-field-input" type="@Model.InputType.ToHtmlInputType()" name="@Model.MetaField.FieldName" placeholder="@Model.PlaceholderText" value="@Model.Value" @Model.ValidationAttributes class="@inputCssClass" aria-required=@isRequired />
      @if (!string.IsNullOrEmpty(Model.MetaField.Description)) 
      {
          <p class="text-muted">@Model.MetaField.Description</p>

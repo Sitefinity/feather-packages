@@ -10,10 +10,11 @@
 @{
     var fieldName = string.IsNullOrEmpty(Model.MetaField.FieldName) ? "multiple-choice-field-name" : Model.MetaField.FieldName;
     var requiredAttributes = MvcHtmlString.Create(Model.ValidationAttributes);
+    var isRequired = Model.IsRequired ? "true" : "false";
 }
 
 <div class="@Model.CssClass form-group" data-sf-role="multiple-choice-field-container" role="radiogroup" aria-label="@Model.MetaField.Title">
-    <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
+    <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' role="alert" />
         <strong>@Model.MetaField.Title</strong>
         @if (!string.IsNullOrEmpty(Model.MetaField.Description)) 
         {
@@ -24,7 +25,7 @@
             var selctedAttributes = !Model.IsRequired && choice == Model.MetaField.DefaultValue as string ? "checked" : string.Empty;
             <div class="radio">
                 <label>
-                  <input type="radio" name="@fieldName" value="@choice" data-sf-role="multiple-choice-field-input" @selctedAttributes @requiredAttributes />
+                  <input type="radio" name="@fieldName" value="@choice" data-sf-role="multiple-choice-field-input" @selctedAttributes @requiredAttributes aria-required=@isRequired />
                     @choice
                 </label>
             </div>
