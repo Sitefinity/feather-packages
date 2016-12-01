@@ -13,13 +13,13 @@
 <div class="@Model.CssClass">
     @if (Model.ShowProfileChangedMsg)
     {
-        <div tabindex="0" class="alert alert-success" role="status">@Html.Resource("ChangesAreSaved")</div>
+        <div class="alert alert-success" role="alert">@Html.Resource("ChangesAreSaved")</div>
     }
 
     @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
     {
 
-        <div tabindex="0" class="alert alert-danger" role="alert">
+        <div class="alert alert-danger" role="alert">
             @ViewBag.ErrorMessage
         </div>
     }
@@ -48,27 +48,29 @@
             <div class="form-group">
                 <label>
                     @Html.Resource("EditProfileFirstName")
-                    @Html.TextBoxFor(u => u.Profile["FirstName"], new { @class = "form-control", aria_required="true" })
-                    @if (Html.ValidationMessageFor(u => u.Profile["FirstName"]) != null)
-                    {
-                        <div class="has-error" role="alert">
-                            <span class="help-block">@Html.ValidationMessageFor(u => u.Profile["FirstName"])</span>
-                        </div>
-                    }
+                    @Html.TextBoxFor(u => u.Profile["FirstName"], new { @class = "form-control", aria_required="true" })                    
                 </label>
+
+                @if (Html.ValidationMessageFor(u => u.Profile["FirstName"]) != null)
+                {
+                    <div class="has-error" role="alert">
+                        <span class="help-block">@Html.ValidationMessageFor(u => u.Profile["FirstName"])</span>
+                    </div>
+                }
             </div>
 
             <div class="form-group">
                 <label>
                     @Html.Resource("EditProfileLastName")
-                    @Html.TextBoxFor(u => u.Profile["LastName"], new { @class = "form-control", aria_required="true" })
-                    @if (Html.ValidationMessageFor(u => u.Profile["LastName"]) != null)
-                    {
-                        <div class="has-error" role="alert">
-                            <span class="help-block">@Html.ValidationMessageFor(u => u.Profile["LastName"])</span>
-                        </div>
-                    }
-                </label>                
+                    @Html.TextBoxFor(u => u.Profile["LastName"], new { @class = "form-control", aria_required="true" })                    
+                </label>    
+
+                @if (Html.ValidationMessageFor(u => u.Profile["LastName"]) != null)
+                {
+                    <div class="has-error" role="alert">
+                        <span class="help-block">@Html.ValidationMessageFor(u => u.Profile["LastName"])</span>
+                    </div>
+                }            
             </div>
 
             <div class="form-group">
@@ -87,40 +89,43 @@
                 <div class="form-group">
                     <label>
                         @Html.Resource("EditProfileOldPassword")
-                        @Html.PasswordFor(u => u.OldPassword, new { @class = "form-control", autocomplete = "off", aria_required="true" })
-                        @if (Html.ValidationMessageFor(u => u.OldPassword) != null)
-                        {
-                            <div class="has-error" role="alert">
-                                <span class="help-block">@Html.ValidationMessageFor(u => u.OldPassword)</span>
-                            </div>
-                        }
-                    </label>                    
+                        @Html.PasswordFor(u => u.OldPassword, new { @class = "form-control", autocomplete = "off", aria_required="true" })                        
+                    </label>   
+
+                    @if (Html.ValidationMessageFor(u => u.OldPassword) != null)
+                    {
+                        <div class="has-error" role="alert">
+                            <span class="help-block">@Html.ValidationMessageFor(u => u.OldPassword)</span>
+                        </div>
+                    }                 
                 </div>
 
                 <div class="form-group">
                     <label>
                         @Html.Resource("EditProfileNewPassword")
-                        @Html.PasswordFor(u => u.NewPassword, new { @class = "form-control" })
-                        @if (Html.ValidationMessageFor(u => u.NewPassword) != null)
-                        {
-                            <div class="has-error" role="alert">
-                                <span class="help-block">@Html.ValidationMessageFor(u => u.NewPassword)</span>
-                            </div>
-                        }
-                    </label>                    
+                        @Html.PasswordFor(u => u.NewPassword, new { @class = "form-control" })                        
+                    </label>   
+
+                    @if (Html.ValidationMessageFor(u => u.NewPassword) != null)
+                    {
+                        <div class="has-error" role="alert">
+                            <span class="help-block">@Html.ValidationMessageFor(u => u.NewPassword)</span>
+                        </div>
+                    }                 
                 </div>
 
                 <div class="form-group">
                     <label>
                         @Html.Resource("EditProfileRepeatPassword")
-                        @Html.PasswordFor(u => u.RepeatPassword, new { @class = "form-control" })
-                        @if (Html.ValidationMessageFor(u => u.RepeatPassword) != null)
-                        {
-                            <div class="has-error" role="alert">
-                                <span class="help-block">@Html.ValidationMessageFor(u => u.RepeatPassword)</span>
-                            </div>
-                        }
-                    </label>                    
+                        @Html.PasswordFor(u => u.RepeatPassword, new { @class = "form-control" })                        
+                    </label>  
+
+                    @if (Html.ValidationMessageFor(u => u.RepeatPassword) != null)
+                    {
+                        <div class="has-error" role="alert">
+                            <span class="help-block">@Html.ValidationMessageFor(u => u.RepeatPassword)</span>
+                        </div>
+                    }                  
                 </div>
             </div>
 
