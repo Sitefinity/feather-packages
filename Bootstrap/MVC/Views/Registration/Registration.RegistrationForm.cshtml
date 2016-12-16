@@ -12,7 +12,8 @@
 @Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
 
 <div class="@Model.CssClass">
-    @if (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg)
+	@if ((Request.QueryString["ShowActivationMsg"] == "true") ||
+	 (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg))
     {
         <h3>
             @Html.Resource("VisitYourEmail")
@@ -28,7 +29,8 @@
 
         <input type="hidden" data-sf-role="sf-resend-confirmation-endpoint-url" value="@Url.Action("ResendConfirmationEmail", new { email = Model.Email})" />
     }
-    else if (ViewBag.ShowSuccessfulRegistrationMsg is bool && ViewBag.ShowSuccessfulRegistrationMsg)
+    else if ((Request.QueryString["ShowSuccessfulRegistrationMsg"] == "true") ||
+             (ViewBag.ShowSuccessfulRegistrationMsg is bool && ViewBag.ShowSuccessfulRegistrationMsg))
     {
         <h3>@Html.Resource("ThankYou")</h3>
         <p>@Html.Resource("DefaultSuccessfulRegistrationMessage")</p>
@@ -38,7 +40,7 @@
     {
         using (Html.BeginFormSitefinity(true))
         {
-            @Html.ValidationSummary(true);
+          @Html.ValidationSummary(true);
 
           if (!string.IsNullOrEmpty(ViewBag.Error))
             {
@@ -48,6 +50,8 @@
                 </div>
 
             }
+
+           <h3>@Html.Resource("Registration")</h3>
             
            <div class="form-group">
                 <label>
@@ -82,25 +86,7 @@
                 } 
 
             </div>
-        
-			if(!Model.EmailAddressShouldBeTheUsername){
-            <div class="form-group">
-                <label>
-                    @Html.Resource("UserName")
-                </label>
-
-                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                        
-                @if (Html.ValidationMessageFor(m => m.UserName) != null)
-                {
-                    <div class="has-error">
-                        <span class="help-block">@Html.ValidationMessageFor(m => m.UserName)</span>
-                    </div>
-                } 
-
-            </div>
-			}
-			
+   
             <div class="form-group">
                 <label>
                     @Html.Resource("Password")
@@ -132,6 +118,40 @@
                 } 
 
             </div>
+			
+			if (Model.RequiresQuestionAndAnswer)
+            {
+				
+				<div class="form-group">
+					<label>
+						@Html.Resource("Question")
+					</label>
+
+					@Html.PasswordFor(m => m.Question, new { @class = "form-control" })
+
+					@if (Html.ValidationMessageFor(m => m.Question) != null)
+					{
+						<div class="has-error">
+							<span class="help-block"> @Html.ValidationMessageFor(m => m.Question)</span>
+						</div>
+					} 
+				</div>
+				
+				<div class="form-group">
+					<label>
+						@Html.Resource("Answer")
+					</label>
+
+					@Html.PasswordFor(m => m.Answer, new { @class = "form-control" })
+
+					@if (Html.ValidationMessageFor(m => m.Answer) != null)
+					{
+						<div class="has-error">
+							<span class="help-block"> @Html.ValidationMessageFor(m => m.Answer)</span>
+						</div>
+					}
+				</div>
+            }
 
             if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode )
             {
@@ -141,11 +161,25 @@
             {
                 <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
             }
+			
+			if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
+            {
+                <h3>@Html.Resource("Or")</h3>
 
-            <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
-         }
+                <h3>@Html.Resource("ConnectWith")</h3>
 
-        
+                foreach (var provider in Model.ExternalProviders)
+                {
+                    <div>
+                        @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = provider.Value })
+                    </div>
+                }
+            }
+			
+			<div>
+				<a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
+			</div>
+        }
     }
 </div>
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"), "bottom")

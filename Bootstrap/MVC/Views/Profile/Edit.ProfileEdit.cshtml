@@ -72,6 +72,34 @@
                     </div>
                 } 
             </div>
+			
+            <div class="form-group">
+                <label>
+                    @Html.Resource("EditProfileEmail")
+                </label>
+                @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+                
+                @if (Html.ValidationMessageFor(u => u.Email) != null)
+                {
+                    <div class="has-error">
+                        <span class="help-block">@Html.ValidationMessageFor(u => u.Email)</span>
+                    </div>
+                } 
+            </div>
+			
+            <div class="form-group">
+                <label>
+                    @Html.Resource("EditProfileNickname")
+                </label>
+                @Html.TextBoxFor(u => u.Profile["Nickname"], new { @class = "form-control" })
+                
+                @if (Html.ValidationMessageFor(u => u.Profile["Nickname"]) != null)
+                {
+                    <div class="has-error">
+                        <span class="help-block">@Html.ValidationMessageFor(u => u.Profile["Nickname"])</span>
+                    </div>
+                } 
+            </div>
 
             <div class="form-group">
                 <label>
@@ -81,56 +109,59 @@
 
             </div>
         
-            <div><a href="#" data-sf-role="edit-profile-change-password-button">@Html.Resource("EditProfileChangePasswordButton")</a></div>
+			@if ((Model.User.ExternalProviderName == null) && (Model.User.ExternalProviderId == null))
+			{
+				<div><a href="#" data-sf-role="edit-profile-change-password-button">@Html.Resource("EditProfileChangePasswordButton")</a></div>
 
-            <div data-sf-role="edit-profile-change-password-holder" style="display:none">
+				<div data-sf-role="edit-profile-change-password-holder" style="display:none">
 
-                <h4>@Html.Resource("EditProfileEditChangePasswordHeader")</h4>
-            
-                <div class="form-group">
-                    <label>
-                        @Html.Resource("EditProfileOldPassword")
-                    </label>
+					<h4>@Html.Resource("EditProfileEditChangePasswordHeader")</h4>
+				
+					<div class="form-group">
+						<label>
+							@Html.Resource("EditProfileOldPassword")
+						</label>
 
-                    @Html.PasswordFor(u => u.OldPassword, new { @class = "form-control", autocomplete = "off" })
+						@Html.PasswordFor(u => u.OldPassword, new { @class = "form-control", autocomplete = "off" })
 
-                    @if (Html.ValidationMessageFor(u => u.OldPassword) != null)
-                    {
-                        <div class="has-error">
-                            <span class="help-block">@Html.ValidationMessageFor(u => u.OldPassword)</span>
-                        </div>
-                    } 
-                </div>
+						@if (Html.ValidationMessageFor(u => u.OldPassword) != null)
+						{
+							<div class="has-error">
+								<span class="help-block">@Html.ValidationMessageFor(u => u.OldPassword)</span>
+							</div>
+						} 
+					</div>
 
-                <div class="form-group">
-                    <label>
-                        @Html.Resource("EditProfileNewPassword")
-                    </label>
-                    @Html.PasswordFor(u => u.NewPassword, new { @class = "form-control" })
+					<div class="form-group">
+						<label>
+							@Html.Resource("EditProfileNewPassword")
+						</label>
+						@Html.PasswordFor(u => u.NewPassword, new { @class = "form-control" })
 
-                    @if (Html.ValidationMessageFor(u => u.NewPassword) != null)
-                    {
-                        <div class="has-error">
-                            <span class="help-block">@Html.ValidationMessageFor(u => u.NewPassword)</span>
-                        </div>
-                    } 
-                </div>
+						@if (Html.ValidationMessageFor(u => u.NewPassword) != null)
+						{
+							<div class="has-error">
+								<span class="help-block">@Html.ValidationMessageFor(u => u.NewPassword)</span>
+							</div>
+						} 
+					</div>
 
-                <div class="form-group">
-                    <label>
-                        @Html.Resource("EditProfileRepeatPassword")
-                    </label>
-                    @Html.PasswordFor(u => u.RepeatPassword, new { @class = "form-control" })
-                    
-                    @if (Html.ValidationMessageFor(u => u.RepeatPassword) != null)
-                    {
-                        <div class="has-error">
-                            <span class="help-block">@Html.ValidationMessageFor(u => u.RepeatPassword)</span>
-                        </div>
-                    } 
-                </div>
-            </div>
-
+					<div class="form-group">
+						<label>
+							@Html.Resource("EditProfileRepeatPassword")
+						</label>
+						@Html.PasswordFor(u => u.RepeatPassword, new { @class = "form-control" })
+						
+						@if (Html.ValidationMessageFor(u => u.RepeatPassword) != null)
+						{
+							<div class="has-error">
+								<span class="help-block">@Html.ValidationMessageFor(u => u.RepeatPassword)</span>
+							</div>
+						} 
+					</div>
+				</div>
+			}
+			
             @if (SystemManager.IsDesignMode)
             {
                 <button data-sf-role="profile-submit" type="button" class="btn btn-primary">@Html.Resource("EditProfileSave")</button>

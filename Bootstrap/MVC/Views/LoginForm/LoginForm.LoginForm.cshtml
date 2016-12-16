@@ -69,7 +69,7 @@
                 @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
             }
  
-            if (Model.IncorrectCredentials)
+            if (@Request.Url.Query.Contains("err=true"))
             {
             
             <div class="has-error">
@@ -77,6 +77,16 @@
             </div>
                 
             }
+			
+			<div>
+				@if (Model.ExternalProviders != null)
+				{
+					foreach (var provider in Model.ExternalProviders)
+					{
+						@Html.ActionLink(provider.Name, "LoginExternalProvider", new { model = provider.Name }, new { @class = provider.CssClass })
+					}
+				}
+			</div>
 
             if (Model.ShowRegistrationLink)
             {
@@ -84,6 +94,7 @@
                     <strong><a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a></strong>
                 </h4>
             }
+		
         }
     </div>
     }

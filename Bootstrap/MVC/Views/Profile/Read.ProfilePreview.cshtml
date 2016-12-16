@@ -10,10 +10,9 @@
         </div>
 
         <div class="col-md-9">
-           <h3>@Model.DisplayName</h3>
+           <h3>@Model.DisplayName (@Model.Nickname)</h3>
            <p>@Model.Email</p>
-            @*User does not have 'About' property*@
-            @*<p>@Model.About</p>*@
+           <p>@Model.About</p>
 
             @if (Model.CanEdit && ViewBag.Mode == ViewMode.Both)
             {
