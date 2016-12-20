@@ -17,7 +17,15 @@
         @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, null, true))
         {
          @Html.ValidationSummary(true)
+		 		 
             <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
+			
+            if (@Request.Url.Query.Contains("err=true"))
+            {            
+				<div class="has-error">
+					<span class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
+				</div>                
+            }
 
             <div class="form-group">
                 <label>
@@ -60,36 +68,32 @@
                 </div>
             </div>
             }
-
-           <button type="submit" class="btn btn-primary">@Html.Resource("LoginFormLogInButton")</button>
-        
-
-            if (Model.ShowForgotPasswordLink)
+			
+			if (Model.ShowForgotPasswordLink)
             {
                 @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
             }
- 
-            if (@Request.Url.Query.Contains("err=true"))
-            {
-            
-            <div class="has-error">
-                <span class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
-            </div>
-                
-            }
 			
-			<div>
-				@if (Model.ExternalProviders != null)
-				{
-					foreach (var provider in Model.ExternalProviders)
-					{
-						@Html.ActionLink(provider.Name, "LoginExternalProvider", new { model = provider.Name }, new { @class = provider.CssClass })
-					}
-				}
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">@Html.Resource("LoginFormLogInButton")</button>
 			</div>
+        
+            if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
+            {
+                <h4>@Html.Resource("Or")</h4>
+                <h3>@Html.Resource("UseAccountIn")</h3>
+
+                foreach (var provider in Model.ExternalProviders)
+                {
+                    <div>
+                        @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = provider.Value })
+                    </div>
+                }
+            }
 
             if (Model.ShowRegistrationLink)
             {
+				<div>@Html.Resource("NotRegisteredYet")</div>
                 <h4>
                     <strong><a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a></strong>
                 </h4>

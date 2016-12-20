@@ -11,6 +11,9 @@
 @Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
 
 <div class="@Model.CssClass">
+
+	<h3>@Html.Resource("EditProfileLink")</h3>
+
     @if (Model.ShowProfileChangedMsg)
     {
         <div class="alert alert-success">@Html.Resource("ChangesAreSaved")</div>
@@ -71,21 +74,7 @@
                         <span class="help-block">@Html.ValidationMessageFor(u => u.Profile["LastName"])</span>
                     </div>
                 } 
-            </div>
-			
-            <div class="form-group">
-                <label>
-                    @Html.Resource("EditProfileEmail")
-                </label>
-                @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
-                
-                @if (Html.ValidationMessageFor(u => u.Email) != null)
-                {
-                    <div class="has-error">
-                        <span class="help-block">@Html.ValidationMessageFor(u => u.Email)</span>
-                    </div>
-                } 
-            </div>
+            </div>		
 			
             <div class="form-group">
                 <label>
@@ -109,8 +98,23 @@
 
             </div>
         
-			@if ((Model.User.ExternalProviderName == null) && (Model.User.ExternalProviderId == null))
+		
+		    @if (string.IsNullOrEmpty(Model.ExternalProviderName))
 			{
+				<div class="form-group">
+					<label>
+						@Html.Resource("EditProfileEmail")
+					</label>
+					@Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+					
+					@if (Html.ValidationMessageFor(u => u.Email) != null)
+					{
+						<div class="has-error">
+							<span class="help-block">@Html.ValidationMessageFor(u => u.Email)</span>
+						</div>
+					} 
+				</div>
+				
 				<div><a href="#" data-sf-role="edit-profile-change-password-button">@Html.Resource("EditProfileChangePasswordButton")</a></div>
 
 				<div data-sf-role="edit-profile-change-password-holder" style="display:none">
@@ -161,6 +165,29 @@
 					</div>
 				</div>
 			}
+			else
+			{
+				<h4>@string.Format(Html.Resource("RegistratedWithExternal"), Model.ExternalProviderName)</h4>
+			
+				<div class="form-group">
+					<label>
+						@Html.Resource("EditProfileEmail")
+					</label>
+					<div>
+						@Model.Email
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label>
+						@Html.Resource("Password")
+					</label>
+					<div>
+						@string.Format(Html.Resource("ExternalProviderNoPassword"), Model.ExternalProviderName)
+					</div>
+				</div>
+			}		
+		
 			
             @if (SystemManager.IsDesignMode)
             {
