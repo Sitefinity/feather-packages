@@ -24,7 +24,7 @@
         </div>
     }
 
-    @using (Html.BeginFormSitefinity("Index", "EditProfileForm", null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" }, { "aria-label", "Edit profile" } }))
+    @using (Html.BeginFormSitefinity("Index", "EditProfileForm", null, FormMethod.Post, new Dictionary<string, object> { { "enctype", "multipart/form-data"}, { "role", "form" }, { "aria-label", "Edit profile" } }))
     {
 
     <div class="row sf-profile">
