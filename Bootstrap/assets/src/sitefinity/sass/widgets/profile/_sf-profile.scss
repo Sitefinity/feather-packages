@@ -2,6 +2,7 @@
 	.sf-profile-avatar {
 		position: relative;
 		display: inline-block;
+		margin-bottom: 10px;
 		
 		.glyphicon-remove-sign {
 			position:absolute;
@@ -12,5 +13,11 @@
 			background: $profile-avatar-remove-background;
 			border-radius: $profile-avatar-remove-border-radius;
 		}
+	}
+	textarea {
+		min-height: 100px;
+	}
+	.media-object img {
+		max-width: none;
 	}
 }

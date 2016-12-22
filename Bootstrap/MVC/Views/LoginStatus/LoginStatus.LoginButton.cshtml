@@ -6,18 +6,22 @@
 @Html.Script(ScriptRef.JQuery, "top", false)
 
 <div class="@Model.CssClass">
-    <div data-sf-role="sf-logged-in-view" style="display: none">
-
-        <div><img data-sf-role="sf-logged-in-avatar" width="80" height="80" /></div>
-        <a href="@(Model.ProfilePageUrl ?? "#")" data-sf-role="sf-logged-in-name"></a>
-        <p data-sf-role="sf-logged-in-email"></p>      
-        @Html.ActionLink(Html.Resource("Logout"), "SignOut")
-
+    <div class="media" data-sf-role="sf-logged-in-view" style="display: none">
+        <div class="media-left sf-pr-xl">
+            <div class="media-object">
+                <img data-sf-role="sf-logged-in-avatar" width="100" height="100" />
+            </div>
+        </div>
+        <div class="media-body">
+            <a href="@(Model.ProfilePageUrl ?? "#")" data-sf-role="sf-logged-in-name"></a>
+            <p data-sf-role="sf-logged-in-email"></p>      
+            @Html.ActionLink(Html.Resource("Logout"), "SignOut", null, new { @class = "btn btn-default" })
+        </div>
     </div>
 
     <div data-sf-role="sf-logged-out-view" style="display: none">
 
-        <button data-sf-role="login-status-button">@Html.Resource("Login")</button>
+        <button class="btn btn-default" data-sf-role="login-status-button">@Html.Resource("Login")</button>
         <a href="@(Model.RegistrationPageUrl ?? "#")">@Html.Resource("RegisterNow")</a>
 
     </div>

@@ -22,24 +22,25 @@
     @using (Html.BeginFormSitefinity("Index", "EditProfileForm", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         
-    <div class="row sf-profile">
-        <div class="col-md-3">
+    <div class="media sf-profile">
+        <div class="media-left sf-pr-xl">
             @Html.HiddenFor(u => u.DeletePicture, new Dictionary<string, object>() { { "data-sf-role", "edit-profile-delete-picture" } })
             @Html.HiddenFor(u => u.DefaultAvatarUrl, new Dictionary<string, object>() { { "data-sf-role", "edit-profile-default-avatar-url" } })
+            <div class="media-object">
+            	<div class="sf-profile-avatar">
+	                <img data-sf-role="edit-profile-user-image" src="@Model.AvatarImageUrl" alt="@Model.UserName" width="100" height="100"/>
+	                @*<a class="sf-remove glyphicon glyphicon-remove-sign" href="#" data-sf-role="edit-profile-delete-picture-button"></a>*@
+	            </div>
 
-            <div class="sf-profile-avatar">
-                <img data-sf-role="edit-profile-user-image" src="@Model.AvatarImageUrl" alt="@Model.UserName" width="100" height="100"/>
-                @*<a class="sf-remove glyphicon glyphicon-remove-sign" href="#" data-sf-role="edit-profile-delete-picture-button"></a>*@
-            </div>
-
-            <div>
-                <input type="file" data-sf-role="edit-profile-upload-picture-input" name="UploadedImage" style="display: none;" />
-                <a href="#" data-sf-role="edit-profile-upload-picture-button">@Html.Resource("EditProfileUploadImage")</a>
+	            <div>
+	                <input type="file" data-sf-role="edit-profile-upload-picture-input" name="UploadedImage" style="display: none;" />
+	                <a href="#" data-sf-role="edit-profile-upload-picture-button">@Html.Resource("EditProfileUploadImage")</a>
+	            </div>
             </div>
 
         </div> 
 		
-        <div class="col-md-9">
+        <div class="media-body">
              @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
             {
 
@@ -94,7 +95,7 @@
                 <label>
                     @Html.Resource("EditProfileAbout")
                 </label>
-               @Html.TextBoxFor(u => u.Profile["About"], new { @class = "form-control" })
+               @Html.TextAreaFor(u => u.Profile["About"], new { @class = "form-control" })
 
             </div>
         
@@ -115,7 +116,7 @@
 					} 
 				</div>
 				
-				<div><a href="#" data-sf-role="edit-profile-change-password-button">@Html.Resource("EditProfileChangePasswordButton")</a></div>
+				<div class="sf-mb-xl"><a href="#" data-sf-role="edit-profile-change-password-button">@Html.Resource("EditProfileChangePasswordButton")</a></div>
 
 				<div data-sf-role="edit-profile-change-password-holder" style="display:none">
 
@@ -188,16 +189,13 @@
 				</div>
 			}		
 		
-			
             @if (SystemManager.IsDesignMode)
             {
                 <button data-sf-role="profile-submit" type="button" class="btn btn-primary">@Html.Resource("EditProfileSave")</button>
-                <a href="javascript:void(0);">@Html.Resource("EditProfileCancel")</a>
             }
             else 
             {
                 <button data-sf-role="profile-submit" type="submit" class="btn btn-primary">@Html.Resource("EditProfileSave")</button>
-                @Html.ActionLink(Html.Resource("EditProfileCancel"), "Index")  
             }
 
             @if (SystemManager.IsPreviewMode)
