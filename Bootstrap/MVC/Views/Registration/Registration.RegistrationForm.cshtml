@@ -11,7 +11,11 @@
 @Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top")
 @Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
 
-<div class="@Model.CssClass">
+@{
+    var isTwoCols = (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0) ? "col-md-6" : "";
+}
+
+<div class="@Model.CssClass row sf-m-xxs">
 	@if ((Request.QueryString["ShowActivationMsg"] == "true") ||
 	 (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg))
     {
@@ -41,144 +45,145 @@
         using (Html.BeginFormSitefinity(true))
         {
           @Html.ValidationSummary(true);
+          <div class="@isTwoCols">
+               <h3 class="sf-mb-xl">@Html.Resource("Registration")</h3>
+               @if (!string.IsNullOrEmpty(ViewBag.Error))
+               {
+                    <div class="alert alert-danger">
+                        @ViewBag.Error
+                    </div>
+               }
+                
+               <div class="form-group">
+                    <label>
+                        @Html.Resource("FirstName")
+                    </label>
 
-          if (!string.IsNullOrEmpty(ViewBag.Error))
-            {
+                    @Html.TextBox("Profile[FirstName]", null, new { @class = "form-control" })
 
-                <div class="alert alert-danger">
-                    @ViewBag.Error
                 </div>
-
-            }
-
-           <h3>@Html.Resource("Registration")</h3>
             
-           <div class="form-group">
-                <label>
-                    @Html.Resource("FirstName")
-                </label>
+                <div class="form-group">
+                    <label>
+                        @Html.Resource("LastName")
+                    </label>
 
-                @Html.TextBox("Profile[FirstName]", null, new { @class = "form-control" })
+                    @Html.TextBox("Profile[LastName]", null, new { @class = "form-control" })
 
-            </div>
-        
-            <div class="form-group">
-                <label>
-                    @Html.Resource("LastName")
-                </label>
+                </div>
+            
+                <div class="form-group">
+                    <label>
+                        @Html.Resource("Email")
+                    </label>
 
-                @Html.TextBox("Profile[LastName]", null, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+                          
+                    @if (Html.ValidationMessageFor(m => m.Email) != null)
+                    {
+                        <div class="has-error">
+                            <span class="help-block">@Html.ValidationMessageFor(m => m.Email)</span>
+                        </div>
+                    } 
 
-            </div>
-        
-            <div class="form-group">
-                <label>
-                    @Html.Resource("Email")
-                </label>
+                </div>
+       
+                <div class="form-group">
+                    <label>
+                        @Html.Resource("Password")
+                    </label>
 
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
-                      
-                @if (Html.ValidationMessageFor(m => m.Email) != null)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+                    @if (Html.ValidationMessageFor(m => m.Password) != null)
+                    {
+                        <div class="has-error">
+                            <span class="help-block"> @Html.ValidationMessageFor(m => m.Password)</span>
+                        </div>
+                    } 
+
+                </div>
+            
+               <div class="form-group">
+                    <label>
+                        @Html.Resource("ReTypePassword")
+                    </label>
+
+                    @Html.PasswordFor(m => m.ReTypePassword, new { @class = "form-control" })
+                            
+                    @if (Html.ValidationMessageFor(m => m.ReTypePassword) != null)
+                    {
+                        <div class="has-error">
+                            <span class="help-block">@Html.ValidationMessageFor(m => m.ReTypePassword)</span>
+                        </div>
+                    } 
+
+                </div>
+    			
+    			@if (Model.RequiresQuestionAndAnswer)
                 {
-                    <div class="has-error">
-                        <span class="help-block">@Html.ValidationMessageFor(m => m.Email)</span>
-                    </div>
-                } 
+    				
+    				<div class="form-group">
+    					<label>
+    						@Html.Resource("Question")
+    					</label>
 
-            </div>
-   
-            <div class="form-group">
-                <label>
-                    @Html.Resource("Password")
-                </label>
+    					@Html.TextBoxFor(m => m.Question, new { @class = "form-control" })
 
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+    					@if (Html.ValidationMessageFor(m => m.Question) != null)
+    					{
+    						<div class="has-error">
+    							<span class="help-block"> @Html.ValidationMessageFor(m => m.Question)</span>
+    						</div>
+    					} 
+    				</div>
+    				
+    				<div class="form-group">
+    					<label>
+    						@Html.Resource("Answer")
+    					</label>
 
-                @if (Html.ValidationMessageFor(m => m.Password) != null)
+    					@Html.PasswordFor(m => m.Answer, new { @class = "form-control" })
+
+    					@if (Html.ValidationMessageFor(m => m.Answer) != null)
+    					{
+    						<div class="has-error">
+    							<span class="help-block"> @Html.ValidationMessageFor(m => m.Answer)</span>
+    						</div>
+    					}
+    				</div>
+                }
+
+
+                @if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode )
                 {
-                    <div class="has-error">
-                        <span class="help-block"> @Html.ValidationMessageFor(m => m.Password)</span>
-                    </div>
-                } 
-
-            </div>
-        
-           <div class="form-group">
-                <label>
-                    @Html.Resource("ReTypePassword")
-                </label>
-
-                @Html.PasswordFor(m => m.ReTypePassword, new { @class = "form-control" })
-                        
-                @if (Html.ValidationMessageFor(m => m.ReTypePassword) != null)
+                    <button type="button" class="btn btn-primary">@Html.Resource("Register")</button>
+                }
+                else
                 {
-                    <div class="has-error">
-                        <span class="help-block">@Html.ValidationMessageFor(m => m.ReTypePassword)</span>
-                    </div>
-                } 
+                    <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
+                }
 
+                <div class="sf-mt-l">
+                    <div>Already registered?</div>
+                    <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
+                </div>
             </div>
-			
-			if (Model.RequiresQuestionAndAnswer)
-            {
-				
-				<div class="form-group">
-					<label>
-						@Html.Resource("Question")
-					</label>
-
-					@Html.PasswordFor(m => m.Question, new { @class = "form-control" })
-
-					@if (Html.ValidationMessageFor(m => m.Question) != null)
-					{
-						<div class="has-error">
-							<span class="help-block"> @Html.ValidationMessageFor(m => m.Question)</span>
-						</div>
-					} 
-				</div>
-				
-				<div class="form-group">
-					<label>
-						@Html.Resource("Answer")
-					</label>
-
-					@Html.PasswordFor(m => m.Answer, new { @class = "form-control" })
-
-					@if (Html.ValidationMessageFor(m => m.Answer) != null)
-					{
-						<div class="has-error">
-							<span class="help-block"> @Html.ValidationMessageFor(m => m.Answer)</span>
-						</div>
-					}
-				</div>
-            }
-
-            if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode )
-            {
-                <button type="button" class="btn btn-primary">@Html.Resource("Register")</button>
-            }
-            else
-            {
-                <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
-            }
 			
 			if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
             {
-                <h3>@Html.Resource("Or")</h3>
+            <div class="col-md-6">    
+                <h3 class="sf-mb-xl">@Html.Resource("ConnectWith")</h3>
 
-                <h3>@Html.Resource("ConnectWith")</h3>
-
-                foreach (var provider in Model.ExternalProviders)
+                @foreach (var provider in Model.ExternalProviders)
                 {
-                    <div>
-                        @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = provider.Value })
+                    var classToBeAdd = "btn btn-default btn-lg btn-block " + @provider.Value;                 
+                    <div class="sf-mb-xs">
+                        @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = classToBeAdd })
                     </div>
                 }
+            </div>
             }
-			
-			<div>
-				<a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
-			</div>
         }
     }
 </div>

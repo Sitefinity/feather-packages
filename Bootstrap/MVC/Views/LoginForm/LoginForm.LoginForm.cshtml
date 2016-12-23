@@ -14,11 +14,10 @@
     var isTwoCols = (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0) ? "col-md-6" : "";
 }
 
-<div class="@Model.CssClass">
+<div class="@Model.CssClass row sf-m-xxs">
     @if (Telerik.Sitefinity.Security.SecurityManager.GetCurrentUserId() == Guid.Empty || SystemManager.IsInlineEditingMode || SystemManager.IsDesignMode)
     {
-    <div class="row sf-m-xxs">
-        @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, null, true))
+        using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, null, true))
         {
         <div class="@isTwoCols">
          @Html.ValidationSummary(true)
@@ -34,7 +33,7 @@
 
             <div class="form-group">
                 <label>
-                    @Html.Resource("Username")
+                    @Html.Resource("Email")
                 </label>
 
                 @Html.TextBoxFor(u => u.UserName, new { @class = "form-control" })
@@ -99,7 +98,7 @@
             if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
             {
             <div class="col-md-6">                
-                <h3>@Html.Resource("Or")<span class="text-lowercase"> @Html.Resource("UseAccountIn")</span></h3>
+                <h3>@Html.Resource("UseAccountIn")</h3>
 
                 @foreach (var provider in Model.ExternalProviders)
                 { 
@@ -112,7 +111,6 @@
             }
 		
         }
-    </div>
     }
     
     else

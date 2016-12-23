@@ -46,6 +46,19 @@ $gray:                                          #999 !default;
 $light-blue:                                    #3390cf !default;
 $denim:                                         #105ab5 !default;
 
+//External providers
+$google-color: 									#D54F50;
+$facebook-color:								#3E86B4;
+$github-color:									#333;
+$yahoo-color:									#410093;
+$linkedIn-color:								#0077b5;
+$microsoft-color:								#00a1f1;
+$adfs-color:									#00a1f1;
+$windows-color:									#00bcf2;
+$twitter-color:									#1da1f2;
+
+$providers: ( Google: $google-color, Facebook: $facebook-color, GitHub: $github-color, Yahoo: $yahoo-color, LinkedIn: $linkedIn-color, Microsoft: $microsoft-color, ADFS: $adfs-color, Windows: $windows-color, Twitter: $twitter-color );
+
 //Size
 
 $s-border:                                      1px !default;
