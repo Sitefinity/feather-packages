@@ -90,8 +90,10 @@
 
             @if (Model.ShowRegistrationLink)
             {
-                <div>@Html.Resource("NotRegisteredYet")</div>
-                <a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a>
+                <div class="sf-registration-link">
+                    <div>@Html.Resource("NotRegisteredYet")</div>
+                    <a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a>
+                </div>
             }
             </div>
         

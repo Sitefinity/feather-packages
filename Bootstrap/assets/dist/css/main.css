@@ -7198,3 +7198,6 @@ div.k-event {
     background-color: #1da1f2;
     color: #fff;
     border-color: transparent; }
+
+.sf-registration-link {
+  clear: both; }

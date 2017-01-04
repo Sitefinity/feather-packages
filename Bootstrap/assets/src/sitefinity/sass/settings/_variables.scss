@@ -57,7 +57,17 @@ $adfs-color:									#00a1f1;
 $windows-color:									#00bcf2;
 $twitter-color:									#1da1f2;
 
-$providers: ( Google: $google-color, Facebook: $facebook-color, GitHub: $github-color, Yahoo: $yahoo-color, LinkedIn: $linkedIn-color, Microsoft: $microsoft-color, ADFS: $adfs-color, Windows: $windows-color, Twitter: $twitter-color );
+$providers: ( 
+  Google: $google-color, 
+  Facebook: $facebook-color, 
+  GitHub: $github-color,
+  Yahoo: $yahoo-color,
+  LinkedIn: $linkedIn-color,
+  Microsoft: $microsoft-color,
+  ADFS: $adfs-color,
+  Windows: $windows-color,
+  Twitter: $twitter-color 
+);
 
 //Size
 
