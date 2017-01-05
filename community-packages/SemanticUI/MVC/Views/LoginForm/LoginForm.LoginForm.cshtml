@@ -66,19 +66,21 @@
             }
             
             <input type="submit" class="ui submit button" value='@Html.Resource("LoginFormLogInButton")' />
-
-            if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
+		
+            @*TODO: Implement external providers*@
+			@*if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
             {
-                <h4>@Html.Resource("Or")</h4>
-                <h3>@Html.Resource("UseAccountIn")</h3>
+                <h3>@Html.Resource("Or")</h3>
+
+                <h3>@Html.Resource("ConnectWith")</h3>
 
                 foreach (var provider in Model.ExternalProviders)
                 {
-                <div>
-                    @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = provider.Value })
-                </div>
+                    <div>
+                        @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = provider.Value })
+                    </div>
                 }
-            }
+            }*@
 
             @if (Model.ShowRegistrationLink)
             {
