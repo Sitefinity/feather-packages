@@ -39,4 +39,21 @@
 	}
 }
 
+// Mixin for generating colors for login external providers
+
+@mixin create-external-providers-colors($providers) {
+	@each $provider, $color in $providers {
+		.sf#{$provider}Btn {
+			border-color: $color;
+			color: $color;
+
+			&:hover {
+				background-color: $color;
+				color: $white;
+				border-color: $transparent;
+			}
+		}
+	}
+}
+
 

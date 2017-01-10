@@ -44,20 +44,30 @@
                 </label>
             </div>
             }
-
-           <div><input type="submit" value='@Html.Resource("LoginFormLogInButton")' /></div>
-        
+           
+            if (@Request.Url.Query.Contains("err=true"))
+            {
+                <p>@Html.Resource("IncorrectCredentialsMessage")</p>
+            }
 
             if (Model.ShowForgotPasswordLink)
             {
                 @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
             }
- 
-            if (Model.IncorrectCredentials)
+
+            <div><input type="submit" value='@Html.Resource("LoginFormLogInButton")' /></div>
+
+            if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
             {
-            
-            <p>@Html.Resource("IncorrectCredentialsMessage")</p>
-                
+                <h4>@Html.Resource("Or")</h4>
+                <h3>@Html.Resource("UseAccountIn")</h3>
+
+                foreach (var provider in Model.ExternalProviders)
+                {
+                    <div>
+                        @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = provider.Value })
+                    </div>
+                }
             }
 
             if (Model.ShowRegistrationLink)
