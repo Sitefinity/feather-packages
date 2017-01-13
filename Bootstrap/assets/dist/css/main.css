@@ -7127,74 +7127,74 @@ div.k-event {
     vertical-align: top;
     font-weight: 400; }
 
-.sfGoogleBtn {
+.-sf-google-button {
   border-color: #D54F50;
   color: #D54F50; }
-  .sfGoogleBtn:hover {
+  .-sf-google-button:hover {
     background-color: #D54F50;
     color: #fff;
     border-color: transparent; }
 
-.sfFacebookBtn {
+.-sf-facebook-button {
   border-color: #3E86B4;
   color: #3E86B4; }
-  .sfFacebookBtn:hover {
+  .-sf-facebook-button:hover {
     background-color: #3E86B4;
     color: #fff;
     border-color: transparent; }
 
-.sfGitHubBtn {
+.-sf-github-button {
   border-color: #333;
   color: #333; }
-  .sfGitHubBtn:hover {
+  .-sf-github-button:hover {
     background-color: #333;
     color: #fff;
     border-color: transparent; }
 
-.sfYahooBtn {
+.-sf-yahoo-button {
   border-color: #410093;
   color: #410093; }
-  .sfYahooBtn:hover {
+  .-sf-yahoo-button:hover {
     background-color: #410093;
     color: #fff;
     border-color: transparent; }
 
-.sfLinkedInBtn {
+.-sf-linkedin-button {
   border-color: #0077b5;
   color: #0077b5; }
-  .sfLinkedInBtn:hover {
+  .-sf-linkedin-button:hover {
     background-color: #0077b5;
     color: #fff;
     border-color: transparent; }
 
-.sfMicrosoftBtn {
+.-sf-microsoft-button {
   border-color: #00a1f1;
   color: #00a1f1; }
-  .sfMicrosoftBtn:hover {
+  .-sf-microsoft-button:hover {
     background-color: #00a1f1;
     color: #fff;
     border-color: transparent; }
 
-.sfADFSBtn {
+.-sf-adfs-button {
   border-color: #00a1f1;
   color: #00a1f1; }
-  .sfADFSBtn:hover {
+  .-sf-adfs-button:hover {
     background-color: #00a1f1;
     color: #fff;
     border-color: transparent; }
 
-.sfWindowsBtn {
+.-sf-windows-button {
   border-color: #00bcf2;
   color: #00bcf2; }
-  .sfWindowsBtn:hover {
+  .-sf-windows-button:hover {
     background-color: #00bcf2;
     color: #fff;
     border-color: transparent; }
 
-.sfTwitterBtn {
+.-sf-twitter-button {
   border-color: #1da1f2;
   color: #1da1f2; }
-  .sfTwitterBtn:hover {
+  .-sf-twitter-button:hover {
     background-color: #1da1f2;
     color: #fff;
     border-color: transparent; }
