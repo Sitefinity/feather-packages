@@ -14,7 +14,7 @@
 	position: relative;
 	
 	&:hover {
-		ul {
+		> ul {
 			left: 100%;
 			top: 0;
 			display: block;
