@@ -3,21 +3,20 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers
 @using Telerik.Sitefinity.Modules.Pages;
 
-@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script(ScriptRef.JQuery, "top", false)
 
 <div class="@Model.CssClass">
-    <div data-sf-role="sf-logged-in-view" style="display: none" class="media">
-
-        <div class="media-left">
-            <img data-sf-role="sf-logged-in-avatar" width="80" height="80" class="media-object"  />
+    <div class="media" data-sf-role="sf-logged-in-view" style="display: none">
+        <div class="media-left sf-pr-xl">
+            <div class="media-object">
+                <img data-sf-role="sf-logged-in-avatar" width="100" height="100" />
+            </div>
         </div>
         <div class="media-body">
-
             <a href="@(Model.ProfilePageUrl ?? "#")" data-sf-role="sf-logged-in-name"></a>
-            <p data-sf-role="sf-logged-in-email"></p>
-            <button class="btn btn-default" data-sf-role="sf-logged-in-log-out-btn">@Html.Resource("Logout")</button>
+            <p data-sf-role="sf-logged-in-email"></p>      
+            @Html.ActionLink(Html.Resource("Logout"), "SignOut", null, new { @class = "btn btn-default" })
         </div>
-
     </div>
 
     <div data-sf-role="sf-logged-out-view" style="display: none">
@@ -33,4 +32,4 @@
 <input type="hidden" data-sf-role="sf-login-redirect-url" value="@Model.LoginPageUrl" />
 <input type="hidden" data-sf-role="sf-is-design-mode-value" value="@ViewBag.IsDesignMode.ToString()" />
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginStatus/login-status.js"), "bottom")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginStatus/login-status.js"), "bottom", false)

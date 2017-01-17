@@ -11,10 +11,14 @@
 @Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", false)
 
 <div class="@Model.CssClass">
+
+    <h3>@Html.Resource("EditProfileLink")</h3>
+
     @if (Model.ShowProfileChangedMsg)
     {
         <div>@Html.Resource("ChangesAreSaved")</div>
     }
+
 
     @using (Html.BeginFormSitefinity("Index", "EditProfileForm", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -30,8 +34,11 @@
             <a data-sf-role="edit-profile-upload-picture-button">@Html.Resource("EditProfileUploadImage")</a>
 
         </div>
-        
-        @ViewBag.ErrorMessage
+
+        if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            @ViewBag.ErrorMessage
+        }
 
         <div>
             <label>
@@ -47,7 +54,13 @@
                 @Html.ValidationMessageFor(u => u.Profile["LastName"])
             </label>
         </div>
-
+        <div>
+            <label>
+                @Html.Resource("EditProfileNickname")
+                @Html.TextBoxFor(u => u.Profile["Nickname"])
+                @Html.ValidationMessageFor(u => u.Profile["Nickname"])
+            </label>
+        </div>
         <div>
             <label>
                 @Html.Resource("EditProfileAbout")
@@ -56,47 +69,73 @@
             </label>
         </div>
 
-        <a href="#" data-sf-role="edit-profile-change-password-button">@Html.Resource("EditProfileChangePasswordButton")</a>
-        <div data-sf-role="edit-profile-change-password-holder" style="display:none">
+        if (string.IsNullOrEmpty(Model.ExternalProviderName))
+        {
 
-            <h4>@Html.Resource("EditProfileEditChangePasswordHeader")</h4>
+            <label>
+                @Html.Resource("EditProfileEmail")
+                @Html.TextBoxFor(u => u.Email)
+                @Html.ValidationMessageFor(u => u.Email)
+            </label>
+
+            <a href="#" data-sf-role="edit-profile-change-password-button">@Html.Resource("EditProfileChangePasswordButton")</a>
+            <div data-sf-role="edit-profile-change-password-holder" style="display:none">
+
+                <h4>@Html.Resource("EditProfileEditChangePasswordHeader")</h4>
+
+                <div>
+                    <label>
+                        @Html.Resource("EditProfileOldPassword")
+                        @Html.PasswordFor(u => u.OldPassword, new { autocomplete = "off" })
+                        @Html.ValidationMessageFor(u => u.OldPassword)
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        @Html.Resource("EditProfileNewPassword")
+                        @Html.PasswordFor(u => u.NewPassword)
+                        @Html.ValidationMessageFor(u => u.NewPassword)
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        @Html.Resource("EditProfileRepeatPassword")
+                        @Html.PasswordFor(u => u.RepeatPassword)
+                        @Html.ValidationMessageFor(u => u.RepeatPassword)
+                    </label>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h4>@string.Format(Html.Resource("RegistratedWithExternal"), Model.ExternalProviderName)</h4>
 
             <div>
                 <label>
-                    @Html.Resource("EditProfileOldPassword")
-                    @Html.PasswordFor(u => u.OldPassword, new { autocomplete = "off" })
-                    @Html.ValidationMessageFor(u => u.OldPassword)
+                    @Html.Resource("EditProfileEmail")
+                    @Model.Email
                 </label>
             </div>
             <div>
                 <label>
-                    @Html.Resource("EditProfileNewPassword")
-                    @Html.PasswordFor(u => u.NewPassword)
-                    @Html.ValidationMessageFor(u => u.NewPassword)
+                    @Html.Resource("Password")
+                    @string.Format(Html.Resource("ExternalProviderNoPassword"), Model.ExternalProviderName)
                 </label>
-            </div>
-            <div>
-                <label>
-                    @Html.Resource("EditProfileRepeatPassword")
-                    @Html.PasswordFor(u => u.RepeatPassword)
-                    @Html.ValidationMessageFor(u => u.RepeatPassword)
-                </label>
-            </div>
-        </div>
+            </div>            
+        }		
 
-        <div>   
-            @if (SystemManager.IsDesignMode)
-            {
-                <input data-sf-role="profile-submit" type="button" value='@Html.Resource("EditProfileSave")' />
-                <a href="javascript:void(0);">@Html.Resource("EditProfileCancel")</a>
-            }
-            else 
-            {
-                <input data-sf-role="profile-submit" type="submit" value='@Html.Resource("EditProfileSave")' />
-                @Html.ActionLink(Html.Resource("EditProfileCancel"), "Index")
-            }
-        </div>
 
+        if (SystemManager.IsDesignMode)
+        {
+            <input data-sf-role="profile-submit" type="button" value='@Html.Resource("EditProfileSave")' />
+            <a href="javascript:void(0);">@Html.Resource("EditProfileCancel")</a>
+        }
+        else 
+        {
+            <input data-sf-role="profile-submit" type="submit" value='@Html.Resource("EditProfileSave")' />
+            @Html.ActionLink(Html.Resource("EditProfileCancel"), "Index")
+        }
+        
         if(SystemManager.IsPreviewMode)
         {
             <div data-sf-role="profile-submit-preview-message" style="display:none; color: #a94442;">@Html.Resource("PreviewProfileSaveMessage")</div>

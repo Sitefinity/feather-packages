@@ -8,12 +8,12 @@
 <div class="@Model.CssClass">
     <div data-sf-role="sf-logged-in-view" style="display: none">
         <span>@Html.Resource("LoggedAs") </span>
-        <a href="@(Model.ProfilePageUrl ?? "#")" data-sf-role="sf-logged-in-name"></a>
-        <a data-sf-role="sf-logged-in-log-out-btn">@Html.Resource("Logout")</a>
+        <a href="@(Model.ProfilePageUrl ?? "#")" data-sf-role="sf-logged-in-name" class="sf-mr-m"></a>
+        @Html.ActionLink(Html.Resource("Logout"), "SignOut")
     </div>
 
     <div data-sf-role="sf-logged-out-view" style="display: none">
-        <a href="@(Model.LoginPageUrl ?? "#")">@Html.Resource("Login")</a>
+        <a href="@(Model.LoginPageUrl ?? "#")" class="sf-mr-m">@Html.Resource("Login")</a>
         <a href="@(Model.RegistrationPageUrl ?? "#")">@Html.Resource("RegisterNow")</a>
     </div>
 </div>
