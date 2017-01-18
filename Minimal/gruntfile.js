@@ -9,19 +9,11 @@ var path = require('path');
 module.exports = function (grunt) {
 	'use strict';
 
-	// Project assets
-	// Loads project js files which will be concatenated and minified in one file
-	var jsfiles = grunt.file.readJSON('jsfiles.json').concatJsFiles;
-
-	// Name of the folder that contains project specific assets (scss, js, images, etc.)
-	// Rename this folder if needed
-	var projectAssetsFolder = "project";
-
-	// Load all grunt tasks
+	// load all grunt tasks
 	require('load-grunt-tasks')(grunt);
-	// Show elapsed time at the end
-	require('time-grunt')(grunt);
 
+	// show elapsed time at the end
+	require('time-grunt')(grunt);
 	// Init
 	grunt.initConfig({
 		timestamp: '<%= new Date().getTime() %>',
@@ -43,8 +35,7 @@ module.exports = function (grunt) {
 					src: [
 						'<%= dist.path %>/**/*.css',
 						'<%= dist.path %>/**/*.js',
-						'<%= dist.path %>/**/*.{png,jpg,gif,jpeg}',
-						'csslint_report'
+						'<%= dist.path %>/**/*.{png,jpg,gif,jpeg}'
 					]
 				}]
 			},
@@ -61,40 +52,47 @@ module.exports = function (grunt) {
 			options: {
 				outputStyle: 'nested'
 			},
-			sitefinity: {
+			dist: {
 				files: {
-					'<%= dist.path %>/css/sitefinity.css': '<%= src.path %>/sitefinity/sass/sitefinity.scss'
+					'<%= dist.path %>/css/styles.css': '<%= src.path %>/sass/styles.sass'
 				}
-			},
-			// Project assets
-			// Will look for any .scss files in projectAssetsFolder directory
-			project: {
-				files: [{
-					expand: true,
-					cwd: '<%= src.path %>/' + projectAssetsFolder + '/sass',
-					src: ['*.scss'],
-					dest: '<%= dist.path %>/css/',
-					ext: '.css'
-				}]
 			}
 		},
 
 		// use always with target e.g. `csslint:doc` or `csslint:dev`
-		// there is no point to run csslint on compressed css so
+		// unfortunately there is no point to run csslint on compressed css so
 		// csslint runs once, when you use `grunt` and it lints on documentation's css
 		// csslint runs on every save when you use `grunt dev` and it lints the original file you are working on -> `style.css`
 		csslint: {
 			options: {
-				csslintrc: 'csslint.json',
-				quiet: true,
-				formatters: [
-					{id: 'csslint-xml', dest: 'csslint_report/csslint.xml'}
-				]
+				csslintrc: 'csslint.json'
 			},
 			dev: {
-				expand: true,
-				cwd: '<%= dist.path %>/css/',
-				src: ['*.css', '!*.min.css']
+				src: ['<%= src.sitefinity %>']
+			}
+		},
+
+		webfont: {
+			icons: {
+				src: 'assets/src/icons/*.svg',
+				dest: 'assets/dist/fonts/',
+				destCss: 'assets/src/sass/icons/',
+				options: {
+					destHtml: '',
+					engine: 'node',
+					font: 'sf-icon-font',
+					stylesheet: 'scss',
+					partialPrefix: true,
+					relativeFontPath: '../fonts/',
+					template: 'feather-icons.css',
+					types: 'eot,woff,ttf,svg',
+					order: 'eot,woff,ttf,svg',
+					startCodepoint: 0x00b1,
+					normalize: true,
+					fontHeight: 4096,
+					ascent: 4096,
+					descent: 0
+				}
 			}
 		},
 
@@ -109,26 +107,25 @@ module.exports = function (grunt) {
 		},
 
 		// Concat & minify
-		// This processes the files described in 'jsfiles.json'
+		// this processes only the files described in 'jsfiles.json'
 		uglify: {
 			options: {
 				report: 'gzip',
-				warnings: true,
-				mangle: true,
-				compress: true
+				warnings: true
 			},
-			project: {
+			dist: {
+				options: {
+					mangle: true,
+					compress: true
+				},
 				files: {
-					// Project assets
-					// Concatenates and minifies js project files listed in jsfiles.json
-					'<%= dist.path %>/js/project.min.js':  jsfiles
 				}
 			}
 		},
 
 		// Image Optimization
 		imagemin: {
-			sitefinity: {
+			dist: {
 				options: {
 					optimizationLevel: 4,
 					progressive: true
@@ -136,34 +133,21 @@ module.exports = function (grunt) {
 				files: [
 					{
 						expand: true,
-						cwd: 'assets/src/sitefinity',
-						src: ['**/*.{png,jpg,gif,jpeg}', '!images/sprite/*.*'],
-						dest: 'assets/dist'
+						cwd: 'assets/src/images',
+						src: ['**/*.{png,jpg,gif,jpeg}', '!sprite/*.*'],
+						dest: 'assets/dist/images'
 					}
 				]
-			},
-			project: {
-				options: {
-					optimizationLevel: 4,
-					progressive: true
-				},
-				files: [{
-					expand: true,
-					cwd: 'assets/src/' + projectAssetsFolder,
-					src: ['**/*.{png,jpg,gif,jpeg}'],
-					dest: 'assets/dist'
-				}]
 			}
 		},
 
 		// Sprite generation
 		sprite:{
 			all: {
-				src: 'assets/src/sitefinity/images/sprite/*.png',
-				dest: 'assets/src/sitefinity/images/sprite.png',
-				destCss: 'assets/src/sitefinity/sass/widgets/socialShare/_sf-sprite.scss',
-				imgPath: '../images/sprite.png',
-				cssTemplate: 'assets/src/sitefinity/sass/widgets/socialShare/sf-sprite.mustache'
+				src: 'assets/src/images/sprite/*.png',
+				dest: 'assets/src/images/sprite.png',
+				destCss: 'assets/src/sass/_sf-sprite.scss',
+				cssTemplate: 'assets/src/sass/sf-sprite.mustache'
 			}
 		},
 
@@ -173,7 +157,7 @@ module.exports = function (grunt) {
 			},
 			styles: {
 				files: ['<%= src.path %>/**/*.{scss,sass}'],
-				tasks: ['sass:project', 'csslint:dev', 'cssmin']
+				tasks: ['sass:dist', 'cssmin']
 			},
 			images: {
 				files: ['<%= src.path %>/**/*.{png,jpg,gif,jpeg}'],
@@ -181,7 +165,7 @@ module.exports = function (grunt) {
 			},
 			js: {
 				files: ['<%= src.path %>/**/*.js'],
-				tasks: ['uglify:project']
+				tasks: ['uglify:dist']
 			},
 		},
 
@@ -195,17 +179,25 @@ module.exports = function (grunt) {
 		}
 	});
 
+	// Tasks
+	grunt.registerTask('iconfont', [
+		'webfont',
+		'build'
+	]);
+
+	// Runs once
+	grunt.registerTask('build', [
+		'newer:sprite',
+		'sass:dist',
+		'cssmin',
+		'uglify:dist',
+		'newer:imagemin'
+	]);
 
 	// default task runs csslint once on startup on documentation's css
 	grunt.registerTask('default', [
-		'clean:all',
-		'newer:sprite',
-		'sass:sitefinity',
-		'sass:project',
-		'csslint:dev',
-		'cssmin',
-		'uglify',
-		'newer:imagemin',
+		// 'clean:all',
+		'build',
 		'concurrent:dev'
 	]);
 };

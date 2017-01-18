@@ -12,8 +12,7 @@
 @Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", false)
 
 <div class="@Model.CssClass">
-    @if ((Request.QueryString["ShowActivationMsg"] == "true") ||
-             (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg))
+    @if (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg)
     {
         <h3>
             @Html.Resource("VisitYourEmail")
@@ -29,8 +28,7 @@
 
         <input type="hidden" data-sf-role="sf-resend-confirmation-endpoint-url" value="@Url.Action("ResendConfirmationEmail", new { email = Model.Email})" />
     }
-    else if ((Request.QueryString["ShowSuccessfulRegistrationMsg"] == "true") ||
-     (ViewBag.ShowSuccessfulRegistrationMsg is bool && ViewBag.ShowSuccessfulRegistrationMsg))
+    else if (ViewBag.ShowSuccessfulRegistrationMsg is bool && ViewBag.ShowSuccessfulRegistrationMsg)
     {
         <h3>@Html.Resource("ThankYou")</h3>
         <p>@Html.Resource("DefaultSuccessfulRegistrationMessage")</p>
@@ -42,8 +40,6 @@
         {
             @Html.ValidationSummary(true);
             @ViewBag.Error
-
-            <h3>@Html.Resource("Registration")</h3>
 
             <div>
                 <label>
@@ -63,7 +59,17 @@
                     @Html.TextBoxFor(m => m.Email, new { type = "email" })
                 </label>
                 @Html.ValidationMessageFor(m => m.Email)
-            </div>           
+            </div>
+            if (!Model.EmailAddressShouldBeTheUsername)
+            {
+            <div>
+                <label>
+                    @Html.Resource("UserName")
+                    @Html.TextBoxFor(m => m.UserName)
+                </label>
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+            }
             <div>
                 <label>
                     @Html.Resource("Password")
@@ -78,23 +84,7 @@
                 </label>
                 @Html.ValidationMessageFor(m => m.ReTypePassword)
             </div>
-            if (Model.RequiresQuestionAndAnswer)
-            {
-                <div>
-                    <label>
-                        @Html.Resource("Question")
-                        @Html.PasswordFor(m => m.Question)
-                    </label>
-                    @Html.ValidationMessageFor(m => m.Question)
-                </div>
-                <div>
-                    <label>
-                        @Html.Resource("Answer")
-                        @Html.PasswordFor(m => m.Answer)
-                    </label>
-                    @Html.ValidationMessageFor(m => m.Answer)
-                </div>                
-            }
+
             <div>
                 @if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode)
                 {
@@ -105,24 +95,9 @@
                     <input type="submit" value="@Html.Resource("Register")" />
                 }
             </div>
+         }
 
-            if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
-            {
-                <h3>@Html.Resource("Or")</h3>
-                <h3>@Html.Resource("ConnectWith")</h3>
-
-                foreach (var provider in Model.ExternalProviders)
-                {
-                    <div>
-                        @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = provider.Value })
-                    </div>
-                }
-            }
-
-            <div>
-                <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
-            </div>
-        }        
+        <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
     }
 </div>
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"), "bottom", false)
