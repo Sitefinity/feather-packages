@@ -6803,7 +6803,7 @@ pre {
 
 .dropdown-submenu {
   position: relative; }
-  .dropdown-submenu:hover ul {
+  .dropdown-submenu:hover > ul {
     left: 100%;
     top: 0;
     display: block; }
