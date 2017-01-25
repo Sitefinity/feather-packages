@@ -43,7 +43,7 @@
 
 @mixin create-external-providers-colors($providers) {
 	@each $provider, $color in $providers {
-		.sf#{$provider}Btn {
+		.-sf-#{$provider}-button {
 			border-color: $color;
 			color: $color;
 

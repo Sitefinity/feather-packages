@@ -26,8 +26,8 @@
 			
             @if (@Request.Url.Query.Contains("err=true"))
             {            
-				<div class="has-error">
-					<span class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
+				<div class="alert alert-danger">
+					@Html.Resource("IncorrectCredentialsMessage")
 				</div>                
             }
 

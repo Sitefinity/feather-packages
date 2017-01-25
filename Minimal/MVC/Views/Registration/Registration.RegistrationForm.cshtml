@@ -20,11 +20,11 @@
         </h3>
 
         <p>@string.Format(Html.Resource("ActivationLinkHasBeenSent"), Model.Email)</p>
-        <a data-sf-role="sendAgainLink">@Html.Resource("SendAgain")</a>
+        <a href="javascript:void(0)" data-sf-role="sendAgainLink">@Html.Resource("SendAgain")</a>
 
         <div data-sf-role="confirmationResendInfo" style="display:none;">
             @string.Format(Html.Resource("ActivationLinkHasBeenSentAgain"), Model.Email)
-            <a data-sf-role="sendAgainLink">@Html.Resource("SendAgain")</a>
+            <a href="javascript:void(0)" data-sf-role="sendAgainLink">@Html.Resource("SendAgain")</a>
         </div>
 
         <input type="hidden" data-sf-role="sf-resend-confirmation-endpoint-url" value="@Url.Action("ResendConfirmationEmail", new { email = Model.Email})" />
@@ -41,9 +41,10 @@
         using (Html.BeginFormSitefinity(true))
         {
             @Html.ValidationSummary(true);
-            @ViewBag.Error
 
             <h3>@Html.Resource("Registration")</h3>
+
+            @ViewBag.Error
 
             <div>
                 <label>
@@ -83,14 +84,14 @@
                 <div>
                     <label>
                         @Html.Resource("Question")
-                        @Html.PasswordFor(m => m.Question)
+                        @Html.TextBoxFor(m => m.Question)
                     </label>
                     @Html.ValidationMessageFor(m => m.Question)
                 </div>
                 <div>
                     <label>
                         @Html.Resource("Answer")
-                        @Html.PasswordFor(m => m.Answer)
+                        @Html.TextBoxFor(m => m.Answer)
                     </label>
                     @Html.ValidationMessageFor(m => m.Answer)
                 </div>                
@@ -108,7 +109,6 @@
 
             if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
             {
-                <h3>@Html.Resource("Or")</h3>
                 <h3>@Html.Resource("ConnectWith")</h3>
 
                 foreach (var provider in Model.ExternalProviders)
