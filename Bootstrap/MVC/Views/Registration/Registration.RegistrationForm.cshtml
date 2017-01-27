@@ -24,11 +24,11 @@
         </h3>
 
         <p>@string.Format(Html.Resource("ActivationLinkHasBeenSent"), Model.Email)</p>
-        <a data-sf-role="sendAgainLink" class="btn btn-primary">@Html.Resource("SendAgain")</a>
+        <a href="javascript:void(0)" data-sf-role="sendAgainLink" class="btn btn-primary">@Html.Resource("SendAgain")</a>
 
         <div data-sf-role="confirmationResendInfo" style="display:none;">
             @string.Format(Html.Resource("ActivationLinkHasBeenSentAgain"), Model.Email)
-            <a data-sf-role="sendAgainLink" class="btn btn-primary">@Html.Resource("SendAgain")</a>
+            <a href="javascript:void(0)" data-sf-role="sendAgainLink" class="btn btn-primary">@Html.Resource("SendAgain")</a>
         </div>
 
         <input type="hidden" data-sf-role="sf-resend-confirmation-endpoint-url" value="@Url.Action("ResendConfirmationEmail", new { email = Model.Email})" />
@@ -145,7 +145,7 @@
     						@Html.Resource("Answer")
     					</label>
 
-    					@Html.PasswordFor(m => m.Answer, new { @class = "form-control" })
+    					@Html.TextBoxFor(m => m.Answer, new { @class = "form-control" })
 
     					@if (Html.ValidationMessageFor(m => m.Answer) != null)
     					{
