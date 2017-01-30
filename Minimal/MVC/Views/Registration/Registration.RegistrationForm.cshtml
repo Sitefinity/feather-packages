@@ -41,8 +41,7 @@
         using (Html.BeginFormSitefinity(true))
         {
             @Html.ValidationSummary(true);
-            @ViewBag.Error
-			      @Html.HiddenFor(m => m.RequiresQuestionAndAnswer)
+			@Html.HiddenFor(m => m.RequiresQuestionAndAnswer)
 
             <h3>@Html.Resource("Registration")</h3>
 
@@ -128,4 +127,3 @@
     }
 </div>
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"), "bottom", false)
-

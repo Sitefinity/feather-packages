@@ -3,6 +3,16 @@
 	k-scope-field="editorWidget"
     k-encoded="false"
     k-stylesheets='["{{htmlFieldCssUrl}}"]',
+    k-paste-cleanup="{
+        all: false,
+        css: true,
+        keepNewLines: false,
+        msAllFormatting: true,
+        msConvertLists: true,
+        msTags: true,
+        none: false,
+        span: true
+    }",
     k-tools='[
     {
         name: "formatting",
