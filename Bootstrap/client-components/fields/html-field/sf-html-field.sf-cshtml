@@ -4,7 +4,6 @@
 	sf-toggle-commands="strikethrough, justifyFull, subscript, superscript, fontName, fontSize, foreColor, backColor, print"
     k-encoded="false"
     k-stylesheets='["{{htmlFieldCssUrl}}"]',
-    k-stylesheets='["{{htmlFieldCssUrl}}"]',
 	k-paste-cleanup="{
         all: false,
         css: true,
