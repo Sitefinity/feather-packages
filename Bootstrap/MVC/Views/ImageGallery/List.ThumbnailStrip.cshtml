@@ -74,3 +74,12 @@
 		</div>
 	</div>
 </div>
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}
