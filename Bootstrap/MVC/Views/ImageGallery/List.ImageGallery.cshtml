@@ -8,7 +8,7 @@
 @Html.Script(ScriptRef.JQuery, "top")
 
 <div class="sf-Gallery-thumbs-container">
-  <div class="sf-Gallery-thumbs clearfix @Model.CssClass">
+  <div class="sf-Gallery-thumbs @Model.CssClass">
 
     @for (int i = 0; i < Model.Items.Count(); i++)
     {
@@ -17,7 +17,7 @@
 		var detailPageUrl = ViewBag.OpenInSamePage ? HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex) :
             HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix);
 
-      <a class="pull-left text-center"
+      <a class="text-center"
              href="@detailPageUrl"
        title="@(string.IsNullOrEmpty(item.Fields.Description) ? item.Fields.Title : item.Fields.Description)">
       <img src="@(((ThumbnailViewModel)item).ThumbnailUrl)" alt='@System.Text.RegularExpressions.Regex.Replace(item.Fields.AlternativeText, @"[^\w\d_-]", "")' />

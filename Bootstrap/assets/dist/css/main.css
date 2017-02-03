@@ -6712,8 +6712,6 @@ pre {
 .sf-Gallery-thumbs a {
   display: inline-block;
   border: 5px solid transparent;
-  width: 130px;
-  height: 130px;
   line-height: 120px;
   overflow: hidden;
   cursor: pointer; }
