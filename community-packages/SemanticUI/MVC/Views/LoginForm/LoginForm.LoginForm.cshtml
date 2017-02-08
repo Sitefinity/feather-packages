@@ -19,7 +19,7 @@
          @Html.ValidationSummary(true)
             <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
 
-            if (@Request.Url.Query.Contains("err=true"))
+            @if (Request.Url.Query.Contains("err=true") || Model.LoginError)
             {
                 <p class="ui red label">@Html.Resource("IncorrectCredentialsMessage")</p>
             }
