@@ -54,7 +54,7 @@ module.exports = function (grunt) {
 			},
 			dist: {
 				files: {
-					'<%= dist.path %>/css/styles.css': '<%= src.path %>/sass/styles.sass'
+					'<%= dist.path %>/css/styles.css': '<%= src.path %>/sass/styles.scss'
 				}
 			}
 		},
