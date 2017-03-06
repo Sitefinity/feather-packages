@@ -2,6 +2,15 @@
 
 This is a basic package, which contains all default templates of the frontend widgets, such as News, Blogs, and Images, etc. as plain HTML, minimal CSS, and a basic grunt configuration. It can be used as a foundation for custom Feather packages, as well as packages that are based on frontend frameworks of your choice. In order to use it you need to add the package to the `ResourcePackages folder` of your project. If the `ResourcePackages` folder doesn't contain any packages, widget templates will be loaded from Feather or from the MVC folder of SitefinityWebApp (if this folder contains files with names, matching the naming convention). Templates from the source of Feather have lowest loading priority. Templates in the MVC folder of SitefinityWebApp are with higher priority, and templates from a package have highest loading priority.
 
+## Grunt
+### Install
+Prerequisites: If you have not installed grunt yet refer to [Grunt gettings started documentation](http://gruntjs.com/getting-started) for details.
+```
+> npm install
+> grunt
+```
+`grunt` executes the default grunt tasks and watches for any changes in the files after that.
+
 ## Package structure ##
 
 The Minimal package contains minimal front-end assets, widget template, grid widget templates and grunt configuration.  Below are listed some of the folders and files.
@@ -77,15 +86,6 @@ To make upgrades easier we recommend not to change default widget templates. If 
 ### Where to put project templates
 
 If you want to have the project's widget templates separated from the default widget templates you can place them in the MVC folder in the root `SitefinityWebApp` folder of your project `/Mvc/Views/`. It is easier to navigate and manage less files. The same can be done with grid widget templates. Project specific grid widget templates can be moved to `/GridSystem/Templates` in the root `SitefinityWebApp` folder of the project.
-
-## Grunt
-### Install
-Prerequisites: If you have not installed grunt yet refer to [Grunt gettings started documentation](http://gruntjs.com/getting-started) for details.
-```
-> npm install
-> grunt
-```
-`grunt` executes the default grunt tasks and watches for any changes in the files after that.
 
 ## Where to put project front-end assets
 All project specific front-end assets like scss, images, js, fonts, etc. should be placed in `assets/src/project`. When the default grunt task is run all source files are processed and moved to `assets/dist` from where there are used in the project.

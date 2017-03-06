@@ -2,6 +2,15 @@
 
 This package is based on the [Bootstrap framework](http://getbootstrap.com/). In order to use it you need to add the package to the `ResourcePackages folder` of your project. If the `ResourcePackages` folder doesn't contain any packages, widget templates will be loaded from Feather or from the MVC folder of SitefinityWebApp (if this folder contains files with names, matching the naming convention). Templates from the source of Feather have lowest loading priority. Templates in the MVC folder of SitefinityWebApp are with higher priority, and templates from a package have highest loading priority.
 
+## Grunt
+### Install
+Prerequisites: If you have not installed grunt yet refer to [Grunt gettings started documentation](http://gruntjs.com/getting-started) for details.
+```
+> npm install
+> grunt
+```
+`grunt` executes the default grunt tasks and watches for any changes in the files after that.
+
 ## Package structure
 
 The Bootstrap package contains front-end assets, widget template, grid widget templates and grunt configuration. Below are listed some of the folders and files.
@@ -103,15 +112,6 @@ An exception is made for the Navigation widget. There is a possibility to transf
 
 In the navigation widget templates (e.g. `/Bootstrap/MVC/Views/Navigation/NavigationView.Horizontal.cshtml`) there is a helper method `@Html.Action("GetView", new { viewName = "Dropdown",  model= Model})` which renders the `<select>`. It's commented out by default, but if you want to, you can use it with combination with the responsive utility classes of Bootstrap.
 If you decide to use it, you can modify its markup in the `/Bootstrap/MVC/Views/Navigation/Dropdown.cshtml` file.
-
-## Grunt
-### Install
-Prerequisites: If you have not installed grunt yet refer to [Grunt gettings started documentation](http://gruntjs.com/getting-started) for details.
-```
-> npm install
-> grunt
-```
-`grunt` executes the default grunt tasks and watches for any changes in the files after that.
 
 ## Where to put project front-end assets
 All project specific front-end assets like scss, images, js, fonts, etc. should be placed in `assets/src/project`. When the default grunt task is run all source files are processed and moved to `assets/dist` from where there are used in the project.
