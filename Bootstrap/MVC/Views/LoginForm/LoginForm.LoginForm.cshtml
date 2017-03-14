@@ -10,18 +10,30 @@
 @Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js",  "top")
 @Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
 
-<div class="@Model.CssClass">
+@{
+    var isTwoCols = (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0) ? "col-md-6" : "";
+}
+
+<div class="@Model.CssClass row sf-m-xxs">
     @if (Telerik.Sitefinity.Security.SecurityManager.GetCurrentUserId() == Guid.Empty || SystemManager.IsInlineEditingMode || SystemManager.IsDesignMode)
     {
-    <div>
-        @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, null, true))
+        using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, null, true))
         {
+        <div class="@isTwoCols">
          @Html.ValidationSummary(true)
+		 		 
             <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
+			
+            @if (Request.Url.Query.Contains("err=true") || Model.LoginError)
+            {            
+				<div class="alert alert-danger">
+					@Html.Resource("IncorrectCredentialsMessage")
+				</div>                
+            }
 
             <div class="form-group">
                 <label>
-                    @Html.Resource("Username")
+                    @Html.Resource("UserName")
                 </label>
 
                 @Html.TextBoxFor(u => u.UserName, new { @class = "form-control" })
@@ -49,43 +61,58 @@
 
             </div>
 
-            if (Model.ShowRememberMe)
+            @if (Model.ShowRememberMe || Model.ShowForgotPasswordLink)
             {
-            <div class="form-group">
-                <div class="checkbox">
+            var isPulledRight = Model.ShowRememberMe ? "" : "pull-right";
+
+            <div class="form-group row @isPulledRight">
+                @if (Model.ShowRememberMe)
+                {
+                <div class="checkbox col-md-6 sf-m-xxs">
                     <label>
                         @Html.CheckBoxFor(u => u.RememberMe)
                         @Html.Resource("RememberMe")
                     </label>
                 </div>
+                }
+                @if (Model.ShowForgotPasswordLink)
+                {
+                <div class="text-right sf-pr-l">
+                    @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
+                </div>
+                }
             </div>
             }
+			
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">@Html.Resource("LoginFormLogInButton")</button>
+			</div>
 
-           <button type="submit" class="btn btn-primary">@Html.Resource("LoginFormLogInButton")</button>
+            @if (Model.ShowRegistrationLink)
+            {
+                <div class="sf-registration-link">
+                    <div>@Html.Resource("NotRegisteredYet")</div>
+                    <a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a>
+                </div>
+            }
+            </div>
         
+            if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
+            {
+            <div class="col-md-6">                
+                <h3>@Html.Resource("UseAccountIn")</h3>
 
-            if (Model.ShowForgotPasswordLink)
-            {
-                @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
-            }
- 
-            if (Model.IncorrectCredentials)
-            {
-            
-            <div class="has-error">
-                <span class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
+                @foreach (var provider in Model.ExternalProviders)
+                { 
+                    var classToBeAdd = "btn btn-default btn-lg btn-block " + @provider.Value;                 
+                    <div class="sf-mb-xs">
+                        @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = classToBeAdd })
+                    </div>
+                }
             </div>
-                
             }
-
-            if (Model.ShowRegistrationLink)
-            {
-                <h4>
-                    <strong><a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a></strong>
-                </h4>
-            }
+		
         }
-    </div>
     }
     
     else

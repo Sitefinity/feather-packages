@@ -11,6 +11,9 @@
 @Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
 
 <div class="@Model.CssClass">
+
+    <h3>@Html.Resource("EditProfileLink")</h3>
+
     @if (Model.ShowProfileChangedMsg)
     {
         <div class="ui success message">@Html.Resource("ChangesAreSaved")</div>
@@ -73,10 +76,41 @@
 
                 <div class="field">
                     <label>
+                        @Html.Resource("EditProfileNickname")
+                    </label>
+
+                    @Html.TextBoxFor(u => u.Profile["Nickname"])
+                    @if (Html.ValidationMessageFor(u => u.Profile["Nickname"]) != null)
+                    {
+                        <div class="ui red pointing prompt label transition visible">
+                            @Html.ValidationMessageFor(u => u.Profile["Nickname"])
+                        </div>
+                    }
+                </div>
+
+                <div class="field">
+                    <label>
                         @Html.Resource("EditProfileAbout")
 
                         @Html.TextBoxFor(u => u.Profile["About"])
                     </label>
+                </div>
+
+            @if (string.IsNullOrEmpty(Model.ExternalProviderName))
+			{
+
+                <div class="field">
+                    <label>
+                        @Html.Resource("EditProfileEmail")
+                    </label>
+
+                    @Html.TextBoxFor(u => u.Email)
+                    @if (Html.ValidationMessageFor(u => u.Email) != null)
+                    {
+                        <div class="ui red pointing prompt label transition visible">
+                            @Html.ValidationMessageFor(u => u.Email)
+                        </div>
+                    }
                 </div>
 
                 <div><a href="#" data-sf-role="edit-profile-change-password-button">@Html.Resource("EditProfileChangePasswordButton")</a></div>
@@ -126,6 +160,30 @@
 
                 </div>
 
+            }
+            else
+            {
+                <h4>@string.Format(Html.Resource("RegistratedWithExternal"), Model.ExternalProviderName)</h4>
+
+                <div class="field">
+                    <label>
+                        @Html.Resource("EditProfileEmail")
+                    </label>
+                    <div>
+                        @Model.Email
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>
+                        @Html.Resource("Password")
+                    </label>
+                    <div>
+                        @string.Format(Html.Resource("ExternalProviderNoPassword"), Model.ExternalProviderName)
+                    </div>
+                </div>
+            }		
+                
                 @if (SystemManager.IsDesignMode)
                 {
                     <input class="ui submit button" data-sf-role="profile-submit" type="button" value='@Html.Resource("EditProfileSave")' />

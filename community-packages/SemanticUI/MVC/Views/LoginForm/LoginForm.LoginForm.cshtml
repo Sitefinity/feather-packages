@@ -18,15 +18,13 @@
         {
          @Html.ValidationSummary(true)
             <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
-            
-            <div class="ui form">
 
-                @if (Model.IncorrectCredentials)
-                {
-            
+            if (Request.Url.Query.Contains("err=true") || Model.LoginError)
+            {
                 <p class="ui red label">@Html.Resource("IncorrectCredentialsMessage")</p>
-                
-                }
+            }
+
+            <div class="ui form">
 
                 <div class="field">
                     <label>
@@ -59,16 +57,30 @@
                         </label>
                         @Html.Resource("RememberMe")
                     </div>
-                }
-
-               <input type="submit" class="ui submit button" value='@Html.Resource("LoginFormLogInButton")' />
+                }               
            
 
             @if (Model.ShowForgotPasswordLink)
             {
                 @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
             }
+            
+            <input type="submit" class="ui submit button" value='@Html.Resource("LoginFormLogInButton")' />
+		
+            @*TODO: Implement external providers*@
+			@*if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
+            {
+                <h3>@Html.Resource("Or")</h3>
 
+                <h3>@Html.Resource("ConnectWith")</h3>
+
+                foreach (var provider in Model.ExternalProviders)
+                {
+                    <div>
+                        @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = provider.Value })
+                    </div>
+                }
+            }*@
 
             @if (Model.ShowRegistrationLink)
             {
