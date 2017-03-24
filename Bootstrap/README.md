@@ -168,7 +168,7 @@ In `jsfiles.json` define the order in which the project's js files will be conca
 	@Html.Script(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/js/project.min.js"), "bottom")
 ```
 
-###Icons
+### Icons
 Place all svg files that you want to use as icon via an icon font in `assets/src/project/icons`. The icon font will be created the first time grunt is run. If you add new svg files you will have to run the task manually (`grunt webfont`) or rerun default grunt task.
 Two css classes will be generated for each icon. If the name of the svg file is logo.svg, the names of the css classes will be:
 - `icon-logo` - icon is displayed before Company name
