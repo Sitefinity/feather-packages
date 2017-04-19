@@ -1,6 +1,6 @@
 @model Telerik.Sitefinity.Frontend.Card.Mvc.Models.Card.CardViewModel
 
-<div class="thumbnail @Model.CssClass">
+<div class="@Model.CssClass sf-card thumbnail">
     <img src="@Model.SelectedSizeUrl" title="@Model.ImageTitle" alt="@Model.ImageAlternativeText">
     <div class="caption">
         <h3>@Html.Raw(Model.Heading)</h3>
