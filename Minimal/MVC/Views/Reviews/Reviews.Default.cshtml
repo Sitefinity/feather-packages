@@ -4,7 +4,7 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @Html.Script(ScriptRef.JQuery, "top", false)
-@Html.StyleSheet(Url.WidgetContent("assets/dist/css/sf-ratings.css"), "head", false)
+@Html.StyleSheet(Url.WidgetContent("assets/dist/css/sf-ratings.min.css"), "head", false)
 
 <div id="comments-@HttpUtility.HtmlEncode(Model.ThreadKey)" data-sf-role="comments-wrapper" class="@Model.CssClass">
     <input type="hidden" data-sf-role="comments-settings" value="@Model.SerializedWidgetSettings" />

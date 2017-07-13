@@ -128,8 +128,15 @@ File structure
 ...
 
 main.scss
-// Sitefinity + Bootstrap CSS
-@import "../../sitefinity/sass/sitefinity.bootstrap.scss";
+//Import Bootstrap from npm
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
+@import "../../../../node_modules/magnific-popup/src/css/main.scss";
+
+// Sitefinity
+
+@import "../../sitefinity/sass/components/icons/sf-icon-font";
+@import "../../sitefinity/sass/widgets/socialShare/sf-sprite";
+@import "../../sitefinity/sass/sitefinity.scss";
 
 //Import .scss files here
 @import "setting/colors";
@@ -140,7 +147,7 @@ main.scss
 ...
 ```
 When you run grunt all scss files imported in `assets/src/project/sass/main.scss` will be processed and output in `assets/dist/css/main.css`
-If you don't want to include Sitefinity or Bootstrap css or you want to use another Bootstrap version change the import rule `@import "../../sitefinity/sass/sitefinity.bootstrap.scss";` in `assets/src/project/sass/main.scss`.
+If you don't want to include Sitefinity or Bootstrap css or you want to use another Bootstrap version change the import rule `@import "../../sitefinity/sass/sitefinity.scss";` or `@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";` in `assets/src/project/sass/main.scss`.
 ### Images
 Place all images in `assets/src/project/images`. After grunt is run all images from this folder will be compressed and moved to `assets/dist/images`.
 
