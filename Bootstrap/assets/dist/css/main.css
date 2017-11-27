@@ -6167,8 +6167,8 @@ img.mfp-img {
 
 @font-face {
   font-family: "sf-icon-font";
-  src: url("../fonts/sf-icon-font.eot?0f56c7d0bba9ca44665535b1aff7ed55");
-  src: url("../fonts/sf-icon-font.eot?#iefix") format("embedded-opentype"), url("../fonts/sf-icon-font.woff?0f56c7d0bba9ca44665535b1aff7ed55") format("woff"), url("../fonts/sf-icon-font.ttf?0f56c7d0bba9ca44665535b1aff7ed55") format("truetype"), url("../fonts/sf-icon-font.svg?0f56c7d0bba9ca44665535b1aff7ed55#sf-icon-font") format("svg");
+  src: url("../fonts/sf-icon-font.eot?31b9ae05d6feaf588a80ace92ddbffe1");
+  src: url("../fonts/sf-icon-font.eot?#iefix") format("embedded-opentype"), url("../fonts/sf-icon-font.woff?31b9ae05d6feaf588a80ace92ddbffe1") format("woff"), url("../fonts/sf-icon-font.ttf?31b9ae05d6feaf588a80ace92ddbffe1") format("truetype"), url("../fonts/sf-icon-font.svg?31b9ae05d6feaf588a80ace92ddbffe1#sf-icon-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -6499,7 +6499,7 @@ pre {
 .sf-pb-l {
   padding-bottom: 20px; }
 
-.sf-pl-l, .navbar-collapse.in .dropdown-submenu ul {
+.sf-pl-l {
   padding-left: 20px; }
 
 .sf-pr-l {
@@ -6806,11 +6806,12 @@ pre {
     top: 0;
     display: block; }
 
-.navbar-collapse.in .dropdown-submenu ul {
-  display: block; }
-
-.navbar-collapse.in .right-caret {
-  display: none; }
+@media (max-width: 767px) {
+  .navbar-collapse .dropdown-submenu ul {
+    padding-left: 20px;
+    display: block; }
+  .navbar-collapse .right-caret {
+    display: none; } }
 
 .nav-sitemap {
   display: table;
