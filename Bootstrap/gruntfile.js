@@ -228,15 +228,15 @@ module.exports = function(grunt) {
     // Tasks
     // Task to generate icon font
     grunt.registerTask('iconfont', [
-        'webfont'
+        'webfont', 'copy'
     ]);
 
     // Default task
     grunt.registerTask('default', ' ', function() {
         grunt.task.run('clean:all');
         grunt.task.run('newer:sprite');
-        grunt.task.run('webfont');
-        grunt.task.run('copy');
+        // grunt.task.run('webfont');
+        // grunt.task.run('copy');
         grunt.task.run('sass');
         grunt.task.run('uglify');
         grunt.task.run('csslint:dev');
