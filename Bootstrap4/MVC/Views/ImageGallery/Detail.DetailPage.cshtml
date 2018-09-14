@@ -1,0 +1,67 @@
+@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery.ImageDetailsViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Helpers
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Web.DataResolving;
+
+<div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
+    <figure aria-labelledby="@Html.UniqueId("ImageCaption")">    
+        <figcaption class="h2" id="@Html.UniqueId("ImageCaption")" @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</figcaption>        
+        <div class="text-muted">
+            <span class="sr-only">Image taken on </span>
+            @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
+            @Html.Resource("By")
+            @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
+        </div>
+
+        @Html.CommentsCount(string.Empty, @Model.Item.DataItem)
+        
+        <p id="@Html.UniqueId("ImageDescription")" @Html.InlineEditingFieldAttributes("Description", "LongText")>@Html.HtmlSanitize((string)Model.Item.Fields.Description)</p>
+        <img aria-describedby="@Html.UniqueId("ImageDescription")" src="@Html.Raw(Model.MediaUrl)" alt='@System.Text.RegularExpressions.Regex.Replace(Model.Item.Fields.AlternativeText, @"[^\w\d_-]", "")'
+             @Html.GetWidthAttributeIfExists(Model.Width)
+             @Html.GetHeightAttributeIfExists(Model.Height) />
+    </figure>
+
+    @if (ViewBag.ItemIndex != null)
+    {
+        <nav role="navigation" aria-label="Previous/Next" class="text-center clearfix">
+            @{
+                var previousItemIndex = ViewBag.ItemIndex == 1 ? Model.TotalItemsCount : ViewBag.ItemIndex - 1;
+                var nextItemIndex = ViewBag.ItemIndex == Model.TotalItemsCount ? 1 : ViewBag.ItemIndex + 1;
+            }
+
+            @if (Model.PreviousItem != null) 
+            {
+                <a class="sf-Gallery-prev--simple" aria-label="Go to previous image" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, previousItemIndex)">
+                    @Html.Resource("PreviousImage")
+                </a>
+            }
+
+            @if (Model.PreviousItem != null || @Model.NextItem != null)
+            {
+                string.Format(@Html.Resource("IndexOfTotal"), @ViewBag.ItemIndex, @Model.TotalItemsCount);
+            }
+
+            @if (Model.NextItem != null) 
+            {
+                <a class="sf-Gallery-next--simple" aria-label="Go to next image" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, nextItemIndex)">
+                    @Html.Resource("NextImage")
+                </a>
+            }
+        </nav>
+
+        @Html.ActionLink(Html.Resource("BackToAllImages"), "Index")
+    }
+
+    @{        
+        if (Model.EnableSocialSharing)
+        {
+            var item = Model.Item.DataItem as Telerik.Sitefinity.Model.IHasTitle;
+            @Html.SocialShareOptions(item);
+        }
+    }
+
+    @Html.CommentsList(@Model.Item.DataItem)
+
+</div>

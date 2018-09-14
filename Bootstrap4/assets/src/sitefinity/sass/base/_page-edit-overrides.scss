@@ -1,0 +1,92 @@
+.sfPageEditor {
+
+    a.sfCancel,
+    a.sfCancel:link,
+    a.sfCancel:visited,
+    a.sfCancel:hover,
+    a.sfCancel:active {
+        color: #f00;
+    }
+}
+
+// Modal
+.sf-backend-wrp {
+
+    &.modal.fade.in,
+    &.popover.fade.in {
+        opacity: 1;
+    }
+
+    &.modal-fluid .modal-dialog,
+    .modal-dialog.modal-full-screen {
+        max-width: none;
+    }
+
+    .modal-dialog {
+
+        .modal-content {
+            width: auto;
+        }
+
+        .modal-header .close {
+            order: 2;
+            margin-right: 0;
+        }
+
+        .modal-footer {
+            justify-content: flex-start;
+
+            a.btn-default {
+                margin-left: auto;
+            }
+        }
+
+        .lead,
+        .breadcrumb li a,
+        .btn-link,
+        .Tooltip {
+            color: #105CB6;
+        }
+        
+        .Options-toggler {
+            color: #777;
+        }
+
+        .sf-Progress-close {
+            -webkit-appearance: none;
+
+            &,
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    &.popover.right > .arrow {
+        left: -16px;
+    }
+
+    button:focus {
+        outline: 0;
+    }
+}
+
+@include media-breakpoint-up(md) {
+
+    .sf-backend-wrp {
+
+        .modal-dialog {
+            max-width: $sf-modal-md; // 600px;
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+
+    .sf-backend-wrp {
+    
+        .modal-lg {
+            max-width: $sf-modal-lg; // 900px
+        }
+    }
+}
