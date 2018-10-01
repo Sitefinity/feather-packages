@@ -5,12 +5,12 @@
 <div class="@Model.CssClass">
     @if (Model.Activated)
     {
-        <h3 role="alert">@Html.Resource("AccountActivationSuccess")</h3>
+        <h3 role="alert" aria-live="assertive">@Html.Resource("AccountActivationSuccess")</h3>
 
         <a href="@Model.ProfilePageUrl">@Html.Resource("ProfilePageUrlTitle")</a>
     }
     else if (Model.AttemptedActivation)
     {
-        <h3 role="alert">@Html.Resource("AccountActivationFail")</h3>
+        <h3 role="alert" aria-live="assertive">@Html.Resource("AccountActivationFail")</h3>
     }
 </div>

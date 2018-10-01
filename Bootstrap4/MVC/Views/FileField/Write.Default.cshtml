@@ -26,22 +26,24 @@
                 name="@(Model.MetaField.FieldName)"
                 @Html.Raw(Model.ValidationAttributes)
                 class="sf-FileField-input"
-                aria-required=@isRequired
+                aria-required="@isRequired"
                 @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("FileUploadInfo")'</text> } }>
             @if (Model.AllowMultipleFiles)
             {
-                <svg class="sf-icon-xs sf-icon-remove" style="display: none;" data-sf-role="remove-input">
-                    <use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#times-circle"></use>
-                </svg>
+                <a href="javascript:void(0);" style="display: none;" data-sf-role="remove-input" aria-label="@Html.Resource("Remove")">
+                    <svg class="sf-icon-xs sf-icon-remove" style="display: none;" data-sf-role="remove-input" aria-hidden="true">
+                        <use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#times-circle"></use>
+                    </svg>
+                </a>
             }
 
             @if (Model.AcceptedFileTypes.Length > 0)
             { 
-                <p class="text-danger" role="alert" data-sf-role="filetype-violation-message" style="display: none;">@Model.FileTypeViolationMessage</p>
+                <p class="text-danger" role="alert" aria-live="assertive" data-sf-role="filetype-violation-message" style="display: none;">@Model.FileTypeViolationMessage</p>
             }
             @if (Model.MinFileSizeInMb > 0 || Model.MaxFileSizeInMb > 0)
             {
-                <p class="text-danger" role="alert" data-sf-role="filesize-violation-message" style="display: none;">@Model.FileSizeViolationMessage</p>
+                <p class="text-danger" role="alert" aria-live="assertive" data-sf-role="filesize-violation-message" style="display: none;">@Model.FileSizeViolationMessage</p>
             }
         </div>
         @if (!SystemManager.IsDesignMode)
@@ -57,7 +59,7 @@
         <a href="javascript:void(0);" data-sf-role="add-input">@Html.Resource("AddAnother")</a>
     }
 
-    <p class="text-danger" role="alert" data-sf-role="required-violation-message" style="display: none;">@Model.RequiredViolationMessage</p>
+    <p class="text-danger" role="alert" aria-live="assertive" data-sf-role="required-violation-message" style="display: none;">@Model.RequiredViolationMessage</p>
 
     @if (hasDescription) 
     {

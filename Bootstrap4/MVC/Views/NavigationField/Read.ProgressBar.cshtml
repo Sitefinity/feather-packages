@@ -18,7 +18,7 @@
 
     <span class="sf-Progress-percent" data-sf-role="progress-percent"> </span>
 
-    <ol id="sfSrProgressbar" class="sf-Progress-page-title" tabindex="0" role="progressbar" aria-valuemin="1" aria-valuemax="@totalPages" aria-valuenow="1" aria-valuetext="Step 1 of @totalPages">
+    <ol data-sf-role="sr-progressbar" class="sf-Progress-page-title" tabindex="0" role="progressbar" aria-valuemin="1" aria-valuemax="@totalPages" aria-valuenow="1" aria-valuetext="Step 1 of @totalPages">
         @foreach (var page in Model.Pages)
         {
             <li data-sf-navigation-index="@page.Index" aria-hidden="true">

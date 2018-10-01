@@ -15,8 +15,9 @@
 }
 
 <fieldset class="@Model.CssClass form-group" data-sf-role="multiple-choice-field-container">
-        <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
         <legend class="h6" id='@Html.UniqueId("RadioGroupLabel")'>@Model.MetaField.Title</legend>
+
+        <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
 
         <ul class="list-unstyled" aria-labelledby='@Html.UniqueId("RadioGroupLabel")' @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("RadioGroupInfo")'</text> } }>
             @foreach (var choice in Model.Choices)
@@ -40,9 +41,9 @@
                     <label>
                             <input type="radio" name="@fieldName" data-sf-multiple-choice-role="other-choice-radio" data-sf-role="multiple-choice-field-input" role="radio" aria-required="@isRequired" />
                             @Html.Resource("Other")
-                            <span class="sr-only">This choice will expand a text box.</span>
+                            <span class="sr-only">@Html.Resource("ThisChoiceWillExpandTextbox")</span>
                     </label>
-                    <input type="hidden" data-sf-multiple-choice-role="other-choice-text" aria-required="@isRequired" aria-label="Other option" />
+                    <input type="hidden" data-sf-multiple-choice-role="other-choice-text" aria-required="@isRequired" aria-label="@Html.Resource("OtherOption")" />
                 </li>
             
             }

@@ -33,21 +33,21 @@
 	@if ((Request.QueryString["ShowActivationMsg"] == "true") ||
 	 (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg))
     {
-        <div role="alert">
+        <div role="alert" aria-live="assertive">
             <h3>@Html.Resource("VisitYourEmail")</h3>
             <p>@string.Format(Html.Resource("ActivationLinkHasBeenSent"), Model.Email)</p>
         </div>
 
         <a href="javascript:void(0)" data-sf-role="sendAgainLink" class="btn btn-primary">
             @Html.Resource("SendAgain")
-            <span class="sr-only">Send an activation link again.</span>
+            <span class="sr-only">@Html.Resource("SendActivationLinkAgain")</span>
         </a>
 
         <div data-sf-role="confirmationResendInfo" style="display:none;">
-            <p role="alert">@string.Format(Html.Resource("ActivationLinkHasBeenSentAgain"), Model.Email)</p>
+            <p role="alert" aria-live="assertive">@string.Format(Html.Resource("ActivationLinkHasBeenSentAgain"), Model.Email)</p>
             <a href="javascript:void(0)" data-sf-role="sendAgainLink" class="btn btn-primary">
                 @Html.Resource("SendAgain")
-                <span class="sr-only">Send an activation link again.</span>
+                <span class="sr-only">@Html.Resource("SendActivationLinkAgain")</span>
             </a>
         </div>
 
@@ -56,7 +56,7 @@
     else if ((Request.QueryString["ShowSuccessfulRegistrationMsg"] == "true") ||
              (ViewBag.ShowSuccessfulRegistrationMsg is bool && ViewBag.ShowSuccessfulRegistrationMsg))
     {
-        <div role="alert">
+        <div role="alert" aria-live="assertive">
             <h3>@Html.Resource("ThankYou")</h3>
             <p>@Html.Resource("DefaultSuccessfulRegistrationMessage")</p>            
         </div>
@@ -73,7 +73,7 @@
 
                 @if (!string.IsNullOrEmpty(ViewBag.Error))
                 {
-                    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+                    <div class="alert alert-danger" role="alert" aria-live="assertive">@ViewBag.Error</div>
                 }
 
                 @Html.HiddenFor(m => m.RequiresQuestionAndAnswer)
@@ -177,7 +177,7 @@
 
         @if (hasValidationMessage)
         {
-            <div id='@Html.UniqueId(descId)' class="text-danger" role="alert">
+            <div id='@Html.UniqueId(descId)' class="text-danger" role="alert" aria-live="assertive">
                 <span class="form-text">@Html.ValidationMessageFor(expression)</span>
             </div>
         }

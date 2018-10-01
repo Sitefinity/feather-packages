@@ -26,7 +26,7 @@
     ThumbnailViewModel thumbnailViewModel = (ThumbnailViewModel)firstItem;
 }
 
-<div class="sf-Gallery sf-Gallery--strip" aria-label="Image gallery">
+<div class="sf-Gallery sf-Gallery--strip" aria-label="@Html.Resource("ImageGallery")">
 
 @if (hasItems)
 {
@@ -56,9 +56,9 @@
 	<div aria-live="polite" aria-atomic="true"><span class="js-Gallery-index"></span> of @Model.Items.Count()</div>
 
 	<div class="sf-Gallery-image js-Gallery-image">
-        <nav role="navigation" aria-label="Previous/Next Image">
-            <a class="js-Gallery-prev sf-Gallery-prev" title="Previous image"><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
-            <a class="js-Gallery-next sf-Gallery-next" title="Next image"><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
+        <nav role="navigation" aria-label="@Html.Resource("PreviousNextImage")">
+            <a class="js-Gallery-prev sf-Gallery-prev" title="@Html.Resource("GoToPreviousImage")"><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
+            <a class="js-Gallery-next sf-Gallery-next" title="@Html.Resource("GoToNextImage")"><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
         </nav>
 		<img />
 	</div>

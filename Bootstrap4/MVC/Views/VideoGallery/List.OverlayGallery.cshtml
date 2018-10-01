@@ -13,20 +13,24 @@
 <div class="sf-Gallery-thumbs-container">
     <ul class="sf-Gallery-thumbs sf-Gallery-thumbs--video list-unstyled clearfix @Model.CssClass">
     
-        @foreach (var item in Model.Items)
+        @for (int i = 0; i < Model.Items.Count(); i++)
         {
+            var item = Model.Items.ElementAt(i);
             var title = item.Fields.Title;
             var alternativeText = System.Text.RegularExpressions.Regex.Replace(title, @"[^\w\d_-]", "");
-        <li class="sf-Gallery-thumb d-inline-block">
-            <a class="video-link"
-                href="@item.Fields.MediaUrl"
-                title="@title"
-                aria-label="Open @title in modal dialog">
-                <img src="@(((VideoThumbnailViewModel)item).ThumbnailUrl)" alt="@alternativeText" 
-                    data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix)" aria-labelledby="@Html.UniqueId("VideoTitle")" />
-            </a>
-            <h3 id="@Html.UniqueId("VideoTitle")">@title</h3>
-        </li>
+            var videoTitleId = Html.UniqueId("VideoTitle") + "-" + i.ToString();
+
+            <li class="sf-Gallery-thumb d-inline-block">
+                <a class="video-link"
+                    href="@item.Fields.MediaUrl"
+                    title="@title"
+                   
+                    aria-label="@string.Format(Html.Resource("OpenInModalDialog"), title)">
+                    <img src="@(((VideoThumbnailViewModel)item).ThumbnailUrl)" alt="@alternativeText" 
+                        data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix)" aria-labelledby="@videoTitleId" />
+                </a>
+                <h3 id="@videoTitleId">@title</h3>
+            </li>
 
         }
     </ul>

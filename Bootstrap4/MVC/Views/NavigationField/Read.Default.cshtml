@@ -11,7 +11,8 @@
 }
 
 <div class="@Model.CssClass form-group" data-sf-role="navigation-field-container">
-    <ol id="sfSrProgressbar" class="sf-FormNav" tabindex="0" role="progressbar" aria-valuemin="1" aria-valuemax="@totalPages" aria-valuenow="1" aria-valuetext="Step 1 of @totalPages">
+    <input type="hidden" data-sf-role="step-of-resources" value="@Html.Resource("StepOf")" />
+    <ol data-sf-role="sr-progressbar" class="sf-FormNav" tabindex="0" role="progressbar" aria-valuemin="1" aria-valuemax="@totalPages" aria-valuenow="1" aria-valuetext="Step 1 of @totalPages">
     @{
         var pageCounter = 0;
         foreach (var page in Model.Pages)

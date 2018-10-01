@@ -1,8 +1,7 @@
-//Import Bootstrap from npm
-@import "../../../../node_modules/bootstrap/scss/bootstrap";
-@import "../../../../node_modules/magnific-popup/src/css/main";
+//Bootstrap
+@import "../../vendors/all";
 
-// Sitefinity
+//Sitefinity
 @import "../../sitefinity/sass/sitefinity";
 
 //Import .scss files here

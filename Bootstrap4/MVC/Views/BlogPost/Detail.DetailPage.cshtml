@@ -19,14 +19,6 @@
     <div @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.HtmlSanitize((string)Model.Item.Fields.Summary)</div>
 
     <div @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.HtmlSanitize((string)Model.Item.Fields.Content)</div>
-    
-    @{        
-        if (Model.EnableSocialSharing)
-        {
-            var item = Model.Item.DataItem as Telerik.Sitefinity.Model.IHasTitle;
-            @Html.SocialShareOptions(item);
-        }
-    }
 
     @Html.CommentsList(@Model.Item.DataItem)
 </div>

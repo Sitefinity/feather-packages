@@ -1,42 +1,62 @@
 .sf-Ratings {
+    position: relative;
 
-	.sf-Ratings-stars {
-		display: inline-block;
-		vertical-align: middle;
+    .sf-Ratings-stars {
+        display: inline-block;
+        vertical-align: middle;
 
-		span {
-			font-size: $ratings-stars-font-size;
-			color: $ratings-stars-color;
-			cursor: pointer;
+        span {
+            font-size: $ratings-stars-font-size;
+            color: $ratings-stars-color;
+        }
 
-			&.hover,
-			&.on {
-				color: $ratings-stars--on-color;
-			}
-		}
+        label {
+            z-index: 2;
+            cursor: pointer;
+        }
 
-		&.sf-Ratings-stars--ronly {
+        input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            height: 1px;
+            opacity: .0001;
+            position: absolute;
+            top: auto;
+            width: 1px;
+            z-index: 1;
+        }
 
-			span {
-				cursor: default;
+        .hover span {
+            color: $ratings-stars--hover-color;
+        }
 
-				&.on {
-					color: $ratings-stars--ronly-color;
-				}
-			}
-		}
-	}
+        .on span {
+            color: $ratings-stars--on-color;
+        }
 
-	.sf-Ratings-average,
-	.sf-Ratings-count, {
-		font-size: $ratings-count-font-size;
-		vertical-align: middle;
-	}
+        &.sf-Ratings-stars--ronly {
 
-	.sf-Ratings-count {
-		
-		span {
-			vertical-align: middle;
-		}
-	}
+            span {
+                cursor: default;
+
+                &.on {
+                    color: $ratings-stars--ronly-color;
+                }
+            }
+        }
+    }
+
+    .sf-Ratings-average,
+    .sf-Ratings-count, {
+        font-size: $ratings-count-font-size;
+        vertical-align: middle;
+    }
+
+    .sf-Ratings-count {
+
+        span {
+            vertical-align: middle;
+        }
+    }
 }

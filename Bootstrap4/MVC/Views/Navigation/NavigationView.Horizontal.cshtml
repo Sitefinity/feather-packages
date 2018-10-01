@@ -9,7 +9,7 @@
 <div class="@Model.CssClass">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target='#@Html.UniqueId("navbar")' aria-controls='@Html.UniqueId("navbar")' aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target='#@Html.UniqueId("navbar")' aria-controls='@Html.UniqueId("navbar")' aria-expanded="false" aria-label="@Html.Resource("ToggleNavigation")">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id='@Html.UniqueId("navbar")'>

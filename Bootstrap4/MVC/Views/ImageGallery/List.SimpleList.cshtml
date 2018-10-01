@@ -8,7 +8,7 @@
 
 @Html.Script(ScriptRef.JQuery, "top", false)
 
-<ul class="list-unstyled @Model.CssClass" aria-label="Image gallery">
+<ul class="list-unstyled @Model.CssClass" aria-label="@Html.Resource("ImageGallery")">
 
     @foreach (var item in Model.Items)
     {

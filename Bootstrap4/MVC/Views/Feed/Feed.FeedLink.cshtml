@@ -6,7 +6,7 @@
 @if ((Model.InsertionOption == FeedInsertionOption.PageOnly || Model.InsertionOption == FeedInsertionOption.PageAndAddressBar) && !string.IsNullOrEmpty(Model.Url))
 {
     <a class="d-inline-flex" href="@Model.Url" title="@Model.Tooltip" @(Model.OpenInNewWindow ? "target=_blank" : "")>
-        <svg class="sf-icon-feed sf-icon-sm">
+        <svg class="sf-icon-feed sf-icon-sm" aria-hidden="true">
             <use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#rss-square"></use>
         </svg>
         @Model.Title

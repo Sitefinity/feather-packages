@@ -14,16 +14,16 @@
                 {
                     if(ViewBag.IsFilteredbyPermission)
                     {
-                        <h1 role="alert">@Html.HtmlSanitize(Model.ResultText)</h1>
+                        <h1 role="alert" aria-live="assertive">@Html.HtmlSanitize(Model.ResultText)</h1>
                     }
                     else
                     {
-                        <h1 role="alert">@Model.Results.TotalCount @Html.HtmlSanitize(Model.ResultText)</h1>
+                        <h1 role="alert" aria-live="assertive">@Model.Results.TotalCount @Html.HtmlSanitize(Model.ResultText)</h1>
                     }
                 }
                 else
                 {
-                    <h1 role="alert">@Html.Resource("No") @Html.HtmlSanitize(Model.ResultText)</h1>
+                    <h1 role="alert" aria-live="assertive">@Html.Resource("No") @Html.HtmlSanitize(Model.ResultText)</h1>
                 }
         </div>
         <div class="col-lg-4">

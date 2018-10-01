@@ -15,41 +15,42 @@
 }
 
 <fieldset class="@Model.CssClass form-group" data-sf-role="checkboxes-field-container">
+    <legend class="h6" id='@Html.UniqueId("CheckboxGroupLabel")'>@Model.MetaField.Title</legend>
+
     <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
 	<input type="hidden" data-sf-role="required-validator" value='@Model.IsRequired.ToString()' />
 	
-        <legend class="h6" id='@Html.UniqueId("CheckboxGroupLabel")'>@Model.MetaField.Title</legend>
-        <ul class="list-inline" aria-labelledby='@Html.UniqueId("CheckboxGroupLabel")' @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("CheckboxGroupInfo")'</text> } }>
-            @foreach (var choice in Model.Choices)
-            {
-                string value = !string.IsNullOrEmpty(Model.Value as string) ? Model.Value as string : string.Empty;
-                string selectedValue = !string.IsNullOrEmpty(value) ? value : Model.MetaField.DefaultValue;
-                var selctedAttributes = !string.IsNullOrEmpty(selectedValue) && selectedValue.Contains(choice as string) ? "checked" : string.Empty;
-                <li class="list-inline-item">
-                    <label> 
-                        <input type="checkbox" name="@fieldName" value="@choice" data-sf-role="checkboxes-field-input" @selctedAttributes role="checkbox" aria-required="@isRequired" />
-                        @choice
-                    </label>
-                </li>
-            }
+    <ul class="list-inline" aria-labelledby='@Html.UniqueId("CheckboxGroupLabel")' @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("CheckboxGroupInfo")'</text> } }>
+        @foreach (var choice in Model.Choices)
+        {
+            string value = !string.IsNullOrEmpty(Model.Value as string) ? Model.Value as string : string.Empty;
+            string selectedValue = !string.IsNullOrEmpty(value) ? value : Model.MetaField.DefaultValue;
+            var selctedAttributes = !string.IsNullOrEmpty(selectedValue) && selectedValue.Contains(choice as string) ? "checked" : string.Empty;
+            <li class="list-inline-item">
+                <label> 
+                    <input type="checkbox" name="@fieldName" value="@choice" data-sf-role="checkboxes-field-input" @selctedAttributes role="checkbox" aria-required="@isRequired" />
+                    @choice
+                </label>
+            </li>
+        }
 
-            @if(Model.HasOtherChoice)
-            {
-                <li class="list-inline-item">
-                    <label>
-                        <input type="checkbox" name="@fieldName" data-sf-checkboxes-role="other-choice-checkbox" data-sf-role="checkboxes-field-input" role="checkbox" aria-required="@isRequired" />
-                        @Html.Resource("Other")
-                        <span class="sr-only">This choice will expand a text box.</span>
-                    </label>
-                    <input type="hidden" data-sf-checkboxes-role="other-choice-text" data-sf-role="checkboxes-field-input" aria-required="@isRequired" aria-label="Other option" />
-                </li>
-            }
-        </ul>
+        @if(Model.HasOtherChoice)
+        {
+            <li class="list-inline-item">
+                <label>
+                    <input type="checkbox" name="@fieldName" data-sf-checkboxes-role="other-choice-checkbox" data-sf-role="checkboxes-field-input" role="checkbox" aria-required="@isRequired" />
+                    @Html.Resource("Other")
+                    <span class="sr-only">@Html.Resource("ThisChoiceWillExpandTextbox")</span>
+                </label>
+                <input type="hidden" data-sf-checkboxes-role="other-choice-text" data-sf-role="checkboxes-field-input" aria-required="@isRequired" aria-label="@Html.Resource("OtherOption")" />
+            </li>
+        }
+    </ul>
 
-        @if (hasDescription) 
-         {
-                <p class="text-muted" id='@Html.UniqueId("CheckboxGroupInfo")'>@Model.MetaField.Description</p>
-         }
+    @if (hasDescription) 
+        {
+            <p class="text-muted" id='@Html.UniqueId("CheckboxGroupInfo")'>@Model.MetaField.Description</p>
+        }
 </fieldset>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/CheckboxesField/checkboxes-field.js"), "bottom", false)

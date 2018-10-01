@@ -24,7 +24,7 @@
 
         <div class="col-lg-5 clearfix">
             <div class="sf-Comments-filter">
-                 <p class="sr-only">Order by: </p>
+                 <p class="sr-only">@Html.Resource("OrderBy")</p>
                  <a href="#" data-sf-role="comments-sort-new-button">@Html.Resource("NewestOnTop")</a>
                  <a href="#" data-sf-role="comments-sort-old-button">@Html.Resource("OldestOnTop")</a>
             </div>
@@ -124,7 +124,7 @@
                 </div>
             }
 
-            <div data-sf-role="error-message" role="alert" class="text-danger">
+            <div data-sf-role="error-message" role="alert" aria-live="assertive" class="text-danger">
                 <span class="form-text"></span>
             </div>
 					
@@ -151,9 +151,9 @@
                 <img alt="User avatar" data-sf-role="comment-avatar" width="40" height="40" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")"/>
             </div>
             <div class="media-body sf-media-body">
-                <span class="sr-only">Comment by</span>
+                <span class="sr-only">@Html.Resource("CommentBy")</span>
                 <span data-sf-role="comment-name" class="text-muted sf-Comments-list-author"></span> 
-                <span class="sr-only">from</span>
+                <span class="sr-only">@Html.Resource("From").ToLower()</span>
                 <span data-sf-role="comment-date" class="text-muted"></span>
                
                 <div data-sf-role="comment-message"></div>

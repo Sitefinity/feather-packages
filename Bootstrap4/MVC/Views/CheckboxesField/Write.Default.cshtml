@@ -15,10 +15,11 @@
 }
 
 <fieldset class="@Model.CssClass form-group" data-sf-role="checkboxes-field-container">
+    <legend class="h6" id='@Html.UniqueId("CheckboxGroupLabel")'>@Model.MetaField.Title</legend>
+
     <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
 	<input type="hidden" data-sf-role="required-validator" value='@Model.IsRequired.ToString()' />
    
-    <legend class="h6" id='@Html.UniqueId("CheckboxGroupLabel")'>@Model.MetaField.Title</legend>
     <ul class="list-unstyled" aria-labelledby='@Html.UniqueId("CheckboxGroupLabel")' @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("CheckboxGroupInfo")'</text> } }>
         @foreach (var choice in Model.Choices)
         {
@@ -39,9 +40,9 @@
                 <label>
                     <input type="checkbox" name="@fieldName" data-sf-checkboxes-role="other-choice-checkbox" data-sf-role="checkboxes-field-input" role="checkbox" aria-required="@isRequired" />
                     @Html.Resource("Other")
-                    <span class="sr-only">This choice will expand a text box.</span>
+                    <span class="sr-only">@Html.Resource("ThisChoiceWillExpandTextbox")</span>
                 </label>
-                <input type="hidden" data-sf-checkboxes-role="other-choice-text" aria-required="@isRequired" aria-label="Other option" />
+                <input type="hidden" data-sf-checkboxes-role="other-choice-text" aria-required="@isRequired" aria-label="@Html.Resource("OtherOption")" />
             </li>
         }
     </ul>

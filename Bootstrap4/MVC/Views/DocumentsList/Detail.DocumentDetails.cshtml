@@ -10,27 +10,19 @@
     </h1>
 
     <div class="text-muted">
-        <span class="sr-only">Published on </span>
+        <span class="sr-only">@Html.Resource("PublishedOn") </span>
         @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
         @Html.Resource("By")
         @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
     </div>
 
-    <div aria-label="Document summary">
+    <div aria-label="@Html.Resource("DocumentSummary")">
         @Model.Item.Fields.Description
     </div>
 
     <div>
-        <a href="@Model.Item.Fields.MediaUrl" target="_blank">Download <span class="sr-only">@Model.Item.Fields.Title</span></a>
-        <span aria-label="Document extension">(@Model.Extension)</span>
-        <span aria-label="Document size">@(Math.Ceiling((double)Model.Item.Fields.TotalSize / 1024) + " KB")</span>
+        <a href="@Model.Item.Fields.MediaUrl" target="_blank">@Html.Resource("Download") <span class="sr-only">@Model.Item.Fields.Title</span></a>
+        <span aria-label="@Html.Resource("DocumentExtension")">(@Model.Extension)</span>
+        <span aria-label="@Html.Resource("DocumentSize")">@(Math.Ceiling((double)Model.Item.Fields.TotalSize / 1024) + " KB")</span>
     </div>    
-    
-    @{        
-        if (Model.EnableSocialSharing)
-        {
-            var item = Model.Item.DataItem as Telerik.Sitefinity.Model.IHasTitle;
-            @Html.SocialShareOptions(item);
-        }
-    }
 </div>

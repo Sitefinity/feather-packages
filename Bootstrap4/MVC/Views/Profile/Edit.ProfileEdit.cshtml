@@ -19,12 +19,12 @@
 
     @if (Model.ShowProfileChangedMsg)
     {
-        <div class="alert alert-success" role="alert">@Html.Resource("ChangesAreSaved")</div>
+        <div class="alert alert-success" role="alert" aria-live="assertive">@Html.Resource("ChangesAreSaved")</div>
     }
 
     @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
     {
-        <div class="alert alert-danger" role="alert">@ViewBag.ErrorMessage</div>
+        <div class="alert alert-danger" role="alert" aria-live="assertive">@ViewBag.ErrorMessage</div>
     }
 
     @using (Html.BeginFormSitefinity("Index", "EditProfileForm", FormMethod.Post, new Dictionary<string, object> { { "enctype", "multipart/form-data" }, { "role", "form" } }))
@@ -63,7 +63,7 @@
                     <div class="mb-4">
                         <a href="#" data-sf-role="edit-profile-change-password-button" role="button">
                             @Html.Resource("EditProfileChangePasswordButton")
-                            <span class="sr-only">This will expand a change password section</span>
+                            <span class="sr-only">@Html.Resource("WillExpandChangePasswordSection")</span>
                         </a>
                     </div>
                     <div data-sf-role="edit-profile-change-password-holder" style="display:none">
@@ -110,7 +110,7 @@
 
                 @if (SystemManager.IsPreviewMode)
                 {
-                    <div class="text-danger" role="alert" data-sf-role="profile-submit-preview-message" style="display:none">
+                    <div class="text-danger" role="alert" aria-live="assertive" data-sf-role="profile-submit-preview-message" style="display:none">
                         <span class="form-text"><span class="field-validation-error">@Html.Resource("PreviewProfileSaveMessage")</span></span>
                     </div>
                 }
@@ -173,7 +173,7 @@
 
         @if (hasValidationMessage)
         {
-            <div id='@Html.UniqueId(descId)' class="text-danger" role="alert">
+            <div id='@Html.UniqueId(descId)' class="text-danger" role="alert" aria-live="assertive">
                 <span class="form-text">@Html.ValidationMessageFor(expression)</span>
             </div>
         }

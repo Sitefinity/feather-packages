@@ -40,7 +40,7 @@
 	
 		if (ViewBag.IsSucceeded == true)
 		{
-			<div class="alert alert-success" role="alert">
+			<div class="alert alert-success" role="alert" aria-live="assertive">
 				@Html.Resource("ThankYou"). @Html.Resource("ThankYouMessage") (@ViewBag.Email)
 			</div>
 		}
@@ -48,7 +48,7 @@
 		@Html.ValidationSummary(true)
 		if(!string.IsNullOrEmpty(ViewBag.Error))
 		{
-			<div class="alert alert-warning" role="alert">
+			<div class="alert alert-warning" role="alert" aria-live="assertive">
 				@ViewBag.Error
 			</div>
 		}
@@ -83,7 +83,7 @@
 
 			@if (Html.ValidationMessageFor(m => m.Email) != null)
 			{
-				<div id='@Html.UniqueId("SubscribeFormValidatonInfo")' class="text-danger" role="alert">
+				<div id='@Html.UniqueId("SubscribeFormValidatonInfo")' class="text-danger" role="alert" aria-live="assertive">
 					<span class="form-text">@Html.ValidationMessageFor(u => u.Email)</span>
 				</div>
 			}

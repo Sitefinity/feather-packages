@@ -21,11 +21,11 @@
 					<a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix)">
 							<strong>@item.Fields.Title</strong>
 					</a>
-					<span class="text-muted" aria-label="File extension">(@(((DocumentItemViewModel)item).Extension))</span>
+					<span class="text-muted" aria-label="@Html.Resource("FileExtension")">(@(((DocumentItemViewModel)item).Extension))</span>
 
 					<div>
-						<a href="@item.Fields.MediaUrl" target="_blank">Download <span class="sr-only">@item.Fields.Title</span></a>
-						<span class="text-muted" aria-label="File size">(@(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB"))</span>
+						<a href="@item.Fields.MediaUrl" target="_blank">@Html.Resource("Download") <span class="sr-only">@item.Fields.Title</span></a>
+						<span class="text-muted" aria-label="@Html.Resource("FileSize")">(@(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB"))</span>
 					</div>
 				</div>
 			</li>

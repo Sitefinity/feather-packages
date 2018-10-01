@@ -5,7 +5,7 @@
 <div class="@Model.CssClass">
     @if (ViewBag.IsSubscribe == false)
     {
-        <h3 role="alert">@Html.Resource("UnsubscribeSuccessful")</h3>
+        <h3 role="alert" aria-live="assertive">@Html.Resource("UnsubscribeSuccessful")</h3>
     }
     <pre>@Html.HtmlSanitize(Model.Message)</pre>
 </div>

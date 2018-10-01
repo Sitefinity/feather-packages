@@ -31,7 +31,7 @@
                 
                     @if (Request.Url.Query.Contains("err=true") || Model.LoginError)
                     {            
-                        <div class="alert alert-danger" role="alert">@Html.Resource("IncorrectCredentialsMessage")</div>
+                        <div class="alert alert-danger" role="alert" aria-live="assertive">@Html.Resource("IncorrectCredentialsMessage")</div>
                     }
 
                     @FormGroupPanel("UserName", u => u.UserName, "LoginUserName", "text", null, new Dictionary<string, object>(){{"aria-required", "true"}})
@@ -146,7 +146,7 @@
 
         @if (hasValidationMessage)
         {
-            <div id='@Html.UniqueId(descId)' class="text-danger" role="alert">
+            <div id='@Html.UniqueId(descId)' class="text-danger" role="alert" aria-live="assertive">
                 <span class="form-text">@Html.ValidationMessageFor(expression)</span>
             </div>
         }

@@ -9,7 +9,7 @@
     <figure aria-labelledby="@Html.UniqueId("ImageCaption")">    
         <figcaption class="h2" id="@Html.UniqueId("ImageCaption")" @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</figcaption>        
         <div class="text-muted">
-            <span class="sr-only">Image taken on </span>
+            <span class="sr-only">@Html.Resource("ImageTakenOn") </span>
             @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
             @Html.Resource("By")
             @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
@@ -25,15 +25,15 @@
 
     @if (ViewBag.ItemIndex != null)
     {
-        <nav role="navigation" aria-label="Previous/Next" class="text-center clearfix">
+        <nav role="navigation" aria-label="@Html.Resource("PreviousNextImage")" class="text-center clearfix">
             @{
                 var previousItemIndex = ViewBag.ItemIndex == 1 ? Model.TotalItemsCount : ViewBag.ItemIndex - 1;
                 var nextItemIndex = ViewBag.ItemIndex == Model.TotalItemsCount ? 1 : ViewBag.ItemIndex + 1;
             }
 
-            @if (Model.PreviousItem != null) 
+            @if (Model.PreviousItem != null)
             {
-                <a class="sf-Gallery-prev--simple" aria-label="Go to previous image" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, previousItemIndex)">
+                <a class="sf-Gallery-prev--simple" aria-label="@Html.Resource("GoToPreviousImage")" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, previousItemIndex)">
                     @Html.Resource("PreviousImage")
                 </a>
             }
@@ -45,21 +45,13 @@
 
             @if (Model.NextItem != null) 
             {
-                <a class="sf-Gallery-next--simple" aria-label="Go to next image" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, nextItemIndex)">
+                <a class="sf-Gallery-next--simple" aria-label="@Html.Resource("GoToNextImage")" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, nextItemIndex)">
                     @Html.Resource("NextImage")
                 </a>
             }
         </nav>
 
         @Html.ActionLink(Html.Resource("BackToAllImages"), "Index")
-    }
-
-    @{        
-        if (Model.EnableSocialSharing)
-        {
-            var item = Model.Item.DataItem as Telerik.Sitefinity.Model.IHasTitle;
-            @Html.SocialShareOptions(item);
-        }
     }
 
     @Html.CommentsList(@Model.Item.DataItem)

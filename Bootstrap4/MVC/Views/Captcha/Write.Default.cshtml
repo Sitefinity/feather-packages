@@ -11,8 +11,8 @@
         <img data-sf-role="captcha-image" src='@Url.WidgetContent("assets/dist/img/dummy.jpg")'/>
         @if (Model.EnableAudioCode)
         {
-            <button class="sf-Captcha-button btn btn-default ml-4" data-sf-role="captcha-audio-btn" type="button" title="@Html.Resource("CaptchaAudioTooltip")">
-                <svg class="sf-icon-xxs">
+            <button class="sf-Captcha-button btn btn-light ml-4" data-sf-role="captcha-audio-btn" type="button" title="@Html.Resource("CaptchaAudioTooltip")" aria-label="@Html.Resource("CaptchaAudioTooltip")">
+                <svg class="sf-icon-xxs" aria-hidden="true">
                     <use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#volume-up"></use>
                 </svg>
             </button>

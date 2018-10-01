@@ -1,5 +1,7 @@
 ﻿@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.Document.DocumentViewModel
 
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
 <div class="@Model.CssClass">
     @if(!string.IsNullOrEmpty(Model.MediaUrl))
     {
@@ -15,9 +17,9 @@
           <div class="media-body" role="group">
               <div>
                 <a class="@String.Concat("sf", Model.Extension)" href="@Model.MediaUrl">@Model.Title</a> 
-                <span class="text-muted" aria-label="File extension">(@Model.Extension)</span>
+                <span class="text-muted" aria-label="@Html.Resource("FileExtension")">(@Model.Extension)</span>
               </div>
-            <span class="text-muted" aria-label="File size">@Model.FileSize KB</span>
+            <span class="text-muted" aria-label="@Html.Resource("FileSize")">@Model.FileSize KB</span>
           </div>
         </div>
     }
