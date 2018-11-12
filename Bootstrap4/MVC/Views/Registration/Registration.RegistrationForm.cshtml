@@ -9,9 +9,9 @@
 @using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Registration;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery, "top")
-@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top")
-@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", true)
 
 @{
     var hasExternalProviders = Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0;
@@ -129,7 +129,7 @@
     }
 </div>
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"), "bottom")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"), "bottom", true)
 
 @helper FormGroupPanel(string label, Expression<Func<RegistrationViewModel, string>> expression, string descId, string inputType = "text", string classValue = null, IDictionary<string, object> additionalAttributes = null)
 {

@@ -1,4 +1,4 @@
-This project has been released under the Apache License, version 2.0, the text of which is included below. This license applies ONLY to the project-specific source of each repository and does not extend to Telerik Sitefinity CMS itself, or any other 3rd party libraries used in a repository. For licensing information about Telerik Sitefinity CMS, see the [License Agreements page](http://www.sitefinity.com/purchase/license-agreement) at [Sitefinity.com](http://www.sitefinity.com/).
+This project has been released under the Apache License, version 2.0, the text of which is included below. This license applies ONLY to the project-specific source of each repository and does not extend to Progress Sitefinity CMS itself, or any other 3rd party libraries used in a repository. For licensing information about Progress Sitefinity CMS, see the [License Agreements page](https://www.progress.com/legal/license-agreements/sitefinity/license-agreement/) at [Sitefinity site](https://www.progress.com/sitefinity-cms/).
 
 Copyright © 2005-2018 Telerik EAD
 

@@ -9,9 +9,9 @@
 @using Telerik.Sitefinity.Utilities;
 @using Telerik.Sitefinity.Services;
 
-@Html.Script(ScriptRef.JQuery, "top")
-@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top")
-@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", true)
 
 <div class="@Model.CssClass">
 
@@ -125,7 +125,7 @@
 
 <input type="hidden" data-sf-role="has-password-errors" value="@hasPasswordErrors.ToString().ToLowerInvariant()" />
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Profile/profile-edit.js"), "bottom")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Profile/profile-edit.js"), "bottom", true)
 
 @helper FormGroupPanel(string label, Expression<Func<ProfileEditViewModel, string>> expression, string descId, string inputType = "text", string classValue = null, IDictionary<string, object> additionalAttributes = null)
 {

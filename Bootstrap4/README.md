@@ -176,7 +176,7 @@ In the `packages.json -> config.copyJs` section, list all your JavaScript files 
 
 **Example:** To load `project-file-1.js` open the project Razor layout file (`/ResourcePackages/Bootstrap4/MVC/Views/Layouts/default.cshtml`) and add a reference there.
 ```
-	@Html.Script(Url.Content("~/ResourcePackages/Bootstrap4/assets/dist/js/project-file-1.js"), "bottom")
+	@Html.Script(Url.Content("~/ResourcePackages/Bootstrap4/assets/dist/js/project-file-1.js"), "bottom", true)
 ```
 
 ### SVG sprites

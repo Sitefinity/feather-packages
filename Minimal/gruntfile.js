@@ -1,5 +1,6 @@
 'use strict';
 var path = require('path');
+var sass = require('node-sass');
 
 // match one level down:
 // e.g. 'bar/foo/{,*/}*.js'
@@ -58,8 +59,9 @@ module.exports = function (grunt) {
 		},
 
 		sass: {
-			options: {
-				outputStyle: 'nested'
+		    options: {
+		        implementation: sass,
+			    outputStyle: 'nested'
 			},
 			sitefinity: {
 				files: {
@@ -137,7 +139,7 @@ module.exports = function (grunt) {
 					{
 						expand: true,
 						cwd: 'assets/src/sitefinity',
-						src: ['**/*.{png,jpg,gif,jpeg}', '!images/sprite/*.*'],
+						src: ['**/*.{png,jpg,gif,jpeg}'],
 						dest: 'assets/dist'
 					}
 				]
@@ -156,17 +158,6 @@ module.exports = function (grunt) {
 			}
 		},
 
-		// Sprite generation
-		sprite:{
-			all: {
-				src: 'assets/src/sitefinity/images/sprite/*.png',
-				dest: 'assets/src/sitefinity/images/sprite.png',
-				destCss: 'assets/src/sitefinity/sass/widgets/socialShare/_sf-sprite.scss',
-				imgPath: '../images/sprite.png',
-				cssTemplate: 'assets/src/sitefinity/sass/widgets/socialShare/sf-sprite.mustache'
-			}
-		},
-
 		watch: {
 			options: {
 				spawn: false
@@ -177,7 +168,7 @@ module.exports = function (grunt) {
 			},
 			images: {
 				files: ['<%= src.path %>/**/*.{png,jpg,gif,jpeg}'],
-				tasks: ['clean:images', 'sprite', 'imagemin']
+				tasks: ['clean:images', 'imagemin']
 			},
 			js: {
 				files: ['<%= src.path %>/**/*.js'],
@@ -199,7 +190,6 @@ module.exports = function (grunt) {
 	// default task runs csslint once on startup on documentation's css
 	grunt.registerTask('default', [
 		'clean:all',
-		'newer:sprite',
 		'sass:sitefinity',
 		'sass:project',
 		'csslint:dev',

@@ -8,6 +8,8 @@
 
 <div class="@Model.CssClass">
     <nav>
+        @* @Html.Action("GetView", new { viewName = "Dropdown", model= Model}) *@
+
         <ul class="nav nav-sitemap">
             @foreach (var node in Model.Nodes)
             {

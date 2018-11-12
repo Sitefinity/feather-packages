@@ -1,9 +1,18 @@
+//Variables
+@import "settings/variables";
+
+//Mixins
+@import "tools/mixins";
+
+//Components
+//Longtext
+@import "components/longtext/longtext";
+
+//Base - elements
+@import "base/rtl";
+
 // Taxonomies (Tags, Categories)
-@import "widgets/taxonomies/_sf-flat-taxonomy";
+@import "widgets/taxonomies/sf-flat-taxonomy";
 
-//Social share
-@import "widgets/socialShare/_sf-social-share";
-//Sprite styles
-@import "widgets/socialShare/sf-sprite";
-
-
+// Document list
+@import "widgets/documentList/sf-document-list";

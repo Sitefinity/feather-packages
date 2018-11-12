@@ -40,7 +40,7 @@
                             </svg>
                             @listItem.Fields.Title
                         </a>
-                        <div @Html.InlineEditingFieldAttributes("Content", "LongText") style="display:none;" class="sf-list-content" id='@listItem.Fields.Id' class="collapse multi-collapse">
+                        <div @Html.InlineEditingFieldAttributes("Content", "LongText") style="display:none;" class="sf-list-content collapse multi-collapse" id='@listItem.Fields.Id'>
                             @Html.HtmlSanitize((string)listItem.Fields.Content)
                         </div>
                     </div>

@@ -5,15 +5,21 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script(Url.Content("~/ResourcePackages/Bootstrap4/assets/dist/js/popper.min.js"), "top", true)
+@Html.Script(Url.Content("~/ResourcePackages/Bootstrap4/assets/dist/js/bootstrap.min.js"), "top", true)
 
 <div class="@Model.CssClass">
+    <nav>
+        @* @Html.Action("GetView", new { viewName = "Dropdown", model= Model}) *@
 
-    <ul class="nav nav-pills">
-        @foreach (var node in Model.Nodes)
-        {
-            @RenderRootLevelNode(node);
-        }
-    </ul>
+        <ul class="nav nav-pills">
+            @foreach (var node in Model.Nodes)
+            {
+                @RenderRootLevelNode(node);
+            }
+        </ul>
+    </nav>
 </div>
 
 @*Here is specified the rendering for the root level*@

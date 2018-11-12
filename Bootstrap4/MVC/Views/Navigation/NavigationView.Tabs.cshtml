@@ -5,13 +5,10 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery, "top", false)
-
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"), "bottom", false)
 
 <div class="@Model.CssClass">
     <nav>
-        @*@Html.Action("GetView", new { viewName = "Dropdown", model= Model})*@
+        @* @Html.Action("GetView", new { viewName = "Dropdown", model= Model}) *@
 
         @RenderRootLevelNode(@Model.Nodes)
         @RenderSubLevelsRecursive(@Model.Nodes)

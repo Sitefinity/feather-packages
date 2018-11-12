@@ -1689,11 +1689,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control:-ms-input-placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
-
 .form-control::-ms-input-placeholder {
   color: #6c757d;
   opacity: 1;
@@ -9102,13 +9097,7 @@ video {
   margin-left: 1.5rem;
 }
 
-.sf-Gallery-next,
-.sf-Gallery-prev {
-  margin-right: 3rem;
-}
-
-.sf-Gallery-next,
-.sf-Gallery-prev, .sf-Comment-subscribe {
+.sf-Comment-subscribe {
   margin-left: 3rem;
 }
 
