@@ -30,6 +30,8 @@
      {
          <p class="text-muted">@Model.MetaField.Description</p>
      }
+
+     <div data-sf-role="error-message" role="alert" aria-live="assertive" class="text-danger"></div>
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/TextField/text-field.js"), "bottom", false)
