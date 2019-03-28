@@ -6169,41 +6169,17 @@ img.mfp-img {
 .icon-no-image:before {
   content: "\f002"; }
 
-.sf-icon-blogger {
-  background-image: url(../images/sprite.png);
-  background-position: 0px -36px;
-  width: 16px;
-  height: 16px; }
-
 .sf-icon-comment {
   background-image: url(../images/sprite.png);
-  background-position: -32px -52px;
+  background-position: 0px -20px;
   width: 17px;
   height: 15px; }
 
-.sf-icon-delicious {
-  background-image: url(../images/sprite.png);
-  background-position: 0px -20px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-digg {
-  background-image: url(../images/sprite.png);
-  background-position: -16px -20px;
-  width: 16px;
-  height: 16px; }
-
 .sf-icon-email {
   background-image: url(../images/sprite.png);
-  background-position: -49px -52px;
+  background-position: -17px -20px;
   width: 19px;
   height: 13px; }
-
-.sf-icon-facebook {
-  background-image: url(../images/sprite.png);
-  background-position: -36px -16px;
-  width: 16px;
-  height: 16px; }
 
 .sf-icon-feed {
   background-image: url(../images/sprite.png);
@@ -6211,57 +6187,9 @@ img.mfp-img {
   width: 20px;
   height: 20px; }
 
-.sf-icon-google {
-  background-image: url(../images/sprite.png);
-  background-position: -16px -36px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-linkedin {
-  background-image: url(../images/sprite.png);
-  background-position: -20px 0px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-mailto {
-  background-image: url(../images/sprite.png);
-  background-position: -52px 0px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-myspace {
-  background-image: url(../images/sprite.png);
-  background-position: -52px -16px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-reddit {
-  background-image: url(../images/sprite.png);
-  background-position: -52px -32px;
-  width: 16px;
-  height: 16px; }
-
 .sf-icon-remove {
   background-image: url(../images/sprite.png);
-  background-position: 0px -52px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-stumble-upon {
-  background-image: url(../images/sprite.png);
-  background-position: -32px -36px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-tumblr {
-  background-image: url(../images/sprite.png);
-  background-position: -36px 0px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-twitter {
-  background-image: url(../images/sprite.png);
-  background-position: -16px -52px;
+  background-position: -20px 0px;
   width: 16px;
   height: 16px; }
 
@@ -6677,41 +6605,17 @@ pre {
   content: " ";
   display: table; }
 
-.sf-icon-blogger {
-  background-image: url(../images/sprite.png);
-  background-position: 0px -36px;
-  width: 16px;
-  height: 16px; }
-
 .sf-icon-comment {
   background-image: url(../images/sprite.png);
-  background-position: -32px -52px;
+  background-position: 0px -20px;
   width: 17px;
   height: 15px; }
 
-.sf-icon-delicious {
-  background-image: url(../images/sprite.png);
-  background-position: 0px -20px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-digg {
-  background-image: url(../images/sprite.png);
-  background-position: -16px -20px;
-  width: 16px;
-  height: 16px; }
-
 .sf-icon-email {
   background-image: url(../images/sprite.png);
-  background-position: -49px -52px;
+  background-position: -17px -20px;
   width: 19px;
   height: 13px; }
-
-.sf-icon-facebook {
-  background-image: url(../images/sprite.png);
-  background-position: -36px -16px;
-  width: 16px;
-  height: 16px; }
 
 .sf-icon-feed {
   background-image: url(../images/sprite.png);
@@ -6719,57 +6623,9 @@ pre {
   width: 20px;
   height: 20px; }
 
-.sf-icon-google {
-  background-image: url(../images/sprite.png);
-  background-position: -16px -36px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-linkedin {
-  background-image: url(../images/sprite.png);
-  background-position: -20px 0px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-mailto {
-  background-image: url(../images/sprite.png);
-  background-position: -52px 0px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-myspace {
-  background-image: url(../images/sprite.png);
-  background-position: -52px -16px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-reddit {
-  background-image: url(../images/sprite.png);
-  background-position: -52px -32px;
-  width: 16px;
-  height: 16px; }
-
 .sf-icon-remove {
   background-image: url(../images/sprite.png);
-  background-position: 0px -52px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-stumble-upon {
-  background-image: url(../images/sprite.png);
-  background-position: -32px -36px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-tumblr {
-  background-image: url(../images/sprite.png);
-  background-position: -36px 0px;
-  width: 16px;
-  height: 16px; }
-
-.sf-icon-twitter {
-  background-image: url(../images/sprite.png);
-  background-position: -16px -52px;
+  background-position: -20px 0px;
   width: 16px;
   height: 16px; }
 
