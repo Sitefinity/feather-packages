@@ -1,7 +1,7 @@
 {
   "name": "Bootstrap",
   "devDependencies": {
-    "bootstrap-sass": "3.3.7",
+    "bootstrap-sass": "3.4.1",
     "grunt": "1.0.3",
     "node-sass": "4.9.2",
     "grunt-concurrent": "2.3.1",
