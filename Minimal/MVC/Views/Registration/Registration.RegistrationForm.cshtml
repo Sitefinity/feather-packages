@@ -105,11 +105,11 @@
             <div>
                 @if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode)
                 {
-                    <input type="button" value="@Html.Resource("Register")" />
+                    <input type="button" value="@Html.Resource("Register")" disabled />
                 }
                 else
                 {
-                    <input type="submit" value="@Html.Resource("Register")" />
+                    <input type="submit" value="@Html.Resource("Register")"  @(SystemManager.IsDesignMode ? "disabled" : "") />
                 }
             </div>
 
