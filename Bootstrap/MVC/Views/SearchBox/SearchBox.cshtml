@@ -15,7 +15,7 @@
     <div class="form-group">
         <input type="search" title="@Html.Resource("SearchInput")" placeholder="@Model.BackgroundHint" id="@searchTextBoxId" class="form-control" value="@(ViewBag.SearchQuery)"/>
     </div>
-    <button type="button" class="btn btn-primary" id="@(searchButtonId)">@Html.Resource("SearchLabel")</button>
+    <button type="button" class="btn btn-primary" id="@(searchButtonId)" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("SearchLabel")</button>
 	
 	<input type="hidden" data-sf-role="resultsUrl" value="@(Model.ResultsUrl)" />
     <input type="hidden" data-sf-role="indexCatalogue" value="@(Model.IndexCatalogue)" />

@@ -161,11 +161,11 @@
 
                 @if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode )
                 {
-                    <button type="button" class="btn btn-primary">@Html.Resource("Register")</button>
+                    <button type="button" class="btn btn-primary" disabled>@Html.Resource("Register")</button>
                 }
                 else
                 {
-                    <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
+                    <button type="submit" class="btn btn-primary" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("Register")</button>
                 }
 
                 <div class="sf-mt-l">
