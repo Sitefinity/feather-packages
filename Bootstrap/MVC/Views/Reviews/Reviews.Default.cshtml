@@ -2,6 +2,7 @@
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
 
 @Html.Script(ScriptRef.JQuery, "top", false)
 <div id="comments-@HttpUtility.HtmlEncode(Model.ThreadKey)" data-sf-role="comments-wrapper" class="@Model.CssClass sf-Comments sf-Reviews">
@@ -113,7 +114,7 @@
                         }
 
                         <div>
-                            <button class="btn btn-primary" data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
+                            <button class="btn btn-primary" data-sf-role="comments-new-submit-button" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("Submit")</button>
                         </div>
 
                     </div>

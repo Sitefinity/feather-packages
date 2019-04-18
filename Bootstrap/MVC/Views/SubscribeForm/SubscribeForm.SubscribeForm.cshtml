@@ -69,7 +69,7 @@
 		   
 			@Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
 
-			<button class="btn btn-primary" type="submit">@Html.Resource("ButtonSubscribe")</button>
+			<button class="btn btn-primary" type="submit" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("ButtonSubscribe")</button>
 			
 		</div>
 
