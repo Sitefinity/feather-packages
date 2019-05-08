@@ -19,7 +19,7 @@
 
         <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
 
-        <ul class="list-unstyled" aria-labelledby='@Html.UniqueId("RadioGroupLabel")' @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("RadioGroupInfo")'</text> } }>
+        <ul class="list-unstyled" aria-labelledby='@Html.UniqueId("RadioGroupLabel")' @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("RadioGroupInfo") @Html.UniqueId("RadioGroupErrorMessage")'</text> } else { <text>aria-describedby='@Html.UniqueId("RadioGroupErrorMessage")'</text> } } >
             @foreach (var choice in Model.Choices)
             {
                 string value = !string.IsNullOrEmpty(Model.Value as string) ? Model.Value as string : string.Empty;
@@ -48,10 +48,13 @@
             
             }
         </ul>
+
         @if (hasDescription) 
         {
            <p id='@Html.UniqueId("RadioGroupInfo")' class="text-muted">@Model.MetaField.Description</p>
         }
+
+        <div id='@Html.UniqueId("RadioGroupErrorMessage")' data-sf-role="error-message" role="alert" aria-live="assertive" class="text-danger"></div>
 </fieldset>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/MultipleChoiceField/multiple-choice-field.js"), "bottom", false)

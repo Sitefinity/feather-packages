@@ -22,12 +22,14 @@
         name="@Model.MetaField.FieldName"
         placeholder="@Model.PlaceholderText"
         @MvcHtmlString.Create(Model.ValidationAttributes)
-        @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("ParagraphInfo")'</text> } }>@Model.Value</textarea>
+        @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("ParagraphInfo") @Html.UniqueId("ParagraphErrorMessage")'</text> } else { <text>aria-describedby='@Html.UniqueId("ParagraphErrorMessage")'</text> } } >@Model.Value</textarea>
   
      @if (hasDescription)
      {
          <p class="text-muted" id='@Html.UniqueId("ParagraphInfo")'>@Model.MetaField.Description</p>
      }
+
+    <div id='@Html.UniqueId("ParagraphErrorMessage")' data-sf-role="error-message" role="alert" aria-live="assertive" class="text-danger"></div>
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/ParagraphTextField/paragraph-text-field.js"), "bottom", false)

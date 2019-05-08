@@ -20,7 +20,7 @@
     <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
 	<input type="hidden" data-sf-role="required-validator" value='@Model.IsRequired.ToString()' />
 	
-    <ul class="list-inline" aria-labelledby='@Html.UniqueId("CheckboxGroupLabel")' @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("CheckboxGroupInfo")'</text> } }>
+    <ul class="list-inline" aria-labelledby='@Html.UniqueId("CheckboxGroupLabel")' @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("CheckboxGroupInfo") @Html.UniqueId("CheckboxGroupErrorMessage")'</text> } else { <text>aria-describedby='@Html.UniqueId("CheckboxGroupErrorMessage")'</text> } } >
         @foreach (var choice in Model.Choices)
         {
             string value = !string.IsNullOrEmpty(Model.Value as string) ? Model.Value as string : string.Empty;
@@ -48,9 +48,11 @@
     </ul>
 
     @if (hasDescription) 
-        {
-            <p class="text-muted" id='@Html.UniqueId("CheckboxGroupInfo")'>@Model.MetaField.Description</p>
-        }
+    {
+        <p class="text-muted" id='@Html.UniqueId("CheckboxGroupInfo")'>@Model.MetaField.Description</p>
+    }
+
+    <div id='@Html.UniqueId("CheckboxGroupMessage")' data-sf-role="error-message" role="alert" aria-live="assertive" class="text-danger"></div>
 </fieldset>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/CheckboxesField/checkboxes-field.js"), "bottom", false)

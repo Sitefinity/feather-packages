@@ -24,7 +24,7 @@
         @MvcHtmlString.Create(Model.ValidationAttributes)
         class="form-control"
         aria-required="@isRequired"
-        @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("DropdownInfo")'</text> } }>
+        @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("DropdownInfo") @Html.UniqueId("DropdownErrorMessage")'</text> } else { <text>aria-describedby='@Html.UniqueId("DropdownErrorMessage")'</text> } } >
         @foreach (var choice in Model.Choices)
         {
             string value = !string.IsNullOrEmpty(Model.Value as string) ? Model.Value as string : string.Empty;
@@ -41,7 +41,9 @@
     @if (hasDescription) 
     { 
         <p class="text-muted" id='@Html.UniqueId("DropdownInfo")'>@Model.MetaField.Description</p>
-    } 
+    }
+
+    <div id='@Html.UniqueId("DropdownErrorMessage")' data-sf-role="error-message" role="alert" aria-live="assertive" class="text-danger"></div>
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/DropdownListField/dropdown-list-field.js"), "bottom", false)
