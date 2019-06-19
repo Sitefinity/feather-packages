@@ -8,13 +8,13 @@
     "copyfiles": "2.1.0",
     "cross-conf-env": "1.1.2",
     "cross-env": "5.2.0",
-    "imagemin-cli": "3.0.0",
+    "imagemin-cli": "4.0.1",
     "magnific-popup": "1.1.0",
-    "node-sass": "4.9.3",
+    "node-sass": "4.12.0",
     "npm-run-all": "4.1.5",
-    "onchange": "4.1.0",
+    "onchange": "6.0.0",
     "popper.js": "1.14.4",
-    "postcss-cli": "6.0.0",
+    "postcss-cli": "6.1.2",
     "rimraf": "2.6.2"
   },
   "config": {
