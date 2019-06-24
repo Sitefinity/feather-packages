@@ -13,6 +13,8 @@ This repository contains front-end packages for [Project Feather](http://project
 
 # Sitefinity  compatibility
 
+Since Sitefinity 10.2.6602.0 this project is included along with the standard Sitefinity distribution.
+
 | Feather version | Sitefinity version |
 |----|----|
 | v.1.9.800.0 - latest | 10.0.6400.0 to 10.0.9999 |
