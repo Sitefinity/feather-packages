@@ -7,17 +7,19 @@
 @using Telerik.Sitefinity.Services;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery, "top")
-@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top")
-@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script(ScriptRef.JQueryValidate, "top", false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/JQueryValidate/jquery.validate.unobtrusive.min.js"), "top", false)
 
 @{
+    HtmlHelper.ClientValidationEnabled = true;
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
     var isTwoCols = (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0) ? "col-md-6" : "";
 }
 
 <div class="@Model.CssClass row sf-m-xxs">
-	@if ((Request.QueryString["ShowActivationMsg"] == "true") ||
-	 (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg))
+    @if ((Request.QueryString["ShowActivationMsg"] == "true") ||
+     (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg))
     {
         <h3>
             @Html.Resource("VisitYourEmail")
@@ -44,19 +46,19 @@
     {
         using (Html.BeginFormSitefinity(true))
         {
-          @Html.ValidationSummary(true);
-          <div class="@isTwoCols">
-               <h3 class="sf-mb-xl">@Html.Resource("Registration")</h3>
-               @if (!string.IsNullOrEmpty(ViewBag.Error))
-               {
+            @Html.ValidationSummary(true);
+            <div class="@isTwoCols">
+                <h3 class="sf-mb-xl">@Html.Resource("Registration")</h3>
+                @if (!string.IsNullOrEmpty(ViewBag.Error))
+                {
                     <div class="alert alert-danger">
                         @ViewBag.Error
                     </div>
-               }
-                
-			   @Html.HiddenFor(m => m.RequiresQuestionAndAnswer)
-				
-               <div class="form-group">
+                }
+
+                @Html.HiddenFor(m => m.RequiresQuestionAndAnswer)
+
+                <div class="form-group">
                     <label>
                         @Html.Resource("FirstName")
                     </label>
@@ -64,7 +66,7 @@
                     @Html.TextBox("Profile[FirstName]", null, new { @class = "form-control" })
 
                 </div>
-            
+
                 <div class="form-group">
                     <label>
                         @Html.Resource("LastName")
@@ -73,23 +75,23 @@
                     @Html.TextBox("Profile[LastName]", null, new { @class = "form-control" })
 
                 </div>
-            
+
                 <div class="form-group">
                     <label>
                         @Html.Resource("Email")
                     </label>
 
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
-                          
+
                     @if (Html.ValidationMessageFor(m => m.Email) != null)
                     {
                         <div class="has-error">
                             <span class="help-block">@Html.ValidationMessageFor(m => m.Email)</span>
                         </div>
-                    } 
+                    }
 
                 </div>
-       
+
                 <div class="form-group">
                     <label>
                         @Html.Resource("Password")
@@ -102,68 +104,68 @@
                         <div class="has-error">
                             <span class="help-block"> @Html.ValidationMessageFor(m => m.Password)</span>
                         </div>
-                    } 
+                    }
 
                 </div>
-            
-               <div class="form-group">
+
+                <div class="form-group">
                     <label>
                         @Html.Resource("ReTypePassword")
                     </label>
 
                     @Html.PasswordFor(m => m.ReTypePassword, new { @class = "form-control" })
-                            
+
                     @if (Html.ValidationMessageFor(m => m.ReTypePassword) != null)
                     {
                         <div class="has-error">
                             <span class="help-block">@Html.ValidationMessageFor(m => m.ReTypePassword)</span>
                         </div>
-                    } 
+                    }
 
                 </div>
-    			
-    			@if (Model.RequiresQuestionAndAnswer)
+
+                @if (Model.RequiresQuestionAndAnswer)
                 {
-    				
-    				<div class="form-group">
-    					<label>
-    						@Html.Resource("Question")
-    					</label>
 
-    					@Html.TextBoxFor(m => m.Question, new { @class = "form-control" })
+                    <div class="form-group">
+                        <label>
+                            @Html.Resource("Question")
+                        </label>
 
-    					@if (Html.ValidationMessageFor(m => m.Question) != null)
-    					{
-    						<div class="has-error">
-    							<span class="help-block"> @Html.ValidationMessageFor(m => m.Question)</span>
-    						</div>
-    					} 
-    				</div>
-    				
-    				<div class="form-group">
-    					<label>
-    						@Html.Resource("Answer")
-    					</label>
+                        @Html.TextBoxFor(m => m.Question, new { @class = "form-control" })
 
-    					@Html.TextBoxFor(m => m.Answer, new { @class = "form-control" })
+                        @if (Html.ValidationMessageFor(m => m.Question) != null)
+                        {
+                            <div class="has-error">
+                                <span class="help-block"> @Html.ValidationMessageFor(m => m.Question)</span>
+                            </div>
+                        }
+                    </div>
 
-    					@if (Html.ValidationMessageFor(m => m.Answer) != null)
-    					{
-    						<div class="has-error">
-    							<span class="help-block"> @Html.ValidationMessageFor(m => m.Answer)</span>
-    						</div>
-    					}
-    				</div>
+                    <div class="form-group">
+                        <label>
+                            @Html.Resource("Answer")
+                        </label>
+
+                        @Html.TextBoxFor(m => m.Answer, new { @class = "form-control" })
+
+                        @if (Html.ValidationMessageFor(m => m.Answer) != null)
+                        {
+                            <div class="has-error">
+                                <span class="help-block"> @Html.ValidationMessageFor(m => m.Answer)</span>
+                            </div>
+                        }
+                    </div>
                 }
 
 
                 @if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode )
                 {
-                    <button type="button" class="btn btn-primary">@Html.Resource("Register")</button>
+                    <button type="button" class="btn btn-primary" disabled>@Html.Resource("Register")</button>
                 }
                 else
                 {
-                    <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
+                    <button type="submit" class="btn btn-primary" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("Register")</button>
                 }
 
                 <div class="sf-mt-l">
@@ -171,22 +173,22 @@
                     <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
                 </div>
             </div>
-			
-			if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
-            {
-            <div class="col-md-6">    
-                <h3 class="sf-mb-xl">@Html.Resource("ConnectWith")</h3>
 
-                @foreach (var provider in Model.ExternalProviders)
-                {
-                    var classToBeAdd = "btn btn-default btn-lg btn-block " + @provider.Value;                 
-                    <div class="sf-mb-xs">
-                        @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = classToBeAdd })
-                    </div>
-                }
-            </div>
+            if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
+            {
+                <div class="col-md-6">
+                    <h3 class="sf-mb-xl">@Html.Resource("ConnectWith")</h3>
+
+                    @foreach (var provider in Model.ExternalProviders)
+                    {
+                        var classToBeAdd = "btn btn-default btn-lg btn-block " + @provider.Value;
+                        <div class="sf-mb-xs">
+                            @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = classToBeAdd })
+                        </div>
+                    }
+                </div>
             }
         }
     }
 </div>
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"), "bottom")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"), "bottom", true)

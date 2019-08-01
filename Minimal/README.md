@@ -140,7 +140,7 @@ In `jsfiles.json` define the order in which the project's js files will be conca
 
 **Example:** To load `project.min.js` open the project Razor layout file (`MVC/Views/Layouts/default.cshtml`) and add a reference there.
 ```
-	@Html.Script(Url.Content"\~/ResourcePackages/Minimal/assets/dist/js/project.min.js"), "bottom")
+	@Html.Script(Url.Content"\~/ResourcePackages/Minimal/assets/dist/js/project.min.js"), "bottom", true)
 ```
 
 ## Upgrade recommendations

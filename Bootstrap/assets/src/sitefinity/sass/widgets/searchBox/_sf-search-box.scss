@@ -5,12 +5,12 @@ ul.sf-autocomplete {
 	border: $autocomplete-border-width solid $autocomplete-border-color;
 	list-style: none;
 
-	a {
+	.ui-menu-item-wrapper {
 		padding: 3px;
 		display: block;
 		color: $autocomplete-anchor-color;
 
-		&.ui-state-focus {
+		&.ui-state-active {
 			background-color: $autocomplete-anchor-focus-background;
 		}
 
@@ -19,4 +19,15 @@ ul.sf-autocomplete {
 			text-decoration: none;
 		}
 	}
+}
+/* Needed by jQueryUI Autocomplete widget for search box to improve autocomplete suggestions accessibility */
+.ui-helper-hidden-accessible{
+    border:0;
+    clip:rect(0 0 0 0);
+    height:1px;
+    margin:-1px;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    width:1px
 }
