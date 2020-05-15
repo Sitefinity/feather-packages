@@ -4,9 +4,6 @@
 @using Telerik.Sitefinity.Frontend.Navigation.Mvc.Models;
 @using Telerik.Sitefinity.Modules.Pages;
 
-@*Add scripts and stylesheets*@
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"), "bottom", true)
-
 <select class="nav-select form-control">
     @foreach (var node in Model.Nodes)
     {
@@ -45,3 +42,6 @@
         @Html.Raw("active");
     }
 }
+
+@*Add scripts and stylesheets*@
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"), "bottom", throwException: true, tryUseScriptManager: false)

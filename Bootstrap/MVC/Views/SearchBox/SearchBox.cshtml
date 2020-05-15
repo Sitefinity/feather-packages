@@ -24,6 +24,7 @@
 <input type="hidden" data-sf-role="minSuggestionLength" value="@(Model.MinSuggestionLength)" />
 <input type="hidden" data-sf-role="suggestionFields" value="@(Model.SuggestionFields)" />
 <input type="hidden" data-sf-role="language" value="@(Model.Language)" />
+<input type="hidden" data-sf-role="siteId" value="@(SystemManager.CurrentContext.CurrentSite.Id)" />
 <input type="hidden" data-sf-role="suggestionsRoute" value="@(Model.SuggestionsRoute)" />
 <input type="hidden" data-sf-role="searchTextBoxId" value='@("#" + searchTextBoxId.ToString())' />
 <input type="hidden" data-sf-role="searchButtonId" value='@("#" + searchButtonId.ToString())' />
