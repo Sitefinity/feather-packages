@@ -1,0 +1,27 @@
+@model Telerik.Sitefinity.Frontend.Card.Mvc.Models.Card.CardViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+<div class="@Model.CssClass">
+
+        @if (!string.IsNullOrEmpty(Model.SelectedSizeUrl))
+        {
+            <img src="@Model.SelectedSizeUrl" title="@Model.ImageTitle" alt="@Model.ImageAlternativeText"/>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.Heading))
+        {
+            <h3>@Html.HtmlSanitize(Model.Heading)</h3>
+        }
+        @if (!string.IsNullOrEmpty(Model.Description))
+        {
+            <div>@Html.HtmlSanitize(Model.Description)</div>
+        }
+        @if (!string.IsNullOrEmpty(Model.ActionName))
+        {
+            <a href="@Html.UrlSanitize(Model.ActionUrl)">
+                <span>@Model.ActionName</span>
+            </a>
+        }
+
+</div>
