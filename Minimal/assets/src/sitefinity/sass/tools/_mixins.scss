@@ -1,8 +1,8 @@
 ﻿//Right-to-left support
 
-@mixin rtl-cultures {
+@mixin sf-rtl-cultures {
 
-  @each $culture in $rtl-cultures {
+  @each $culture in $sf-rtl-cultures {
       [lang^="#{$culture}"] {
           @content
       }

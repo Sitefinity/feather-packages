@@ -11393,6 +11393,10 @@ div.k-scheduler-toolbar {
   line-height: 32px;
 }
 
+div.k-scheduler-toolbar .k-button-icon {
+  height: 32px;
+}
+
 table.k-scheduler-monthview .k-scheduler-table td {
   height: 90px;
 }

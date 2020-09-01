@@ -1,8 +1,8 @@
 //Rtl support
 
-@if $has-rtl-support {
+@if $sf-has-rtl-support {
 
-  @include rtl-cultures {
+  @include sf-rtl-cultures {
     
       .sf-document-size,
       .sf-document-extension {

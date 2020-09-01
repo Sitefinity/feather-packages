@@ -8,6 +8,9 @@ div.k-scheduler-header-wrap {
 div.k-scheduler-toolbar {
 	line-height: $event-toolbar-line-height;
 }
+div.k-scheduler-toolbar .k-button-icon {
+	height: $event-toolbar-line-height;
+}
 table.k-scheduler-monthview .k-scheduler-table td {
     height: 90px;
 }
