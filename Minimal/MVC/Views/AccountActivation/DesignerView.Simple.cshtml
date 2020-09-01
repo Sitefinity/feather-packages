@@ -1,0 +1,34 @@
+﻿@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+<form>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-6">
+                <label for="templateName">@Html.Resource("Template")</label>
+                <select id="templateName" ng-model="properties.TemplateName.PropertyValue" class="form-control">
+                    @foreach (var viewName in Html.GetViewNames("AccountActivation", @"AccountActivation\.(?<viewName>\w*)$"))
+                    {
+                        <option value="@viewName"> @viewName.SplitCamelCase()</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>@Html.Resource("ProfilePage")</label>
+        <p class="description-note">@Html.Resource("ProfilePageInfo")</p>
+        <sf-list-selector
+            sf-page-selector
+            sf-selected-item-id="properties.ProfilePageId.PropertyValue"></sf-list-selector>
+    </div>
+
+    <expander expander-title='@Html.Resource("MoreOptions")'>
+        <style-dropdown selected-class="properties.CssClass.PropertyValue" view-name="properties.TemplateName.PropertyValue"></style-dropdown>
+
+        <div class="form-group">
+            <label for="accountActivationCssClass">@Html.Resource("CssClasses")</label>
+            <input type="text" id="accountActivationCssClass" ng-model="properties.CssClass.PropertyValue" class="form-control" />
+        </div>
+    </expander>
+</form>
