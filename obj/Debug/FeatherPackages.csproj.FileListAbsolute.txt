@@ -1,0 +1,5 @@
+C:\CMS\OfficialReleases\Release_13_3\FeatherPackages\bin\Debug\FeatherPackages.dll
+C:\CMS\OfficialReleases\Release_13_3\FeatherPackages\bin\Debug\FeatherPackages.pdb
+C:\CMS\OfficialReleases\Release_13_3\FeatherPackages\obj\Debug\FeatherPackages.csproj.CoreCompileInputs.cache
+C:\CMS\OfficialReleases\Release_13_3\FeatherPackages\obj\Debug\FeatherPackages.dll
+C:\CMS\OfficialReleases\Release_13_3\FeatherPackages\obj\Debug\FeatherPackages.pdb

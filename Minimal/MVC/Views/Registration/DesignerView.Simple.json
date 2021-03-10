@@ -1,0 +1,8 @@
+﻿{
+	"priority": 1,
+	"scripts": [
+	  "client-components/selectors/common/sf-provider-service.js",
+      "client-components/selectors/common/sf-provider-selector.js"
+	],
+	"components" : ["sf-role-selector", "sf-page-selector", "sf-expander", "sf-style-dropdown"]
+}

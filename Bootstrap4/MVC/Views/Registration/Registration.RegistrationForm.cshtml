@@ -6,6 +6,7 @@
 @using Telerik.Sitefinity.UI.MVC;
 @using Telerik.Sitefinity.Utilities;
 @using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Frontend.Identity.Mvc.Helpers;
 @using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Registration;
 @using Telerik.Sitefinity.Web;
 
@@ -28,6 +29,9 @@
     {
         Model.Profile["LastName"] = "";
     }
+
+    HtmlHelper.ClientValidationEnabled = true;
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
 }
 
 <div class="@Model.CssClass">
@@ -46,10 +50,6 @@
 
         <div data-sf-role="confirmationResendInfo" style="display:none;">
             <p role="alert" aria-live="assertive">@string.Format(Html.Resource("ActivationLinkHasBeenSentAgain"), Model.Email)</p>
-            <a href="javascript:void(0)" data-sf-role="sendAgainLink" class="btn btn-primary">
-                @Html.Resource("SendAgain")
-                <span class="sr-only">@Html.Resource("SendActivationLinkAgain")</span>
-            </a>
         </div>
 
         <input type="hidden" data-sf-role="sf-resend-confirmation-endpoint-url" value="@Url.Action("ResendConfirmationEmail", new { email = Model.Email})" />
@@ -81,9 +81,9 @@
 
                     @Html.HiddenFor(m => m.RequiresQuestionAndAnswer)
 
-                    @FormGroupPanel("FirstName", m => m.Profile["FirstName"], "RegistrationFirstName")
+                    @FormGroupPanel("FirstName", m => m.Profile["FirstName"], "RegistrationFirstName", "text", null,  HtmlHelper.ClientValidationEnabled ? RegistrationHelper.GetProfileValidationAttributes("FirstName") : null)
 
-                    @FormGroupPanel("LastName", m => m.Profile["LastName"], "RegistrationLastName")
+                    @FormGroupPanel("LastName", m => m.Profile["LastName"], "RegistrationLastName", "text", null, HtmlHelper.ClientValidationEnabled ? RegistrationHelper.GetProfileValidationAttributes("LastName") : null)
 
                     @FormGroupPanel("Email", m => m.Email, "RegistrationEmail", "text", null, new Dictionary<string, object>() { { "type", "email" } })
 

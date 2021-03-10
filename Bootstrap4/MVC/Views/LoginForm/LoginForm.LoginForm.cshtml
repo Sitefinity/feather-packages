@@ -6,6 +6,7 @@
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Services;
 @using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.LoginForm;
+@using Telerik.Sitefinity.Web;
 
 @*Add scripts and stylesheets*@
 @Html.Script(ScriptRef.JQuery, "top", true)
@@ -26,15 +27,15 @@
         <div class="@rowClass">
             <div class="@colClass">
                 <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
-                
-                @if (Request.Url.Query.Contains("err=true") || Model.LoginError)
-                {            
-                    <div class="alert alert-danger" role="alert" aria-live="assertive">@Html.Resource("IncorrectCredentialsMessage")</div>
+
+                @if ((!string.IsNullOrEmpty(Request.QueryStringGet("err")) && ViewBag.ControllerId.Equals(Request.QueryStringGet("sf_login_cntrl_id"))) || Model.LoginError)
+                {
+                <div class="alert alert-danger" role="alert" aria-live="assertive">@Html.Resource("IncorrectCredentialsMessage")</div>
                 }
 
-                @FormGroupPanel("UserName", u => u.UserName, "LoginUserName", "text", null, new Dictionary<string, object>(){{"aria-required", "true"}})
+                @FormGroupPanel("UserName", u => u.UserName, "LoginUserName", "text", null, new Dictionary<string, object>() { { "aria-required", "true" } })
 
-                @FormGroupPanel("Password", u => u.Password, "LoginPassword", "password", null, new Dictionary<string, object>(){{"aria-required", "true"}})
+                @FormGroupPanel("Password", u => u.Password, "LoginPassword", "password", null, new Dictionary<string, object>() { { "aria-required", "true" } })
 
                 @if (Model.ShowRememberMe || Model.ShowForgotPasswordLink)
                 {
@@ -43,34 +44,34 @@
                     <div class="form-group row">
                         @if (Model.ShowRememberMe)
                         {
-                        <div class="checkbox col-lg-6 m-0">
-                            <label>
-                                @Html.CheckBoxFor(u => u.RememberMe)
-                                @Html.Resource("RememberMe")
-                            </label>
-                        </div>
+                            <div class="checkbox col-lg-6 m-0">
+                                <label>
+                                    @Html.CheckBoxFor(u => u.RememberMe)
+                                    @Html.Resource("RememberMe")
+                                </label>
+                            </div>
                         }
-                        @if (Model.ShowForgotPasswordLink)
-                        {
+                    @if (Model.ShowForgotPasswordLink)
+                    {
                         <div class="text-lg-right pr-4 @isPulledRight">
                             @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
                         </div>
-                        }
-                    </div>
+                    }
+                    </div>                
                 }
-                
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("LoginFormLogInButton")</button>
                 </div>
 
                 @if (Model.ShowRegistrationLink)
                 {
-                    <div class="sf-registration-link">
-                        <div>@Html.Resource("NotRegisteredYet")</div>
-                        <a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a>
-                    </div>
-                }
+            <div class="sf-registration-link">
+                <div>@Html.Resource("NotRegisteredYet")</div>
+                <a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a>
             </div>
+            }
+        </div>
             
             @if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
             {
