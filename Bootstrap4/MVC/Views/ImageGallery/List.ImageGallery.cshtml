@@ -21,7 +21,7 @@
             <a class="text-center"
                href="@detailPageUrl"
                title="Go to image @item.Fields.Title details">
-                <img src="@(thumbnailViewModel.ThumbnailUrl)" alt='@System.Text.RegularExpressions.Regex.Replace(item.Fields.AlternativeText, @"[^\w\d_-]", "")'
+                <img loading="lazy" src="@(thumbnailViewModel.ThumbnailUrl)" alt='@System.Text.RegularExpressions.Regex.Replace(item.Fields.AlternativeText, @"[^\w\d_-]", "")'
                      @Html.GetWidthAttributeIfExists(thumbnailViewModel.Width)
                      @Html.GetHeightAttributeIfExists(thumbnailViewModel.Height) />
             </a>

@@ -23,7 +23,7 @@
                href="@(thumbnailViewModel.MediaUrl)"
                title="@item.Fields.Title"
                aria-label="@string.Format(Html.Resource("OpenInModalDialog"), item.Fields.Title)">
-                <img src="@(thumbnailViewModel.ThumbnailUrl)"
+                <img loading="lazy" src="@(thumbnailViewModel.ThumbnailUrl)"
                      data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex)"
                      alt="@item.Fields.AlternativeText"
                      @Html.GetWidthAttributeIfExists(thumbnailViewModel.Width)
