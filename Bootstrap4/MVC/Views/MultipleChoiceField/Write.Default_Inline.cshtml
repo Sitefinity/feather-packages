@@ -13,7 +13,7 @@
 }
 <fieldset class="@Model.CssClass form-group" data-sf-role="multiple-choice-field-container">
     <legend class="h6" id='@Html.UniqueId("RadioGroupLabel")'>@Model.MetaField.Title</legend>
-    <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
+    <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage", "maxLength":"@Model.MaxLengthViolationMessage"}' />
     <ul class="list-inline" aria-labelledby='@Html.UniqueId("RadioGroupLabel")' @{if (hasDescription) { <text> aria-describedby='@Html.UniqueId("RadioGroupInfo") @Html.UniqueId("RadioGroupErrorMessage")' </text>  } else { <text> aria-describedby='@Html.UniqueId("RadioGroupErrorMessage")' </text>  } }>
         @foreach (var choice in Model.Choices)
         {
@@ -24,7 +24,14 @@
             var selctedAttributes = isSelected ? "checked" : string.Empty;
             <li class="list-inline-item">
                 <label>
-                    <input type="radio" name="@fieldName" value="@choice" data-sf-role="multiple-choice-field-input" @selctedAttributes @requiredAttributes role="radio" aria-required="@isRequired" />
+                    @{
+                        var val = choice;
+                        if (val.Length > 255)
+                        {
+                            val = val.Substring(0, 255);
+                        }
+                    }
+                    <input type="radio" name="@fieldName" value="@val" data-sf-role="multiple-choice-field-input" @selctedAttributes @requiredAttributes role="radio" aria-required="@isRequired" />
                     @choice
                 </label>
             </li>

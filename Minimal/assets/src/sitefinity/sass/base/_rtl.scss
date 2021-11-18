@@ -1,9 +1,9 @@
 //Right-to-left support
 
-@mixin rtl-cultures {
+@mixin sf-rtl-cultures {
     $available-rtl-cultures: ();
     
-    @each $culture in $rtl-cultures {
+    @each $culture in $sf-rtl-cultures {
         $available-rtl-cultures: join($available-rtl-cultures, '[lang^="#{$culture}"]', "comma");
     }
 
@@ -12,7 +12,7 @@
     }
 }
 
-@include rtl-cultures  {
+@include sf-rtl-cultures  {
     &:not(.sfPageEditorWrp) {
         direction: rtl;
     }

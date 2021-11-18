@@ -18,7 +18,7 @@
         @Html.CommentsCount(string.Empty, @Model.Item.DataItem)
         
         <p id="@Html.UniqueId("ImageDescription")" @Html.InlineEditingFieldAttributes("Description", "LongText")>@Html.HtmlSanitize((string)Model.Item.Fields.Description)</p>
-        <img aria-describedby="@Html.UniqueId("ImageDescription")" src="@Html.Raw(Model.MediaUrl)" alt='@System.Text.RegularExpressions.Regex.Replace(Model.Item.Fields.AlternativeText, @"[^\w\d_-]", "")'
+        <img loading="lazy" aria-describedby="@Html.UniqueId("ImageDescription")" src="@Html.Raw(Model.MediaUrl)" alt='@System.Text.RegularExpressions.Regex.Replace(Model.Item.Fields.AlternativeText, @"[^\w\d_-]", "")'
              @Html.GetWidthAttributeIfExists(Model.Width)
              @Html.GetHeightAttributeIfExists(Model.Height) />
     </figure>
