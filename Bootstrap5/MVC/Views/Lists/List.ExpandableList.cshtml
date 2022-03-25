@@ -1,0 +1,62 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Frontend.Lists.Mvc.Models;
+
+<div class="@Model.CssClass" data-sf-role="lists">
+
+    <div class="clearfix">
+
+        <div class="float-end">
+            <button data-sf-role="expandAll" type="button" class="btn btn-link">@Html.Resource("ExpandAll")</button>
+            <button data-sf-role="collapseAll" type="button" class="btn btn-link" style="display:none;">@Html.Resource("CollapseAll")</button>
+        </div>
+
+        <div>
+            @foreach (var item in Model.Items)
+            {
+                <h3 @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id) @Html.InlineEditingFieldAttributes("Title", "ShortText")>
+                    @item.Fields.Title
+                </h3>
+                <div class="mb-4">
+                    @foreach (var listItem in ((ListViewModel)item).ListItemViewModel.Items)
+                    {
+                        <div @Html.InlineEditingAttributes(Model.ProviderName, ((ListViewModel)item).ListItemViewModel.ContentType.FullName, (Guid)listItem.Fields.Id)>
+                            <a href="javascript:void(0)"
+                               @Html.InlineEditingFieldAttributes("Title", "ShortText")
+                               data-sf-role="toggleLink"
+                               role="button"
+                               data-toggle="collapse"
+                               data-target="#@listItem.Fields.Id"
+                               aria-expanded="false"
+                               aria-controls="@listItem.Fields.Id">
+                                <svg class="svg-inline--fa fa-w-16" aria-hidden="true">
+                                    <use class="fa-secondary" data-sf-toggle="collapsed" xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#@GetAngleDirection()"></use>
+                                    <use class="fa-secondary" data-sf-toggle="expanded" xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#angle-down" style="display:none"></use>
+                                </svg>
+                                @listItem.Fields.Title
+                            </a>
+                            <div @Html.InlineEditingFieldAttributes("Content", "LongText") style="display:none;" class="ms-4 collapse multi-collapse" id='@listItem.Fields.Id'>
+                                @Html.HtmlSanitize((string)listItem.Fields.Content)
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@*Resolves the angle direction depending on language direction*@
+@helper GetAngleDirection()
+{
+    if (Html.RenderDirAttribute().ToString() != "dir=\"rtl\"")
+    {
+        @Html.HtmlSanitize("angle-right");
+    }
+    else
+    {
+        @Html.HtmlSanitize("angle-left");
+    }
+}
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Lists/lists.js"), "bottom", false)

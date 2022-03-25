@@ -20,9 +20,14 @@
 
         if (Model.UseAjaxSubmit)
         {
-            <span data-sf-role="success-message" style="display: none;">@Model.SuccessMessage</span>
-            <div data-sf-role="general-error-message" class="alert alert-danger my-3" style="display: none;"></div>
-            <img data-sf-role="loading-img" src='@Url.EmbeddedResource("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Themes.Light.Images.Loadings.sfLoadingData.gif")' alt="Loading animation" style="display:none;" />
+            <div data-sf-role="success-message" class="alert alert-success my-3" style="display: none;">@Model.SuccessMessage</div>
+            <div data-sf-role="error-message" class="alert alert-danger my-3" style="display: none;"></div>
+            <div data-sf-role="loading-img" style="display:none;">
+                <div class="spinner-border text-primary my-3" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
             <div data-sf-role="fields-container">
                 @* Fields Markup *@
                 @Html.AddSitefinityAntiforgeryToken()
@@ -42,7 +47,7 @@
             <input type="hidden" data-sf-role="ajax-submit-url" value="@Model.AjaxSubmitUrl" />
             <input type="hidden" data-sf-role="redirect-url" value="@Model.RedirectUrl" />
             <input type="hidden" data-sf-role="widget-id" value="@ViewBag.WidgetId" name="WidgetId" />
-            @Html.Script(ScriptRef.JQuery, "top", false)
+            @Html.Script(ScriptRef.JQuery, "jquery", false)
             @Html.Script(Url.WidgetContent("Mvc/Scripts/Form/form.all.js"), "bottom", false)
         }
     }

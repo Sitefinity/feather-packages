@@ -1,0 +1,46 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@Html.Script(ScriptRef.JQuery, "jquery", false)
+
+@Html.StyleSheet(Url.WidgetContent("assets/magnific/magnific-popup.css"), "head", false)
+@Html.Script(Url.WidgetContent("assets/magnific/jquery.magnific-popup.min.js"), "plugins", false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/overlay-gallery.js"), "bottom", false)
+
+<div class="">
+  <ul class="list-unstyled d-flex flex-wrap gap-3 @Model.CssClass" aria-label="@Html.Resource("ImageGallery")">
+    @{int itemIndex = 0;}
+    @foreach (var item in Model.Items)
+    {
+        var thumbnailViewModel = (ThumbnailViewModel)item;
+        <li class="bg-light">
+            <a class="d-flex align-items-center h-100 image-link"
+               href="@(thumbnailViewModel.MediaUrl)"
+               title="@item.Fields.Title"
+               aria-label="@string.Format(Html.Resource("OpenInModalDialog"), item.Fields.Title)">
+                <img loading="lazy" class="mw-100 h-auto" src="@(thumbnailViewModel.ThumbnailUrl)"
+                     data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex)"
+                     alt="@item.Fields.AlternativeText"
+                     @Html.GetWidthAttributeIfExists(thumbnailViewModel.Width)
+                     @Html.GetHeightAttributeIfExists(thumbnailViewModel.Height) @Html.GetDetailsImageWidthAttributeIfExists(thumbnailViewModel.DetailsImageWidth) />
+            </a>
+        </li>
+        itemIndex++;
+    }
+  </ul>
+</div>
+
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}

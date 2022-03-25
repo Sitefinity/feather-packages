@@ -1,0 +1,113 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
+
+@using Telerik.Sitefinity.Frontend.Events.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Web.DataResolving;
+
+<div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
+    <div class="row me-3">
+        <h1 class="col-auto position-relative">
+            <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</span>
+            <span title="@Model.Item.Fields.Parent.Title" class="position-absolute top-50 start-100 translate-middle p-2 border border-light rounded-circle" style="background-color: @Model.Item.EventCalendarColour()"></span>
+        </h1>        
+    </div>
+    @if (!string.IsNullOrEmpty(Model.Item.EventDates())) 
+	{
+    <div class="mb-4">
+        <time class="text-muted">@Model.Item.EventDates()</time> @Html.CommentsCount(string.Empty, Model.Item.DataItem)
+    </div>
+    }
+    
+    <div class="bg-light p-4 mb-4">
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.City) || !string.IsNullOrEmpty(Model.Item.Fields.Country) || !string.IsNullOrEmpty(Model.Item.Fields.Location))
+    {<address>
+
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.City) && !string.IsNullOrEmpty(Model.Item.Fields.Country))
+        {
+            @Model.Item.Fields.City <span>,</span> @Model.Item.Fields.Country
+            <br>
+        }
+        else
+        {
+            @(string.IsNullOrEmpty(Model.Item.Fields.City) ? Model.Item.Fields.Country : Model.Item.Fields.City)
+             <br>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.Street))
+        {
+            @Model.Item.Fields.Street
+            <br>
+        }
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.Location))
+        {        
+                @*How to find us field*@
+                @Model.Item.Fields.Location
+        }
+    </address>
+    }
+    
+    <div>
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactName))
+        {
+            @Model.Item.Fields.ContactName
+            <br>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactPhone))
+        {
+            @Model.Item.Fields.ContactPhone
+            <br>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactCell))
+        {
+            @Model.Item.Fields.ContactCell
+            <br>
+        }
+            
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactEmail))
+        {
+            <a href="mailto:@(Model.Item.Fields.ContactEmail)" target="_blank">@Model.Item.Fields.ContactEmail</a><br>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactWeb))
+        {
+            <a href="@Html.UrlSanitize((string)Model.Item.Fields.ContactWeb))" target="_blank">@Model.Item.Fields.ContactWeb</a>
+        }
+    </div>
+    
+    @if (ViewBag.AllowCalendarExport)
+    {
+        <div class="mt-3">
+            <span>@Html.Resource("AddTo")</span>
+            <ul class="list-inline d-inline-block">
+                <li class="list-inline-item"><a href="@Model.Item.GenerateOutlookUrl()" target="_blank">@Html.Resource("OutlookEventExporterTitle")</a>,</li>
+                <li class="list-inline-item"><a href="@Model.Item.GenerateICalUrl()" target="_blank">@Html.Resource("ICalEventExporterTitle")</a>,</li>
+                <li class="list-inline-item"><a href="@Model.Item.GenerateGoogleUrl()" target="_blank">@Html.Resource("GoogleEventExporterTitle")</a></li>
+            </ul>
+        </div>
+    }
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.Summary))
+    {        
+        <p class="lead" @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.HtmlSanitize((string)Model.Item.Fields.Summary)</p>
+    }
+
+    
+
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.Description))
+    {        
+        <p>
+            @Model.Item.Fields.Description
+        </p>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.Item.Fields.Content))
+    {        
+        <div @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.HtmlSanitize((string)Model.Item.Fields.Content)</div>
+    }
+
+    @Html.CommentsList(Model.Item.DataItem)
+
+</div>

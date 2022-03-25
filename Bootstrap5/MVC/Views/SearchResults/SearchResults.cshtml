@@ -9,37 +9,34 @@
 
 <div class=" @Model.CssClass">
 
-    <div class="row">
-        <div class="col-lg-8">
-            @if (@Model.Results.TotalCount > 0)
+    <div class="d-flex align-items-center justify-content-between my-3">
+        @if (@Model.Results.TotalCount > 0)
+        {
+            if (ViewBag.IsFilteredbyPermission)
             {
-                if (ViewBag.IsFilteredbyPermission)
-                {
-                    <h1 role="alert" aria-live="assertive">@Html.HtmlSanitize(Model.ResultText)</h1>
-                }
-                else
-                {
-                    <h1 role="alert" aria-live="assertive">@Model.Results.TotalCount @Html.HtmlSanitize(Model.ResultText)</h1>
-                }
+                <h1 role="alert" aria-live="assertive">@Html.HtmlSanitize(Model.ResultText)</h1>
             }
             else
             {
-                <h1 role="alert" aria-live="assertive">@Html.Resource("No") @Html.HtmlSanitize(Model.ResultText)</h1>
+                <h1 role="alert" aria-live="assertive">@Model.Results.TotalCount @Html.HtmlSanitize(Model.ResultText)</h1>
             }
-        </div>
-        <div class="col-lg-4">
-            @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
-            {
-                <label>
-                    @Html.Resource("SortBy")
-                    <select class="userSortDropdown" title="@Html.Resource("SortDropdown")">
-                        <option value="@OrderByOptions.Relevance" @(Model.OrderBy == OrderByOptions.Relevance ? "selected=selected" : "")>@Html.Resource("Relevance")</option>
-                        <option value="@OrderByOptions.Newest" @(Model.OrderBy == OrderByOptions.Newest ? "selected=selected" : "")>@Html.Resource("NewestFirst")</option>
-                        <option value="@OrderByOptions.Oldest" @(Model.OrderBy == OrderByOptions.Oldest ? "selected=selected" : "")>@Html.Resource("OldestFirst")</option>
-                    </select>
-                </label>
-            }
-        </div>
+        }
+        else
+        {
+            <h1 role="alert" aria-live="assertive">@Html.Resource("No") @Html.HtmlSanitize(Model.ResultText)</h1>
+        }
+        @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
+        {
+            <div class="d-flex align-items-center gap-2">
+                <label class="form-label text-nowrap mb-0" for="@Html.UniqueId("searchSort")">@Html.Resource("SortBy")</label>
+                <select class="userSortDropdown form-select" title="@Html.Resource("SortDropdown")" id="@Html.UniqueId("searchSort")">
+                    <option value="@OrderByOptions.Relevance" @(Model.OrderBy == OrderByOptions.Relevance ? "selected=selected" : "")>@Html.Resource("Relevance")</option>
+                    <option value="@OrderByOptions.Newest" @(Model.OrderBy == OrderByOptions.Newest ? "selected=selected" : "")>@Html.Resource("NewestFirst")</option>
+                    <option value="@OrderByOptions.Oldest" @(Model.OrderBy == OrderByOptions.Oldest ? "selected=selected" : "")>@Html.Resource("OldestFirst")</option>
+                </select>
+            </div>
+        }
+
     </div>
 
     @if (Model.Languages.Length > 1)
@@ -61,16 +58,16 @@
         </div>
     }
 
-    <div class="sf-search-results media-list">
+    <div>
         @foreach (var item in Model.Results.Data)
         {
             var hasLink = item.GetValue("Link") != null && !String.IsNullOrEmpty(item.GetValue("Link").ToString());
-            <div class="media sf-media">
+            <div class="d-flex gap-3 my-3">
 
                 @if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Image).ToString())
                 {
 
-                    <div class="media-left pr-2 sf-img-thmb">
+                    <div class="flex-shrink-0">
                         <a href="@item.GetValue("Link")">
                             <img src="@item.GetValue("Link")" alt="@item.GetValue("Title")" width="120" />
                         </a>
@@ -86,16 +83,18 @@
                     {
                         var thumbUrl = video.ThumbnailUrl;
 
-                        <div class="media-left pr-2">
-                            <div class="sf-video-thmb">
+                        <div class="flex-shrink-0">
 
-                                <a href="@item.GetValue("Link")">
-                                    <img src="@thumbUrl" alt="@item.GetValue("Title")" width="120" />
+                            <a href="@item.GetValue("Link")" class="position-relative">
+                                <img src="@thumbUrl" alt="@item.GetValue("Title")" width="120" />
 
-                                    <div class="sf-icon-play"></div>
+                                <div class="position-absolute top-50 start-50 translate-middle">
+                                    <svg class="svg-inline--fa fa-w-18" aria-hidden="true">
+                                        <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#play" class="fa-primary"></use>
+                                    </svg>
+                                </div>
 
-                                </a>
-                            </div>
+                            </a>
                         </div>
                     }
 
@@ -107,7 +106,7 @@
                 }
 
 
-                <div class="media-body sf-media-body">
+                <div class="flex-grow-1">
 
                     <h3>
                         @if (hasLink)
@@ -120,10 +119,10 @@
                         }
                     </h3>
 
-                    <p>@Html.HtmlSanitize((string)item.GetValue("HighLighterResult"))</p>
+                    <div>@Html.HtmlSanitize((string)item.GetValue("HighLighterResult"))</div>
                     @if (hasLink)
                     {
-                        <a href="@item.GetValue("Link")">@item.GetValue("Link")</a>
+                        <a class="link-secondary" href="@item.GetValue("Link")">@item.GetValue("Link")</a>
                     }
                 </div>
             </div>
@@ -152,22 +151,18 @@
         }
         else
         {
-            if (Model.CurrentPage == Model.TotalPagesCount)
-            {
-                <em class="text-muted">@((Model.ItemsPerPage * Model.TotalPagesCount) - Model.Results.TotalCount) of @Model.Results.TotalCount results</em>
-            }
-            else
-            {
-                <em class="text-muted">@Model.ItemsPerPage of @Model.Results.TotalCount results</em>
-            }
-
-            <div>
-                @Html.Action("Index", "ContentPager", new
-                {
+            var numOfItems = (Model.CurrentPage == Model.TotalPagesCount) ? Html.Raw(Model.Results.TotalCount) : Html.Raw(Model.CurrentPage * Model.ItemsPerPage);
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    @Html.Action("Index", "ContentPager", new
+                    {
                     currentPage = Model.CurrentPage,
                     totalPagesCount = Model.TotalPagesCount,
                     redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
-                })
+                    })
+                </div>
+
+                <div class="mb-3"><em class="text-muted">@(Model.CurrentPage * Model.ItemsPerPage - Model.ItemsPerPage + 1) - @numOfItems of @Model.Results.TotalCount results</em></div>
             </div>
         }
     }
@@ -178,7 +173,7 @@
     <input type="hidden" data-sf-role="searchResQuery" value='@Request.QueryStringGet("searchQuery")' />
     <input type="hidden" data-sf-role="searchResWordsMode" value='@Request.QueryStringGet("wordsMode")' />
     <input type="hidden" data-sf-role="scoringInfo" value='@Request.QueryStringGet("scoringInfo")' />
-
+    <input type="hidden" data-sf-role="scoringInfo" value='@Request.QueryStringGet("scoringInfo")' />
 </div>
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/SearchResults/Search-results.js"), "bottom", throwException: false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/SearchResults/Search-results.js"), "bottom", false)

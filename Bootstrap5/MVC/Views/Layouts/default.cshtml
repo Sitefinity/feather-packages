@@ -1,0 +1,48 @@
+﻿@using System.Web.Mvc;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Services;
+
+<!DOCTYPE html>
+<html @Html.RenderLangAttribute() @Html.RenderDirAttribute()>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    @Html.Section("head")
+    @if (Html.RenderDirAttribute().ToString() != "dir=\"rtl\"") {
+        Html.StyleSheet(Url.WidgetContent("~/ResourcePackages/Bootstrap5/assets/dist/css/main.min.css"), "head", true);
+    } else {
+        Html.StyleSheet(Url.WidgetContent("~/ResourcePackages/Bootstrap5/assets/dist/css/main.min.rtl.css"), "head", true);
+    }
+    <title></title>
+</head>
+
+<body>
+    @Html.Section("top")
+
+    <div class="container-fluid">
+        @Html.SfPlaceHolder("Contentplaceholder1")
+    </div>
+
+    @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
+    @Html.Section("inline-editing")
+    @if (Html.ShouldRenderInlineEditing())
+    {
+        @Html.Script(ScriptRef.MicrosoftAjax, "inline-editing", true)
+        @Html.Script(ScriptRef.MicrosoftAjaxCore, "inline-editing", true)
+        @Html.Script(ScriptRef.JQuery, "inline-editing", true)
+
+        @Html.Script(Url.EmbeddedResource("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.jquery.ba-outside-events.min.js"), "inline-editing", true)
+        @Html.Script(ScriptRef.KendoAll, "inline-editing", true)
+        @Html.Script(ScriptRef.KendoTimezones, "inline-editing", true)
+        @Html.Script(Url.EmbeddedResource("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.RequireJS.require.min.js"), "inline-editing", true)
+        @Html.InlineEditingManager(false)
+    }
+    @Html.Section("jquery")
+    @Html.Section("frameworks")
+    @Html.Section("plugins")
+    @Html.Section("bottom")
+</body>
+</html>

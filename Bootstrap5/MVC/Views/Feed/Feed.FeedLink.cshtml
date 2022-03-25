@@ -1,0 +1,15 @@
+﻿@model Telerik.Sitefinity.Frontend.Publishing.Mvc.Models.FeedViewModel
+
+@using Telerik.Sitefinity.Frontend.Publishing.Mvc.Models;
+
+<div class="@Model.CssClass">
+@if ((Model.InsertionOption == FeedInsertionOption.PageOnly || Model.InsertionOption == FeedInsertionOption.PageAndAddressBar) && !string.IsNullOrEmpty(Model.Url))
+{
+    <a class="d-inline-flex align-items-center" href="@Model.Url" title="@Model.Tooltip" @(Model.OpenInNewWindow ? "target=_blank" : "")>
+        <svg class="svg-inline--fa fa-w-16 me-2 text-warning" aria-hidden="true">
+            <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#rss-square"></use>
+        </svg>
+        @Model.Title
+    </a>
+}
+</div>

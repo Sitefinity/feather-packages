@@ -1,0 +1,32 @@
+﻿@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.LanguageSelector.LanguageSelectorViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Modules.Pages;
+
+<div class="@Model.CssClass">
+    <label class="form-label" for='@Html.UniqueId("LanguageSelectorDropdown")'>
+        @Html.Resource("Language")
+    </label>
+    @if (SystemManager.IsDesignMode)
+    {
+        @:<select class="form-select" id='@Html.UniqueId("LanguageSelectorDropdown")'>
+    }
+    else
+    {
+        @:<select class="form-select" id='@Html.UniqueId("LanguageSelectorDropdown")' onChange="openLink(value)">
+    }
+
+        @if (!Model.IncludeCurrentLanguage)
+        {
+            <option value="" selected="selected">@Html.Resource("SelectLanguageDropDownOption")</option>
+        }
+
+        @foreach (var language in Model.Languages)
+        {
+            <option value="@language.Culture" @(language.Culture == Model.CurrentLanguage ? "selected=selected" : "")>@language.DisplayName</option>
+        }
+    </select>
+</div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/LanguageSelector/language-selector.js"), "bottom", false)

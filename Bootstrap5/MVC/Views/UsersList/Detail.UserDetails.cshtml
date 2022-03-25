@@ -1,0 +1,39 @@
+@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.UsersList.UserDetailsViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Security.Model;
+@using Telerik.Sitefinity.Security.Claims;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.UsersList;
+
+@{
+    bool isAuthenticated = false;
+
+    var user = ClaimsManager.GetCurrentIdentity();
+    if (user != null)
+    {
+        isAuthenticated = user.IsAuthenticated;
+    }
+}
+
+<div class="@Model.CssClass">
+
+    @if (isAuthenticated)
+    {
+        <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+                <img src="@(((SitefinityProfileItemViewModel)Model.Item).AvatarImageUrl)" alt="@Model.Item.Fields.FirstName" width="100" />
+            </div>
+
+            <div class="flex-grow-1">
+                <h3 class="mb-0">@((Model.Item.DataItem as SitefinityProfile).GetUserDisplayName())</h3>
+                <p class="text-muted">@((Model.Item.DataItem as SitefinityProfile).User.Email)</p>
+                <p>@Html.HtmlSanitize((((SitefinityProfileItemViewModel)Model.Item).About))</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>@Html.Resource("NotLoggedInUser")</p>
+    }
+</div>

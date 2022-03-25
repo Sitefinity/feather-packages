@@ -1,0 +1,33 @@
+﻿@model Telerik.Sitefinity.Frontend.Comments.Mvc.Models.CommentsCountViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@Html.Script(ScriptRef.JQuery, "jquery", false)
+
+<div data-sf-role="comments-count-wrapper" data-sf-thread-key="@Model.ThreadKey" class="d-inline-flex align-items-center gap-2">
+
+    <span data-sf-role="list-rating-wrapper" style="display: none">
+        <span class="d-inline-flex gap-1 align-items-center">
+            <span data-sf-role="list-rating-container" data-sf-rating-selected-css-class="text-warning" class="text-black-50 lh-1" aria-hidden="true"></span>
+            <span class="text-muted">
+                <span class="visually-hidden">@Html.Resource("Rating")</span>
+                <span aria-hidden="true">(</span><span data-sf-role="list-rating-value"></span><span aria-hidden="true">)</span>
+                <span class="visually-hidden" data-sf-role="list-rating-sr-label"></span>
+            </span>
+        </span>
+    </span>
+
+    <a data-sf-role="comments-count-anchor" href="@Model.NavigateUrl">
+        <span data-sf-role="comments-count-anchor-text"></span>
+    </a>
+    <input type="hidden" data-sf-role="service-url" value="@ViewBag.ServiceUrl" />
+    <input type="hidden" data-sf-role="comments-count-resources" value='{"commentsPlural": "@Html.Resource("ReviewsPlural")", "leaveComment":"@Html.Resource("WriteReview")", "comment":"@Html.Resource("Review")", "averageRating":"@Html.Resource("AverageRating")" }' />
+    <input type="hidden" data-sf-role="rating-of-resource" value="@Html.Resource(" Of")" />
+</div>
+
+@*Single rating item template*@
+<div data-sf-role="rating-template" style="display:none;"><span aria-hidden="true" class="fs-4 lh-1">&#9733;</span></div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Reviews/rating.js"), "bottom", false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/comments-count.js"), "bottom", false)

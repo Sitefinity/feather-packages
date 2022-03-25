@@ -1,0 +1,116 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Models;
+@using System.Web.Script.Serialization;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
+@using System.Linq;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "jquery", false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/thumbnail-strip.js"), "bottom", false)
+
+@{
+    bool hasItems = Model.Items.Count() > 0;
+    bool isBackendDesignMode = SystemManager.IsDesignMode && !SystemManager.IsPreviewMode;
+    dynamic firstItem = null;
+
+    if (hasItems && isBackendDesignMode)
+    {
+        firstItem = Model.Items.FirstOrDefault();
+    }
+
+    ThumbnailViewModel thumbnailViewModel = (ThumbnailViewModel)firstItem;
+}
+
+<div class="sf-Gallery" aria-label="@Html.Resource("ImageGallery")">
+@if (hasItems)
+{
+		if (isBackendDesignMode)
+		{
+	<h2 class="js-Gallery-title">@firstItem.DataItem.Title</h2>
+
+	<p class="js-Gallery-description">@firstItem.DataItem.Description</p>
+
+	<div class="text-muted mb-3"><span class="js-Gallery-index text-muted mb-3">1</span> of @Model.Items.Count()</div>
+
+	<p class="position-relative bg-secondary d-flex justify-content-center align-items-center mb-4 js-Gallery-image">
+		<a href="javascript:void(0)" class='js-Gallery-prev sf-Gallery-prev position-absolute start-0 h-100 d-flex align-items-center' title="@Html.Resource("GoToPreviousImage")"><span class="@GetCaretDirection("prev")" aria-hidden="true"></span></a>
+		<a href="javascript:void(0)" class='js-Gallery-next sf-Gallery-next position-absolute end-0 h-100 d-flex align-items-center' title="@Html.Resource("GoToNextImage")"><span class="@GetCaretDirection("next")" aria-hidden="true"></span></a>
+        <img loading="lazy" src="@(thumbnailViewModel.MediaUrl)" title="@firstItem.DataItem.Title" alt="@firstItem.DataItem.AlternativeText" class="mw-100 h-auto"
+                  @Html.GetWidthAttributeIfExists(thumbnailViewModel.Width)
+                  @Html.GetHeightAttributeIfExists(thumbnailViewModel.Height) />
+
+	</p>
+		}
+		else
+		{
+	<h2 class="js-Gallery-title" aria-live="polite" aria-atomic="true"></h2>
+
+	<p class="js-Gallery-description" aria-live="polite" aria-atomic="true"></p>
+
+	<div class="text-muted mb-3" aria-live="polite" aria-atomic="true"><span class="js-Gallery-index"></span> of @Model.Items.Count()</div>
+
+	<div class="carousel slide js-Gallery-image mb-4">
+		<div class="carousel-inner bg-secondary">
+			<div class="carousel-item active d-flex justify-content-center">
+				<img class="d-block mw-100 h-auto" alt="...">
+			</div>
+		</div>
+		<button class="js-Gallery-prev carousel-control-prev" type="button">
+			<span class="@GetCaretDirection("prev")" aria-hidden="true"></span>
+			<span class="visually-hidden">@Html.Resource(" GoToPreviousImage")</span>
+		</button>
+		<button class="js-Gallery-next carousel-control-next" type="button">
+			<span class="@GetCaretDirection("next")" aria-hidden="true"></span>
+			<span class="visually-hidden">@Html.Resource(" GoToNextImage")</span>
+		</button>
+	</div>
+	}
+}
+
+
+
+	<div class="sf-Gallery-thumbs-container mb-4">
+		<div class="sf-Gallery-thumbs js-Gallery-thumbs d-flex align-items-stretch flex-wrap gap-3">
+			@{int itemIndex = 0;}
+			@foreach(var item in Model.Items)
+			{
+				var itemViewModel = (ThumbnailViewModel)item;
+		
+				<a href="javascript:void(0)" class="d-flex align-items-center" title="@item.Fields.Title" data-item="@Html.GetSerializedImage(item)" data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex)">
+					<img loading="lazy" class="mw-100 h-auto" src="@(itemViewModel.ThumbnailUrl)" alt="@item.Fields.AlternativeText" 
+								@Html.GetWidthAttributeIfExists(itemViewModel.Width)
+								@Html.GetHeightAttributeIfExists(itemViewModel.Height) />
+				</a>
+				itemIndex++;
+			}
+		</div>
+	</div>
+</div>
+@*Resolves the caret direction depending on language direction*@
+@helper GetCaretDirection(string arrow)
+{
+    bool isRtl = ((Html.RenderDirAttribute().ToString() == "dir=\"rtl\"")?true:false);
+     
+    if (arrow == "next" && !isRtl || arrow == "prev" && isRtl)
+    {
+        @Html.HtmlSanitize("carousel-control-next-icon");
+    }
+    else
+    {
+        @Html.HtmlSanitize("carousel-control-prev-icon");
+    }
+}
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}

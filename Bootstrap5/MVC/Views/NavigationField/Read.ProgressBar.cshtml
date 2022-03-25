@@ -1,0 +1,29 @@
+﻿@model Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.NavigationField.NavigationFieldViewModel
+
+@using System.Linq;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@Html.Script(ScriptRef.JQuery, "jquery", false)
+@{
+    var totalPages = Model.Pages.Count();
+}
+<div class="@Model.CssClass my-3" data-sf-role="navigation-field-container" data-sf-active-css-class="active" data-sf-past-css-class="d-none" data-sf-future-css-class="d-none">
+    <input type="hidden" data-sf-role="step-of-resources" value="@Html.Resource(" StepOf")" />
+    <div class="progress">
+        <div class="progress-bar" data-sf-role="progress-bar"></div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+        <b class="sf-Progress-percent" data-sf-role="progress-percent"> </b>
+        <ol data-sf-role="sr-progressbar" class="list-unstyled text-muted" tabindex="0" role="progressbar" aria-valuemin="1" aria-valuemax="@totalPages" aria-valuenow="1" aria-valuetext="Step 1 of @totalPages">
+            @foreach (var page in Model.Pages)
+            {
+            <li data-sf-navigation-index="@page.Index" aria-hidden="true">
+                <span data-sf-page-title="@page.Title">@Html.HtmlSanitize(page.Title)</span>
+            </li>
+            }
+        </ol>
+    </div>
+</div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Form/form.all.js"), "bottom", false)

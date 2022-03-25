@@ -1,0 +1,114 @@
+@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.INavigationModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Navigation.Mvc.Models;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@*Add scripts and stylesheets*@
+
+@Html.Script(Url.Content("~/ResourcePackages/Bootstrap5/assets/dist/js/bootstrap.min.js"), "frameworks", false)
+
+<div class="@Model.CssClass">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+            @* @Html.Action("GetView", new { viewName = "Dropdown", model= Model}) *@
+
+            <a class="navbar-brand" href="/">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target='#@Html.UniqueId("navbar")' aria-controls='@Html.UniqueId("navbar")' aria-expanded="false" aria-label="@Html.Resource("ToggleNavigation")">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id='@Html.UniqueId("navbar")'>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @{
+                        int i = 0;
+                        foreach (var node in Model.Nodes)
+                        {
+                            @RenderRootLevelNode(node, i);
+                            i++;
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+@*Here is specified the rendering for the root level*@
+@helper RenderRootLevelNode(NodeViewModel node, int i)
+{
+    if (node.ChildNodes.Count > 0)
+    {
+        <li class="nav-item dropdown @GetClass(node)">
+            <a class="nav-link dropdown-toggle" href="#" id='@Html.UniqueId("navbarDropdownMenuLink" + i)' role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">@node.Title</a>
+            <ul class="dropdown-menu" aria-labelledby='@Html.UniqueId("navbarDropdownMenuLink" + i)'>
+                @RenderSubLevelsRecursive(node, i)
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link @GetClass(node)" href="@node.Url" target="@node.LinkTarget">@node.Title</a>
+        </li>
+    }
+}
+
+@*Here is specified the rendering for all child levels*@
+@helper RenderSubLevelsRecursive(NodeViewModel node, int i)
+{
+    int j = 0;
+    foreach (var childNode in node.ChildNodes)
+    {
+        if (childNode.ChildNodes.Count > 0)
+        {
+            <li class="nav-item dropdown @GetClass(node)">
+
+                <a class="dropdown-item pe-4 @GetClass(childNode)" href="@childNode.Url">
+                    @childNode.Title
+                </a>
+                <span class="p-1 position-absolute top-0 end-0 @GetClass(childNode)" id='@Html.UniqueId("navbarDropdownMenuLink" + i + j)' role="button" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg class="svg-inline--fa fa-w-16" aria-hidden="true">
+                        <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#@GetCaretDirection()"></use>
+                    </svg>
+                </span>
+                <ul class="dropdown-menu top-0 start-100 mt-n2" aria-labelledby='@Html.UniqueId("navbarDropdownMenuLink" + i + j)'>
+                    @RenderSubLevelsRecursive(childNode, j)
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a class="dropdown-item pe-4 @GetClass(childNode)" href="@childNode.Url" target="@childNode.LinkTarget">@childNode.Title</a>
+            </li>
+        }
+        j++;
+    }
+}
+
+@*Resolves the class that will be added for each node depending whether it is selected*@
+@helper GetClass(NodeViewModel node)
+{
+
+    if (node.IsCurrentlyOpened)
+    {
+        @Html.HtmlSanitize("active");
+    }
+    else if (node.HasChildOpen)
+    {
+        @Html.HtmlSanitize("active");
+    }
+}
+
+@*Resolves the caret direction depending on language direction*@
+@helper GetCaretDirection()
+{
+    if (Html.RenderDirAttribute().ToString() != "dir=\"rtl\"")
+    {
+        @Html.HtmlSanitize("caret-right");
+    }
+    else
+    {
+        @Html.HtmlSanitize("caret-left");
+    }
+}

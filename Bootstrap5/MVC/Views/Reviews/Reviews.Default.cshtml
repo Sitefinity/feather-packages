@@ -1,0 +1,197 @@
+﻿@model Telerik.Sitefinity.Frontend.Comments.Mvc.Models.CommentsListViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
+
+@Html.Script(ScriptRef.JQuery, "jquery", false)
+<div id="comments-@HttpUtility.HtmlEncode(Model.ThreadKey)" data-sf-role="comments-wrapper" class="@Model.CssClass mt-5">
+    <input type="hidden" data-sf-role="comments-settings" value="@Model.SerializedWidgetSettings" />
+    <input type="hidden" data-sf-role="comments-resources" value="@Model.SerializedWidgetResources" />
+
+    <div class="row mb-4">
+        <div class="col-lg-7 d-flex gap-4 align-items-end">
+
+            <h3 class="mb-0">
+                <span data-sf-role="comments-total-count"></span>
+                <span data-sf-role="comments-header"></span>
+            </h3>
+
+            @if (!Model.ThreadIsClosed)
+            {
+                <a href="#comment-submit-@HttpUtility.HtmlEncode(HttpUtility.UrlEncode(Model.ThreadKey))" data-sf-role="comments-new-form-button">@Html.Resource("WriteReview")</a>
+            }
+
+            <span data-sf-role="comments-count-list-wrapper">
+                <span class="text-muted">@Html.Resource("AverageRating")</span>
+                @Html.CommentsCount(string.Empty, Model.ThreadKey, Model.ThreadType)
+            </span>
+        </div>
+
+
+        <div class="col-lg-5 d-flex justify-content-end align-items-end" data-sf-orderby-css-active-class="link-dark pe-none"> 
+            <a href="#" data-sf-role="comments-sort-new-button" style="display:none;"><span class="visually-hidden">@Html.Resource("OrderBy") </span>@Html.Resource("NewestOnTop")</a>
+            <a href="#" data-sf-role="comments-sort-old-button" style="display:none;"  class="ms-2"><span class="visually-hidden">@Html.Resource("OrderBy") </span>@Html.Resource("OldestOnTop")</a>
+        </div>
+    </div>
+
+    <div data-sf-role="list-loading-indicator" class="mb-4 ms-5 ps-2" style="display:none;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div data-sf-role="comments-container" class="list-unstyled"></div>
+
+    @if (Model.EnablePaging)
+    {
+        <a href="#" data-sf-role="comments-load-more-button">@Html.Resource("LoadMoreReviews")</a>
+    }
+
+    @if (Model.ThreadIsClosed)
+    {
+        <div class="alert alert-warning">@Html.Resource("ReviewsThreadIsClosedMessage")</div>
+    }
+    else
+    {
+        <div class="">
+
+            <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)" class="sf-Comments-form">
+                @if (Model.RequiresApproval)
+                {
+                    <div class="alert alert-warning" data-sf-role="comments-new-pending-approval-message">@Html.Resource("ReviewPendingApproval")</div>
+                }
+
+                <div class="d-flex gap-3">
+
+                    <div class="flex-shrink-0" aria-hidden="true">
+                        <img src="@Model.UserAvatarImageUrl" width="40" height="40" alt="User avatar" />
+                    </div>
+
+                    <div class="flex-grow-1">
+                        <div class="mb-3">
+                            <label for="@Html.UniqueId("CommentInput")" class="visually-hidden">@Html.Resource("WriteReview")</label>
+                            <textarea id="@Html.UniqueId("CommentInput")" aria-required="true" data-sf-role="comments-new-message" placeholder="@Html.Resource("WriteReview")" class="form-control"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <fieldset role="radiogroup" aria-required="true">
+                                <legend id="@Html.UniqueId("RatingLegend")" class="fs-5">@Html.Resource("Rating")</legend>
+                                <div data-sf-role="submit-rating-container" data-sf-rating-selected-css-class="text-warning" data-sf-rating-hover-css-class="text-primary" data-sf-rating-input-css-class="visually-hidden" class="text-black-50 fs-4 lh-1" id="@Html.UniqueId("RatingStars")">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div data-sf-role="comments-new-logged-out-view" style="display:none;">
+
+                            <div class="mb-3">
+                                <label for="@Html.UniqueId("YourName")" class="visually-hidden" style="display: none;">@Html.Resource("YourName")</label>
+                                <input id="@Html.UniqueId("YourName")" placeholder="@Html.Resource("YourName")" data-sf-role="comments-new-name" class="form-control" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="@Html.UniqueId("YourEmail")" class="visually-hidden" style="display: none;">@Html.Resource("EmailOptional")</label>
+                                <input id="@Html.UniqueId("YourEmail")" type="email" placeholder="@Html.Resource("EmailOptional")" data-sf-role="comments-new-email" class="form-control" />
+                            </div>
+                        </div>
+
+                        @if (Model.RequiresCaptcha)
+                        {
+                        <div data-sf-role="captcha-container" style="display:none;">
+                            <div>
+                                <img data-sf-role="captcha-image" src="@Url.WidgetContent(" assets /dist/img/dummy.jpg")" alt="" />
+                            </div>
+
+                            <a data-sf-role="captcha-refresh-button" class="btn btn-link ps-0 pe-0"> @Html.Resource("NewCode") </a>
+
+                            <div class="row">
+                                <label class="col-form-label col-md-auto" for="@Html.UniqueId(" Captcha")">@Html.Resource("TypeCodeAbove")</label>
+                                <div class="col-md-auto">
+                                    <input id="@Html.UniqueId(" Captcha")" type="text" data-sf-role="captcha-input" class="form-control input-sm" />
+                                </div>
+                            </div>
+                        </div>
+                        }
+
+                        <div class="mt-4">
+                            <button class="btn btn-primary" data-sf-role="comments-new-submit-button" @(SystemManager.IsDesignMode ? "disabled" : "" )>@Html.Resource("Submit")</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            @if (Model.AllowSubscription)
+            {
+            <div class="mt-5 ms-5 ps-2">
+                <span data-sf-role="comments-subscribe-text" class="text-success"></span>
+                <a href="#" data-sf-role="comments-subscribe-button" class="link-secondary">
+                    <svg class="svg-inline--fa fa-w-16">
+                        <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#envelope" class="fa-secondary"></use>
+                    </svg>
+                    <span data-sf-role="comments-subscribe-button-text"></span>
+                </a>
+            </div>
+            }
+
+            <div class="text-danger" role="alert" aria-live="assertive" data-sf-role="error-message">
+                <span></span>
+            </div>
+
+            <div data-sf-role="submit-loading-indicator" class="mb-4 mt-4 ms-5 ps-2" style="display:none;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="alert alert-warning my-4" role="alert" aria-live="assertive" data-sf-role="review-new-form-replacement">@Html.Resource("UserAlreadySubmitedReview")</div>
+
+        if (Model.RequiresAuthentication)
+        {
+            <div class="alert alert-warning my-4" role="alert" aria-live="assertive" data-sf-role="comments-new-requires-authentication"><a href='@Model.LoginPageUrl'>@Html.Resource("Login")</a>@Html.Resource("ToBeAbleToReview")</div>
+        }
+    }
+
+    <div data-sf-role="single-comment-template" style="display: none">
+
+        <div class="d-flex gap-3 mb-4">
+            <input type="hidden" data-sf-role="rating-of-resource" value="@Html.Resource(" Of")" />
+
+            <div class="flex-shrink-0" aria-hidden="true">
+                <img data-sf-role="comment-avatar" src="@Url.WidgetContent(" assets /dist/img/dummy.jpg")" width="40" height="40" alt="User avatar" />
+            </div>
+
+            <div class="flex-grow-1">
+                <span class="visually-hidden">@Html.Resource("CommentBy")</span>
+                <span data-sf-role="comment-name" class="text-muted sf-Comments-list-author"></span>
+                <span class="visually-hidden">@Html.Resource("From").ToLower()</span>
+                <span class="ps-1 pe-1 text-black-50" aria-hidden="true">|</span>
+                <span data-sf-role="comment-date" class="text-muted"></span>
+
+                <div data-sf-role="list-rating-wrapper" class="d-none d-inline-flex ms-3 text-black-50">
+                    <span data-sf-role="list-rating-container" data-sf-rating-selected-css-class="text-warning" aria-hidden="true"></span>
+                    <span class="text-muted sf-Ratings-average">
+                        <span class="visually-hidden">@Html.Resource("Rating")</span>
+                        <span aria-hidden="true">(</span><span data-sf-role="list-rating-value"></span><span aria-hidden="true">)</span>
+                        <span class="visually-hidden" data-sf-role="list-rating-sr-label"></span>
+                    </span>
+                </div>
+
+                <div data-sf-role="comment-message"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@*Single rating item template*@
+<div data-sf-role="rating-template" style="display:none;"><span class="text-muted fs-4" aria-hidden="true">&#9733;</span></div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Reviews/rating.js"), "bottom", false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/comments-list.js"), "bottom", false)

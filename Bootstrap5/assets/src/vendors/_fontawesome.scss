@@ -1,0 +1,30 @@
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/variables';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/mixins';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/core';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/larger';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/fixed-width';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/list';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/bordered-pulled';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/animated';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/rotated-flipped';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/stacked';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/icons';
+// @import '../../../node_modules/@fortawesome/fontawesome-free/scss/screen-reader';
+
+@import '../../../node_modules/@fortawesome/fontawesome-free/css/svg-with-js';
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+
+:root {
+    --fa-primary-color: #{tint-color($primary,40%)};
+    --fa-secondary-color: #{tint-color($secondary,40%)};
+    --fa-secondary-opacity: 1;
+}
+
+.fa-layers-bottom-right {
+    left: auto;
+}
+
+svg {
+    fill: currentColor;
+}

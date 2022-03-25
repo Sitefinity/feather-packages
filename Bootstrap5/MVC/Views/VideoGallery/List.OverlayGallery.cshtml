@@ -1,0 +1,57 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.VideoGallery;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@Html.StyleSheet(Url.WidgetContent("assets/magnific/magnific-popup.css"), "head", false)
+@Html.Script(ScriptRef.JQuery, "jquery", false)
+@Html.Script(Url.WidgetContent("assets/magnific/jquery.magnific-popup.min.js"), "plugins", false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/VideoGallery/overlay-gallery.js"), "bottom", false)
+
+<div class="">
+    <ul class="@Model.CssClass list-unstyled d-flex flex-wrap align-items-stretch gap-3">
+    
+        @for (int i = 0; i < Model.Items.Count(); i++)
+        {
+            var item = Model.Items.ElementAt(i);
+            var title = item.Fields.Title;
+            var alternativeText = System.Text.RegularExpressions.Regex.Replace(title, @"[^\w\d_-]", "");
+            var videoTitleId = Html.UniqueId("VideoTitle") + "-" + i.ToString();
+            var tmbWidhtPx = string.Empty;
+            var tmbWidth = string.Empty;
+            var tmbHeight = string.Empty;
+
+            if (item.Fields.Thumbnail != null && item.Fields.Thumbnail.Width != null && item.Fields.Thumbnail.Height != null)
+            {
+
+                tmbWidhtPx = string.Concat("width: ", item.Fields.Thumbnail.Width, "px;");
+                tmbWidth = string.Format("width={0}", item.Fields.Thumbnail.Width);
+                tmbHeight = string.Format("height={0}", item.Fields.Thumbnail.Height);
+            }
+            <li style="@tmbWidhtPx">
+                <a class="video-link"
+                    href="@item.Fields.MediaUrl"
+                    title="@title"
+                    aria-label="@string.Format(Html.Resource("OpenInModalDialog"), title)">
+                    <img src="@(((VideoThumbnailViewModel)item).ThumbnailUrl)" @tmbWidth @tmbHeight
+                        alt="@alternativeText" 
+                        data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix)" aria-labelledby="@videoTitleId" />
+                    <h3 class="h6 text-truncate" id="@videoTitleId">@title</h3>
+                </a>
+            </li>
+
+        }
+    </ul>
+</div>
+
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}

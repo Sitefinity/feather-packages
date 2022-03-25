@@ -1,0 +1,71 @@
+﻿@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.SiteSelector.SiteSelectorViewModel
+
+@using Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.SiteSelector
+@using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+<div class="@Model.CssClass">
+
+    <label class="form-label mb-0" id='@Html.UniqueId("SiteSelectorLinks")'>@Html.Resource("Sites")</label>
+   
+    <ul class="list-unstyled" aria-labelledby='@Html.UniqueId("SiteSelectorLinks")'>
+    @{
+        string currentSite = string.Empty;
+    }
+
+    @foreach (var site in Model.Sites)
+    {
+        if (!Model.EachLanguageAsSeparateSite)
+        {
+            if (site.IsCurrent)
+            {
+                <li><span class="btn btn-light btn-sm pe-none">@site.Name</span></li>
+            }
+            else if (SystemManager.IsDesignMode)
+            {   <li><a class="btn btn-link btn-sm disabled" aria-disabled="true">@site.Name</a></li>
+            }
+            else
+            {
+                <li><a href="@site.Url" class="btn btn-link btn-sm">@site.Name</a></li>
+            }
+        }
+        else if (Model.SiteLanguagesDisplayMode == SiteLanguagesDisplayMode.SiteNamesAndLanguages)
+        {
+            if (site.IsCurrent)
+            {
+                <li><span class="btn btn-light btn-sm pe-none">@site.Name - @site.Language</span></li>
+            }
+            else if (SystemManager.IsDesignMode && !SystemManager.IsInlineEditingMode && !SystemManager.IsPreviewMode)
+            {
+                <li><a class="btn btn-link btn-sm disabled" aria-disabled="true">@site.Name - @site.Language</a></li>
+            }
+            else
+            {
+                <li><a href="@site.Url" class="btn btn-link btn-sm">@site.Name - @site.Language</a></li>
+            }
+        }
+        else
+        {
+            if(currentSite != site.Name)
+            {                                   
+                <li><strong class="small">@site.Name</strong></li>
+                currentSite = site.Name;
+            }
+
+            if (site.IsCurrent)
+            {
+                <li><span class="btn btn-light btn-sm pe-none">@site.Language</span></li>
+            }
+            else if (SystemManager.IsDesignMode && !SystemManager.IsInlineEditingMode && !SystemManager.IsPreviewMode)
+            {
+                <li><a class="btn btn-link btn-sm disabled" aria-disabled="true">@site.Language</a></li>
+            }
+            else
+            {
+
+                <li><a href="@site.Url" class="btn btn-link btn-sm">@site.Language</a></li>
+            }
+        }
+    }
+    </ul>
+</div>

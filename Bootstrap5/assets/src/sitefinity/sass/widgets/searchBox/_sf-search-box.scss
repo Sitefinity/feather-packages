@@ -1,0 +1,56 @@
+@import "../../../../../../node_modules/bootstrap/scss/helpers";
+
+// Search box autocomplete
+
+.ui-helper-hidden-accessible {
+	@include visually-hidden;
+}
+
+.sf-autocomplete {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	// No need to set list-style: none; since .list-group-item is block level
+	padding-left: 0; // reset padding because ul and ol
+	margin-bottom: 0;
+	@include border-radius($list-group-border-radius);
+
+	.ui-menu-item {
+		position: relative;
+		display: block;
+
+		&:first-child .ui-menu-item-wrapper {
+			@include border-top-radius(inherit);
+		}
+
+		&:last-child .ui-menu-item-wrapper {
+			@include border-bottom-radius(inherit);
+		}
+
+		& + & .ui-menu-item-wrapper {
+			border-top-width: 0;
+
+			&.ui-state-active {
+				margin-top: -$list-group-border-width;
+				border-top-width: $list-group-border-width;
+			}
+		}
+	}
+
+	.ui-menu-item-wrapper {
+		position: relative;
+		display: block;
+		padding: $list-group-item-padding-y $list-group-item-padding-x;
+		color: $list-group-color;
+		text-decoration: if($link-decoration == none, null, none);
+		background-color: $list-group-bg;
+		border: $list-group-border-width solid $list-group-border-color;
+
+		&.ui-state-active {
+			z-index: 2; // Place active items above their siblings for proper border styling
+			color: $list-group-active-color;
+			background-color: $list-group-active-bg;
+			border-color: $list-group-active-border-color;
+		}
+	}
+}

@@ -1,0 +1,54 @@
+﻿@model Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.Captcha.CaptchaViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
+@Html.Script(ScriptRef.JQuery, "jquery", false)
+<div data-sf-role="field-captcha-container" style="display:none;" class="@Model.CssClass my-3">
+    <div class="row">
+        <div class="col-12 mb-2">
+            <div class="d-flex gap-4">
+                <img data-sf-role="captcha-image" src='@Url.WidgetContent("assets/dist/img/dummy.jpg")' width="180" height="50" />
+                @if (Model.EnableAudioCode)
+                {
+                    <button class="btn btn-light" data-sf-role="captcha-audio-btn" type="button" title="@Html.Resource("CaptchaAudioTooltip")" aria-label="@Html.Resource("CaptchaAudioTooltip")">
+                        <svg class="svg-inline--fa fa-w-16" aria-hidden="true">
+                            <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#volume-up"></use>
+                        </svg>
+                    </button>
+                    <audio data-sf-role="captcha-audio" controls style="display:none"></audio>
+                }
+            </div>
+            <div class="mt-2">
+                <a href="#" class="link-secondary" data-sf-role="captcha-refresh-button">
+                    <svg class="svg-inline--fa fa-w-14">
+                        <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#sync" class="fa-secondary"></use>
+                    </svg>
+                    @Html.Resource("NewCode")
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-auto">
+            <input data-sf-role="violation-messages" type="hidden" value='{"required": "@Model.ValidatorDefinition.RequiredViolationMessage"}' />
+            <label for='@Html.UniqueId("Textbox")' class="form-label">@Html.Resource("TypeCodeAbove") </label>
+            <input id='@Html.UniqueId("Textbox")' type="text" data-sf-role="captcha-input" name="@Model.CaptchaAnswerFormKey" required="required" class="form-control" />
+        </div>
+    </div>
+    <div data-sf-role="error-message" role="alert" aria-live="assertive" class="invalid-feedback"></div>
+    <input type="hidden" data-sf-role="captcha-k" name="@Model.CaptchaKeyFormKey" />
+    <input type="hidden" data-sf-role="captcha-settings" value="@Model.GenerateUrl" />
+    <input type="hidden" data-sf-role="captcha-iam" value='@Html.Resource("CaptchaErrorMessage")' />
+</div>
+@if (SystemManager.IsDesignMode)
+{
+    var scriptUrl = Url.WidgetContent("Mvc/Scripts/Captcha/captcha.js");
+    var queryAddition = scriptUrl.Contains("?") ? "&" : "?";
+    var fullScriptUrl = scriptUrl + queryAddition + string.Format("_={0}", DateTime.UtcNow.Ticks.ToString());
+
+    <script type="text/javascript" src='@fullScriptUrl'></script>
+}
+else
+{
+    @Html.Script(Url.WidgetContent("Mvc/Scripts/Form/form.all.js"), "bottom", false)
+}

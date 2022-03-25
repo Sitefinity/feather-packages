@@ -1,0 +1,61 @@
+﻿@model Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.MultipleChoiceField.MultipleChoiceFieldViewModel
+
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Frontend.Forms.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@Html.Script(ScriptRef.JQuery, "jquery", false)
+@{
+    var fieldName = string.IsNullOrEmpty(Model.MetaField.FieldName) ? "multiple-choice-field-name" : Model.MetaField.FieldName;
+    var requiredAttributes = MvcHtmlString.Create(Model.ValidationAttributes);
+    var isRequired = Model.IsRequired ? "true" : "false";
+    var hasDescription = !string.IsNullOrEmpty(Model.MetaField.Description);
+}
+<fieldset class="@Model.CssClass my-3" data-sf-role="multiple-choice-field-container">
+    <legend class="form-label fs-6" id='@Html.UniqueId("RadioGroupLabel")'>@Model.MetaField.Title</legend>
+    <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage", "maxLength":"@Model.MaxLengthViolationMessage"}' />
+    <ul class="list-inline" aria-labelledby='@Html.UniqueId("RadioGroupLabel")' @{if (hasDescription) { <text> aria-describedby='@Html.UniqueId("RadioGroupInfo") @Html.UniqueId("RadioGroupErrorMessage")' </text>  } else { <text> aria-describedby='@Html.UniqueId("RadioGroupErrorMessage")' </text>  } }>
+        @{int i = 0;}
+        @foreach (var choice in Model.Choices)
+        {
+            string value = !string.IsNullOrEmpty(Model.Value as string) ? Model.Value as string : string.Empty;
+            bool isSelected = (!string.IsNullOrEmpty(value) && choice == value) ||
+                                (string.IsNullOrEmpty(value) && !Model.IsRequired && choice == Model.MetaField.DefaultValue as string);
+
+            var selctedAttributes = isSelected ? "checked" : string.Empty;
+            i++;
+            <li class="form-check form-check-inline">
+                <label for="@Html.UniqueId(fieldName + "_" + i)" class="form-check-label">
+                    @{
+                        var val = choice;
+                        if (val.Length > 255)
+                        {
+                            val = val.Substring(0, 255);
+                        }
+                    }
+                    @choice
+                </label>
+                <input type="radio" name="@fieldName" id="@Html.UniqueId(fieldName + "_" + i)" value="@val" class="form-check-input" data-sf-role="multiple-choice-field-input" @selctedAttributes @requiredAttributes role="radio" aria-required="@isRequired" />
+            </li>
+        }
+        @if (Model.HasOtherChoice)
+        {
+            i++;
+            <li class="form-check form-check-inline text-nowrap">
+                <label for="@Html.UniqueId(fieldName + "_" + i)" class="form-check-label">
+                    @Html.Resource("Other")
+                    <span class="visually-hidden">@Html.Resource("ThisChoiceWillExpandTextbox")</span>
+                </label>
+                <input type="radio" name="@fieldName" id="@Html.UniqueId(fieldName + "_" + i)" class="form-check-input" data-sf-multiple-choice-role="other-choice-radio" data-sf-role="multiple-choice-field-input" role="radio" aria-required="@isRequired" />
+                <input type="hidden" class="form-control d-inline-block align-top" data-sf-multiple-choice-role="other-choice-text" aria-required="@isRequired" aria-label="@Html.Resource("OtherOption")" />
+            </li>
+        }
+    </ul>
+    @if (hasDescription)
+    {
+        <p id='@Html.UniqueId("RadioGroupInfo")' class="text-muted">@Model.MetaField.Description</p>
+    }
+    <div id='@Html.UniqueId("RadioGroupErrorMessage")' data-sf-role="error-message" role="alert" aria-live="assertive" class="text-danger"></div>
+</fieldset>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Form/form.all.js"), "bottom", false)

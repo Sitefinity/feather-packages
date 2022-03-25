@@ -27,6 +27,7 @@
 <input type="hidden" data-sf-role="suggestionsRoute" value="@(Model.SuggestionsRoute)" />
 <input type="hidden" data-sf-role="searchTextBoxId" value='@("#" + searchTextBoxId.ToString())' />
 <input type="hidden" data-sf-role="searchButtonId" value='@("#" + searchButtonId.ToString())' />
+<input type="hidden" data-sf-role="scoringSettings" value='@(ViewBag.ScoringSettings ?? string.Empty)' />
 </div>
 
 @* The inline editing functionality is loading jQuery too. *@

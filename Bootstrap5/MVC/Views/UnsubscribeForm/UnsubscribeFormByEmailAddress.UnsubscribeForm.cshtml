@@ -1,0 +1,75 @@
+﻿@model Telerik.Sitefinity.Frontend.EmailCampaigns.Mvc.Models.UnsubscribeForm.UnsubscribeFormViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "jquery", false)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "jquery", false)
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "jquery", false)
+
+@{
+    var hasValidationMessage = Html.ValidationMessageFor(u => u.Email) != null;
+    var attributes = new Dictionary<string, object>()
+{
+        { "class", "form-control" },
+        { "type", "email" },
+        { "aria-required", "true" }
+    };
+
+    if (hasValidationMessage)
+    {
+        attributes.Add("aria-describedby", Html.UniqueId("UnsubscribeFormInfo") + " " + Html.UniqueId("UnsubscribeFormValidatonInfo"));
+    }
+    else
+    {
+        attributes.Add("aria-describedby", Html.UniqueId("UnsubscribeFormInfo"));
+    }
+}
+
+<div class="@Model.CssClass">
+    @using (Html.BeginFormSitefinity("Unsubscribe", "UnsubscribeForm"))
+    {
+        <h3 class="mb-0">@Model.WidgetTitle</h3>
+
+        <div class="mb-3 text-muted" id='@Html.UniqueId("UnsubscribeFormInfo")'>
+            @Model.WidgetDescription
+        </div>
+
+        if (ViewBag.IsSucceded == true)
+        {
+            <div class="alert alert-success" role="alert" aria-live="assertive">
+                @Html.HtmlSanitize(Model.Message)
+            </div>
+        }
+
+        @Html.ValidationSummary(true)
+        if (!string.IsNullOrEmpty(ViewBag.Error))
+        {
+            <div class="alert alert-danger" role="alert" aria-live="assertive">
+                @ViewBag.Error
+            </div>
+        }
+
+        <div class="my-3">
+            @Html.LabelFor(u => u.Email, Html.Resource("Email"), new { @class = "form-label" })
+
+            <div class="d-flex gap-2">
+
+                @Html.TextBoxFor(u => u.Email, attributes)
+
+                <button type="submit" class="btn btn-primary ms-2" @(SystemManager.IsDesignMode ? "disabled" : "" )>@Html.Resource("ButtonUnsubscribe")</button>
+
+            </div>
+
+            @if (Html.ValidationMessageFor(u => u.Email) != null)
+            {
+                <div id='@Html.UniqueId("UnsubscribeFormValidatonInfo")' class="text-danger" role="alert" aria-live="assertive">
+                    @Html.ValidationMessageFor(u => u.Email)
+                </div>
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,94 @@
+@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.DocumentsList.DocumentsListViewModel
+
+@using System;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.DocumentsList;
+
+<div class="@Model.CssClass">
+    <table class="table">
+        <thead>
+            <tr>
+                <td scope="col"><strong>@Html.Resource("Title")</strong></td>
+                <td scope="col"><strong>@Html.Resource("Type")</strong></td>
+                <td scope="col" class="text-end"><strong>@Html.Resource("Size")</strong></td>
+                <td class="text-end"></td>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Items)
+        {
+        <tr>
+            <th scope="row" class="fw-normal">
+                <div class="d-flex align-items-center">
+                    <span class="flex-shrink-0 pt-1 me-3" aria-hidden="true">
+                        <span class="fa-layers fa-2x">
+                            <svg class="svg-inline--fa fa-w-16">
+                                <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#file" class="fa-secondary"></use>
+                            </svg>
+                            <span class="fa-layers-text fa-layers-bottom-right text-uppercase fw-normal ps-2 pe-2 mb-2 text-white @GetFileExtensionCssClass(((DocumentItemViewModel)item).Extension) sf-icon-txt-@(((DocumentItemViewModel)item).Extension)">@(((DocumentItemViewModel)item).Extension)</span>
+                        </span>
+                    </span>
+                    <a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix)">
+                        @item.Fields.Title
+                    </a>
+                </div>
+            </th>
+            <td>
+                @(((DocumentItemViewModel)item).Extension)
+            </td>
+            <td class="text-end">
+                @(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB")
+            </td>
+            <td class="text-end">
+                <a href="@item.Fields.MediaUrl" target="_blank">
+                    <svg class="svg-inline--fa fa-w-16" aria-hidden="true">
+                        <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#download" class="fa-secondary"></use>
+                    </svg>
+                    @Html.Resource("Download")<span class="visually-hidden">@item.Fields.Title</span>
+                </a>
+            </td>
+        </tr>
+        }
+    </table>
+</div>
+
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}
+
+@*Resolves the class that will be added for each file depending in the file extension*@
+@helper GetFileExtensionCssClass(String extension)
+{
+
+    if (extension == "xlsx")
+    {
+        @Html.HtmlSanitize("bg-green");
+    }
+    else if (extension == "doc" || extension == "docx")
+    {
+        @Html.HtmlSanitize("bg-blue");
+    }
+	else if (extension == "ppt" || extension == "pptx")
+    {
+        @Html.HtmlSanitize("bg-orange");
+    }
+	else if (extension == "pdf")
+    {
+        @Html.HtmlSanitize("bg-red");
+    }
+	else if (extension == "zip")
+    {
+        @Html.HtmlSanitize("bg-purple");
+    }
+	else
+	{
+        @Html.HtmlSanitize("bg-gray");
+	}
+}
+
+

@@ -1,0 +1,55 @@
+﻿@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.Document.DocumentViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+<div class="@Model.CssClass">
+    @if(!string.IsNullOrEmpty(Model.MediaUrl))
+    {
+    <div class="d-flex gap-3 align-items-center">
+        <div class="flex-shrink-0 pt-1" aria-hidden="true">
+            <div class="fa-layers fa-3x">
+                <svg class="svg-inline--fa fa-w-16">
+                    <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#file" class="fa-secondary"></use>
+                </svg>
+                <span class="fa-layers-text fa-layers-bottom-right text-uppercase ps-3 pe-3 mb-2 text-white @GetFileExtensionCssClass(Model.Extension) sf-icon-txt-@Model.Extension">@Model.Extension</span>
+            </div>
+        </div>
+        <div class="flex-grow-1" role="group">
+            <div>
+                <a class="@String.Concat(" sf", Model.Extension)" href="@Model.MediaUrl" target="_blank">@Model.Title</a>
+                <span class="text-muted small" aria-label="@Html.Resource(" FileExtension")">(@Model.Extension)</span>
+            </div>
+            <span class="text-muted small" aria-label="@Html.Resource(" FileSize")">@Model.FileSize KB</span>
+        </div>
+    </div>
+    }
+</div>
+@*Resolves the class that will be added for each file depending in the file extension*@
+@helper GetFileExtensionCssClass(String extension)
+{
+
+    if (extension == "xlsx")
+    {
+        @Html.HtmlSanitize("bg-green");
+    }
+    else if (extension == "doc" || extension == "docx")
+    {
+        @Html.HtmlSanitize("bg-blue");
+    }
+	else if (extension == "ppt" || extension == "pptx")
+    {
+        @Html.HtmlSanitize("bg-orange");
+    }
+	else if (extension == "pdf")
+    {
+        @Html.HtmlSanitize("bg-red");
+    }
+	else if (extension == "zip")
+    {
+        @Html.HtmlSanitize("bg-purple");
+    }
+	else
+	{
+        @Html.HtmlSanitize("bg-gray");
+	}
+}

@@ -1,0 +1,23 @@
+﻿@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Profile.ProfilePreviewViewModel
+
+@using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Profile;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+<div class="@Model.CssClass">
+    <div class="d-flex gap-3">
+        <div class="flex-shrink-0">
+            <img src="@Model.AvatarImageUrl" alt="@Model.UserName"  width="100" />
+        </div>
+
+        <div class="flex-grow-1">
+           <h3 class="mb-0">@Model.DisplayName <small>(@Model.Nickname)</small></h3>
+           <p class="text-muted">@Model.Email</p>
+           <p>@Model.About</p>
+
+            @if (Model.CanEdit && ViewBag.Mode == ViewMode.Both)
+            {
+                @Html.ActionLink(Html.Resource("EditProfileLink"), "EditProfile");
+            }
+        </div>
+    </div>
+</div>

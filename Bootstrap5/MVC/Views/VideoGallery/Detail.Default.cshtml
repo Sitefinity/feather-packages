@@ -1,0 +1,89 @@
+@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.VideoGallery.VideoDetailsViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Web.DataResolving;
+
+@{
+    var tmbWidth = string.Empty;
+    var tmbHeight = string.Empty;
+
+    if (Model.Item.Fields.Width != null && Model.Item.Fields.Width != 0)
+    {
+
+        tmbWidth = string.Format("width={0}", Model.Item.Fields.Width);
+    }
+
+    if (Model.Item.Fields.Height != null && Model.Item.Fields.Height != 0)
+    {
+
+        tmbHeight = string.Format("height={0}", Model.Item.Fields.Height);
+    }
+}
+
+<div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
+    <figure aria-labelledby="@Html.UniqueId(" VideoTitle")">
+        <figcaption class="h2" id="@Html.UniqueId(" VideoTitle")" @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</figcaption>
+        <div class="text-muted">
+            <span class="visually-hidden">@Html.Resource("VideoTakenOn") </span>
+            @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
+            @Html.Resource("By")
+            @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
+        </div>
+        <p @Html.InlineEditingFieldAttributes("Description", "LongText") id='@Html.UniqueId("VideoInfo")'>@Html.HtmlSanitize((string)Model.Item.Fields.Description)</p>
+        <div class="d-flex justify-content-center bg-light">
+            <video src="@Html.Raw(Model.MediaUrl)" class="mw-100 h-auto" controls="controls" aria-labelledby='@Html.UniqueId("VideoTitle")' aria-describedby='@Html.UniqueId("VideoInfo")' @tmbWidth @tmbHeight></video>
+        </div>
+
+    </figure>
+    @if (ViewBag.ItemIndex != null)
+    {
+        <nav role="navigation" aria-label="@Html.Resource(" PreviousNextVideo")" class="d-flex justify-content-between mb-3">
+            @{
+                var previousItemIndex = ViewBag.ItemIndex == 1 ? Model.TotalItemsCount : ViewBag.ItemIndex - 1;
+                var nextItemIndex = ViewBag.ItemIndex == Model.TotalItemsCount ? 1 : ViewBag.ItemIndex + 1;
+            }
+
+            @if (Model.PreviousItem != null)
+            {
+                <a aria-label="@Html.Resource(" GoToPreviousVideo")" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, previousItemIndex)">
+                    <svg class="svg-inline--fa fa-w-18" aria-hidden="true">
+                        <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#@GetCaretDirection("prev")" class="fa-primary"></use>
+                    </svg>
+                    @Html.Resource("PreviousVideo")
+                </a>
+            }
+
+            @if (Model.PreviousItem != null || Model.NextItem != null)
+            {
+                <span>@Html.HtmlSanitize((string)string.Format(Html.Resource("IndexOfTotal"), ViewBag.ItemIndex, Model.TotalItemsCount))</span>
+            }
+
+            @if (Model.NextItem != null)
+            {
+                <a aria-label="@Html.Resource(" GoToNextVideo")" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, nextItemIndex)">
+                    @Html.Resource("NextVideo")
+                    <svg class="svg-inline--fa fa-w-18" aria-hidden="true">
+                        <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#@GetCaretDirection("next")" class="fa-primary"></use>
+                    </svg>
+                </a>
+            }
+        </nav>
+
+        @Html.ActionLink(Html.Resource("BackToAllVideos"), "Index")
+    }
+</div>
+@*Resolves the caret direction depending on language direction*@
+@helper GetCaretDirection(string arrow)
+{
+    bool isRtl = ((Html.RenderDirAttribute().ToString() == "dir=\"rtl\"")?true:false);
+
+    if (arrow == "next" && !isRtl || arrow == "prev" && isRtl)
+    {
+        @Html.HtmlSanitize("caret-right");
+    }
+    else
+    {
+        @Html.HtmlSanitize("caret-left");
+    }
+}

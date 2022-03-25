@@ -1,0 +1,42 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity.Frontend.Events.Mvc.Helpers
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers
+@using Telerik.Sitefinity.Modules.Pages
+@using Telerik.Sitefinity.Web.DataResolving
+
+<div class="@Model.CssClass">
+    <ul class="list-unstyled">
+        @foreach (var item in Model.Items)
+        {
+            var navigateUrl = HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix);
+
+            <li class="mb-4" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id)>
+                <div class="row">
+                    <h3 class="col-auto position-relative">
+                        <a @Html.InlineEditingFieldAttributes("Title", "ShortText") href="@navigateUrl">@item.Fields.Title</a>
+                        <span title="@item.Fields.Parent.Title" class="col-auto position-absolute top-50 start-100 translate-middle p-2 border border-light rounded-circle" style="background-color: @item.EventCalendarColour()"></span>
+                    </h3>
+                </div>
+                <div>
+                    <span class="text-muted">
+                        @*@If is on the same line, because otherwise there is an empty space before the comma*@
+                        <time>@item.EventDates()</time>@if (!string.IsNullOrEmpty(item.Fields.City)){<span>, @item.Fields.City</span>}
+                        @Html.CommentsCount((string)navigateUrl, item.DataItem)
+                    </span>
+                </div>
+                <div class="mt-3 mb-2" @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.HtmlSanitize((string)item.Fields.Summary)</div>
+            </li>
+        }
+    </ul>
+
+    @if (Model.ShowPager)
+    {
+        @Html.Action("Index", "ContentPager", new
+        {
+            currentPage = Model.CurrentPage,
+            totalPagesCount = Model.TotalPagesCount.Value,
+            redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+        })
+    }
+</div>
