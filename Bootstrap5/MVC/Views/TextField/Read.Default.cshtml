@@ -3,4 +3,5 @@
 <div class="@Model.CssClass my-3" data-sf-role="text-field-container">
     <strong>@Model.MetaField.Title</strong>
     <p>@Model.Value</p>
+    <input type="hidden" name="@Model.MetaField.FieldName" value="@Model.Value" />
 </div>

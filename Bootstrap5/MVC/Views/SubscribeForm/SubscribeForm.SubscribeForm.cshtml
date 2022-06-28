@@ -73,6 +73,7 @@
             <div class="d-flex gap-2">
                 @Html.TextBoxFor(m => m.Email, attributes)
                 <button class="btn btn-primary ms-2" type="submit" @(SystemManager.IsDesignMode ? "disabled" : "" )>@Html.Resource("ButtonSubscribe")</button>
+                @Html.AddSitefinityAntiforgeryToken()
             </div>
 
             @if (Html.ValidationMessageFor(m => m.Email) != null)

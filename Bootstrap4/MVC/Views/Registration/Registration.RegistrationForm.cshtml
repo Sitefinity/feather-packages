@@ -81,7 +81,7 @@
 
                     @Html.HiddenFor(m => m.RequiresQuestionAndAnswer)
 
-                    @FormGroupPanel("FirstName", m => m.Profile["FirstName"], "RegistrationFirstName", "text", null,  HtmlHelper.ClientValidationEnabled ? RegistrationHelper.GetProfileValidationAttributes("FirstName") : null)
+                    @FormGroupPanel("FirstName", m => m.Profile["FirstName"], "RegistrationFirstName", "text", null, HtmlHelper.ClientValidationEnabled ? RegistrationHelper.GetProfileValidationAttributes("FirstName") : null)
 
                     @FormGroupPanel("LastName", m => m.Profile["LastName"], "RegistrationLastName", "text", null, HtmlHelper.ClientValidationEnabled ? RegistrationHelper.GetProfileValidationAttributes("LastName") : null)
 
@@ -106,7 +106,7 @@
                     {
                         <button type="submit" class="btn btn-primary" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("Register")</button>
                     }
-
+                    @Html.AddSitefinityAntiforgeryToken()
                     <div class="mt-3">
                         <div>Already registered?</div>
                         <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>

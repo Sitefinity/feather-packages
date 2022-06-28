@@ -8,19 +8,25 @@
     var tmbWidth = string.Empty;
     var tmbHeight = string.Empty;
 
-    if (Model.Item.Fields.Width != null && Model.Item.Fields.Width != 0)
+    if (Model.Width != null && Model.Width != 0)
     {
+        tmbWidth = string.Format("width={0}", Model.Width);
 
+    }
+    else if (Model.Item.Fields.Width != null && Model.Item.Fields.Width != 0)
+    {
         tmbWidth = string.Format("width={0}", Model.Item.Fields.Width);
     }
 
-    if (Model.Item.Fields.Height != null && Model.Item.Fields.Height != 0)
+    if (Model.Height != null && Model.Height != 0)
     {
-
+        tmbHeight = string.Format("height={0}", Model.Height);
+    }
+    else if (Model.Item.Fields.Height != null && Model.Item.Fields.Height != 0)
+    {
         tmbHeight = string.Format("height={0}", Model.Item.Fields.Height);
     }
 }
-
 <div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
     <figure aria-labelledby="@Html.UniqueId(" VideoTitle")">
         <figcaption class="h2" id="@Html.UniqueId(" VideoTitle")" @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</figcaption>
@@ -48,7 +54,7 @@
             {
                 <a aria-label="@Html.Resource(" GoToPreviousVideo")" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, previousItemIndex)">
                     <svg class="svg-inline--fa fa-w-18" aria-hidden="true">
-                        <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#@GetCaretDirection("prev")" class="fa-primary"></use>
+                        <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#@GetCaretDirection(" prev")" class="fa-primary"></use>
                     </svg>
                     @Html.Resource("PreviousVideo")
                 </a>
@@ -64,7 +70,7 @@
                 <a aria-label="@Html.Resource(" GoToNextVideo")" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, nextItemIndex)">
                     @Html.Resource("NextVideo")
                     <svg class="svg-inline--fa fa-w-18" aria-hidden="true">
-                        <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#@GetCaretDirection("next")" class="fa-primary"></use>
+                        <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#@GetCaretDirection(" next")" class="fa-primary"></use>
                     </svg>
                 </a>
             }
@@ -76,7 +82,7 @@
 @*Resolves the caret direction depending on language direction*@
 @helper GetCaretDirection(string arrow)
 {
-    bool isRtl = ((Html.RenderDirAttribute().ToString() == "dir=\"rtl\"")?true:false);
+    bool isRtl = ((Html.RenderDirAttribute().ToString() == "dir=\"rtl\"") ? true : false);
 
     if (arrow == "next" && !isRtl || arrow == "prev" && isRtl)
     {

@@ -76,10 +76,11 @@
 		<div class="form-group">
 			@Html.LabelFor(u => u.Email, Html.Resource("Email"))
 
-			<div class="form-inline">
-				@Html.TextBoxFor(m => m.Email, attributes)
-				<button class="btn btn-primary ml-2" type="submit" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("ButtonSubscribe")</button>
-			</div>
+            <div class="form-inline">
+                @Html.TextBoxFor(m => m.Email, attributes)
+                <button class="btn btn-primary ml-2" type="submit" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("ButtonSubscribe")</button>
+                @Html.AddSitefinityAntiforgeryToken()
+            </div>
 
 			@if (Html.ValidationMessageFor(m => m.Email) != null)
 			{

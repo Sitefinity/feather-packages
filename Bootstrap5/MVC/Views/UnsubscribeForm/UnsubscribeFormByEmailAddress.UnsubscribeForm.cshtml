@@ -61,7 +61,7 @@
                 @Html.TextBoxFor(u => u.Email, attributes)
 
                 <button type="submit" class="btn btn-primary ms-2" @(SystemManager.IsDesignMode ? "disabled" : "" )>@Html.Resource("ButtonUnsubscribe")</button>
-
+                @Html.AddSitefinityAntiforgeryToken()
             </div>
 
             @if (Html.ValidationMessageFor(u => u.Email) != null)

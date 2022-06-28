@@ -62,6 +62,11 @@
     }
 
     <div class="sf-search-results media-list">
+
+        @{
+            LibrariesManager librariesManager = LibrariesManager.GetManager();
+        } 
+
         @foreach (var item in Model.Results.Data)
         {
             var hasLink = item.GetValue("Link") != null && !String.IsNullOrEmpty(item.GetValue("Link").ToString());
@@ -69,36 +74,27 @@
 
                 @if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Image).ToString())
                 {
-
                     <div class="media-left pr-2 sf-img-thmb">
                         <a href="@item.GetValue("Link")">
                             <img src="@item.GetValue("Link")" alt="@item.GetValue("Title")" width="120" />
                         </a>
                     </div>
                 }
-
                 else if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Video).ToString())
                 {
-                    LibrariesManager librariesManager = LibrariesManager.GetManager();
                     var videoTmbId = new Guid((string)item.GetValue("Id"));
-                    Video video = librariesManager.GetVideo(videoTmbId);
-                    if (video != null)
+                    string thumbUrl = HyperLinkHelpers.GetVideoThumbnailUrl(librariesManager, videoTmbId);
+                    if (!string.IsNullOrEmpty(thumbUrl))
                     {
-                        var thumbUrl = video.ThumbnailUrl;
-
                         <div class="media-left pr-2">
                             <div class="sf-video-thmb">
-
                                 <a href="@item.GetValue("Link")">
                                     <img src="@thumbUrl" alt="@item.GetValue("Title")" width="120" />
-
                                     <div class="sf-icon-play"></div>
-
                                 </a>
                             </div>
                         </div>
                     }
-
                 }
 
                 else
@@ -176,7 +172,6 @@
     <input type="hidden" data-sf-role="searchResLanguage" value='@Request.QueryStringGet("language")' />
     <input type="hidden" data-sf-role="searchResIndexCatalogue" value='@Request.QueryStringGet("indexCatalogue")' />
     <input type="hidden" data-sf-role="searchResQuery" value='@Request.QueryStringGet("searchQuery")' />
-    <input type="hidden" data-sf-role="searchResWordsMode" value='@Request.QueryStringGet("wordsMode")' />
     <input type="hidden" data-sf-role="scoringInfo" value='@Request.QueryStringGet("scoringInfo")' />
 
 </div>
