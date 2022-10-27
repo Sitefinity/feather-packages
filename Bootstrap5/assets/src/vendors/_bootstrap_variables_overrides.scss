@@ -2,3 +2,5 @@ $link-decoration: none;
 $link-hover-decoration: underline;
 // Added additional background utility css classes
 $utilities: map-merge( $utilities, ( "background-color": map-merge( map-get($utilities, "background-color"), ( values: map-merge( map-get(map-get($utilities, "background-color"), "values"), $colors ) ) ) ) );
+// Add cursor css classes - pointer and default
+$utilities: map-merge( $utilities, ( "cursor" : ( property: cursor, class: c, values: pointer default ) ) );

@@ -9,11 +9,12 @@
 @using Telerik.Sitefinity.Frontend.Identity.Mvc.Helpers;
 @using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Registration;
 @using Telerik.Sitefinity.Web;
+@using Telerik.Sitefinity.Web.Utilities;
 
 @*Add scripts and stylesheets*@
 @Html.Script(ScriptRef.JQuery, "top", true)
-@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", true)
-@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", true, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", true, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
 
 @{
     var hasExternalProviders = Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0;

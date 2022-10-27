@@ -9,11 +9,12 @@
 @using Telerik.Sitefinity.Frontend.Identity.Mvc.Helpers;
 @using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Registration;
 @using Telerik.Sitefinity.Web;
+@using Telerik.Sitefinity.Web.Utilities;
 
 @*Add scripts and stylesheets*@
 @Html.Script(ScriptRef.JQuery, "jquery", false)
-@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "jquery", false)
-@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "jquery", false)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "jquery", false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "jquery", false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
 
 @{
     var hasExternalProviders = Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0;
@@ -124,10 +125,10 @@
 
                                 @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = classToBeAdd })
 
-                                }
-                            </div>
+                            }
                         </div>
-            }
+                    </div>
+                }
             </div>
         }
     }

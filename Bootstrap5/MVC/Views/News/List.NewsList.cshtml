@@ -1,4 +1,4 @@
-@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
@@ -9,25 +9,25 @@
         @foreach (var item in Model.Items)
         {
             var navigateUrl = HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix);
-            
+
             <li class="mb-4" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id)>
-				<h3>
-					<a @Html.InlineEditingFieldAttributes("Title", "ShortText") href="@navigateUrl">@item.Fields.Title</a>
-				</h3>
-                
+                <h3>
+                    <a @Html.InlineEditingFieldAttributes("Title", "ShortText") href="@navigateUrl">@item.Fields.Title</a>
+                </h3>
+
                 <div>
-				    <span class="text-muted">
-					    @item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
-					    @Html.Resource("By")
-					    @DataResolver.Resolve(item.DataItem, "Author", null)
-				    </span>
+                    <span class="text-muted">
+                        @item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
+                        @Html.Resource("By")
+                        @DataResolver.Resolve(item.DataItem, "Author", null)
+                    </span>
                     @Html.CommentsCount((string)navigateUrl, item.DataItem)
                 </div>
 
-				<div class="mt-3 mb-2" @Html.InlineEditingFieldAttributes("Summary", "ShortText")>@Html.HtmlSanitize((string)item.Fields.Summary)</div>
+                <div class="mt-3 mb-2" @Html.InlineEditingFieldAttributes("Summary", "ShortText")>@Html.HtmlSanitize((string)item.Fields.Summary)</div>
 
-				<a href="@navigateUrl">@Html.Resource("FullStory")</a>
-			</li>
+                <a href="@navigateUrl">@Html.Resource("FullStory")</a>
+            </li>
         }
     </ul>
 

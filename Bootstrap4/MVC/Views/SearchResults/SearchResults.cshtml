@@ -7,7 +7,7 @@
 @using Telerik.Sitefinity.Libraries.Model;
 @using Telerik.Sitefinity.Web;
 
-<div class=" @Model.CssClass">
+<div class=" @Model.CssClass" id="sf-search-result-container">
 
     <div class="row">
         <div class="col-lg-8">
@@ -27,7 +27,7 @@
                 <h1 role="alert" aria-live="assertive">@Html.Resource("No") @Html.HtmlSanitize(Model.ResultText)</h1>
             }
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4" data-sf-hide-while-loading="true">
             @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
             {
                 <label>
@@ -44,7 +44,7 @@
 
     @if (Model.Languages.Length > 1)
     {
-        <div>
+        <div data-sf-hide-while-loading="true">
             <span>@Html.Resource("ChangeResultsLanguageLabel") </span>
             @for (var i = 0; i < Model.Languages.Length; i++)
             {
@@ -61,11 +61,11 @@
         </div>
     }
 
-    <div class="sf-search-results media-list">
+    <div class="sf-search-results media-list" data-sf-hide-while-loading="true">
 
         @{
             LibrariesManager librariesManager = LibrariesManager.GetManager();
-        } 
+        }
 
         @foreach (var item in Model.Results.Data)
         {
@@ -131,7 +131,7 @@
     {
         if (ViewBag.IsFilteredbyPermission)
         {
-            <ul class="pagination">
+            <ul class="pagination" data-sf-hide-while-loading="true">
                 @if (Model.CurrentPage > 1)
                 {
                     <li class="page-item">
@@ -150,14 +150,14 @@
         {
             if (Model.CurrentPage == Model.TotalPagesCount)
             {
-                <em class="text-muted">@((Model.ItemsPerPage * Model.TotalPagesCount) - Model.Results.TotalCount) of @Model.Results.TotalCount results</em>
+                <em class="text-muted" data-sf-hide-while-loading="true">@((Model.ItemsPerPage * Model.TotalPagesCount) - Model.Results.TotalCount) of @Model.Results.TotalCount results</em>
             }
             else
             {
-                <em class="text-muted">@Model.ItemsPerPage of @Model.Results.TotalCount results</em>
+                <em class="text-muted" data-sf-hide-while-loading="true">@Model.ItemsPerPage of @Model.Results.TotalCount results</em>
             }
 
-            <div>
+            <div data-sf-hide-while-loading="true">
                 @Html.Action("Index", "ContentPager", new
                 {
                     currentPage = Model.CurrentPage,
@@ -173,7 +173,16 @@
     <input type="hidden" data-sf-role="searchResIndexCatalogue" value='@Request.QueryStringGet("indexCatalogue")' />
     <input type="hidden" data-sf-role="searchResQuery" value='@Request.QueryStringGet("searchQuery")' />
     <input type="hidden" data-sf-role="scoringInfo" value='@Request.QueryStringGet("scoringInfo")' />
+    <input type="hidden" data-sf-role="resultsForAllSites" value='@Request.QueryStringGet("resultsForAllSites")' />
 
+</div>
+
+<div id="sf-search-results-loading-indicator" style="display:none">
+    <div class="d-flex justify-content-center my-5">
+        <div class="spinner-border text-primary my-5" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/SearchResults/Search-results.js"), "bottom", throwException: false)

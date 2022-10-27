@@ -1,0 +1,72 @@
+﻿@model Telerik.Sitefinity.Frontend.Search.Mvc.Models.FacetsWidgetViewModel
+@using System;
+@using System.Globalization;
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Publishing.PublishingPoints;
+
+@{
+    const int defaultFacetsCollapseCount = 10;
+}
+
+<div id="facetContainer">
+    @if (ViewBag.HasAnyFacetElements)
+    {
+        <h3 class="h6 mb-3 fw-normal">@Model.FilterResultsLabel</h3>
+
+        <div class="d-flex align-items-center justify-content-between">
+            <label class="form-label">@Model.AppliedFiltersLabel</label>
+            <button id="sf-facet-clear-all-btn" class="btn btn-link px-0 py-0 mb-2" hidden>@Model.ClearAllLabel</button>
+        </div>
+        <ul id="applied-filters" class="list-unstyled list-inline" data-sf-applied-filter-html-tag="li" data-sf-filter-label-css-class="list-inline-item bg-secondary bg-opacity-10 rounded-pill ps-2 pe-4 pb-1 me-1 mb-1 mw-100 position-relative overflow-hidden text-truncate text-nowrap" data-sf-remove-filter-css-class="px-2 position-absolute end-0">
+        </ul>
+    }
+
+    <div id="facetContent" class="mb-3">
+        @foreach (var facet in Model.SearchFacets)
+        {
+            var value = 0;
+            if (facet.FacetElements.Any())
+            {
+                <h4 class="h6 fw-normal mt-3">@facet.FacetTitle</h4>
+
+                <ul class="list-unstyled mb-0" id="facets-group-list-@facet.FacetFieldName">
+                    @foreach (var facetElement in facet.FacetElements)
+                    {
+                        string facetElementLabel = facetElement.FacetValue;
+                        if (facetElement.FacetFieldType == SearchIndexAdditonalFieldType.DateAndTime)
+                        {
+                            DateTime facetDateValue = DateTime.Parse(facetElementLabel);
+                            facetElementLabel = facetDateValue.ToSitefinityUITime().ToString("MMM dd, yyyy");
+                        }
+
+                        value++;
+                        bool hideElement = (value > defaultFacetsCollapseCount) && Model.IsShowMoreLessButtonActive;
+                        <li class="form-check" @(hideElement ? "hidden" : string.Empty)>
+                            <input type="checkbox"
+                                   id="facet-checkbox-@facet.FacetFieldName-@facetElement.FacetValue"
+                                   class="form-check-input c-pointer"
+                                   data-facet-key="@facet.FacetFieldName"
+                                   data-facet-value="@facetElement.FacetValue" />
+                            <label for="facet-checkbox-@facet.FacetFieldName-@facetElement.FacetValue" id="facet-@facetElement.FacetValue" class="form-check-label c-pointer">@facetElementLabel</label>
+                            @if (Model.DisplayItemCount)
+                            {
+                                <span class="small text-muted">(@facetElement.FacetCount)</span>
+                            }
+                        </li>
+                    }
+                </ul>
+                if (facet.FacetElements.Count > defaultFacetsCollapseCount && Model.IsShowMoreLessButtonActive)
+                {
+                    <button type="button" class="btn btn-link p-0" show-more="@Model.ShowMoreLabel" show-less="@Model.ShowLessLabel" data-facet-type="@facet.FacetFieldName" id="show-more-less-@facet.FacetFieldName">@Model.ShowMoreLabel</button>
+                }
+            }
+        }
+    </div>
+
+</div>
+
+<input type="hidden" id="sf-currentPageUrl" value="@(ViewBag.CurrentPageUrl ?? string.Empty)" />
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Facets/query-string-utils.js"), "bottom", throwException: false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Facets/facets-widget.js"), "bottom", throwException: false)

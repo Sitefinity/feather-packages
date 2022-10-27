@@ -7,7 +7,7 @@
 @using Telerik.Sitefinity.Libraries.Model;
 @using Telerik.Sitefinity.Web;
 
-<div class=" @Model.CssClass">
+<div class=" @Model.CssClass" id="sf-search-result-container">
 
     <div class="d-flex align-items-center justify-content-between my-3">
         @if (@Model.Results.TotalCount > 0)
@@ -27,7 +27,7 @@
         }
         @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
         {
-            <div class="d-flex align-items-center gap-2">
+            <div class="d-flex align-items-center gap-2" data-sf-hide-while-loading="true">
                 <label class="form-label text-nowrap mb-0" for="@Html.UniqueId("searchSort")">@Html.Resource("SortBy")</label>
                 <select class="userSortDropdown form-select" title="@Html.Resource("SortDropdown")" id="@Html.UniqueId("searchSort")">
                     <option value="@OrderByOptions.Relevance" @(Model.OrderBy == OrderByOptions.Relevance ? "selected=selected" : "")>@Html.Resource("Relevance")</option>
@@ -41,7 +41,7 @@
 
     @if (Model.Languages.Length > 1)
     {
-        <div>
+        <div data-sf-hide-while-loading="true">
             <span>@Html.Resource("ChangeResultsLanguageLabel") </span>
             @for (var i = 0; i < Model.Languages.Length; i++)
             {
@@ -58,7 +58,7 @@
         </div>
     }
 
-    <div>
+    <div data-sf-hide-while-loading="true">
 
         @{
             LibrariesManager librariesManager = LibrariesManager.GetManager();
@@ -131,7 +131,7 @@
     {
         if (ViewBag.IsFilteredbyPermission)
         {
-            <ul class="pagination">
+            <ul class="pagination" data-sf-hide-while-loading="true">
                 @if (Model.CurrentPage > 1)
                 {
                     <li class="page-item">
@@ -149,7 +149,7 @@
         else
         {
             var numOfItems = (Model.CurrentPage == Model.TotalPagesCount) ? Html.Raw(Model.Results.TotalCount) : Html.Raw(Model.CurrentPage * Model.ItemsPerPage);
-            <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between" data-sf-hide-while-loading="true">
                 <div>
                     @Html.Action("Index", "ContentPager", new
                     {
@@ -169,7 +169,18 @@
     <input type="hidden" data-sf-role="searchResIndexCatalogue" value='@Request.QueryStringGet("indexCatalogue")' />
     <input type="hidden" data-sf-role="searchResQuery" value='@Request.QueryStringGet("searchQuery")' />
     <input type="hidden" data-sf-role="scoringInfo" value='@Request.QueryStringGet("scoringInfo")' />
+    <input type="hidden" data-sf-role="resultsForAllSites" value='@Request.QueryStringGet("resultsForAllSites")' />
     <input type="hidden" data-sf-role="scoringInfo" value='@Request.QueryStringGet("scoringInfo")' />
+    <input type="hidden" data-sf-role="filterParameter" value='@Request.QueryStringGet("filter")' />
+
+</div>
+
+<div id="sf-search-results-loading-indicator" style="display:none">
+    <div class="d-flex justify-content-center my-5">
+        <div class="spinner-border text-primary my-5" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/SearchResults/Search-results.js"), "bottom", false)

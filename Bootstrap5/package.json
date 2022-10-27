@@ -33,7 +33,7 @@
     "copyJs": "node_modules/@popperjs/core/dist/umd/popper.min.js node_modules/@popperjs/core/dist/umd/popper.min.js.map node_modules/bootstrap/dist/js/bootstrap.min.js node_modules/bootstrap/dist/js/bootstrap.min.js.map"
   },
   "scripts": {
-    "sass:editor": "cross-conf-env node-sass --output-style compressed npm_package_config_stylesSrc/adminapp/npm_package_config_editorSassFile npm_package_config_stylesDist/npm_package_config_editorCssFile",
+    "sass:editor": "cross-conf-env sass --style=compressed npm_package_config_stylesSrc/adminapp/npm_package_config_editorSassFile npm_package_config_stylesDist/npm_package_config_editorCssFile",
     "clean": "cross-conf-env rimraf npm_package_config_dist/*",
     "copy:sprites": "cross-env-shell copyfiles -f $npm_package_config_copySprites assets/dist/sprites",
     "copy:js": "cross-env-shell copyfiles -f $npm_package_config_copyJs assets/dist/js",
