@@ -1,0 +1,22 @@
+.sf-facets-filter-label {
+    background-color: rgba(108, 117, 125, 0.1) !important;
+}
+.sf-facets-remove-filter {
+    right: 0;
+}
+
+@if $has-rtl-support {
+
+    @include rtl-cultures {
+
+        .form-check {
+            padding-right: 1.25rem;
+            padding-left: 0;
+        }
+
+        .form-check-input {
+            margin-right: -1.25rem;
+            margin-left: 0;
+        }
+    }
+}

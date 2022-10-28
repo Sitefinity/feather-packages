@@ -7,13 +7,14 @@
 @using Telerik.Sitefinity.Services;
 @using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.LoginForm;
 @using Telerik.Sitefinity.Web;
+@using Telerik.Sitefinity.Web.Utilities;
 @using Telerik.Sitefinity.Abstractions;
 @using Telerik.Sitefinity.Security.CSRF;
 
 @*Add scripts and stylesheets*@
 @Html.Script(ScriptRef.JQuery, "top", true)
-@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", true)
-@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", true, false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", true, false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
 
 @{
     var hasExternalProviders = Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0;
@@ -25,14 +26,14 @@
     @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" } }, true))
     {
         @Html.ValidationSummary(true);
-            
+
         <div class="@rowClass">
             <div class="@colClass">
                 <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
 
                 @if ((!string.IsNullOrEmpty(Request.QueryStringGet("err")) && ViewBag.ControllerId.Equals(Request.QueryStringGet("sf_login_cntrl_id"))) || Model.LoginError)
                 {
-                <div class="alert alert-danger" role="alert" aria-live="assertive">@Html.Resource("IncorrectCredentialsMessage")</div>
+                    <div class="alert alert-danger" role="alert" aria-live="assertive">@Html.Resource("IncorrectCredentialsMessage")</div>
                 }
 
                 @FormGroupPanel("UserName", u => u.UserName, "LoginUserName", "text", null, new Dictionary<string, object>() { { "aria-required", "true" } })
@@ -53,38 +54,38 @@
                                 </label>
                             </div>
                         }
-                    @if (Model.ShowForgotPasswordLink)
-                    {
-                        <div class="text-lg-right pr-4 @isPulledRight">
-                            @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
-                        </div>
-                    }
-                    </div>                
+                        @if (Model.ShowForgotPasswordLink)
+                        {
+                            <div class="text-lg-right pr-4 @isPulledRight">
+                                @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
+                            </div>
+                        }
+                    </div>
                 }
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("LoginFormLogInButton")</button>
                 </div>
-                
+
                 @Html.AddSitefinityAntiforgeryToken()
 
                 @if (Model.ShowRegistrationLink)
                 {
-            <div class="sf-registration-link">
-                <div>@Html.Resource("NotRegisteredYet")</div>
-                <a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a>
+                    <div class="sf-registration-link">
+                        <div>@Html.Resource("NotRegisteredYet")</div>
+                        <a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a>
+                    </div>
+                }
             </div>
-            }
-        </div>
-            
+
             @if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
             {
-                <div class="col-lg-6">                
+                <div class="col-lg-6">
                     <h3>@Html.Resource("UseAccountIn")</h3>
 
                     @foreach (var provider in Model.ExternalProviders)
-                    { 
-                        var classToBeAdd = "btn btn-lg btn-block border " + @provider.Value;                 
+                    {
+                        var classToBeAdd = "btn btn-lg btn-block border " + @provider.Value;
                         <div class="mb-1">
                             @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = classToBeAdd })
                         </div>

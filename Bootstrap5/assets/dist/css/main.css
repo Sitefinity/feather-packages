@@ -7830,6 +7830,14 @@ textarea.form-control-lg {
   visibility: hidden !important;
 }
 
+.c-pointer {
+  cursor: pointer !important;
+}
+
+.c-default {
+  cursor: default !important;
+}
+
 @media (min-width: 576px) {
   .float-sm-start {
     float: left !important;
@@ -11900,9 +11908,5 @@ svg {
   background-color: #0d6efd;
   border-color: #0d6efd;
 }
-
-/*body {
-    background-color: #f2f2f2;
-}*/
 
 /*# sourceMappingURL=main.css.map */
