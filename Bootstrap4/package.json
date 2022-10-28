@@ -9,7 +9,7 @@
     "cross-conf-env": "1.1.2",
     "cross-env": "7.0.2",
     "magnific-popup": "1.1.0",
-    "node-sass": "6.0.1",
+    "node-sass": "7.0.0",
     "npm-run-all": "4.1.5",
     "onchange": "7.0.2",
     "popper.js": "1.16.0",
