@@ -22,47 +22,124 @@
         </ul>
     }
 
-    <div id="facetContent" class="mb-3">
-        @foreach (var facet in Model.SearchFacets)
+<div id="facetContent" class="mb-3">
+    @foreach (var facet in Model.SearchFacets)
+    {
+        var value = 0;
+        if (facet.FacetElements.Any() || facet.ShowNumberCustomRange || facet.ShowDateCustomRanges)
         {
-            var value = 0;
-            if (facet.FacetElements.Any())
-            {
-                <h4 class="h6 fw-normal mt-3">@facet.FacetTitle</h4>
+            <h4 class="h6 fw-normal mt-3">@facet.FacetTitle</h4>
 
-                <ul class="list-unstyled mb-0" id="facets-group-list-@facet.FacetFieldName">
-                    @foreach (var facetElement in facet.FacetElements)
-                    {
-                        string facetElementLabel = facetElement.FacetValue;
-                        if (facetElement.FacetFieldType == SearchIndexAdditonalFieldType.DateAndTime)
-                        {
-                            DateTime facetDateValue = DateTime.Parse(facetElementLabel);
-                            facetElementLabel = facetDateValue.ToSitefinityUITime().ToString("MMM dd, yyyy");
-                        }
-
-                        value++;
-                        bool hideElement = (value > defaultFacetsCollapseCount) && Model.IsShowMoreLessButtonActive;
-                        <li class="form-check" @(hideElement ? "hidden" : string.Empty)>
-                            <input type="checkbox"
-                                   id="facet-checkbox-@facet.FacetFieldName-@facetElement.FacetValue"
-                                   class="form-check-input c-pointer"
-                                   data-facet-key="@facet.FacetFieldName"
-                                   data-facet-value="@facetElement.FacetValue" />
-                            <label for="facet-checkbox-@facet.FacetFieldName-@facetElement.FacetValue" id="facet-@facetElement.FacetValue" class="form-check-label c-pointer">@facetElementLabel</label>
-                            @if (Model.DisplayItemCount)
-                            {
-                                <span class="small text-muted">(@facetElement.FacetCount)</span>
-                            }
-                        </li>
-                    }
-                </ul>
-                if (facet.FacetElements.Count > defaultFacetsCollapseCount && Model.IsShowMoreLessButtonActive)
+            <ul class="list-unstyled mb-0" id="facets-group-list-@facet.FacetFieldName" data-facet-type="@facet.FacetFieldType">
+                @foreach (var facetElement in facet.FacetElements)
                 {
-                    <button type="button" class="btn btn-link p-0" show-more="@Model.ShowMoreLabel" show-less="@Model.ShowLessLabel" data-facet-type="@facet.FacetFieldName" id="show-more-less-@facet.FacetFieldName">@Model.ShowMoreLabel</button>
+                    value++;
+                    bool hideElement = (value > defaultFacetsCollapseCount) && Model.IsShowMoreLessButtonActive;
+                    <li @(hideElement ? "hidden" : string.Empty)>
+                        <input type="checkbox"
+                               id="facet-checkbox-@facet.FacetFieldName-@facetElement.FacetValue"
+                               data-facet-key="@facet.FacetFieldName"
+                               data-facet-value="@facetElement.FacetValue" />
+
+
+                        <label for="facet-checkbox-@facet.FacetFieldName-@facetElement.FacetValue" id="facet-@facetElement.FacetValue">@facetElement.FacetLabel</label>
+
+                        @if (Model.DisplayItemCount)
+                        {
+                            <span class="small text-muted">(@facetElement.FacetCount)</span>
+                        }
+                    </li>
                 }
+            </ul>
+            if (facet.FacetElements.Count > defaultFacetsCollapseCount && Model.IsShowMoreLessButtonActive)
+            {
+                <button type="button" class="btn btn-link p-0" show-more="@Model.ShowMoreLabel" show-less="@Model.ShowLessLabel" data-facet-type="@facet.FacetFieldName" id="show-more-less-@facet.FacetFieldName">@Model.ShowMoreLabel</button>
+            }
+            if (facet.ShowNumberCustomRange)
+            {
+                <div class="mt-2 d-flex flex-row align-items-center">
+                    <div class="w-5rem">
+                        @if (facet.FacetFieldType == "NumberWhole")
+                        {
+                            <input type="number"
+                                   id="from-@facet.FacetFieldName"
+                                   class="form-control"
+                                   data-custom-range="true"
+                                   placeholder="Min"
+                                   onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                        }
+                        else
+                        {
+                            <input type="number"
+                                   id="from-@facet.FacetFieldName"
+                                   class="form-control"
+                                   data-custom-range="true"
+                                   placeholder="Min" />
+                        }
+                    </div>
+                    <span class="mx-2">&mdash;</span>
+
+                    <div class="w-5rem">
+                        @if (facet.FacetFieldType == "NumberWhole")
+                        {
+                            <input type="number"
+                                   id="to-@facet.FacetFieldName"
+                                   class="form-control"
+                                   data-custom-range="true"
+                                   placeholder="Max"
+                                   onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                        }
+                        else
+                        {
+                            <input type="number"
+                                   id="to-@facet.FacetFieldName"
+                                   class="form-control"
+                                   data-custom-range="true"
+                                   placeholder="Max" />
+                        }
+                    </div>
+                    <button type="button"
+                            id="custom-range-btn-@facet.FacetFieldName"
+                            class="btn btn-outline-secondary ms-2"
+                            data-custom-range-name="@facet.FacetFieldName"
+                            data-custom-range-type="@facet.FacetFieldType">
+                        <svg class="svg-inline--fa fa-w-18" aria-hidden="true">
+                            <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#chevron-right"></use>
+                        </svg>
+                    </button>
+                </div>
+            }
+
+            if (facet.ShowDateCustomRanges)
+            {
+                <div class="mt-2 d-flex flex-row align-items-center">
+                    <div class="w-10rem">
+                        <input type="date"
+                               id="from-@facet.FacetFieldName"
+                               class="form-control"
+                               data-custom-range="true" />
+                    </div>
+                    <span class="mx-2">&mdash;</span>
+                    <div class="w-10rem">
+                        <input type="date"
+                               id="to-@facet.FacetFieldName"
+                               class="form-control"
+                               data-custom-range="true" />
+                    </div>
+                    <button type="button"
+                            id="custom-range-btn-@facet.FacetFieldName"
+                            class="btn btn-outline-secondary ms-2"
+                            data-custom-range-name="@facet.FacetFieldName"
+                            data-custom-range-type="@facet.FacetFieldType">
+                        <svg class="svg-inline--fa fa-w-18" aria-hidden="true">
+                            <use xlink:href="~/ResourcePackages/Bootstrap5/assets/dist/sprites/solid.svg#chevron-right"></use>
+                        </svg>
+                    </button>
+                </div>
             }
         }
-    </div>
+    }
+</div>
 
 </div>
 

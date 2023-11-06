@@ -15,9 +15,10 @@
             @Html.Resource("By")
             @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
         </span>
+
         @Html.CommentsCount(string.Empty, @Model.Item.DataItem)
     </div>
-    
+
     <div class="lead mb-3" @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.HtmlSanitize((string)Model.Item.Fields.Summary)</div>
 
     <div @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.HtmlSanitize((string)Model.Item.Fields.Content)</div>

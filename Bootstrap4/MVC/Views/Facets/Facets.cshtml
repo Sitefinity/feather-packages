@@ -12,58 +12,127 @@
 <div id="facetContainer">
     @if (ViewBag.HasAnyFacetElements)
     {
-    <h3 class="h6 mb-3 font-weight-normal">@Model.FilterResultsLabel</h3>
+        <h3 class="h6 mb-3 font-weight-normal">@Model.FilterResultsLabel</h3>
 
-    <div class="d-flex align-items-center justify-content-between">
-        <label class="form-label">@Model.AppliedFiltersLabel</label>
-        <button id="sf-facet-clear-all-btn" class="btn btn-link px-0 py-0 mb-2" hidden>@Model.ClearAllLabel</button>
-    </div>
-    <ul id="applied-filters" class="list-unstyled list-inline" data-sf-applied-filter-html-tag="li" data-sf-filter-label-css-class="sf-facets-filter-label list-inline-item bg-secondary rounded-pill pl-2 pr-4 pb-1 mr-1 mb-1 mw-100 position-relative overflow-hidden text-truncate text-nowrap" data-sf-remove-filter-css-class="sf-facets-remove-filter px-2 position-absolute">
-    </ul>
+        <div class="d-flex align-items-center justify-content-between">
+            <label class="form-label">@Model.AppliedFiltersLabel</label>
+            <button id="sf-facet-clear-all-btn" class="btn btn-link px-0 py-0 mb-2" hidden>@Model.ClearAllLabel</button>
+        </div>
+        <ul id="applied-filters" class="list-unstyled list-inline" data-sf-applied-filter-html-tag="li" data-sf-filter-label-css-class="sf-facets-filter-label list-inline-item bg-secondary rounded-pill pl-2 pr-4 pb-1 mr-1 mb-1 mw-100 position-relative overflow-hidden text-truncate text-nowrap" data-sf-remove-filter-css-class="sf-facets-remove-filter px-2 position-absolute">
+        </ul>
     }
 
-    <div id="facetContent" class="mb-3">
-        @foreach (var facet in Model.SearchFacets)
-        {
+<div id="facetContent" class="mb-3">
+    @foreach (var facet in Model.SearchFacets)
+    {
         var value = 0;
-        if (facet.FacetElements.Any())
+        if (facet.FacetElements.Any() || facet.ShowNumberCustomRange || facet.ShowDateCustomRanges)
         {
-        <h4 class="h6 font-weight-normal mt-3">@facet.FacetTitle</h4>
+            <h4 class="h6 font-weight-normal mt-3">@facet.FacetTitle</h4>
 
-        <ul class="list-unstyled mb-0" id="facets-group-list-@facet.FacetFieldName">
-            @foreach (var facetElement in facet.FacetElements)
+            <ul class="list-unstyled mb-0" id="facets-group-list-@facet.FacetFieldName" data-facet-type="@facet.FacetFieldType">
+                @foreach (var facetElement in facet.FacetElements)
+                {
+                    value++;
+                    bool hideElement = (value > defaultFacetsCollapseCount) && Model.IsShowMoreLessButtonActive;
+                    <li @(hideElement ? "hidden" : string.Empty)>
+                        <input type="checkbox"
+                               id="facet-checkbox-@facet.FacetFieldName-@facetElement.FacetValue"
+                               data-facet-key="@facet.FacetFieldName"
+                               data-facet-value="@facetElement.FacetValue" />
+
+                        <label for="facet-checkbox-@facet.FacetFieldName-@facetElement.FacetValue" id="facet-@facetElement.FacetValue">@facetElement.FacetLabel</label>
+
+                        @if (Model.DisplayItemCount)
+                        {
+                            <span class="small text-muted">(@facetElement.FacetCount)</span>
+                        }
+                    </li>
+                }
+            </ul>
+            if (facet.FacetElements.Count > defaultFacetsCollapseCount && Model.IsShowMoreLessButtonActive)
             {
-                string facetElementLabel = facetElement.FacetValue;
-
-                if (facetElement.FacetFieldType == SearchIndexAdditonalFieldType.DateAndTime)
-                {
-                    DateTime facetDateValue = DateTime.Parse(facetElementLabel);
-                    facetElementLabel = facetDateValue.ToSitefinityUITime().ToString("MMM dd, yyyy");
-                }
-
-                value++;
-                bool hideElement = (value > defaultFacetsCollapseCount) && Model.IsShowMoreLessButtonActive;
-            <li class="form-check" @(hideElement ? "hidden" : string.Empty)>
-                <input type="checkbox"
-                       id="facet-checkbox-@facet.FacetFieldName-@facetElement.FacetValue"
-                       class="form-check-input"
-                       data-facet-key="@facet.FacetFieldName"
-                       data-facet-value="@facetElement.FacetValue" />
-                <label for="facet-checkbox-@facet.FacetFieldName-@facetElement.FacetValue" id="facet-@facetElement.FacetValue" class="form-check-label">@facetElementLabel</label>
-                @if (Model.DisplayItemCount)
-                {
-                <span class="small text-muted">(@facetElement.FacetCount)</span>
-                }
-            </li>
+                <button type="button" class="btn btn-link p-0" show-more="@Model.ShowMoreLabel" show-less="@Model.ShowLessLabel" data-facet-type="@facet.FacetFieldName" id="show-more-less-@facet.FacetFieldName">@Model.ShowMoreLabel</button>
             }
-        </ul>
-        if (facet.FacetElements.Count > defaultFacetsCollapseCount && Model.IsShowMoreLessButtonActive)
-        {
-        <button type="button" class="btn btn-link p-0" show-more="@Model.ShowMoreLabel" show-less="@Model.ShowLessLabel" data-facet-type="@facet.FacetFieldName" id="show-more-less-@facet.FacetFieldName">@Model.ShowMoreLabel</button>
+            if (facet.ShowNumberCustomRange)
+            {
+                <div class="mt-2 d-flex flex-row align-items-center">
+                    @if (facet.FacetFieldType == "NumberWhole")
+                    {
+                        <input type="number"
+                               id="from-@facet.FacetFieldName"
+                               class="form-control"
+                               data-custom-range="true"
+                               placeholder="Min"
+                               onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                    }
+                    else
+                    {
+                        <input type="number"
+                               id="from-@facet.FacetFieldName"
+                               class="form-control"
+                               data-custom-range="true"
+                               placeholder="Min" />
+                    }
+                    <span class="mx-2">&mdash;</span>
+                    @if (facet.FacetFieldType == "NumberWhole")
+                    {
+                        <input type="number"
+                               id="to-@facet.FacetFieldName"
+                               class="form-control"
+                               data-custom-range="true"
+                               placeholder="Max"
+                               onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                    }
+                    else
+                    {
+                        <input type="number"
+                               id="to-@facet.FacetFieldName"
+                               class="form-control"
+                               data-custom-range="true"
+                               placeholder="Max" />
+                    }
+
+                    <button type="button"
+                            id="custom-range-btn-@facet.FacetFieldName"
+                            class="btn btn-outline-secondary ml-2"
+                            data-custom-range-name="@facet.FacetFieldName"
+                            data-custom-range-type="@facet.FacetFieldType">
+                        <svg class="sf-icon-xs" aria-hidden="true">
+                            <use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#chevron-right"></use>
+                        </svg>
+                    </button>
+                </div>
+            }
+
+            if (facet.ShowDateCustomRanges)
+            {
+                <div class="mt-2 d-flex flex-row align-items-center">
+                    <input type="date"
+                           id="from-@facet.FacetFieldName"
+                           class="form-control"
+                           data-custom-range="true" />
+
+                    <span class="mx-2">&mdash;</span>
+                    <input type="date"
+                           id="to-@facet.FacetFieldName"
+                           class="form-control"
+                           data-custom-range="true" />
+                    <button type="button"
+                            id="custom-range-btn-@facet.FacetFieldName"
+                            class="btn btn-outline-secondary ml-2"
+                            data-custom-range-name="@facet.FacetFieldName"
+                            data-custom-range-type="@facet.FacetFieldType">
+                        <svg class="sf-icon-xs" aria-hidden="true">
+                            <use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#chevron-right"></use>
+                        </svg>
+                    </button>
+
+                </div>
+            }
         }
-        }
-        }
-    </div>
+    }
+</div>
 
 </div>
 

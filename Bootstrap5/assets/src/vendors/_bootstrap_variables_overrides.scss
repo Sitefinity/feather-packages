@@ -4,3 +4,5 @@ $link-hover-decoration: underline;
 $utilities: map-merge( $utilities, ( "background-color": map-merge( map-get($utilities, "background-color"), ( values: map-merge( map-get(map-get($utilities, "background-color"), "values"), $colors ) ) ) ) );
 // Add cursor css classes - pointer and default
 $utilities: map-merge( $utilities, ( "cursor" : ( property: cursor, class: c, values: pointer default ) ) );
+// Add widths in rems
+$utilities: map-merge( $utilities, ( "width" : map-merge( map-get($utilities, "width"), ( values: map-merge( map-get(map-get($utilities, "width"), "values"), (5rem: 5rem, 10rem: 10rem)) ) ) ) );
