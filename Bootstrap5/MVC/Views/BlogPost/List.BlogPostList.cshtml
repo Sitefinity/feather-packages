@@ -11,7 +11,7 @@
         @foreach (var item in Model.Items)
         {
             var navigateUrl = HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix);
-            
+
             <li class="mb-4" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id)>
                 <h3>
                     <a @Html.InlineEditingFieldAttributes("Title", "ShortText") href="@navigateUrl">@item.Fields.Title</a>
@@ -22,6 +22,7 @@
                     @item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
                     @Html.Resource("By")
                     @DataResolver.Resolve(item.DataItem, "Author", null)
+
                     @Html.CommentsCount((string)navigateUrl, item.DataItem)
                 </div>
 
