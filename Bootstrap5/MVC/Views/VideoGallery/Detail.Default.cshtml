@@ -32,7 +32,7 @@
         <figcaption class="h2" id="@Html.UniqueId(" VideoTitle")" @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</figcaption>
         <div class="text-muted">
             <span class="visually-hidden">@Html.Resource("VideoTakenOn") </span>
-            @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
+            @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm")
             @Html.Resource("By")
             @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
         </div>

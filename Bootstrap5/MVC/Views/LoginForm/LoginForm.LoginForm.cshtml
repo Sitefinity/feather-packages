@@ -13,8 +13,8 @@
 
 @*Add scripts and stylesheets*@
 @Html.Script(ScriptRef.JQuery, "jquery", false)
-@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "jquery", false, false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
-@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "jquery", false, false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
+@Html.Script("//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js", "jquery", false, false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
+@Html.Script("//cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js", "jquery", false, false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
 
 @{
     var hasExternalProviders = Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0;
@@ -160,10 +160,6 @@
     else if (name.Contains("google"))
     {
         @Html.HtmlSanitize("btn-outline-danger");
-    }
-    else if (name.Contains("linkedin"))
-    {
-        @Html.HtmlSanitize("btn-outline-primary");
     }
     else if (name.Contains("microsoft"))
     {
