@@ -17,7 +17,7 @@
 
                 <div>
                     <span class="text-muted">
-                        @item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
+                        @item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm")
                         @Html.Resource("By")
                         @DataResolver.Resolve(item.DataItem, "Author", null)
                     </span>

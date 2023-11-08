@@ -11,8 +11,8 @@
 @using Telerik.Sitefinity.Web.Utilities;
 
 @Html.Script(ScriptRef.JQuery, "jquery", false)
-@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.19.3/jquery.validate.js", "jquery", false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
-@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "jquery", false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
+@Html.Script("//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js", "jquery", false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
+@Html.Script("//cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js", "jquery", false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
 <div class="@Model.CssClass">
     <h3>@Html.Resource("EditProfileLink")</h3>
     @if (Model.ShowProfileChangedMsg)

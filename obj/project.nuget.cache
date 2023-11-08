@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "cpL1CmLv8HAYQPaek0KP72XBOG6Otu7eDe7EPQNz1cifPimCFFrRWGLkxva7g3SZ05f1jNkypqJ3REFVv9TZpg==",
+  "success": true,
+  "projectFilePath": "C:\\AzureDevOps\\sitefinity\\FeatherPackages\\FeatherPackages.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1507",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "There are 3 package sources defined in your configuration. When using central package management, please map your package sources with package source mapping (https://aka.ms/nuget-package-source-mapping) or specify a single package source. The following sources are defined: SitefinityCore, nuget.sitefinity.com, nuget.org"
+    }
+  ]
+}

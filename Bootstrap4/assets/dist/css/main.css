@@ -10407,10 +10407,6 @@ body[contenteditable="true"] {
   fill: #63b5f0;
 }
 
-.sf-icon-linkedin {
-  fill: #238cc8;
-}
-
 .sf-icon-tumblr {
   fill: #426d9b;
 }
@@ -11304,17 +11300,6 @@ table.k-scheduler-monthview .k-scheduler-table td {
 .-sf-yahoo-button:hover {
   color: #fff;
   background-color: #410093;
-  border-color: transparent;
-}
-
-.-sf-linkedin-button {
-  color: #0077b5;
-  border-color: #0077b5;
-}
-
-.-sf-linkedin-button:hover {
-  color: #fff;
-  background-color: #0077b5;
   border-color: transparent;
 }
 
