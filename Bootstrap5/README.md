@@ -7,7 +7,7 @@ This package is based on the [Bootstrap 5 framework](http://getbootstrap.com/). 
 
 ## Npm
 ### Install
-Npm is the package manager for JavaScript that enables you to assemble packages of reusable code. For more information, visit [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) websites. Currently *Bootstrap 5* package supports Node.js LTS version 16.13.0.
+Npm is the package manager for JavaScript that enables you to assemble packages of reusable code. For more information, visit [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) websites. Currently *Bootstrap 5* package supports Node.js LTS version 20.11.1.
 ```
 > npm install
 > npm start
