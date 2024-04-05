@@ -36,7 +36,7 @@
     "copy:sprites": "cross-env-shell copyfiles -f $npm_package_config_copySprites assets/dist/sprites",
     "copy:js": "cross-env-shell copyfiles -f $npm_package_config_copyJs assets/dist/js",
     "copy": "run-s copy:js copy:sprites copy:images",
-    "sass:build": "cross-conf-env sass --style=expanded npm_package_config_stylesSrc/npm_package_config_sassFile npm_package_config_stylesDist/npm_package_config_cssFile && cross-conf-env sass --style=compressed npm_package_config_stylesSrc/npm_package_config_sassFile npm_package_config_stylesDist/npm_package_config_minCssFile",
+    "sass:build": "cross-conf-env sass -I node_modules/bootstrap/scss --style=expanded npm_package_config_stylesSrc/npm_package_config_sassFile npm_package_config_stylesDist/npm_package_config_cssFile && cross-conf-env sass -I node_modules/bootstrap/scss --style=compressed npm_package_config_stylesSrc/npm_package_config_sassFile npm_package_config_stylesDist/npm_package_config_minCssFile",
     "sass": "run-s sass:build",
     "css-rtl": "cross-conf-env rtlcss npm_package_config_stylesDist/npm_package_config_minCssFile",
     "build": "run-s copy sass css-rtl",
