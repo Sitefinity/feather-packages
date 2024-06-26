@@ -27,7 +27,7 @@
     "copyJs": "node_modules/popper.js/dist/umd/popper.min.js node_modules/bootstrap/dist/js/bootstrap.min.js"
   },
   "scripts": {
-    "sass:editor": "cross-conf-env node-sass --output-style compressed npm_package_config_stylesSrc/adminapp/npm_package_config_editorSassFile npm_package_config_stylesDist/npm_package_config_editorCssFile && npm run postcss",
+    "sass:editor": "cross-conf-env node-sass --output-style compressed npm_package_config_stylesSrc/adminapp/npm_package_config_editorSassFile npm_package_config_stylesDist/npm_package_config_editorCssFile",
     "copy:sprites": "cross-env-shell copyfiles -f $npm_package_config_copySprites assets/dist/sprites",
     "copy:js": "cross-env-shell copyfiles -f $npm_package_config_copyJs assets/dist/js",
     "copy": "run-s copy:js copy:sprites",
