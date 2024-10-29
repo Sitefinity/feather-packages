@@ -8,7 +8,7 @@
 @{
     var hasDescription = !string.IsNullOrEmpty(Model.MetaField.Description);
 }
-<div class="form-group @Model.CssClass" data-sf-role="paragraph-text-field-container">
+<div class="form-group @Model.CssClass" data-sf-role="paragraph-text-field-container" data-sf-config="@(Html.AttributeEncode(Model.Serialize()))">
     <input type="hidden" data-sf-role="violation-messages" value='{"maxLength":"@Model.MaxLengthViolationMessage", "required": "@Model.RequiredViolationMessage"}' />
     <label class="h6" for='@Html.UniqueId("Textarea")'>@Model.MetaField.Title </label>
     <textarea id='@Html.UniqueId("Textarea")'

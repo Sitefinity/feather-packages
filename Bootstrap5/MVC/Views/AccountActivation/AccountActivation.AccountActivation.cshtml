@@ -1,6 +1,7 @@
 ﻿@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.AccountActivation.AccountActivationViewModel
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers
+@using Telerik.Sitefinity.UI.MVC;
 
 <div class="@Model.CssClass">
     @if (Model.Activated)
@@ -8,13 +9,45 @@
         <div class="alert alert-success" role="alert" aria-live="assertive">
             <h3>@Html.Resource("AccountActivationSuccess")</h3>
 
-            <a href="@Model.ProfilePageUrl">@Html.Resource("ProfilePageUrlTitle")</a>
+            <a href="@Model.LoginPageUrl">@Html.Resource("LoginPageUrlTitle")</a>
         </div>
     }
-    else if (Model.AttemptedActivation)
+    else if (Model.ExpiredActivationLink || Model.SentActivationLink)
     {
-        <div class="alert alert-danger" role="alert" aria-live="assertive">
-            <h3>@Html.Resource("AccountActivationFail")</h3>
+        string heading;
+        string message;
+        string buttonText;
+
+        if (Model.ExpiredActivationLink)
+        {
+            heading = Html.Resource("ActivationLinkExpiredTitle");
+            message = string.Format(Html.Resource("ActivationLinkExpiredMessage"), Model.Email);
+            buttonText = Html.Resource("SendActivationLink");
+        }
+        else
+        {
+            heading = Html.Resource("ActivationLinkSentTitle");
+            message = string.Format(Html.Resource("ActivationLinkSentMessage"), Model.Email);
+            buttonText = Html.Resource("SendAgainActivationLink");
+        }
+        using (Html.BeginFormSitefinity("SendAgainActivationLink", "AccountActivation", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <h3>@heading</h3>
+            <div class="my-3">
+                @message
+            </div>
+
+            <input type="hidden" name="Email" value="@Model.Email" />
+            <input type="hidden" name="Provider" value="@Model.Provider" />
+            <input type="submit" class="btn btn-primary" value="@buttonText" />
+            @Html.AddSitefinityAntiforgeryToken()
+        }
+    }
+    else if (Model.AttemptedActivation || Model.ActivationError)
+    {
+    <div class="alert alert-danger" role="alert" aria-live="assertive">
+            <h3>@Html.Resource("AccountActivationFailTitle")</h3>
+            <p>@Html.Resource("AccountActivationFailMessage")</p>
         </div>
     }
 </div>

@@ -13,7 +13,7 @@
 
 @*Add scripts and stylesheets*@
 @Html.Script(ScriptRef.JQuery, "top", true)
-@Html.Script("//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.js", "top", true, false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
+@Html.Script("//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.js", "top", true, false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
 @Html.Script("//cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js", "top", true, false, new List<KeyValuePair<string, string>>() { HtmlConstants.CrossOriginHtmlAttribute })
 
 @{
@@ -23,7 +23,7 @@
 }
 
 <div class="@Model.CssClass m-0">
-    @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" } }, true))
+    @using (Html.BeginFormSitefinity("", null, null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" } }, true))
     {
         @Html.ValidationSummary(true);
 
