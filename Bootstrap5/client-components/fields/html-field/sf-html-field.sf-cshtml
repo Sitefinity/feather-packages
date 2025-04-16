@@ -50,7 +50,7 @@
     },
     {
         name: "htmlView",
-        template: "<button class=\"custom-tool btn btn-default btn-xs js-htmlview js-custom-tool\" ng-click=\"toggleHtmlView()\">\{\{htmlViewLabel\}\}</button>"
+        template: "<button class=\"custom-tool btn btn-default btn-xs js-htmlview js-custom-tool\" ng-click=\"toggleHtmlView()\">HTML</button>"
     }
     ]'>
 </textarea>
