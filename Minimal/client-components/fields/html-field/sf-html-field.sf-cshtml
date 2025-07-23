@@ -55,7 +55,7 @@
     ]'>
 </textarea>
 
-<sf-link-selector-modal id="linkSelectorModal"></sf-link-selector-modal>
+<sf-link-selector-modal class="linkSelectorModal"></sf-link-selector-modal>
 
 <div class="mediaPropertiesModal"
      template-url="{{mediaPropertiesDialog}}"
