@@ -2,6 +2,7 @@
 
 @using Telerik.Sitefinity;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Frontend.Media.Mvc.Models.VideoGallery;
 
@@ -15,37 +16,25 @@
             var detailPageUrl = ViewBag.OpenInSamePage ? HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex) :
                 HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix);
             var videoTitleId = Html.UniqueId("VideoTitle") + "-" + i.ToString();
-            var tmbWidhtPx = string.Empty;
-            var tmbWidth = string.Empty;
-            var tmbHeight = string.Empty;
 
-            if (item.Fields.Thumbnail != null && item.Fields.Thumbnail.Width != null && item.Fields.Thumbnail.Height != null)
-            {
-
-                tmbWidhtPx = string.Concat("width: ", item.Fields.Thumbnail.Width, "px;");
-                tmbWidth = string.Format("width={0}", item.Fields.Thumbnail.Width);
-                tmbHeight = string.Format("height={0}", item.Fields.Thumbnail.Height);
-            }
-
-            <li style="@tmbWidhtPx">
-                <a href="@detailPageUrl"
+            <li>
+                <a class="d-inline-block" href="@detailPageUrl"
                    title="Go to video @(string.IsNullOrEmpty(item.Fields.Description) ? item.Fields.Title : item.Fields.Description) details">
-                    <img src="@(((VideoThumbnailViewModel)item).ThumbnailUrl)" aria-labelledby="@videoTitleId"  @tmbWidth @tmbHeight
-                        alt='@System.Text.RegularExpressions.Regex.Replace(item.Fields.Title, @"[^\w\d_-]", "")' />
+                    <img src="@(((VideoThumbnailViewModel)item).ThumbnailUrl)" aria-labelledby="@videoTitleId" @Html.GetImageWidthAttributeForVideoThumbnail((VideoThumbnailViewModel)item) @Html.GetImageHeightAttributeForVideoThumbnail((VideoThumbnailViewModel)item)
+                         alt='@System.Text.RegularExpressions.Regex.Replace(item.Fields.Title, @"[^\w\d_-]", "")' />
                     <h3 class="h6 text-truncate" id="@videoTitleId">@item.Fields.Title</h3>
-                </a>               
+                </a>
             </li>
         }
 
     </ul>
 </div>
-        @if (Model.ShowPager)
-        {
-            @Html.Action("Index", "ContentPager", new
-               {
-                   currentPage = Model.CurrentPage,
-                   totalPagesCount = Model.TotalPagesCount.Value,
-                   redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
-               })
-        }
-
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}
