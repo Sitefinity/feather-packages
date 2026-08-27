@@ -1,4 +1,4 @@
-The Feather Project
+The Feather Project 
 =======
 
 This repository contains front-end packages for [Project Feather](http://projectfeather.sitefinity.com).

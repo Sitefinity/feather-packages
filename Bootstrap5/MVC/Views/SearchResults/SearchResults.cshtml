@@ -12,7 +12,7 @@
     <div class="d-flex align-items-center justify-content-between my-3">
         @if (@Model.Results.TotalCount > 0)
         {
-            if (ViewBag.IsFilteredbyPermission)
+            if (ViewBag.IsFilteredbyPermission && !ViewBag.StoreViewPermissionInSearchIndex)
             {
                 <h1 role="alert" aria-live="assertive">@Html.HtmlSanitize(Model.ResultText)</h1>
             }
@@ -110,7 +110,7 @@
 
     @if (Model.DisplayMode == ListDisplayMode.Paging && Model.TotalPagesCount != null && Model.TotalPagesCount > 1)
     {
-        if (ViewBag.IsFilteredbyPermission)
+        if (ViewBag.IsFilteredbyPermission && !ViewBag.StoreViewPermissionInSearchIndex)
         {
             <ul class="pagination" data-sf-hide-while-loading="true">
                 @if (Model.CurrentPage > 1)
