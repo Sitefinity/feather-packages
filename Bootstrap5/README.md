@@ -7,12 +7,34 @@ This package is based on the [Bootstrap 5 framework](http://getbootstrap.com/). 
 
 ## Npm
 ### Install
-Npm is the package manager for JavaScript that enables you to assemble packages of reusable code. For more information, visit [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) websites. Currently *Bootstrap 5* package supports Node.js LTS version 20.11.1.
+Npm is the package manager for JavaScript that enables you to assemble packages of reusable code. For more information, visit [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) websites. Currently *Bootstrap 5* package supports Node.js 20.11.1 LTS or later. The build scripts were tested on Node.js 20.11.1, 22.13.1, 24.15.0 and 26.0.0 (on Windows). Versions earlier than 20 are not supported.
 ```
 > npm install
 > npm start
 ```
 `npm start` executes the default **npm** scritps and subsequently watches for any changes in the files after.
+
+### Build scripts
+The package keeps its development dependencies to a minimum: `bootstrap`, `@popperjs/core`, `@fortawesome/fontawesome-free`, `sass` and `rtlcss`. The build is driven by small dependency-free Node.js scripts in the `scripts` folder, which read the paths from the `config` section of `package.json`. They are run through the **npm** scripts below. The watcher uses recursive `fs.watch`, which on Linux requires Node.js 20 or later.
+
+| Command | What it does |
+|---|---|
+| `npm run build` | Runs `copy`, `sass` and `css-rtl` once |
+| `npm start` | Runs `build` and then `watch` |
+| `npm run copy` | Copies the JS, SVG sprites and images to `assets/dist` (`copy:js`, `copy:sprites` and `copy:images` run one of them) |
+| `npm run sass` | Compiles `assets/src/project/sass/main.scss` to `assets/dist/css/main.css` and `main.min.css` |
+| `npm run css-rtl` | Generates `assets/dist/css/main.min.rtl.css` from `main.min.css` (run `sass` first) |
+| `npm run sass:editor` | Compiles `assets/src/project/sass/adminapp/editor.scss` to `assets/dist/css/editor.min.css` |
+| `npm run watch` | Watches the SCSS files in `assets/src` and the images in `assets/src/project/images`, and reruns `sass` or `copy:images` on changes (`watch:styles` and `watch:images` watch one of them). Stop it with `Ctrl+C` |
+
+Notes:
+- `npm run watch` does not regenerate `main.min.rtl.css`. Run `npm run css-rtl` after the styles change, or run `npm run build`.
+- The `scripts` files take the same target names that the npm scripts pass to them, for example `node scripts/copy.js js sprites`, `node scripts/styles.js sass rtl` and `node scripts/watch.js styles`. Run a script without arguments to see its usage.
+- To change what is copied, edit `config.copyJs` and `config.copySprites` in `package.json` (space-separated paths). A `*` is supported in the file name only, for example `node_modules/some-lib/dist/*.min.js`. All paths in `config` must be inside the package folder, and hidden files (such as `.gitkeep`) in `assets/src/project/images` are not copied. To change the input and output folders, edit the other `config` values.
+- `sass` is intentionally pinned to `1.79.4`. Newer versions add dependencies that currently have no patched release, which security scanners report. Upgrade it only after checking `npm audit` for the new version.
+
+### Upgrading an existing project
+When Feather is updated, it replaces `package.json` and `package-lock.json` together, and only if neither was customized, and it adds any missing files to the `scripts` folder. If you customized either file, both are left unchanged. To get the current build tooling, merge your changes into the `package.json` and `package-lock.json` of the new package version, keep the `scripts` folder, delete `node_modules` and run `npm ci`.
 
 ## Package structure
 
