@@ -7,12 +7,35 @@ This is a basic package, which contains all default templates of the frontend wi
 
 ## Npm
 ### Install
-Npm is the package manager for JavaScript that enables you to assemble packages of reusable code. For more information, visit [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) websites. Currently *Minimal* package supports Node.js LTS version 12.17.0.
+Npm is the package manager for JavaScript that enables you to assemble packages of reusable code. For more information, visit [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) websites. Currently *Minimal* package supports Node.js 20.11.1 LTS or later. The build scripts were tested on Node.js 20.11.1, 22.13.1, 24.15.0 and 26.0.0 (on Windows). Versions earlier than 20 are not supported.
 ```
 > npm install
 > npm start
 ```
 `npm start` executes the default **npm** scritps and subsequently watches for any changes in the files after.
+
+### Build scripts
+The package keeps its development dependencies to a minimum: `sass`, `postcss` and `autoprefixer`. The build is driven by small Node.js scripts in the `scripts` folder, which read the paths from the `config` section of `package.json`. They are run through the **npm** scripts below. The watcher uses recursive `fs.watch`, which on Linux requires Node.js 20 or later.
+
+| Command | What it does |
+|---|---|
+| `npm run build` | Runs `copy` and `sass` once |
+| `npm start` | Runs `build` and then `watch` |
+| `npm run clean` | Deletes everything in `assets/dist` |
+| `npm run copy` | Copies the JS files listed in `config.copyJs` to `assets/dist/js` (`copy:js` does the same) |
+| `npm run sass` | Compiles `sitefinity.scss` and `main.scss` (`sass:sitefinity` and `sass:build` run one of them), then runs `postcss` on all CSS in `assets/dist/css` |
+| `npm run sass:editor` | Compiles `assets/src/project/sass/adminapp/editor.scss` to `assets/dist/css/editor.min.css`, then runs `postcss` |
+| `npm run postcss` | Adds vendor prefixes (Autoprefixer) to every `.css` file in `assets/dist/css` |
+| `npm run watch` | Watches the SCSS files in `assets/src` and reruns `sass` on changes (`watch:styles` does the same). Stop it with `Ctrl+C` |
+
+Notes:
+- The `scripts` files take the same target names that the npm scripts pass to them, for example `node scripts/styles.js sitefinity build` and `node scripts/copy.js js`. Run a script without arguments to see its usage.
+- The CSS is compiled without source maps. Autoprefixer uses its default browser targets (the package has no browserslist configuration).
+- To change what is copied, edit `config.copyJs` in `package.json` (space-separated paths). A `*` is supported in the file name only, for example `node_modules/some-lib/dist/*.min.js`. All paths in `config` must be inside the package folder, and `npm run clean` refuses to run if `config.dist` points outside it. To change the input and output folders, edit the other `config` values.
+- `sass` is intentionally pinned to `1.79.4`. Newer versions add dependencies that currently have no patched release, which security scanners report. Upgrade it only after checking `npm audit` for the new version.
+
+### Upgrading an existing project
+Feather does not update the files of the *Minimal* package in a project that already contains it. To get the current build tooling, replace `package.json`, `package-lock.json` and the `scripts` folder with the ones from the new package version, delete the `node_modules` folder, and run `npm ci`. If you customized `package.json`, merge your changes into the new file instead.
 
 ## Package structure ##
 
